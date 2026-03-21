@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年2月11日（火）</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+  :root {
+    --bg: #f5f7fa;
+    --surface: #ffffff;
+    --surface2: #f0f2f6;
+    --border: #e2e5ed;
+    --text: #1a1d2e;
+    --text-muted: #5f6680;
+    --accent-blue: #3b6de0;
+    --accent-purple: #7c5cdb;
+    --accent-orange: #e8842a;
+    --accent-red: #e04848;
+    --accent-green: #1aab55;
+    --accent-cyan: #0ea5a5;
+    --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+    --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+    --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+    --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Hero Header ── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px 50px;
+    background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+    animation: float 20s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(2%, -1%) rotate(1deg); }
+    66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+  }
+  .hero-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #b8d0ff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+  }
+  .hero-badge .pulse {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-green);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+  .hero h1 {
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero .date {
+    font-size: 18px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 400;
+  }
+  .hero .market-strip {
+    display: flex;
+    gap: 24px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .market-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+  }
+  .market-item .label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .market-item .value {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Inter', monospace;
+    color: #fff;
+  }
+  .market-item .change {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .up { color: var(--accent-green); }
+  .down { color: var(--accent-red); }
+  .hero .up { color: #5ee89d; }
+  .hero .down { color: #ff8a8a; }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ── Section Header ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 56px 0 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .section-header .sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  /* ── News Card ── */
+  .news-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 24px;
+    transition: transform 0.2s, border-color 0.2s;
+    overflow: hidden;
+  }
+  .news-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(59,109,224,0.35);
+    box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+  }
+  .news-card .card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 20px 0 0 20px;
+  }
+  .news-card .number {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 64px;
+    font-weight: 900;
+    font-family: 'Inter', sans-serif;
+    opacity: 0.06;
+    line-height: 1;
+  }
+  .card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+  }
+  .tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+  .tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+  .tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+  .tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+  .tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+  .tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+  .news-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    letter-spacing: -0.3px;
+  }
+  .news-card .summary {
+    color: var(--text-muted);
+    font-size: 14.5px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+  .news-card .summary strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* Key Metrics */
+  .metrics {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .metric {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 13px;
+  }
+  .metric .metric-label {
+    color: var(--text-muted);
+  }
+  .metric .metric-value {
+    font-weight: 700;
+    font-family: 'Inter', monospace;
+  }
+
+  /* Impact Boxes */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .impact-box {
+    padding: 20px;
+    border-radius: 14px;
+    background: #f7f8fb;
+    border: 1px solid var(--border);
+  }
+  .impact-box .impact-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .impact-box .impact-text {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+  .impact-box .impact-text strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .lm-impact .impact-label { color: var(--accent-blue); }
+  .hr-impact .impact-label { color: var(--accent-green); }
+
+  /* Source Link */
+  .source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--accent-blue);
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+  .source-link:hover { opacity: 1; }
+  .source-link svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 64px;
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .footer .disclaimer {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .hero { padding: 40px 20px 36px; }
+    .hero h1 { font-size: 28px; }
+    .container { padding: 0 20px; }
+    .news-card { padding: 24px; }
+    .impact-grid { grid-template-columns: 1fr; }
+    .market-strip { gap: 12px; }
+    .market-item { padding: 10px 14px; }
+    .market-item .value { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- HERO HEADER                                     -->
+<!-- ══════════════════════════════════════════════ -->
+<nav style="background: #0f1629; padding: 10px 24px; text-align: left;">
+  <a href="news-digest-index.html" style="color: #94a3b8; text-decoration: none; font-size: 13px; font-family: 'Noto Sans JP', sans-serif;">← アーカイブ一覧に戻る</a>
+</nav>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年2月11日（火）建国記念の日 ｜ 企業AI活用 × AI BPO × AI・テクノロジー × 政治・政策 × Product Hunt</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均（2/10終値）</div>
+          <div class="value">57,650円</div>
+        </div>
+        <span class="change up">▲ 1,500円高</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">154.41</div>
+        </div>
+        <span class="change down">▼ 円高進行</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&P 500（2/10）</div>
+          <div class="value">6,998</div>
+        </div>
+        <span class="change up">▲ 7,000目前</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">AI BPO市場 2033</div>
+          <div class="value">$49.6B</div>
+        </div>
+        <span class="change up">▲ CAGR 34.3%</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 1: 企業・開発組織のAI活用最新事例        -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">🏢</div>
+  <div>
+    <h2>企業・開発組織のAI活用 最新事例</h2>
+    <span class="sub">Enterprise & Dev Org AI Adoption — Feb 2026 Sources</span>
+  </div>
+</div>
+
+<!-- Card 1: Deloitte State of AI -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-research">📊 Feb 2026</div>
+  <h3>Deloitte「State of AI 2026」 — 企業の9割がAI導入も深い変革は34%に留まる</h3>
+  <p class="summary">
+    Deloitteの最新レポートによると、<strong>企業の約9割がAIを何らかの業務で利用</strong>し、90%以上が投資拡大を計画。しかし「深い変革」を実現しているのは<strong>わずか34%</strong>。71%が顧客サービス・IT・HR・財務等で運用またはパイロット中だが、エンドツーエンドで本格稼働できている企業は30%に留まる。AIリーダーの<strong>83%が生成AIに重大な懸念</strong>（2年前の8倍増）を持ち、実装コスト・データセキュリティ・出力の信頼性が課題。BCGの「10-20-70法則」（10%アルゴリズム、20%技術・データ、<strong>70%は人と組織プロセス</strong>）が実践的指針として注目。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">AI利用企業</span>
+      <span class="metric-value">~90%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">深い変革</span>
+      <span class="metric-value">34%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">GenAI投資</span>
+      <span class="metric-value">$37B</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">重大懸念</span>
+      <span class="metric-value">83%</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">「導入済だが変革に至らない」企業が多数派。<strong>PoCから本番への移行支援</strong>がLM企業の差別化ポイント。BCGの「70%は人とプロセス」の指摘は、技術導入だけでなく<strong>組織変革コンサルティングとの一体提供</strong>が成功の鍵であることを示す。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">AI人材不足が最大の障壁（46%が指摘）。「AIエージェント開発者」の求人は<strong>2年で約1000%増</strong>。HR部門はリスキリング戦略と外部人材獲得の両面で、AI時代の人材ポートフォリオを早急に再設計する必要がある。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.deloitte.com/us/en/about/press-room/state-of-ai-report-2026.html" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Deloitte — State of AI Report 2026
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://www.weforum.org/stories/2026/01/how-agentic-physical-and-sovereign-ai-are-rewriting-the-rules-of-enterprise-innovation/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    WEF — Agentic, Physical & Sovereign AI (Jan 2026)
+  </a>
+</article>
+
+<!-- Card 2: Japanese Enterprise AI Cases -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-tech">🇯🇵 Feb 2026</div>
+  <h3>日本企業のAI活用最前線 — トヨタ「O-Beya」、サイバーエージェントのエージェント実装</h3>
+  <p class="summary">
+    日本企業のAI活用が加速。<strong>トヨタ自動車</strong>はMicrosoft・OpenAIの生成AI基盤を活用し、マルチエージェントシステム「O-Beya（大部屋）」を開発。エンジン・バッテリー用等<strong>9つのAIエージェント</strong>が質問に応じて最適回答を提供。NTTと共同で「モビリティAI基盤」開発、2030年までに<strong>5,000億円規模の投資</strong>を予定。<strong>サイバーエージェント</strong>は「AI SHIFT SUMMIT 2026 Winter」（1/22開催）で営業・CS領域のAIエージェント実装事例を公開。<strong>アサヒビール</strong>は生成AI搭載の情報検索「saguroot」でR&D・商品開発の意思決定を加速。UiPathは2026年を<strong>「AIエージェント実行の年」</strong>と位置づけ、単体→マルチエージェントシステムへの転換を予測。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">トヨタAI投資</span>
+      <span class="metric-value">¥5,000億</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">AIエージェント数</span>
+      <span class="metric-value">9体</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">国内AI市場成長</span>
+      <span class="metric-value">年率~20%</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">トヨタの「O-Beya」はマルチエージェント設計の好事例。<strong>自社の業務領域に特化した複数AIエージェントの連携設計</strong>が次のフェーズ。SIer各社はPoCから「事業成果への接続」を示すことが受注の決定打に。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">UiPathが指摘する「仕事の進め方・人とデジタルの関係・組織の在り方そのものの変革」は、<strong>AI導入＝ツール選定ではなく組織設計の課題</strong>。AI CoE（Center of Excellence）の設置と、現場主導のAI活用推進体制の両立がカギ。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.teamz.co.jp/news/ai-evolution-japan" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    TEAMZ — AI日本の進化：2026年注目の活用事例
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://www.cyberagent.co.jp/news/detail/id=32830" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    CyberAgent — AI SHIFT SUMMIT 2026 Winter
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://enterprisezine.jp/article/detail/23596" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    EnterpriseZine — UiPath 7つのトレンドと日本企業の勝ち筋
+  </a>
+</article>
+
+<!-- Card 3: AI Dev Tools -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-tech">⚡ Feb 2026</div>
+  <h3>開発組織のAI活用 — 開発者の50%がAIコーディングツール日常利用、エージェンティックAI市場は$45Bへ</h3>
+  <p class="summary">
+    開発組織におけるAI活用が転換期を迎えている。<strong>開発者の50%がAIコーディングツールを毎日利用</strong>（上位企業では65%）。AIコーディング市場は2024年の$5.5億→2025年に<strong>$40億へ7倍超に急成長</strong>。モデルがコードベース全体を理解し、マルチステップタスクを実行する段階に進化。エージェンティックAI市場は2026年の<strong>$85億</strong>→2030年に<strong>$450億</strong>へ成長見込み。ただし完全実装済は<strong>わずか6%</strong>で、レガシー統合（60%のAIリーダーが課題視）とガバナンス整備が成功の要件。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">AI開発ツール利用</span>
+      <span class="metric-value">50%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">コーディング市場</span>
+      <span class="metric-value">$4B</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">エージェントAI</span>
+      <span class="metric-value">$8.5B→$45B</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">完全実装</span>
+      <span class="metric-value">6%</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">AIコーディングツールの浸透は開発生産性を劇的に変える。<strong>「ポイントソリューション」から「エンドツーエンド自動化」</strong>への進化を踏まえ、開発プロセス全体のAI化戦略が必要。内製開発チームの人員配置・評価基準の見直しも急務。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">エージェンティックAIの完全実装が6%に留まる要因の一つは<strong>組織のレディネス不足</strong>。技術導入と並行して、AI活用の社内ガイドライン策定・トレーニング体系の構築・評価制度の更新が不可欠。「AIと協働できるエンジニア」の定義と育成が人事の最優先課題。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://lucidworks.com/blog/enterprise-ai-adoption-in-2026-trends-gaps-and-strategic-insights" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Lucidworks — Enterprise AI Adoption 2026
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Menlo Ventures — State of GenAI in Enterprise
+  </a>
+</article>
+
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 2: AI BPO                                 -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🏭</div>
+  <div>
+    <h2>AI BPO — アウトソーシング革命</h2>
+    <span class="sub">AI-Powered Business Process Outsourcing — Feb 2–10 Sources</span>
+  </div>
+</div>
+
+<!-- Card 4: BPO Market $861B -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-market">📈 Feb 2</div>
+  <h3>世界BPO市場は2033年に$8,615億へ — AI・ハイパーオートメーションが成長エンジン</h3>
+  <p class="summary">
+    Astute Analytica最新レポート（2/2公開）によると、グローバルBPOサービス市場は2024年の<strong>$3,676億</strong>から2033年に<strong>$8,615億</strong>へ成長予測（CAGR 10.35%）。特にインドBPO市場は$498億→$1,393億（CAGR 12.64%）と急伸。成長のカギは<strong>AI統合による「コスト削減→スマートオペレーション」へのバリュー転換</strong>。ルールベース業務の70-80%が自動化可能であり、BPO企業はAIが一次対応し人が高難度領域を担う<strong>ハイブリッド運用モデル</strong>への移行を加速中。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">2033年市場</span>
+      <span class="metric-value">$861.5B</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">CAGR</span>
+      <span class="metric-value">10.35%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">自動化可能率</span>
+      <span class="metric-value">70-80%</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">BPOの対象が定型業務から<strong>契約書チェック・市場調査・人事評価レポート等の知的業務</strong>へ拡大。LM企業はAI-BPOパートナーとの協業モデル構築で、人的リソースを高付加価値業務にシフトすべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">「業務委託＋教育支援」一体型BPOが増加中。<strong>社内人材育成課題をBPOに委託する新モデル</strong>は、HR部門のリソース戦略に直接影響。単純外注から「共同最適化パートナー」への認識転換が急務。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.globenewswire.com/news-release/2026/02/02/3230385/0/en/Business-Process-Outsourcing-BPO-Services-Market-to-Reach-US-861-45-Billion-by-2033-Driven-by-AI-Adoption-Digital-Transformation-and-Cost-Optimization-Says-Astute-Analytica.html" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    GlobeNewswire — BPO Market to Reach $861.45B by 2033 (2/2)
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://www.globenewswire.com/news-release/2026/02/10/3235595/0/en/India-BPO-Services-Market-Set-to-Soar-to-US-139-35-Billion-by-2033-Driven-by-AI-Hyperautomation-and-Global-Digital-Outsourcing-Demand-Astute-Analytica.html" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    GlobeNewswire — India BPO Market $139.35B (2/10)
+  </a>
+</article>
+
+<!-- Card 5: a16z Unbundling BPO -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-breaking">🔥 Feb 2026</div>
+  <h3>a16z「BPOのアンバンドリング」 — AIネイティブ企業がBPO支出$5,250億を侵食</h3>
+  <p class="summary">
+    Andreessen Horowitzのレポートが指摘する構造変化：<strong>$5,250億規模のBPO市場をAIネイティブスタートアップが急速に侵食</strong>中。大手BPO（Wipro：AI導入140%増、Infosys：100+の生成AIエージェント展開、Accenture：生成AIプロジェクト$12億の新規受注）は積極対応するものの、<strong>従来型BPOのビジネスモデルとAI-ネイティブプロダクトには根本的なミスマッチ</strong>が存在。人月ベースの収益モデルがAI効率化と相反するジレンマに。ベルシステム24は「<strong>2026年までに応対業務の完全自動化と人員半減</strong>」を掲げる。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">BPO市場規模</span>
+      <span class="metric-value">$525B</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">Wipro AI導入</span>
+      <span class="metric-value">+140%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">Accenture GenAI</span>
+      <span class="metric-value">$1.2B受注</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">BPOのアンバンドリングは日本のSI・BPO業界にも直結。<strong>人月ベースの収益モデルからAI成果報酬型への転換</strong>を早期に検討すべき。AIネイティブ競合の参入に備え、自社サービスのAIファースト再構築が急務。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">BPO人員半減目標の背景は「単純削減」ではなく<strong>「AIが一次対応、人が感情・クレーム領域に集中」</strong>するハイブリッド型への移行。コールセンター等の現場では、AI活用スキルとエモーショナルインテリジェンスの両立が求められる。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://a16z.com/unbundling-the-bpo-how-ai-will-disrupt-outsourced-work/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    a16z — Unbundling the BPO: How AI Will Disrupt Outsourced Work
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://news.outsourceaccelerator.com/cx-bpo-2026/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Outsource Accelerator — CX & BPO Reshaped in 2026
+  </a>
+</article>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 3: Product Hunt トレンド              -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🚀</div>
+  <div>
+    <h2>Product Hunt トレンド — 注目プロダクト</h2>
+    <span class="sub">Product Hunt Hot Picks — Feb 2026</span>
+  </div>
+</div>
+
+<!-- Card 6: Thesys Agent Builder -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-breaking">🔥 Feb 11</div>
+  <h3>Thesys Agent Builder — AIエージェントが「テキスト」ではなく「UI」で応答する新パラダイム</h3>
+  <p class="summary">
+    Product Huntで話題のThesys Agent Builderは、<strong>AIエージェントがチャート・カード・テーブル・フォームなどのインタラクティブUIで応答</strong>する新しいアプローチを提案。ノーコードでデータ接続・指示設定・公開まで完結し、数分でAIエージェントを構築可能。従来のチャットボットが長文テキストを返すのに対し、Thesysのエージェントは<strong>ユーザーの意図に応じてリアルタイムにUIを生成</strong>（Generative UI）。バックエンドにはC1エンジンを搭載し、UIの生成・オーケストレーション・ランタイムを一括処理。Lovable・Boltなどの「Vibe Coding」ツールが事前にUIを設計するのに対し、C1は<strong>アプリ実行中にユーザーごとにUIを動的生成</strong>する点が根本的に異なる。OpenAIも同時期にAgentKit（マルチエージェントワークフローの設計ツール）を発表しており、エージェントビルダー領域の競争が激化中。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">カテゴリ</span>
+      <span class="metric-value">Generative UI</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">ローンチ</span>
+      <span class="metric-value">4th on PH</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">競合参入</span>
+      <span class="metric-value">OpenAI AgentKit</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">「テキスト応答→UI応答」の転換は、社内AIツールのUX設計に直接影響。<strong>チャットボットの次は「アクション可能なUI」を返すエージェント</strong>。既存の社内FAQボットやヘルプデスクツールをGenerative UIで再構築する検討価値あり。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">ノーコードでAIエージェントを構築できるため、<strong>非エンジニア部門（HR・営業・CS）でも業務特化型エージェントの内製</strong>が現実的に。「市民開発者」育成の観点でリスキリング対象に含めるべき。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.producthunt.com/products/thesys" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Product Hunt — Thesys Agent Builder
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://www.thesys.dev/agent-builder" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Thesys — Agent Builder
+  </a>
+</article>
+
+<!-- Card 7: Wispr Flow -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-tech">🎙️ Feb 2026</div>
+  <h3>Wispr Flow — 音声入力でタイピング4倍速、「キーボードの終わり」を掲げるAIディクテーション</h3>
+  <p class="summary">
+    Product Huntの2026年2月トレンド上位に位置するWispr Flowは、元Apple・Metaエンジニアが創業したSF発スタートアップによるAI音声入力ツール。「キーボードは時代遅れ」をビジョンに、<strong>あらゆるアプリ上で自然に話すだけで完璧にフォーマットされたテキストを生成</strong>。精度は<strong>97.2%</strong>（Apple Dictation 85-90%、Google Voice 89-92%を大幅超越）、入力速度は<strong>170-179 WPM</strong>（一般タイピング40-90 WPM）。AIが「えーと」「あの」等のフィラーを自動除去し、「明日…いや金曜に」と言えば「金曜に」だけが出力される文脈理解を実装。<strong>Whisper Mode</strong>でオフィスでも小声で利用可能。Menlo Ventures主導で<strong>累計$56M</strong>を調達。100言語以上対応、HIPAA対応、SOC 2 Type II準拠。ただしクラウド処理のためプライバシー懸念とRAM 800MBの高負荷が課題。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">精度</span>
+      <span class="metric-value">97.2%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">入力速度</span>
+      <span class="metric-value">170+ WPM</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">資金調達</span>
+      <span class="metric-value">$56M</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">対応言語</span>
+      <span class="metric-value">100+</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">音声入力の精度が実用水準に達したことで、<strong>ドキュメント作成・メール・チャット等の「文字入力業務」が根本的に効率化</strong>される。特にコンサルティングやセールスなど移動中の業務が多い職種での導入インパクトが大きい。日本語対応の精度検証が次のアクション。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">音声入力ツールは<strong>アクセシビリティ向上</strong>にも直結。タイピングが困難な従業員への合理的配慮として、またリモートワーク環境での生産性ツールとして、<strong>全社導入の費用対効果を検討</strong>する価値がある。Whisper Modeはオープンオフィス環境との両立解。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.producthunt.com/products/wisprflow" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Product Hunt — Wispr Flow
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://wisprflow.ai" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Wispr Flow — 公式サイト
+  </a>
+</article>
+
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 4: AI・テクノロジー                      -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース</h2>
+    <span class="sub">Artificial Intelligence & Technology — Feb 10–11 Sources</span>
+  </div>
+</div>
+
+<!-- Card 8: Alphabet Bond -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">08</span>
+  <div class="card-tag tag-breaking">🔥 Feb 10</div>
+  <h3>Alphabet、史上最大$320億の社債発行 — 100年債も含むAIインフラ資金調達</h3>
+  <p class="summary">
+    Alphabet（Google親会社）が2月9-10日に<strong>合計約$320億の社債</strong>を24時間で発行。米ドル建て$200億（7トランシェ、2029〜2066年満期）に加え、スイス・英国市場でも起債しテック企業初の<strong>100年債</strong>を含む。注文は<strong>$1,000億超</strong>に達し記録的な需要。背景は2026年のAIデータセンター向け設備投資で、Alphabetは<strong>最大$1,850億のCapEx</strong>を計画（過去3年合計を上回る水準）。Morgan Stanleyはハイパースケーラー全体で<strong>2026年に$4,000億</strong>の社債発行を予測。先週にはOracleも$250億の社債で$1,290億の受注を集めたばかり。Big Techは「純貯蓄者」から「積極的借入者」への歴史的転換局面。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">調達総額</span>
+      <span class="metric-value">~$320億</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">受注額</span>
+      <span class="metric-value">$1,000億+</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">2026 CapEx計画</span>
+      <span class="metric-value">$1,750-1,850億</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">年間売上（初）</span>
+      <span class="metric-value up">$4,000億超</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">Big Tech 4社のCapExが<strong>$6,500億</strong>に達する2026年。AIインフラ投資の加速は日本のデータセンター・半導体サプライチェーンにも波及。AI活用の「需要側」を支援するコンサルティング需要も拡大。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">巨額投資の裏で「AI投資のROI」が取締役会の最重要議題に。<strong>AI導入と人材戦略の連動</strong>を示せる企業こそ投資家から評価される時代。HR部門のAIリテラシー向上が急務。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.bloomberg.com/news/articles/2026-02-10/alphabet-begins-selling-multi-tranche-debut-swiss-franc-bond-mlgb76p8" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Bloomberg — Alphabet Sells Almost $32 Billion Bonds (2/10)
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://www.axios.com/2026/02/10/google-meta-amazon-alphabet-bonds" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Axios — Big Tech turns to bonds for AI funding (2/10)
+  </a>
+</article>
+
+<!-- Card 9: Microsoft Downgrade -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">09</span>
+  <div class="card-tag tag-market">📉 Feb 10</div>
+  <h3>Microsoft、2度目の格下げ — Melius「SatyaはAIナラティブを失った」</h3>
+  <p class="summary">
+    Melius Researchが2月9日、MicrosoftをBuyからHoldに格下げ（目標株価$430）。アナリストBen Reitzes氏は<strong>「Satya Lost the AI Narrative」</strong>と断じ、Copilotの収益化の遅れを指摘。365ユーザーのうちCopilot有料利用者は<strong>わずか3.3%</strong>。先週のStifel格下げに続く2度目の引き下げで、MSFT株価は年初来<strong>▲12%超</strong>、時価総額が$3兆を割り込む。直近四半期のCapExは<strong>$375億</strong>と巨額だが、フリーキャッシュフロー悪化が懸念材料。Forward P/Eは<strong>23.0x</strong>とIBM（23.7x）を下回る逆転現象が2013年以来初めて発生。2/10終値$413.27。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">格下げ</span>
+      <span class="metric-value down">Buy → Hold</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">Copilot有料率</span>
+      <span class="metric-value down">3.3%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">Q4 CapEx</span>
+      <span class="metric-value">$375億</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">Forward P/E</span>
+      <span class="metric-value down">23.0x (&lt;IBM)</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">Meliusは「Anthropicは10日でCoworkを開発した」と指摘し、MSの<strong>365がCopilotを無料提供せざるを得なくなる</strong>可能性を示唆。AIエージェント時代に「シート課金モデル」が崩壊するリスク。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">Copilot導入済み企業でも有料化が進まない実態は、<strong>「AIツールの定着には組織的な変革マネジメントが不可欠」</strong>という証左。導入支援・定着支援のコンサルティング機会。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.cnbc.com/2026/02/09/melius-research-downgrades-microsoft-as-its-free-cash-flow-comes-under-pressure.html" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    CNBC — Melius downgrades Microsoft (2/9)
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://www.tradingview.com/news/reuters.com,2026:newsml_L6N3Z50NA:0-ai-is-eating-microsoft-says-melius-downgrades-to-hold/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Reuters — "AI is eating Microsoft" (2/10)
+  </a>
+</article>
+
+<!-- Card 10: SaaSpocalypse continues -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">10</span>
+  <div class="card-tag tag-market">📊 Feb 10</div>
+  <h3>SaaSpocalypse深化 — IGV年初来▲24.6%、$2兆ワイプアウトでも「AIブル」は健在</h3>
+  <p class="summary">
+    SaaS売りが止まらない中、Fortune・Axios・Motley Foolが2/10付で一斉に分析記事を配信。iShares Expanded Tech Software ETF（IGV）は年初来<strong>▲24.6%</strong>。ソフトウェア業界ローンの<strong>$250億が「ディストレスト」水準</strong>（額面80%未満）で取引され、1月末時点で12月の2倍以上に膨張。Jefferiesは「シート課金モデルの構造的崩壊」を警告し、SaaStrは「2021年から始まった減速のプライシングに過ぎない」と反論。Fortuneは「<strong>$2兆のソフトウェアワイプアウトはAIブル相場を脱線させなかった</strong>」と分析、AI銘柄（NVDA等）は堅調。中国SaaS株にも波及。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">IGV YTD</span>
+      <span class="metric-value down">▲24.6%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">ディストレスト債</span>
+      <span class="metric-value down">$250億</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">ソフトウェア全体消失</span>
+      <span class="metric-value down">~$2兆</span>
+    </div>
+  </div>
+  <a class="source-link" href="https://fortune.com/2026/02/10/stocks-2-trillion-software-wipeout-ai-bull-market/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Fortune — $2T software wipeout didn't derail AI bull (2/10)
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://www.axios.com/2026/02/09/ai-software-saas" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Axios — AI has made software's future an open question (2/9)
+  </a>
+</article>
+
+<!-- Card 11: AI-Washing Layoffs -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">11</span>
+  <div class="card-tag tag-hr">👥 Feb 10</div>
+  <h3>「AI-Washing」レイオフの実態 — Fortune・HBR・TechCrunchが一斉報道</h3>
+  <p class="summary">
+    Fortune（2/10付）が<strong>「AI-washing and forever layoffs」</strong>と題する特集を配信。企業がAIを口実に使う<strong>「AI-ウォッシング」リストラ</strong>の構造を分析。Forresterは「AI起因レイオフを発表した多くの企業は、成熟したAIアプリケーションを持っていない」と指摘。2025年のAI起因レイオフは<strong>55,000件</strong>（2年前の12倍）だが、全体120万件の<strong>わずか4.5%</strong>。Brookings研究所のKinder氏は「AIレイオフは投資家向けに好印象のメッセージ」と分析。Deloitte調査では、エージェンティックAIを<strong>本番稼働しているのは11%</strong>、戦略すらないのが35%。HBRも1月に「AIのポテンシャルで解雇、パフォーマンスではなく」との論考を掲載。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">AI起因レイオフ 2025</span>
+      <span class="metric-value">55,000件</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">全レイオフに占める割合</span>
+      <span class="metric-value">4.5%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">エージェントAI本番稼働</span>
+      <span class="metric-value down">11%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">AI不安を感じる労働者</span>
+      <span class="metric-value">71%</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">「AIで人を切る」企業と「AIで人を活かす」企業の二極化が加速。<strong>AI導入と組織変革を一体設計</strong>できるコンサルティングの差別化機会。AI-ウォッシングでない本質的な変革支援が求められる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">Dario Amodei（Anthropic CEO）は「ホワイトカラー入門職の50%が1-5年で影響」と予測。しかし<strong>真のAI代替と「AI口実リストラ」の峻別</strong>がHR部門の重要な役割に。エンゲージメントの高い組織こそAI導入後のパフォーマンスが高い。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://fortune.com/2026/02/10/ai-washing-and-forever-layoffs-why-companies-keep-cutting-jobs-even-amid-rising-profits/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Fortune — AI-washing and forever layoffs (2/10)
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://hbr.org/2026/01/companies-are-laying-off-workers-because-of-ais-potential-not-its-performance" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    HBR — AI's Potential, Not Performance (Jan 2026)
+  </a>
+</article>
+
+<!-- Card 12: India AI Summit -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">12</span>
+  <div class="card-tag tag-tech">🌏 Feb 10</div>
+  <h3>India AI Impact Summit 来週開幕 — Huang・Altman・Pichai・Amodei・Gates一堂に</h3>
+  <p class="summary">
+    2月16-20日にニューデリーBharat Mandapamで<strong>India AI Impact Summit 2026</strong>が開催。<strong>100カ国以上、登録35,000人超</strong>、グローバルサウス最大のAI国際会議。Jensen Huang（NVIDIA）、Sam Altman（OpenAI）、Dario Amodei（Anthropic）、Sundar Pichai（Google）、Bill Gates、Demis Hassabis（DeepMind）、Yann LeCun、Yoshua Bengioが参加。モディ首相が2/19に開会式を主催し、テック企業CEOとのラウンドテーブルも。テーマは<strong>「People, Planet, Progress」</strong>の3原則で、500以上のAIスタートアップが展示。Bletchley Park → Seoul → Parisに続くグローバルAIガバナンスの次の舞台。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">開催日</span>
+      <span class="metric-value">Feb 16-20</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">登録者数</span>
+      <span class="metric-value">35,000+</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">参加国</span>
+      <span class="metric-value">100+</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">展示スタートアップ</span>
+      <span class="metric-value">500+</span>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-from-jensen-huang-to-sam-altman-heres-whos-attending-the-mega-ai-meet-in-new-delhi-515396-2026-02-10" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    BusinessToday — India AI Impact Summit 2026 (2/10)
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://impact.indiaai.gov.in/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    IndiaAI — Official Summit Page
+  </a>
+</article>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 5: 政治・政策                           -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🏛</div>
+  <div>
+    <h2>政治・国際動向 ｜ LMビジネス視点</h2>
+    <span class="sub">Politics & Policy — Business Impact Analysis — Feb 9–11 Sources</span>
+  </div>
+</div>
+
+<!-- Card 13: 衆院選後の野党分析 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">13</span>
+  <div class="card-tag tag-policy">🗳 Feb 10</div>
+  <h3>高市圧勝後の野党再編 — Japan Times「不均等なパイの分配」</h3>
+  <p class="summary">
+    Japan Times（2/10付）が衆院選後の野党情勢を分析。高市政権が<strong>316議席の圧勝</strong>で安定基盤を確保する中、野党は「不均等なパイの分配」に直面。中道改革連合の壊滅的敗北で、野田・斉藤共同代表が辞任を表明。「責任ある積極財政」路線の下、FY2026予算は<strong>過去最大¥122.3兆</strong>（前年比+6.2%）、防衛費は<strong>¥9兆</strong>で2年前倒しのGDP比2%を達成。一方、Al Jazeera（2/7付）は有権者が最も求めていたのは物価高対策であり、高市政権の積極財政が円安・長期金利上昇を招くリスクを指摘。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">FY2026予算</span>
+      <span class="metric-value">¥122.3兆</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">防衛費</span>
+      <span class="metric-value">¥9兆 (GDP 2%)</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">国債費増</span>
+      <span class="metric-value up">+10%超</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">安定政権下で<strong>人的資本開示、CGコード改訂、SSBJ基準</strong>の政策推進が確実に。成長戦略17分野の筆頭「AI・半導体」への国策投資加速。対米投資$5,500億のコミットメントで日系企業のグローバル人材需要も拡大。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">政策推進加速は<strong>「対応猶予期間の短縮」</strong>を意味。4月の社保適用拡大、10月のカスハラ防止義務化への準備加速が必要。ゼロ金利終了で国債費が10%以上増加し、社会保障改革の議論も本格化。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.japantimes.co.jp/news/2026/02/10/japan/politics/election-opposition-parties/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Japan Times — Opposition divides unequal shares (2/10)
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://www.nippon.com/en/japan-data/h02652/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Nippon.com — Record High Budget for FY2026
+  </a>
+</article>
+
+<!-- Card 14: 実質賃金 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">14</span>
+  <div class="card-tag tag-breaking">💴 Feb 9</div>
+  <h3>日本の実質賃金、4年連続マイナス — 賃金底上げが高市政権の最大課題</h3>
+  <p class="summary">
+    厚生労働省が2/9発表の毎月勤労統計で、12月の実質賃金が前年比<strong>▲0.1%</strong>。2025年通年でも<strong>4年連続の実質マイナス</strong>に。物価対策の効果でインフレが鈍化した後もプラス転換に至らず、エコノミストの予想を裏切る結果。一方、名目賃金は<strong>+2.4%</strong>、基本給も<strong>+2.2%</strong>と上昇基調で、3月に山場を迎える春闘次第では反転の可能性も。第一生命研は「2026年中に実質賃金がプラス転換すれば、日銀は中立金利1%に向け1-2回の追加利上げに動く」と予測。大和総研は供給サイド改革なしでは持続的改善は困難と警告。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">12月実質賃金</span>
+      <span class="metric-value down">▲0.1%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">名目賃金</span>
+      <span class="metric-value up">+2.4%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">連続マイナス</span>
+      <span class="metric-value down">4年目</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">春闘の結果次第で<strong>日銀の利上げペースが変わる</strong>ため、企業の人件費シミュレーションが重要に。賃上げが中小企業まで浸透するかが鍵であり、<strong>賃金制度改革・評価制度見直し</strong>のコンサルニーズが拡大。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">名目賃金は上昇しても実質では届かない現状。<strong>従業員のエンゲージメント維持には「実感できる処遇改善」</strong>が不可欠。3月期開示での平均年間給与の前年比増減率記載義務化も踏まえ、賃金戦略の透明化が急務。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.japantimes.co.jp/business/2026/02/09/economy/real-wages-drop/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Japan Times — Real wages drop extends to full year (2/9)
+  </a>
+  &nbsp;&nbsp;
+  <a class="source-link" href="https://www.aljazeera.com/economy/2026/2/7/in-japans-election-voters-hope-for-relief-from-rising-prices" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Al Jazeera — Voters hope for relief from prices (2/7)
+  </a>
+</article>
+
+<!-- Card 15: EU Meta AI -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">15</span>
+  <div class="card-tag tag-policy">🇪🇺 Feb 10</div>
+  <h3>EU、MetaのWhatsApp AI独占に「暫定措置」警告 — AIアシスタント配信戦争が激化</h3>
+  <p class="summary">
+    欧州の規制当局が2/10、MetaがWhatsApp上で自社AIアシスタントを優遇し、競合AIへのアクセスを制限している可能性について<strong>暫定措置の発動を示唆</strong>。「AIアシスタントの配信チャネル」が次のプラットフォーム戦争の主戦場に。Metaは2026年のCapExを<strong>最大$1,850億</strong>に倍増させる計画で、AI基盤への投資を加速中。DMA（デジタル市場法）の下でのAIアシスタント統合は、Google・Apple・Microsoftにも波及する論点。
+  </p>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">「AIアシスタントの中立的配信」規制は、日本企業のAIツール選定にも影響。<strong>特定ベンダーロックインを避けた「マルチAI戦略」</strong>の組織設計が今後の差別化要因に。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">社内コミュニケーションツールへのAI統合が進む中、<strong>データガバナンスと従業員プライバシー</strong>の両立が新たなHR課題。EU規制の動向は日本の法制にも影響を及ぼす。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://techstartups.com/2026/02/10/top-tech-news-today-february-10-2026/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Tech Startups — Top Tech News Feb 10, 2026
+  </a>
+</article></main>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- FOOTER                                            -->
+<!-- ══════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">Daily Intelligence Brief</p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、投資助言や法的助言を構成するものではありません。正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">Generated by Claude — 2026年2月11日 — For internal use</p>
+  </div>
+  <div style="text-align: center; margin-top: 24px;">
+    <a href="news-digest-index.html" style="display: inline-block; padding: 10px 28px; background: #2563eb; color: #fff; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; font-family: 'Noto Sans JP', sans-serif;">← アーカイブ一覧に戻る</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News Digest — Archive Index</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-green: #1aab55;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px; height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .subtitle {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .stats-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.stat-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.stat-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Month Group */
+.month-group {
+  margin: 48px 0 32px;
+}
+.month-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+.month-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+  background: var(--gradient-1);
+  color: #fff;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+.month-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.month-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Digest Entry */
+.digest-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+.digest-entry {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 32px;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.digest-entry:hover {
+  transform: translateY(-3px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.1);
+}
+.digest-entry .accent {
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.digest-entry .day-number {
+  position: absolute;
+  top: 16px; right: 20px;
+  font-size: 56px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.digest-entry .date-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+  background: rgba(59,109,224,0.08);
+  color: var(--accent-blue);
+}
+.digest-entry h3 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+.digest-entry .meta {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.digest-entry .topics {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.topic-pill {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+/* Gradient variants for cards */
+.g1 { background: linear-gradient(135deg, #3b6de0, #7c5cdb); }
+.g2 { background: linear-gradient(135deg, #e8842a, #e04848); }
+.g3 { background: linear-gradient(135deg, #1aab55, #0ea5a5); }
+.g4 { background: linear-gradient(135deg, #7c5cdb, #e04848); }
+
+/* Footer */
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .digest-list { grid-template-columns: 1fr; }
+  .stats-strip { gap: 12px; }
+  .stat-item { padding: 10px 14px; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      ARCHIVE INDEX
+    </div>
+    <h1>News Digest Archive</h1>
+    <p class="subtitle">Daily Intelligence Brief — 全ダイジェスト一覧</p>
+
+    <div class="stats-strip">
+      <div class="stat-item">
+        <div>
+          <div class="label">TOTAL DIGESTS</div>
+          <div class="value" id="total-count">16</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div>
+          <div class="label">LATEST</div>
+          <div class="value" id="latest-date">2026/03/05</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div>
+          <div class="label">SECTIONS</div>
+          <div class="value">5</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div>
+          <div class="label">CATEGORIES</div>
+          <div class="value">企業AI × BPO × PH × Tech × 政治</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!--
+  ============================================================
+  DIGEST REGISTRY
+  新しいダイジェストを追加する際は、下の digests 配列に
+  エントリを追加してください。最新のものを先頭に置きます。
+  ============================================================
+-->
+<script>
+const digests = [
+  {
+    date: "2026-03-22",
+    weekday: "日",
+    file: "news-digest-2026-03-22.html",
+    cards: 14,
+    highlights: ["Deloitte: エージェント型AI 72%本番稼働", "AI BPOコスト95%削減の衝撃", "ホワイトハウスAI立法フレームワーク公開", "Morgan Stanley「AIブレークスルーは2026年前半」"],
+    gradient: "g2"
+  },
+  {
+    date: "2026-03-21",
+    weekday: "土",
+    file: "news-digest-2026-03-21.html",
+    cards: 13,
+    highlights: [
+      "AI Coding Tools市場$12.8B — JPMorgan 6万人導入、Claude Code満足度46%トップ",
+      "AI BPOユニットコスト95%削減 — $3.50→$0.10、インドBPO 400万→100万人",
+      "ホワイトハウスAI立法フレームワーク — 州法先手、27州78法案が進行中",
+      "Uber×Rivian $1.25B投資 — 5万台ロボタクシー25都市展開へ"
+    ],
+    gradient: "g1"
+  },
+  {
+    date: "2026-03-20",
+    weekday: "金",
+    file: "news-digest-2026-03-20.html",
+    cards: 15,
+    highlights: [
+      "日経平均1,866円急落・53,372円 — FRBパウエル「利上げ排除せず」とイラン原油高が直撃",
+      "高市首相×トランプ会談 — 「真珠湾」発言でも日本はホルムズ艦艇派遣を回避",
+      "NVIDIA GTC閉幕 — Jensen Huang「$1T累積受注」Vera Rubin・Groq-3 LPU発表",
+      "McKinsey AI面接「Lilli」全米展開へ — 2万体AIエージェントが4万人と並走"
+    ],
+    gradient: "g4"
+  },
+  {
+    date: "2026-03-19",
+    weekday: "木",
+    file: "news-digest-2026-03-19.html",
+    cards: 15,
+    highlights: [
+      "NVIDIA GTC最終日 — Jensen Huang「$1T受注」Vera Rubin Ultra/Kyber発表",
+      "Meta Llama 4公開 — 10Mトークン文脈・MoEでGPT-4o超えベンチマーク",
+      "高市首相×トランプ日米首脳会談（本日）— ホルムズ・$550B投資・訪中前連携",
+      "AIエージェントCS解決コスト95%削減 — $3.50→$0.10/件の構造変革"
+    ],
+    gradient: "g3"
+  },
+  {
+    date: "2026-03-18",
+    weekday: "水",
+    file: "news-digest-2026-03-18.html",
+    cards: 12,
+    highlights: [
+      "NVIDIA GTC — Jensen Huang「$1T受注見通し」Vera Rubin発表",
+      "Meta×Nebius $27B AI基盤契約 — 史上最大の外部コンピュート調達",
+      "インドBPO 400万人→100万人へ — Vinod Khosla「5年で消滅」",
+      "高市首相、初訪米 — トランプ首脳会談（3/19）異例の厚遇"
+    ],
+    gradient: "g2"
+  },
+  {
+    date: "2026-03-17",
+    weekday: "火",
+    file: "news-digest-2026-03-17.html",
+    cards: 13,
+    highlights: [
+      "GTC 2026 — NVIDIA Vera Rubin発表、推論コスト1/10・受注$1兆",
+      "Roche 製薬最大3,500 Blackwell GPU展開、創薬25%加速",
+      "BPO契約モデル転換 — FTEから成果報酬型へ（42%→28%）",
+      "ホルムズ海峡17日目 — 原油$104超、日銀会合18-19日"
+    ],
+    gradient: "g2"
+  },
+  {
+    date: "2026-03-15",
+    weekday: "日",
+    file: "news-digest-2026-03-15.html",
+    cards: 13,
+    highlights: [
+      "NTT DATA × NVIDIA「Enterprise AI Factory」世界展開",
+      "Anthropic Claude Partner Networkに$100M投資",
+      "インドBPO「5年以内に消滅」Vinod Khosla警告",
+      "NVIDIA GTC 2026、3/16開幕 — Rubin GPU発表へ"
+    ],
+    gradient: "g1"
+  },
+  {
+    date: "2026-03-14",
+    weekday: "土",
+    file: "news-digest-2026-03-14.html",
+    cards: 14,
+    highlights: [
+      "Deloitte「State of AI 2026」— 企業AI本番展開が倍増",
+      "Vinod Khosla「5年以内にIT・BPOは消滅」インドに激震",
+      "Apple×Google Gemini搭載Siri 3月下旬リリース",
+      "ホルムズ海峡危機 — 世界石油供給20%停止、日経5,000円超下落"
+    ],
+    gradient: "g4"
+  },
+  {
+    date: "2026-03-13",
+    weekday: "金",
+    file: "news-digest-2026-03-13.html",
+    cards: 13,
+    highlights: [
+      "NVIDIA GTC 2026開幕目前、Jensen Huang「世界を驚かせるチップ」予告",
+      "Anthropic vs 国防総省、サプライチェーンリスク指定に提訴",
+      "IEA「史上最大の石油供給混乱」ブレント$110突破",
+      "日米首脳会談3/19、$5,500億ドル対米投資加速へ"
+    ],
+    gradient: "g3"
+  },
+  {
+    date: "2026-03-12",
+    weekday: "木",
+    file: "news-digest-2026-03-12.html",
+    cards: 14,
+    highlights: [
+      "Oracle株10%急騰、クラウド収益44%増・受注残$553Bで過去最高",
+      "IEA史上最大の石油備蓄放出4億バレル、ブレント$91前後に",
+      "GPT-5.4ネイティブPC操作搭載、エージェンティック・ピボット確定",
+      "NVIDIA GTC 2026来週開幕、次世代GPU Rubin/Feynman発表へ"
+    ],
+    gradient: "g2"
+  },
+  {
+    date: "2026-03-10",
+    weekday: "火",
+    file: "news-digest-2026-03-10.html",
+    cards: 13,
+    highlights: [
+      "Microsoft × Anthropic「Copilot Cowork」発表 — E7ライセンス$99/月",
+      "DeNA南場智子、AI作業比率95%・生産性20倍を報告 — AI Day 2026",
+      "東京市場トリプル安、日経平均 歴代3位の下げ幅2,892円安",
+      "イラン新最高指導者にモジタバ師、原油108ドル突破"
+    ],
+    gradient: "g1"
+  },
+  {
+    date: "2026-03-09",
+    weekday: "月",
+    file: "news-digest-2026-03-09.html",
+    cards: 15,
+    highlights: [
+      "Meta、全社員の人事評価に「AI活用度」を正式導入 — ボーナス最大200%",
+      "Gartner: 2026年AI支出2.52兆ドル、前年比44%増の爆発的拡大",
+      "高市首相の訪米へ赤澤経産相が先行渡米 — 5,500億ドル投資枠組み協議",
+      "Block、AI理由に4,000人削減もBloombergが「AI-Washing」と批判"
+    ],
+    gradient: "g4"
+  },
+  {
+    date: "2026-03-07",
+    weekday: "土",
+    file: "news-digest-2026-03-07.html",
+    cards: 13,
+    highlights: [
+      "原油$92突破、WTI週間+36%で1983年以来の歴史的急騰 — イラン紛争激化",
+      "GenAIパイロットの95%が本番移行に失敗 — CEOの56%が「成果なし」",
+      "S&P 500が2026年最安値6,740 — ダウ週間-3%でグローバル同時株安",
+      "ISG: BPO年間契約額$7.3B最低水準もQ4は+13%で回復の兆し"
+    ],
+    gradient: "g3"
+  },
+  {
+    date: "2026-03-06",
+    weekday: "金",
+    file: "news-digest-2026-03-06.html",
+    cards: 13,
+    highlights: [
+      "Cloudera×HBR: AIデータ準備「完了」はわずか7% — 93%が未対応",
+      "ホワイトハウスRatepayer Protection Pledge — Big Tech 7社がAIデータセンター電力コスト転嫁禁止",
+      "インドIT・BPO FY27収益1%下方修正、BPOバリュエーション32%圧縮",
+      "日経平均55,457円に反発（+2.23%）— 4日続落からの回復"
+    ],
+    gradient: "g2"
+  },
+  {
+    date: "2026-03-05",
+    weekday: "木",
+    file: "news-digest-2026-03-05.html",
+    cards: 13,
+    highlights: [
+      "Pentagon Anthropicブラックリスト — 防衛テック企業がClaude一斉離脱",
+      "Claude App Store全米1位 — 「Cancel ChatGPT」運動で歴史的追い風",
+      "日経平均3日続落54,245円（-3.6%）— 原油$82超でアジア全面安",
+      "OpenAI Codex Windows版 + GPT-5.3 Instant — 幻覚26.8%削減"
+    ],
+    gradient: "g1"
+  },
+  {
+    date: "2026-03-04",
+    weekday: "水",
+    file: "news-digest-2026-03-04.html",
+    cards: 13,
+    highlights: [
+      "Block 4,000人削減（40%）— Dorsey「大半の企業が1年以内に追随」",
+      "OpenAI Pentagon契約修正 — Altman「拙速だった」、国内監視禁止明記",
+      "Apple M5 MacBook Air/Pro発表 — Fusion Architectureで AI性能4倍",
+      "日経平均3%暴落 56,279円 — 中東リスクオフが市場直撃"
+    ],
+    gradient: "g4"
+  },
+  {
+    date: "2026-03-03",
+    weekday: "火",
+    file: "news-digest-2026-03-03.html",
+    cards: 14,
+    highlights: [
+      "Meta、全社員の人事評価に「AI-driven impact」を正式導入",
+      "NVIDIA、Coherentに$2B投資 — 次世代AIデータセンター光接続技術",
+      "14.ai — YC出身夫婦のAIネイティブCS代行が急成長",
+      "「サイレント・フェイラー」— AIの静かな大量障害リスク"
+    ],
+    gradient: "g3"
+  },
+  {
+    date: "2026-03-02",
+    weekday: "月",
+    file: "news-digest-2026-03-02.html",
+    cards: 14,
+    highlights: [
+      "OpenAI $1,100億史上最大調達 — Amazon・NVIDIA・SoftBank出資で評価額$7,300億",
+      "米イスラエルのイラン攻撃でホルムズ海峡通航70%激減 — 原油・海運に激震",
+      "Gartner「2026年末に企業アプリ40%にAIエージェント搭載」— 前年比8倍",
+      "a16z「BPOアンバンドリング」— $3,300億市場をAIが根本再構築"
+    ],
+    gradient: "g2"
+  },
+  {
+    date: "2026-03-01",
+    weekday: "日",
+    file: "news-digest-2026-03-01.html",
+    cards: 13,
+    highlights: [
+      "OpenAI、Anthropic追放直後にPentagon契約締結 — 史上最強ガードレール主張",
+      "AIメモリチップ独占でスマホ価格史上最高$523 — 市場12.9%縮小",
+      "Vinod Khosla「IT・BPOは5年で消滅」— AI Impact Summit衝撃発言",
+      "Apple Siri × Google Gemini、iOS 26.4で3月投入 — 大刷新"
+    ],
+    gradient: "g1"
+  },
+  {
+    date: "2026-02-28",
+    weekday: "土",
+    file: "news-digest-2026-02-28.html",
+    cards: 13,
+    highlights: [
+      "Trump、Anthropicを政府から追放 — 自律兵器で全面対立",
+      "ChatGPT 9億人突破・$1,100億調達 — 10億人目前",
+      "Meta、Google TPU数十億ドルレンタル — NVIDIA独占崩壊",
+      "東京CPI コア2%割れ — 日銀利上げ観測後退",
+    ],
+    gradient: "g4"
+  },
+  {
+    date: "2026-02-27",
+    weekday: "金",
+    file: "news-digest-2026-02-27.html",
+    cards: 12,
+    highlights: [
+      "Meta×AMD $600億AI半導体契約 — NVIDIA独占に初の本格対抗",
+      "NVIDIA Q4売上$681億・YoY+73%も株価5.5%急落 — AIバブル懸念",
+      "トランプ「Rate Payer Protection Pledge」— テック7社がAI電力コスト自己負担",
+      "高市首相2026年度予算122.3兆円 — 消費税減税法案の早期提出を表明",
+    ],
+    gradient: "g3"
+  },
+  {
+    date: "2026-02-26",
+    weekday: "木",
+    file: "news-digest-2026-02-26.html",
+    cards: 13,
+    highlights: [
+      "Meta、AI活用度を人事評価に正式導入 — 大手テック初の試み",
+      "NVIDIA Vera Rubin初公開 — 推論コスト10分の1・$350-400万",
+      "高市政権、日銀審議委員にリフレ派2人起用 — 日経平均58,583円最高値",
+      "Gartner: 世界AI投資2.52兆ドル — 前年比44%増",
+    ],
+    gradient: "g2"
+  },
+  {
+    date: "2026-02-25",
+    weekday: "火",
+    file: "news-digest-2026-02-25.html",
+    cards: 13,
+    highlights: [
+      "OpenAI「Frontier Alliances」— McKinsey・BCG・Accenture・Capgemini4大コンサル提携",
+      "DeepSeek、禁輸Nvidia Blackwellチップ使用疑惑 — 輸出規制違反",
+      "Anthropic vs 国防総省 — Hegseth長官が金曜最終期限を通告",
+      "McKinsey調査: 86%の組織がAI未準備、75%がハイパフォ文化構築に失敗",
+    ],
+    gradient: "g1"
+  },
+  {
+    date: "2026-02-23",
+    weekday: "月",
+    file: "news-digest-2026-02-23.html",
+    cards: 15,
+    highlights: [
+      "Cohere $240M ARR達成、2026年中IPO準備加速 — TSX+NASDAQ二重上場",
+      "Perplexity広告全面撤退 — AI業界マネタイゼーション大分裂",
+      "Boris Tane「SDLCは死んだ」— AIエージェントがライフサイクルを消滅",
+      "India AI Summit閉幕 — 88カ国デリー宣言、$250B+投資コミット",
+    ],
+    gradient: "g4"
+  },
+  {
+    date: "2026-02-21",
+    weekday: "土",
+    file: "news-digest-2026-02-21.html",
+    cards: 15,
+    highlights: [
+      "BNY Mellon、2万台AIエージェント全社展開 — デジタル従業員が業務変革",
+      "India AI Summit閉幕 — 75カ国「デリー宣言」署名、Pax Silicaで米印連携",
+      "Blue Owl Capital解約停止 — プライベートクレジット市場に「炭鉱のカナリア」",
+      "高市施政方針演説「挑戦しない国に未来はない」— 17戦略分野・消費税減税",
+    ],
+    gradient: "g3"
+  },
+  {
+    date: "2026-02-19",
+    weekday: "木",
+    file: "news-digest-2026-02-19.html",
+    cards: 15,
+    highlights: [
+      "Claude Opus 4.6「Agent Teams」搭載 — 500+ゼロデイ脆弱性を自律発見",
+      "BPO契約モデル崩壊 — FTE型42%→28%、成果報酬型が主流に",
+      "Anthropic vs 国防総省 — 監視と自律兵器の線引きが焦点",
+      "日経平均5日ぶり反発57,143円 — 高市政権の政策期待",
+    ],
+    gradient: "g2"
+  },
+  {
+    date: "2026-02-18",
+    weekday: "水",
+    file: "news-digest-2026-02-18.html",
+    cards: 14,
+    highlights: [
+      "Claude Sonnet 4.6リリース — Opus級性能をSonnetコストで提供",
+      "米国防総省、Anthropicを「サプライチェーンリスク」指定検討",
+      "Vinod Khosla「IT・BPOは5年以内にほぼ消滅」— India AI Summit",
+      "特別国会召集、第2次高市内閣発足",
+    ],
+    gradient: "g1"
+  },
+  {
+    date: "2026-02-17",
+    weekday: "火",
+    file: "news-digest-2026-02-17.html",
+    cards: 15,
+    highlights: [
+      "AI安全研究者が大量離職 — OpenAI・Anthropic・xAIから相次ぐ退出",
+      "Sandia国立研究所 — 脳型コンピュータが物理シミュレーション解決",
+      "日本GDP Q4 +0.1% — 市場予想+0.4%を大幅に下回る",
+      "Gartner — GenAIが「幻滅の谷」入り",
+    ],
+    gradient: "g2"
+  },
+  {
+    date: "2026-02-16",
+    weekday: "月",
+    file: "news-digest-2026-02-16.html",
+    cards: 15,
+    highlights: [
+      "CrewAI調査 — エージェンティックAI、企業100%が拡大予定",
+      "India AI Summit — グローバルサウス初のAIサミット開幕",
+      "Nature論文 — 「AGIはすでに到達」と研究者が主張",
+      "衆院選 — 自民316議席で70年史上最大の勝利",
+    ],
+    gradient: "g1"
+  },
+  {
+    date: "2026-02-15",
+    weekday: "日",
+    file: "news-digest-2026-02-15.html",
+    cards: 15,
+    highlights: [
+      "衆院選 — 自民316議席で戦後最多・単独2/3超",
+      "NVIDIA Rubin — 6チップ統合・推論コスト10分の1",
+      "UiPath — 2026年はAIエージェント「実行」の年",
+      "Cognizant×Microsoft — BPOクエリ70%自動化",
+    ],
+    gradient: "g5"
+  },
+  {
+    date: "2026-02-14",
+    weekday: "土",
+    file: "news-digest-2026-02-14.html",
+    cards: 15,
+    highlights: [
+      "Cisco Q2 — AI受注$5B超も株価11.6%急落",
+      "Baker McKenzie AI駆動で1,000人削減",
+      "米CPI 2.4%予想下回りインフレ鈍化",
+      "日経平均697円安続落・5万7千円割れ",
+    ],
+    gradient: "g4"
+  },
+  {
+    date: "2026-02-13",
+    weekday: "金",
+    file: "news-digest-2026-02-13.html",
+    cards: 15,
+    highlights: [
+      "Goldman Sachs×Anthropic — 会計自動化パートナーシップ",
+      "中国AI株急騰 — Zhipu GLM-5で+30%",
+      "フィリピン「AI Plus」産業P750M投資",
+      "高市財政に投資家警戒・円152円台",
+    ],
+    gradient: "g3"
+  },
+  {
+    date: "2026-02-12",
+    weekday: "木",
+    file: "news-digest-2026-02-12.html",
+    cards: 15,
+    highlights: [
+      "Software-mageddon — ソフトウェア株$1兆消失",
+      "CrewAI調査：エージェンティックAI 100%拡大計画",
+      "SpaceX×xAI $1.25兆メガ合併",
+      "衆院選自民大勝・日経最高値更新",
+    ],
+    gradient: "g2"
+  },
+  {
+    date: "2026-02-11",
+    weekday: "火",
+    file: "news-digest-2026-02-11.html",
+    cards: 15,
+    highlights: [
+      "Deloitte「State of AI 2026」— 企業9割導入も深い変革は34%",
+      "AI BPO市場 $49.6B規模に成長",
+      "Thesys Agent Builder — Product Hunt注目",
+      "トランプ鉄鋼関税25%発動",
+    ],
+    gradient: "g1"
+  },
+  // ── 新しいダイジェストはここに追加 ──
+  // {
+  //   date: "2026-02-12",
+  //   weekday: "水",
+  //   file: "news-digest-2026-02-12.html",
+  //   cards: 14,
+  //   highlights: ["...", "..."],
+  //   gradient: "g3"
+  // },
+];
+
+// ── Render Logic ──
+function render() {
+  document.getElementById('total-count').textContent = digests.length;
+  if (digests.length > 0) {
+    document.getElementById('latest-date').textContent = digests[0].date.replace(/-/g, '/');
+  }
+
+  // Group by month
+  const months = {};
+  digests.forEach(d => {
+    const key = d.date.substring(0, 7); // "2026-02"
+    if (!months[key]) months[key] = [];
+    months[key].push(d);
+  });
+
+  const container = document.getElementById('digest-container');
+  const gradients = ['g1','g2','g3','g4'];
+
+  Object.keys(months).sort().reverse().forEach(monthKey => {
+    const [year, month] = monthKey.split('-');
+    const monthNames = ['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+
+    const group = document.createElement('div');
+    group.className = 'month-group';
+    group.innerHTML = `
+      <div class="month-header">
+        <div class="month-icon">${parseInt(month)}</div>
+        <div>
+          <h2>${year}年 ${monthNames[parseInt(month)]}</h2>
+          <span class="sub">${months[monthKey].length} digests</span>
+        </div>
+      </div>
+    `;
+
+    const list = document.createElement('div');
+    list.className = 'digest-list';
+
+    months[monthKey].forEach((d, i) => {
+      const day = parseInt(d.date.split('-')[2]);
+      const g = d.gradient || gradients[i % gradients.length];
+      const highlightHTML = d.highlights.map(h =>
+        `<span class="topic-pill">${h.length > 30 ? h.substring(0,30)+'…' : h}</span>`
+      ).join('');
+
+      const entry = document.createElement('a');
+      entry.className = 'digest-entry';
+      entry.href = d.file;
+      entry.innerHTML = `
+        <div class="accent ${g}"></div>
+        <span class="day-number">${String(day).padStart(2,'0')}</span>
+        <div class="date-tag">📅 ${d.date}（${d.weekday}）</div>
+        <h3>Daily News Digest</h3>
+        <p class="meta">${d.cards} cards ・ 5 sections ・ 24h以内のソース</p>
+        <div class="topics">${highlightHTML}</div>
+      `;
+      list.appendChild(entry);
+    });
+
+    group.appendChild(list);
+    container.appendChild(group);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', render);
+</script>
+
+<div id="digest-container"></div>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      News Digest Archive
+    </p>
+    <p>各ダイジェストは公開情報源に基づくAI生成サマリーです。<br>
+    新しいダイジェストが生成されるたびに、このインデックスの <code>digests</code> 配列にエントリを追加してください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — For internal use
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

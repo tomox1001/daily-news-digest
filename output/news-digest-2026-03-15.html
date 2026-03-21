@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily News Digest — 2026年3月15日</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  background: #0f1629;
+  padding: 12px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+nav a:hover { color: #fff; }
+nav .nav-title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+.pickup-section {
+  margin: 56px 0 32px;
+  padding: 32px;
+  background: linear-gradient(135deg, #fef9f0 0%, #fdf4e8 100%);
+  border: 1px solid #f0dfc0;
+  border-radius: 20px;
+}
+.pickup-section h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pickup-item {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e8dcc8;
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+.pickup-item:last-child { margin-bottom: 0; }
+.pickup-item .pickup-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(232,132,42,0.12);
+  color: var(--accent-orange);
+  margin-bottom: 8px;
+}
+.pickup-item h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.pickup-item .pickup-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+.footer .back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: background 0.2s;
+}
+.footer .back-btn:hover { background: #1d4ed8; }
+
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+  .pickup-section { padding: 20px; }
+}
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-title">📰 Daily News Digest</span>
+  <a href="news-digest-index.html">← アーカイブ一覧</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年3月15日（日）｜ 企業AI活用 × AI BPO × Product Hunt × AI・テクノロジー × 政治・国際</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">53,819円</div>
+        </div>
+        <span class="change down">▼-633円 -1.16%（3/13終値・週末休場）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">159.75</div>
+        </div>
+        <span class="change down">▼円安継続・1年8カ月ぶり安値圏（3/14時点）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">6,632</div>
+        </div>
+        <span class="change down">▼-0.6%（3/13終値・2026年最安値圏）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">AI BPO市場</div>
+          <div class="value">$49.6B</div>
+        </div>
+        <span class="change up">▲CAGR 34.3%（〜2033）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- ============================================================ -->
+<!-- SECTION 1: 企業・開発組織のAI活用 最新事例 -->
+<!-- ============================================================ -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">🏢</div>
+  <div>
+    <h2>企業・開発組織のAI活用 最新事例</h2>
+    <span class="sub">Enterprise AI Adoption — March 13–15, 2026 Sources</span>
+  </div>
+</div>
+
+<!-- Card 01 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-breaking">🔥 2026.03.12</div>
+  <h3>NTT DATA × NVIDIA「Enterprise AI Factory」— 全産業向けフルスタックAI基盤を世界展開</h3>
+  <p class="summary">
+    NTT DATAは3月12日、<strong>NVIDIA搭載のEnterprise AI Factory構想</strong>を発表した。GPU加速コンピューティングとNVIDIA NIMマイクロサービスを統合し、データ・インフラ・ワークフロー・ガバナンスを一括提供するフルスタック型AI基盤だ。早期導入事例として、<strong>米がん研究病院がNVIDIA HGXで放射線画像解析</strong>を高速化、<strong>グローバル自動車部品メーカーがGPU as a Serviceでスマート工場の立ち上げ期間を数カ月→数日に短縮</strong>する成果を出している。GTC 2026（3/16〜19）で詳細が公開される予定。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">提供形態</span>
+      <span class="metric-value">フルスタック</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">工場立上げ</span>
+      <span class="metric-value">数カ月→数日</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">GTC 2026</span>
+      <span class="metric-value">3/16開幕</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>NTT DATAクラスの大手SIerがAIインフラ基盤を一気通貫で提供</strong>し始めたことで、中小BPO/SES企業は「インフラ構築」ではなく「業務プロセスへのAI組込み」で差別化が必須に。AI Factory導入後の運用・改善伴走がLMの勝ち筋。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text"><strong>NVIDIA NIM・GPU基盤の知識を持つインフラエンジニア</strong>の市場価値が急上昇。社内育成プログラムでGPUクラウド・MLOps人材を早期に確保すべきタイミング。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.nttdata.com/global/en/news/press-release/2026/march/031200" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    NTT DATA — NVIDIA-Powered Enterprise AI Factories
+  </a>
+</article>
+
+<!-- Card 02 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-market">📈 2026.03.12</div>
+  <h3>Anthropic「Claude Partner Network」に$100M投資 — Accenture・Deloitte・Cognizantと連携</h3>
+  <p class="summary">
+    Anthropicは3月12日、<strong>Claude Partner Networkを$1億の初期投資で立ち上げ</strong>た。Accenture、Deloitte、Cognizantなど大手コンサル・SIをパートナーとして、Claudeをグローバル企業のデフォルトAIプラットフォームにする戦略だ。パートナー向け技術認定「<strong>Claude Certified Architect, Foundations</strong>」も新設。Applied AIエンジニアの専任配置や国際市場向けGTM支援など、<strong>パートナー支援チームを5倍に拡大</strong>する方針も示した。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">初期投資額</span>
+      <span class="metric-value">$100M</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">支援チーム</span>
+      <span class="metric-value up">5倍拡大</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">認定資格</span>
+      <span class="metric-value">新設</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>Claude認定パートナーになることで、案件獲得の差別化が可能</strong>に。LMとしてClaude技術認定を早期取得し、AI導入支援サービスにAnthropicの公式バッキングを得る戦略が有効。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text"><strong>Claude Certified Architectの取得を社内目標に設定</strong>し、エンジニア・コンサルタントのAIスキル可視化を推進すべき。ベンダー認定は採用市場でも強力な差別化要因となる。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.anthropic.com/news/claude-partner-network" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Anthropic — Claude Partner Network
+  </a>
+</article>
+
+<!-- Card 03 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-tech">💡 2026.03.14</div>
+  <h3>Stanford調査 — AIがエントリー開発者採用を20%削減、コールセンター職は15%減</h3>
+  <p class="summary">
+    Stanfordの経済政策研究所（SIEPR）サミットで発表された最新データによると、<strong>AIの普及によりエントリーレベルのソフトウェア開発者採用が20%減少</strong>し、コールセンター職も<strong>15%の雇用削減</strong>が確認された。経済学者らは「AI導入による生産性向上の恩恵が一部の高スキル労働者に集中し、<strong>格差が拡大する二極化リスク</strong>」を警告。一方でAIスキルを持つシニア開発者の年収は<strong>平均15〜25%上昇</strong>しており、スキルの有無が明暗を分ける構造が鮮明になっている。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">開発者採用減</span>
+      <span class="metric-value down">-20%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">CC職削減</span>
+      <span class="metric-value down">-15%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">AIスキル年収</span>
+      <span class="metric-value up">+15〜25%</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>SES事業のエントリーレベル人材提供モデルの転換が急務</strong>。AIによる自動化が進む領域の人材派遣は減少する一方、AI導入・運用を支援できる高スキル人材の供給力が収益の鍵を握る。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text"><strong>新卒・ジュニア層のキャリアパスを再設計</strong>し、早期からAIツール活用スキルを必修化すべき。「AIに代替されない領域」（設計・レビュー・顧客折衝）への教育投資が生存戦略。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://creati.ai/ai-news/2026-03-14/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Stanford SIEPR — AI Impact on Employment
+  </a>
+</article>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: AI BPO — アウトソーシング革命 -->
+<!-- ============================================================ -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🤖</div>
+  <div>
+    <h2>AI BPO — アウトソーシング革命</h2>
+    <span class="sub">AI-Powered Outsourcing Disruption — March 2026</span>
+  </div>
+</div>
+
+<!-- Card 04 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-breaking">🔥 2026.03.14</div>
+  <h3>インドBPO「5年以内に消滅」— Vinod Khosla警告、400万→100万人へ急減の衝撃</h3>
+  <p class="summary">
+    India AI Impact Summit 2026でVenture Capital界の重鎮Vinod Khoslaが「<strong>インドのIT・BPOセクターは5年以内に消滅する</strong>」と発言し、業界に衝撃が走った。インドBPO市場は<strong>$500億規模・従業員400万人</strong>の巨大産業だが、AIエージェントの台頭で<strong>2030年には100万人未満に縮小</strong>するとアナリストは予測。一方でKhoslaはインドの2.5億人の若年層に向け「<strong>AI基盤の製品・サービスの世界最大輸出国</strong>になれる」と逆転シナリオも提示した。業界では「APO（Agentic Process Outsourcing）」への転換が加速している。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">現在の市場規模</span>
+      <span class="metric-value">$500億</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">雇用予測2030</span>
+      <span class="metric-value down">400万→100万</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">若年層</span>
+      <span class="metric-value">2.5億人</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>従来型BPOの「人数×単価」モデルは終焉に向かう</strong>。LMはAIエージェント＋人間監督のハイブリッドモデル（APO）を早期に構築し、「成果報酬型」への転換で生き残りを図るべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text"><strong>BPOオペレーターの大量リスキリング</strong>が喫緊の課題。AIエージェント監督・品質管理・例外処理対応など、「AI＋人間」協働スキルの教育体制を早急に整備する必要がある。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://news.outsourceaccelerator.com/?p=82080" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Outsource Accelerator — Vinod Khosla: AI Will Wipe Out BPO
+  </a>
+</article>
+
+<!-- Card 05 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-hr">🌏 2026.03.15</div>
+  <h3>フィリピンBPO $42B産業の逆転戦略 — 「AI Pilots」モデルで高付加価値8万人の新雇用創出</h3>
+  <p class="summary">
+    フィリピンBPO産業は<strong>$420億・200万人雇用</strong>の規模を維持しつつ、AIとの共存戦略「Intelligence Arbitrage」を推進中だ。従来の「コスト裁定」から「<strong>知性裁定</strong>」へ転換し、フィリピン人スペシャリストがグローバル企業の「AI Pilots（AIの操縦士）」として機能する新モデルを構築。定型業務のAI自動化が進む一方で、<strong>データサイエンス・AI監督・複雑問題解決の8万人の新規高付加価値ポジション</strong>が創出され、リスキル済みワーカーの給与は<strong>平均25%上昇</strong>している。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">産業規模</span>
+      <span class="metric-value">$420億</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">新規高付加価値職</span>
+      <span class="metric-value up">+80,000</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">リスキル後給与</span>
+      <span class="metric-value up">+25%</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>フィリピンの「AI Pilots」モデルはLMの海外BPO展開の参考事例</strong>。人材を「AIの監督者・品質保証者」として再定義し、付加価値の高いサービスメニューを構築する戦略が有効。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text"><strong>「AI Pilots」という新しい職種定義</strong>がリスキリングの方向性を示唆。AIツール操作→AI出力品質管理→AI戦略設計という3段階のキャリアラダーを組織内に設計すべき。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.piton-global.com/blog/bpo-philippines-industry-guide/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Piton Global — BPO Philippines 2026 Industry Guide
+  </a>
+</article>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: Product Hunt トレンド — 注目プロダクト -->
+<!-- ============================================================ -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🚀</div>
+  <div>
+    <h2>Product Hunt トレンド — 注目プロダクト</h2>
+    <span class="sub">Trending on Product Hunt — March 2026</span>
+  </div>
+</div>
+
+<!-- Card 06 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-tech">🤖 2026.03</div>
+  <h3>Viktor by Zeta Labs — Slackに常駐する自律型AIエージェント、ワークフロー自動化を提案</h3>
+  <p class="summary">
+    Zeta Labsが開発した「Viktor」は、Slackに常駐し<strong>チームの会話や業務ツールのコンテキストを自律的に把握</strong>するAIエージェントだ。従来のチャットボットと異なり、ユーザーの指示を待たずに<strong>関連情報の共有や自動化の提案をプロアクティブに実行</strong>する。既存のツール群（GitHub、Notion、Jira等）と連携し、チームの作業パターンを学習して<strong>「気づいていなかった自動化」を提案</strong>する点が高評価。Product Hunt月間ランキング上位に位置している。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">カテゴリ</span>
+      <span class="metric-value">AI Agent</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">動作環境</span>
+      <span class="metric-value">Slack常駐</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">特徴</span>
+      <span class="metric-value">プロアクティブ</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>「Slack常駐型AIエージェント」の普及はBPO業務の一部を自動化</strong>する。LMとしてはクライアント企業への導入支援・カスタマイズ・業務設計を付加価値として提供する戦略が有効。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text"><strong>社内のSlack運用にAIエージェントを試験導入</strong>し、業務プロセスの自動化可能性を実体験することで、クライアントへの提案力を養うべき。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.producthunt.com/leaderboard/monthly/2026/3" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Product Hunt — March 2026 Leaderboard
+  </a>
+</article>
+
+<!-- Card 07 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-research">🎨 2026.03.09</div>
+  <h3>Migma — 「Lovable for Email」ノーコードでプロ級HTMLメールを構築、510 upvotes</h3>
+  <p class="summary">
+    3月9日にProduct Huntで<strong>510 upvotesを獲得</strong>し話題を集めた「Migma」は、デザインツール×ノーコードの発想でHTMLメールを構築するプロダクトだ。「<strong>Lovable for Email</strong>」をコンセプトに、ドラッグ＆ドロップとAIアシストでレスポンシブなメールテンプレートを即座に生成。デザイナー不在の小規模チームでも、マーケティングメールやトランザクションメールを<strong>プロフェッショナル品質</strong>で制作できる。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">Upvotes</span>
+      <span class="metric-value up">510</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">カテゴリ</span>
+      <span class="metric-value">Email × No-Code</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">対象</span>
+      <span class="metric-value">SMB/スタートアップ</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>ノーコードツールの台頭はBPOの「作業代行」モデルを直接脅かす</strong>。メール制作・マーケ運用などの定型業務がセルフサービス化する中、LMは「戦略設計」「効果分析」など上流工程へシフトすべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text"><strong>ノーコードツール習得を社内研修に組み込む</strong>ことで、「作業者」から「設計者」への転換を促進。マーケティングオートメーション全体を俯瞰できる人材育成が急務。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.producthunt.com/leaderboard/daily/2026/3/9" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Product Hunt — Daily Leaderboard March 9, 2026
+  </a>
+</article>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: AI・テクノロジー 最新ニュース -->
+<!-- ============================================================ -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">⚡</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース</h2>
+    <span class="sub">AI &amp; Tech News — March 13–15, 2026</span>
+  </div>
+</div>
+
+<!-- Card 08 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">08</span>
+  <div class="card-tag tag-breaking">🔥 2026.03.16</div>
+  <h3>NVIDIA GTC 2026、3/16開幕 — Jensen Huang基調講演でRubin GPU・推論チップ・OpenClawを発表へ</h3>
+  <p class="summary">
+    NVIDIAの年次カンファレンス「GTC 2026」が<strong>3月16〜19日にサンノゼで開催</strong>される。190カ国以上から<strong>3万人超が参加</strong>予定で、Jensen Huang CEOの基調講演（3/16 11:00 PT）では<strong>次世代Rubin GPUアーキテクチャ</strong>、推論特化チップ、Vera CPU、そして自律型AIプラットフォーム「OpenClaw」の詳細が発表される見込み。プレゲームショーにはPerplexity CEO、LangChain CEO、Mistral AI CEOらが登壇。<strong>AI推論の商用化加速</strong>が今年の主要テーマとなる。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">参加者</span>
+      <span class="metric-value">30,000+</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">開催期間</span>
+      <span class="metric-value">3/16〜19</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">参加国</span>
+      <span class="metric-value">190+</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>推論コストの劇的低下はAIサービスの採算ラインを変える</strong>。GTC発表後の新チップ・ソフトウェアを活用したAIソリューションの価格競争力を検討し、サービスメニューの再設計が必要。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text"><strong>GTC 2026のセッションをオンラインで視聴する社内イベント</strong>を企画し、最新技術動向のキャッチアップを組織的に実施すべき。無料ライブ配信が利用可能。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.nvidia.com/gtc/keynote/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    NVIDIA — GTC 2026 Keynote
+  </a>
+</article>
+
+<!-- Card 09 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">09</span>
+  <div class="card-tag tag-tech">💡 2026.03.14</div>
+  <h3>Tesla × xAI「Digital Optimus」— 人間のPC操作を観察・再生してオフィスワークを自動化</h3>
+  <p class="summary">
+    TeslaとxAIが共同で「<strong>Digital Optimus</strong>」プロジェクトを公開した。人間のコンピュータ操作を観察・記録し、<strong>複雑なオフィスワークフローを自律的に再生・自動化</strong>するシステムだ。Teslaの<strong>AI4推論チップ</strong>を活用したデュアルプロセスアーキテクチャにより、「速い思考（即座の判断）」と「遅い思考（複雑な推論）」を組み合わせる。物理ロボットのOptimusと対をなす「<strong>デジタル労働者</strong>」として、ホワイトカラー業務の自動化を狙う。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">推論チップ</span>
+      <span class="metric-value">AI4</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">アーキテクチャ</span>
+      <span class="metric-value">デュアルプロセス</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">対象業務</span>
+      <span class="metric-value">ホワイトカラー</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>「PC操作の自動化」は事務BPOの根幹を揺るがす</strong>技術。LMはDigital Optimus類似の技術を自社サービスに取り込み、「人間＋デジタルワーカー」のハイブリッドBPOモデルを構築すべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text"><strong>RPA→AIエージェントへの進化を見据えた業務標準化</strong>が重要。操作手順の暗黙知を形式知化し、AIが学習しやすい業務プロセスの設計スキルを組織に浸透させるべき。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Crescendo AI — Latest AI News
+  </a>
+</article>
+
+<!-- Card 10 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">10</span>
+  <div class="card-tag tag-market">📈 2026.03.14</div>
+  <h3>Meta「Avocado」モデル延期＆最大16,000人レイオフ — $600B AI投資に経営資源を集中</h3>
+  <p class="summary">
+    Metaは次世代AIモデル「<strong>Avocado</strong>」のリリースを<strong>少なくとも5月まで延期</strong>する。社内ベンチマークで競合モデルに劣後したことが理由だ。同時に、Zuckerberg CEOは<strong>約79,000人の従業員のうち最大20%（約16,000人）の削減</strong>を計画しているとの報道が出ている。削減で浮いたリソースを<strong>$6,000億のAIインフラ投資</strong>に振り向け、AIファーストへの転換を加速する方針だ。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">レイオフ規模</span>
+      <span class="metric-value down">最大16,000人</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">AI投資額</span>
+      <span class="metric-value">$600B</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">Avocado延期</span>
+      <span class="metric-value">→5月以降</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>Big Tech企業のAI投資集中は、AI人材の争奪戦をさらに激化</strong>させる。LMはMeta離職者を含むAI経験者の採用チャンスを逃さず、優秀なAI人材を獲得する戦略が重要。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text"><strong>大手テック企業のレイオフは採用市場に優秀人材を供給</strong>する好機。Meta出身のML/AIエンジニアの採用を積極的に検討し、組織のAI技術力を底上げすべき。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.artificialintelligence-news.com/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    AI News — Meta Avocado Delay &amp; Layoffs
+  </a>
+</article>
+
+<!-- Card 11 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">11</span>
+  <div class="card-tag tag-tech">💡 2026.03</div>
+  <h3>中国AI勢の猛追 — MiniMax M2.5がClaude Opus 4.6に匹敵、Baidu「DuClaw」月額178円で提供</h3>
+  <p class="summary">
+    中国のAI企業が攻勢を強めている。MiniMaxの最新モデル「<strong>M2.5</strong>」はAnthropicのClaude Opus 4.6に匹敵する性能を<strong>大幅に低いコストで実現</strong>し、注目を集めている。Baiduは自律型AIプラットフォーム「OpenClaw」をノーコードで利用できる「<strong>DuClaw</strong>」を公開。サーバー設定・APIキー不要で即起動でき、<strong>月額わずか178円</strong>（期間限定）。Baidu検索・百科・Scholarとの連携スキルも内蔵し、<strong>MAU 7億のBaiduアプリにも統合済み</strong>だ。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">M2.5性能</span>
+      <span class="metric-value">Opus 4.6匹敵</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">DuClaw月額</span>
+      <span class="metric-value">¥178</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">Baidu MAU</span>
+      <span class="metric-value">7億</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>中国発のAIモデルが価格破壊を仕掛けている</strong>。LMのAIソリューションにおいても、コスト最適化のためにマルチモデル戦略（用途に応じてClaude/GPT/中国モデルを使い分け）を検討すべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text"><strong>特定ベンダーに依存しないAIリテラシー教育</strong>が重要に。複数のAIモデル・プラットフォームを横断的に評価・活用できる人材を育成すべき。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://blog.mean.ceo/new-ai-model-releases-news-march-2026/" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Mean CEO — New AI Model Releases March 2026
+  </a>
+</article>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: 政治・国際動向 ｜ LMビジネス視点 -->
+<!-- ============================================================ -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🌐</div>
+  <div>
+    <h2>政治・国際動向 ｜ LMビジネス視点</h2>
+    <span class="sub">Geopolitics &amp; Business Impact — March 14–15, 2026</span>
+  </div>
+</div>
+
+<!-- Card 12 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">12</span>
+  <div class="card-tag tag-breaking">🔥 2026.03.14</div>
+  <h3>ホルムズ海峡危機深刻化 — イラン機雷敷設、米軍16隻撃沈、原油$87超え</h3>
+  <p class="summary">
+    米イスラエルによるイラン攻撃後、ホルムズ海峡の緊張が急激にエスカレートしている。米情報機関はイランが<strong>海峡に水中機雷を敷設開始</strong>したと報告し、米中央軍は<strong>機雷敷設船16隻を含むイラン艦船を撃沈</strong>したと発表。原油価格（WTI）は<strong>$87.65/バレルまで上昇</strong>し、世界石油供給の20%が通過するホルムズ海峡の封鎖リスクが現実味を帯びている。日本のエネルギー安全保障にとって最も深刻なシナリオが進行中。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">WTI原油</span>
+      <span class="metric-value down">$87.65</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">海峡シェア</span>
+      <span class="metric-value">世界供給20%</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">撃沈艦船</span>
+      <span class="metric-value">16隻+</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>エネルギーコスト上昇はクライアント企業のIT投資判断を慎重化</strong>させる。BPO/SES契約の新規獲得が鈍化する可能性があり、既存顧客のリテンション強化と「コスト削減提案」を軸とした営業戦略が重要。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text"><strong>地政学リスクの高まりは採用計画の見直しを迫る</strong>。景気後退シナリオに備え、固定費を抑制しつつも、AI人材など戦略的ポジションの採用は維持するバランスが求められる。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.euronews.com/video/2026/03/14/latest-news-bulletin-march-14th-2026-midday" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Euronews — Latest News March 14, 2026
+  </a>
+</article>
+
+<!-- Card 13 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">13</span>
+  <div class="card-tag tag-policy">🏛️ 2026.03.14</div>
+  <h3>IEA史上最大4億バレル備蓄放出 — SpaceX × xAI合併・$50B IPOの衝撃</h3>
+  <p class="summary">
+    国際エネルギー機関（IEA）は<strong>史上最大規模の4億バレルの石油備蓄放出</strong>を発表し、エネルギー市場の安定化を図っている。一方、テック業界ではElon Muskが<strong>SpaceXとxAIの合併</strong>を発表し、<strong>$500億の資金調達で時価総額$1.5兆</strong>を目指すIPOを計画。史上最大のIPOとなる可能性がある。Muskは合併により、xAIの「Grok」モデルをSpaceXの自律宇宙船・火星ロボットコロニーに統合する構想を描く。
+  </p>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">備蓄放出</span>
+      <span class="metric-value">4億バレル</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">IPO調達額</span>
+      <span class="metric-value">$500億</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">目標時価総額</span>
+      <span class="metric-value">$1.5兆</span>
+    </div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>SpaceX-xAI合併はAI業界の勢力図を大きく塗り替える</strong>可能性。宇宙・防衛・自律システム領域のAI需要が急拡大し、LMにとっても新たな市場開拓の機会が生まれうる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text"><strong>エネルギーコスト上昇に伴う物価高は従業員の生活を直撃</strong>する。報酬体系の見直しや福利厚生の拡充など、人材リテンション施策の強化を検討すべきタイミング。</p>
+    </div>
+  </div>
+  <a class="source-link" href="https://www.cfr.org/articles/how-2026-could-decide-future-artificial-intelligence" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    CFR — How 2026 Could Decide the Future of AI
+  </a>
+</article>
+
+<!-- ============================================================ -->
+<!-- 📌 Kawano ピックアップ -->
+<!-- ============================================================ -->
+<div class="pickup-section">
+  <h2>📌 Kawano ピックアップ</h2>
+
+  <div class="pickup-item">
+    <span class="pickup-tag">AI × 営業DX</span>
+    <h4>営業組織にClaude Codeを導入 — 非エンジニアの営業マンが生産性爆上がり</h4>
+    <p class="pickup-desc">
+      山中裕貴氏（@0xfene）が、営業組織へのClaude Code導入事例を共有。非エンジニアの営業担当者でもClaude Codeを活用することで、提案資料作成・顧客分析・メール文面生成などの業務効率が劇的に向上したと報告。「経営者でセットアップがめんどくさい方は声かけてください、2-3時間で導入する価値がある」と語り、営業現場でのAI活用の可能性を示した。
+    </p>
+    <a class="source-link" href="https://lmi-pd.slack.com/archives/D014PLLHBCH/p1773522063313809" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Slack DM — 2026.03.15
+    </a>
+  </div>
+
+  <div class="pickup-item">
+    <span class="pickup-tag">AI AGENT</span>
+    <h4>Claude Code × OpenClawで「統一メモリー」を構築 — 自分を完全理解するAIエージェント育成の実験</h4>
+    <p class="pickup-desc">
+      チャエン氏（@masahirochaen / デジライズCEO）が、Claude CodeとOpenClawを組み合わせて日々更新される統一メモリーシステムを構築する実験を公開。ほぼ全ての仕事をClaude Code経由で行い、自分の仕事内容と癖を学習させることで「自分を完全に理解したAIエージェント」を育成中。毎日の日報をAIに作成させ、必要な部分をマスターメモリに記憶させる仕組み。
+    </p>
+    <a class="source-link" href="https://lmi-pd.slack.com/archives/D014PLLHBCH/p1773463104199749" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Slack DM — 2026.03.14
+    </a>
+  </div>
+
+  <div class="pickup-item">
+    <span class="pickup-tag">エンジニアリング組織論</span>
+    <h4>広木大地氏「Agentic Engineeringの時代」— エンジニアリング組織論の次章</h4>
+    <p class="pickup-desc">
+      『エンジニアリング組織論への招待』著者の広木大地氏（@hiroki_daichi）が「Agentic Engineeringの時代」について言及。AIエージェントが開発プロセスに深く組み込まれる中で、エンジニアリング組織のあり方そのものが変革を迫られているという視座を提示。人間とAIエージェントの協働を前提とした組織設計の重要性を示唆している。
+    </p>
+    <a class="source-link" href="https://lmi-pd.slack.com/archives/D014PLLHBCH/p1773460311976159" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Slack DM — 2026.03.14
+    </a>
+  </div>
+
+  <div class="pickup-item">
+    <span class="pickup-tag">CLAUDE × PRODUCTIVITY</span>
+    <h4>Claude in Excel／PowerPoint間で会話共有が可能に — 資料作成ワークフローが途切れない</h4>
+    <p class="pickup-desc">
+      木内翔大氏（@shota7180 / SHIFT AI代表）が、Claude in ExcelとPowerPoint間での会話共有機能について紹介。Coworkで手元資料をもとにExcelシートとPPTを作成し、Excel上でシート内容を調整した後、Claudeに依頼して調整内容をPPTにも反映できるようになった。各タスクが途切れることなく進められるワークフローの実現を報告。
+    </p>
+    <a class="source-link" href="https://lmi-pd.slack.com/archives/D014PLLHBCH/p1773491907931629" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Slack DM — 2026.03.14
+    </a>
+  </div>
+</div>
+
+</main>
+
+<footer class="footer">
+  <a class="back-btn" href="news-digest-index.html">📰 アーカイブ一覧を見る</a>
+  <p class="disclaimer">
+    本ダイジェストはAIによる自動収集・要約です。投資判断や経営判断の際は必ず一次情報をご確認ください。<br>
+    Generated by Claude × Cowork — Daily News Digest System
+  </p>
+</footer>
+
+</body>
+</html>
