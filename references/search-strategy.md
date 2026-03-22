@@ -2,11 +2,44 @@
 
 ## Overview
 
-This document defines the web search strategy for collecting fresh news (last 24–48 hours) across the 5 fixed sections. The goal is to find 12–15 high-quality articles with verifiable sources, quantitative data, and analytical depth.
+This document defines the web search strategy for collecting fresh news (last 24–48 hours) across the 6 fixed sections. The goal is to find 14–18 high-quality articles with verifiable sources, quantitative data, and analytical depth.
 
 Run searches **section by section**, with 3–4 parallel web searches per section. Always include a concrete date string (e.g., "February 11 2026") in every query to ensure freshness.
 
-## Section 1: 企業・開発組織のAI活用 最新事例
+## Section 1: X(Twitter)で話題 — AI・テック最新バズ
+
+Target cards: 2–3
+
+`twitter-cli` を使ってAI・テック関連のバズ投稿を収集する。
+
+```bash
+# AI関連のバズ投稿を検索（いいね数でソート）
+twitter search "AI" -t Latest --max 20 --json | jq '[.data[] | select(.metrics.likes > 500)] | sort_by(.metrics.likes) | reverse | .[:10]'
+
+# エージェント・LLM関連
+twitter search "AI agent OR LLM OR GPT" -t Latest --max 20 --json | jq '[.data[] | select(.metrics.likes > 300)]'
+
+# 日本語のAIバズ
+twitter search "AI 活用 OR 生成AI OR AIエージェント" -t Latest --max 20 --json | jq '[.data[] | select(.metrics.likes > 100)]'
+```
+
+選定基準:
+- **エンゲージメント重視**: いいね数500以上、またはRT数100以上のバズ投稿を優先
+- **情報の質**: 単なる感想ではなく、具体的な知見・データ・新発表を含む投稿
+- **発信者の信頼性**: AI研究者、テック企業CEO、著名エンジニア、アナリストの投稿を優先
+- 投稿内容が外部記事やスレッドの場合、元ソースもWebFetch/WebSearchで確認する
+
+カード構成:
+- **タイトル**: 投稿の核心を日本語で要約（発信者名を含む）
+- **概要**: 投稿の内容＋文脈（なぜバズったか、背景情報）を3-5文で
+- **メトリクス**: いいね数、RT数、表示数、フォロワー数
+- **ソースリンク**: 投稿の固有URL（`https://x.com/username/status/ID`）
+
+注意:
+- `twitter-cli` が利用できない場合は、WebSearchで `site:x.com "AI" OR "GPT"` 等で代替する
+- 個人の日常投稿・宣伝は除外し、業界知見を含む投稿のみ採用する
+
+## Section 2: 企業・開発組織のAI活用 最新事例
 
 Target cards: 2–3
 
@@ -32,7 +65,7 @@ Topics of interest:
 - 業界別の横展開パターン（金融、製造、ヘルスケア）
 - 調査レポートの新版リリース（State of AI, AI Index等）
 
-## Section 2: AI BPO — アウトソーシング革命
+## Section 3: AI BPO — アウトソーシング革命
 
 Target cards: 2
 
@@ -59,7 +92,7 @@ Topics of interest:
 - 業界別BPO×AI（カスタマーサポート、経理、法務）
 - アウトソーシングの「アンバンドリング→リバンドリング」トレンド
 
-## Section 3: Product Hunt トレンド — 注目プロダクト
+## Section 4: Product Hunt トレンド — 注目プロダクト
 
 Target cards: 2
 
@@ -85,7 +118,7 @@ Topics of interest:
 - ビジネスモデル（SaaS、API、フリーミアム等）
 - LMビジネスやコンサルティング業への応用可能性
 
-## Section 4: AI・テクノロジー 最新ニュース
+## Section 5: AI・テクノロジー 最新ニュース
 
 Target cards: 3–5
 
@@ -112,7 +145,7 @@ Topics of interest:
 - AIインフラ（データセンター、チップ、エネルギー）
 - AIスタートアップの資金調達
 
-## Section 5: 政治・国際動向 ｜ LMビジネス視点
+## Section 6: 政治・国際動向 ｜ LMビジネス視点
 
 Target cards: 2–3
 

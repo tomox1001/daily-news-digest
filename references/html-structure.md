@@ -103,11 +103,12 @@ Section assignments (this order is fixed and intentional):
 
 | # | Section | Gradient | Emoji | Tag Classes |
 |---|---------|----------|-------|-------------|
-| 1 | 企業・開発組織のAI活用 最新事例 | gradient-3 | 🏢 | tag-research, tag-tech |
-| 2 | AI BPO — アウトソーシング革命 | gradient-2 | 🏭 | tag-market, tag-research |
-| 3 | Product Hunt トレンド — 注目プロダクト | gradient-4 | 🚀 | tag-tech |
-| 4 | AI・テクノロジー 最新ニュース | gradient-1 | 🤖 | tag-tech, tag-breaking, tag-market |
-| 5 | 政治・国際動向 ｜ LMビジネス視点 | gradient-2 | 🌏 | tag-policy |
+| 1 | X(Twitter)で話題 — AI・テック最新バズ | gradient-4 | 🔥 | tag-breaking, tag-tech |
+| 2 | 企業・開発組織のAI活用 最新事例 | gradient-3 | 🏢 | tag-research, tag-tech |
+| 3 | AI BPO — アウトソーシング革命 | gradient-2 | 🏭 | tag-market, tag-research |
+| 4 | Product Hunt トレンド — 注目プロダクト | gradient-4 | 🚀 | tag-tech |
+| 5 | AI・テクノロジー 最新ニュース | gradient-1 | 🤖 | tag-tech, tag-breaking, tag-market |
+| 6 | 政治・国際動向 ｜ LMビジネス視点 | gradient-2 | 🌏 | tag-policy |
 
 ## News Card
 
