@@ -39,6 +39,20 @@ twitter search "AI 活用 OR 生成AI OR AIエージェント" -t Latest --max 2
 - `twitter-cli` が利用できない場合は、WebSearchで `site:x.com "AI" OR "GPT"` 等で代替する
 - 個人の日常投稿・宣伝は除外し、業界知見を含む投稿のみ採用する
 
+## AIエージェント専門ニュースソース（全セクション共通）
+
+**必ずアクセスするソース:**
+
+```
+WebFetch: https://aiagentstore.ai/ai-agent-news/this-week
+```
+
+- 毎週（月〜日）のAIエージェント関連ニュースを日次更新で集約
+- エンタープライズAI導入・セキュリティ・市場動向・技術革新・規制政策を横断カバー
+- ROI・コスト・導入規模などの具体的数値を含む実装志向の記事が多い
+- **Section 2（企業AI活用）・Section 3（AI BPO）・Section 5（AI/テック）のネタ探しに特に有効**
+- 各セクションの記事収集前にこのページを WebFetch して当週のトピックを把握してから検索クエリを設計する
+
 ## Section 2: 企業・開発組織のAI活用 最新事例
 
 Target cards: 2–3
