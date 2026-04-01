@@ -104,7 +104,7 @@ Section assignments (this order is fixed and intentional):
 | # | Section | Gradient | Emoji | Tag Classes |
 |---|---------|----------|-------|-------------|
 | 1 | X(Twitter)で話題 — AI・テック最新バズ | gradient-4 | 🔥 | tag-breaking, tag-tech |
-| 2 | 企業・開発組織のAI活用 最新事例 | gradient-3 | 🏢 | tag-research, tag-tech |
+| 2 | AI効率 → ビジネス価値変換 グローバル事例 | gradient-3 | 💡 | tag-research, tag-market |
 | 3 | AI BPO — アウトソーシング革命 | gradient-2 | 🏭 | tag-market, tag-research |
 | 4 | Product Hunt トレンド — 注目プロダクト | gradient-4 | 🚀 | tag-tech |
 | 5 | AI・テクノロジー 最新ニュース | gradient-1 | 🤖 | tag-tech, tag-breaking, tag-market |
@@ -229,8 +229,8 @@ Each card should have 2–4 metrics. Guidelines:
 - Impact boxes should be actionable, not just descriptive
 
 ### Card Count
-- Target: 12–15 cards total across all 5 sections
-- Section 1 (企業AI活用): 2–3 cards
+- Target: 12–16 cards total across all 5 sections
+- Section 2 (AI効率→価値変換): 2–3 cards
 - Section 2 (AI BPO): 2 cards
 - Section 3 (Product Hunt): 2 cards
 - Section 4 (AI/Tech): 3–5 cards

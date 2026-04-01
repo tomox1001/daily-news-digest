@@ -53,31 +53,49 @@ WebFetch: https://aiagentstore.ai/ai-agent-news/this-week
 - **Section 2（企業AI活用）・Section 3（AI BPO）・Section 5（AI/テック）のネタ探しに特に有効**
 - 各セクションの記事収集前にこのページを WebFetch して当週のトピックを把握してから検索クエリを設計する
 
-## Section 2: 企業・開発組織のAI活用 最新事例
+## Section 2: AI効率 → ビジネス価値変換 グローバル事例
 
 Target cards: 2–3
 
-Run 3–4 parallel searches:
+**3言語で並列検索する（英語・日本語・中国語）:**
 
 ```
-"enterprise AI adoption case study [today's date month day year]"
-"企業 AI活用 事例 [今日の日付]"
-"AI transformation enterprise [today's date month day year]"
-"developer tools AI coding [today's date month day year]"
+# 英語
+"AI ROI business value [today's date month day year]"
+"AI productivity to revenue conversion [today's date month day year]"
+"AI business value realization enterprise [today's date month day year]"
+"AI efficiency ROI measurement [today's date month day year]"
+
+# 日本語
+"AI ROI 成果 事例 [今日の日付]"
+"AI 生産性 価値変換 [今日の日付]"
+"AI投資 効果 ビジネス成果 [今日の日付]"
+
+# 中国語（必須アクセスソース）
+WebFetch: https://36kr.com/information/AI/
+WebFetch: https://www.huxiu.com/
+"AI 商业价值 ROI [today's date]"
+"AI效率 业务价值 案例 [today's date]"
 ```
 
 Key sources to prioritize:
-- McKinsey, Deloitte, BCG, Accenture reports
+- McKinsey, Deloitte, BCG, Accenture reports（AI ROI・バリュー計測レポート）
 - Harvard Business Review, MIT Technology Review
 - Nikkei, 日経ビジネス, ITmedia
-- TechCrunch, The Information, VentureBeat
+- Bloomberg, Reuters, Financial Times
+- **36Kr**（36kr.com）— 中国テック/AIビジネス専門メディア
+- **虎嗅**（huxiu.com）— 中国テック企業の深掘り分析
+- SHRM, HR Dive, People Matters（HR/CHRO向け）
 
 Topics of interest:
-- 大企業のAI導入事例と成果（ROI、コスト削減率、生産性向上）
-- 開発組織のAIツール活用（Copilot, Cursor, Devin等）
-- AI導入の組織変革（CoE設立、データ戦略）
-- 業界別の横展開パターン（金融、製造、ヘルスケア）
-- 調査レポートの新版リリース（State of AI, AI Index等）
+- **AI投資のROI計測事例**（定量効果が明示されているもの優先）
+- **「効率化→企業価値変換」の成功・失敗パターン**
+- AI導入後に売上・利益に接続できた/できなかった企業の差異分析
+- CHRO・CFOが語るAI価値変換の実態（人事・財務視点）
+- 「AI効率は上がったが収益に繋がっていない」という逆説事例
+- 中国企業のAI活用による事業変革事例（英語・中国語問わず）
+- 業界別ROI実績（金融、製造、ヘルスケア、小売）
+- 調査レポートの新版リリース（State of AI, AI Index, Gartner等）
 
 ## Section 3: AI BPO — アウトソーシング革命
 
