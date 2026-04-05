@@ -39,6 +39,29 @@ date "+%Y年%m月%d日（%a）"
 
 日付は以下すべてに使用する：HTMLタイトル、ヒーローヘッダー、ファイル名（`news-digest-YYYY-MM-DD.html`）、検索クエリ。
 
+### Step 1.5: Google Trends でトレンドキーワードを把握（検索前に必ず実行）
+
+ニュース収集の前に、当日の急上昇AIキーワードを把握して検索クエリを最適化する。
+
+```python
+/usr/local/bin/python3 -c "
+from pytrends.request import TrendReq
+t = TrendReq(hl='ja-JP', tz=540)
+# 主要AIキーワードの急上昇関連クエリ
+t.build_payload(['Claude Code', 'ChatGPT', 'AIエージェント', 'Gemini'], timeframe='now 7-d', geo='JP')
+rq = t.related_queries()
+for kw in ['Claude Code', 'ChatGPT', 'AIエージェント', 'Gemini']:
+    rising = rq.get(kw, {}).get('rising')
+    if rising is not None and not rising.empty:
+        print(f'=== {kw} 急上昇 ===')
+        print(rising.head(5).to_string(index=False))
+"
+```
+
+- 急上昇クエリに出てきたトピックはSection 1・Section 5の検索クエリに必ず組み込む
+- 急上昇値が10,000%以上のキーワードは「今日の最重要トレンド」として優先的にカードを作る
+- `trending_searches` は404になるため使用しない（`related_queries` で代替）
+
 ### Step 2: ニュース収集
 
 `references/search-strategy.md` を読み、セクションごとの検索戦略に従う。
@@ -52,20 +75,58 @@ date "+%Y年%m月%d日（%a）"
 - 検索結果のスニペットだけでなく、**元記事を実際に閲覧して数値・事実を確認する**
 - Section 2では **英語・日本語・中国語の3言語** で検索を実行する（中国語ソース: 36Kr, 虎嗅 を必ず参照）
 
-### Step 2.5: Slackからの記事URL収集（Kawanoピックアップ）
+**Section 1（Xバズ）の補助ソース:**
 
-ニュース検索と並行して、以下の2つのSlackソースから **当日〜前日に投稿されたURLリンク** を収集する。
+HackerNews と YouTube は Section 1 の補足として使う。詳細な手順は `references/search-strategy.md` を参照。
+
+```bash
+# HackerNews トップ記事（AI関連をフィルタ）
+python3 -c "
+import urllib.request, json
+ids = json.loads(urllib.request.urlopen('https://hacker-news.firebaseio.com/v0/topstories.json').read())[:30]
+for id in ids:
+    item = json.loads(urllib.request.urlopen(f'https://hacker-news.firebaseio.com/v0/item/{id}.json').read())
+    title = item.get('title','').lower()
+    if any(kw in title for kw in ['ai','llm','gpt','claude','gemini','agent','openai']):
+        print(f'[{item.get(\"score\",0)}pts] {item.get(\"title\")} | {item.get(\"url\",\"\")[:60]}')
+"
+
+# YouTube字幕取得（Step 1.5で見つかった急上昇キーワードで検索）
+/Users/tomonori-kawano/Library/Python/3.11/bin/yt-dlp \
+  "ytsearch3:[急上昇キーワード] 2026" \
+  --print "%(id)s | %(view_count)s | %(title)s" --skip-download
+# → 上位動画のIDで字幕取得
+/Users/tomonori-kawano/Library/Python/3.11/bin/yt-dlp \
+  "https://www.youtube.com/watch?v=[VIDEO_ID]" \
+  --write-auto-subs --sub-lang en,ja --skip-download --output "/tmp/yt-digest"
+```
+
+### Step 2.5: 記事URL収集（Kawanoピックアップ）
+
+ニュース検索と並行して、以下の **3つのソース** から当日〜前日のURLを収集する。
+
+#### ソース①: Xブックマーク（最優先）
+
+```bash
+~/.local/bin/twitter bookmarks --max 30 --json | jq '[.data[] | select(.time >= "YYYY-MM-DDT00:00:00")] | .[:20]'
+```
+
+- **当日および前日** にブックマークした投稿を対象とする
+- 投稿本文・添付リンク・引用元URLをすべて抽出する
+- いいね数・RT数などエンゲージメント指標もメトリクスとして記録する
+
+#### ソース②: Slack DM
 
 | ソース | チャンネルID | 検索方法 |
 |--------|------------|---------|
 | 河野智則のDM | D014PLLHBCH | `slack_search_public_and_private` で `has:link in:<@U014B8E83NX> after:YYYY-MM-DD` |
 | #times_kawano | C01529F00NP | `slack_read_channel` で直近メッセージからURL付きメッセージを抽出 |
 
-収集ルール：
-- **当日および前日** に投稿されたURL付きメッセージを対象とする
+#### 共通収集ルール：
 - X(Twitter)リンク、note記事、ブログ記事、ニュース記事などすべてのURLを収集
 - 各URLの内容をWebFetchまたはWebSearchで確認し、タイトルと概要を取得する
 - 取得できない場合（403等）は検索でタイトル・概要を推定する
+- 3ソース合計で重複するURLは1件にまとめる
 
 収集した記事は、HTMLダイジェストの **最後のセクション（5つの固定セクションの後）** に
 「📌 Kawano ピックアップ」セクションとして追加する。通常のニュースカードとは異なるが、

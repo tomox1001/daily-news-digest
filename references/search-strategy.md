@@ -6,6 +6,33 @@ This document defines the web search strategy for collecting fresh news (last 24
 
 Run searches **section by section**, with 3–4 parallel web searches per section. Always include a concrete date string (e.g., "February 11 2026") in every query to ensure freshness.
 
+## Step 1.5: Google Trends（検索前に必ず実行）
+
+**ツール:** `/usr/local/bin/python3` + `pytrends`（インストール済み）
+
+```python
+/usr/local/bin/python3 -c "
+from pytrends.request import TrendReq
+t = TrendReq(hl='ja-JP', tz=540)
+t.build_payload(['Claude Code', 'ChatGPT', 'AIエージェント', 'Gemini', 'OpenAI'], timeframe='now 7-d', geo='JP')
+rq = t.related_queries()
+for kw in ['Claude Code', 'ChatGPT', 'AIエージェント', 'Gemini', 'OpenAI']:
+    rising = rq.get(kw, {}).get('rising')
+    if rising is not None and not rising.empty:
+        print(f'=== {kw} 急上昇クエリ ===')
+        print(rising.head(5).to_string(index=False))
+        print()
+"
+```
+
+活用方法:
+- 急上昇値 **10,000%以上** → Section 1・Section 5の最優先トピック
+- 急上昇値 **1,000〜9,999%** → 各セクションの検索クエリに組み込む
+- 急上昇クエリに知らないキーワードが出た場合 → WebSearchで即確認してカード候補にする
+- `trending_searches()` は404エラーになるため使用しない（`related_queries()` で代替）
+
+注意: pytrendsはレート制限に引っかかることがある。エラーが出た場合は30秒待って再実行。
+
 ## Section 1: X(Twitter)で話題 — AI・テック最新バズ
 
 Target cards: 2–3
@@ -38,6 +65,91 @@ twitter search "AI 活用 OR 生成AI OR AIエージェント" -t Latest --max 2
 注意:
 - `twitter-cli` が利用できない場合は、WebSearchで `site:x.com "AI" OR "GPT"` 等で代替する
 - 個人の日常投稿・宣伝は除外し、業界知見を含む投稿のみ採用する
+
+### Section 1 補助ソース①: HackerNews API
+
+Section 1 の補足として、開発者コミュニティで話題のAIトピックを取得する。
+
+```python
+python3 -c "
+import urllib.request, json
+ids = json.loads(urllib.request.urlopen('https://hacker-news.firebaseio.com/v0/topstories.json').read())[:30]
+ai_kws = ['ai','llm','gpt','claude','gemini','agent','openai','anthropic','model','neural']
+results = []
+for id in ids:
+    item = json.loads(urllib.request.urlopen(f'https://hacker-news.firebaseio.com/v0/item/{id}.json').read())
+    title = item.get('title','').lower()
+    if any(kw in title for kw in ai_kws):
+        results.append({'score': item.get('score',0), 'title': item.get('title'), 'url': item.get('url',''), 'id': id})
+results.sort(key=lambda x: x['score'], reverse=True)
+for r in results[:5]:
+    print(f'[{r[\"score\"]}pts] {r[\"title\"]}')
+    print(f'  {r[\"url\"] or \"https://news.ycombinator.com/item?id=\"+str(r[\"id\"])}')
+"
+```
+
+- スコア200pt以上は単独カード候補として扱う
+- ソースリンクは `https://news.ycombinator.com/item?id=XXXXX` を使う
+- HNで話題 → 1〜2週間後に日本のXでバズるパターンが多いため「先取りネタ」として有効
+
+### Section 1 補助ソース②: YouTube字幕
+
+Step 1.5（Google Trends）で把握した急上昇キーワードを使って海外AI動画を検索し、字幕を取得する。
+
+```bash
+# Step 1: 動画を検索して再生数TOP3を取得
+/Users/tomonori-kawano/Library/Python/3.11/bin/yt-dlp \
+  "ytsearch5:[急上昇キーワード e.g. claude code tutorial] 2026" \
+  --print "%(id)s | %(view_count)s views | %(title)s" \
+  --skip-download 2>/dev/null
+
+# Step 2: 最も再生数の多い動画の字幕を取得
+/Users/tomonori-kawano/Library/Python/3.11/bin/yt-dlp \
+  "https://www.youtube.com/watch?v=[VIDEO_ID]" \
+  --write-auto-subs --sub-lang en,ja --skip-download \
+  --output "/tmp/yt-digest" 2>/dev/null
+
+# Step 3: VTTをテキストに変換して要約
+python3 -c "
+import re, glob
+for f in glob.glob('/tmp/yt-digest*.vtt'):
+    content = open(f).read()
+    text = re.sub(r'<[^>]+>', '', content)
+    text = re.sub(r'\d{2}:\d{2}:\d{2}\.\d{3} --> .*\n', '', text)
+    text = re.sub(r'\n+', ' ', text).strip()
+    print(text[:2000])
+"
+```
+
+選定基準:
+- 再生数10万以上の動画を優先
+- 字幕（英語）の最初2,000文字をClaudeに渡して日本語で要約する
+- 「具体的なツール・手法・数値を紹介している動画」を採用する（概論・宣伝系は除外）
+
+## Kawanoピックアップ — Xブックマーク収集
+
+Step 2.5 で使用するXブックマーク取得コマンド：
+
+```bash
+# 直近30件のブックマークを取得（JSON形式）
+~/.local/bin/twitter bookmarks --max 30 --json
+
+# 日付フィルタリング（前日以降）
+~/.local/bin/twitter bookmarks --max 30 --json | jq '[.data[] | select(.time >= "YYYY-MM-DDT00:00:00Z")]'
+
+# コンパクト表示（LLMコンテキスト節約）
+~/.local/bin/twitter -c bookmarks --max 30
+```
+
+選定基準：
+- ブックマーク日時が **当日または前日** のものを対象とする
+- 投稿本文に含まれるURLを優先的に抽出し、WebFetch/WebSearchで内容を確認する
+- X投稿そのものがコンテンツの場合（スレッド・長文等）は投稿URLをソースリンクとして使用する
+- 重複URL（Slack DM側にも同じURLがある場合）は1件に統合する
+
+注意：
+- `~/.local/bin/twitter` はフルパスで指定する（PATH未設定のため）
+- 認証はブラウザCookieから自動取得（Chrome/Arc等でx.comにログイン済みであること）
 
 ## AIエージェント専門ニュースソース（全セクション共通）
 
