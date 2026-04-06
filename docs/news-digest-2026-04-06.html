@@ -222,6 +222,31 @@ nav a:hover { color: #fff; }
 }
 .source-link:hover { opacity: 1; }
 .source-link svg { width: 14px; height: 14px; }
+/* Share Button */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
 
 /* ── Footer ── */
 .footer {
@@ -353,7 +378,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       TechCrunch — OpenAI raises $122B at $852B valuation (Mar 31, 2026)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -395,7 +420,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       lalitm.com — Eight years of wanting, three months of building with AI (Apr 5, 2026)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -441,7 +466,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       AI by George Liu — Running Gemma 4 locally with Claude Code (Apr 3, 2026)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -496,7 +521,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       Master of Code — AI ROI: Why Only 5% of Enterprises See Real Returns in 2026
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -538,7 +563,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       Fujitsu Global — Application Transform powered by Fujitsu Kozuchi (Mar 30, 2026)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -580,7 +605,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       Invezz — AI layoff wave hits tech: 45,000 jobs gone in early 2026 (Mar 16, 2026)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -635,7 +660,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       Druid AI — AI Agents in BPO: The Future of Outsourcing (Apr 2026)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -677,7 +702,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       AI Agent Store — Weekly News: Klient PSA Hybrid Project Delivery (Apr 1, 2026)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -728,7 +753,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       Product Hunt — Daily Leaderboard Apr 5, 2026 (#1 Influcio)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -770,7 +795,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       Product Hunt — Daily Leaderboard Apr 5, 2026 (#2 Panorama)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -825,7 +850,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       Microsoft Open Source Blog — Introducing the Agent Governance Toolkit (Apr 2, 2026)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -867,7 +892,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       Affiliate Booster — Anthropic's MCP Protocol Crosses 97 Million Installs (Mar 2026)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -905,7 +930,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       AI Agent Store — Anthropic Claude Subscription Third-Party Agents (Apr 5, 2026)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -956,7 +981,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       The Japan Times — Japan's fiscal 2026 budget to be enacted this week (Apr 3, 2026)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
@@ -998,7 +1023,7 @@ nav a:hover { color: #fff; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       Nippon.com — Japan's $550B Investment Pledge: Strategic Significance of US-Japan Trade (Apr 2026)
       </a>
-      <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+      <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
     </div>
   </article>
 
