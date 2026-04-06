@@ -138,14 +138,17 @@ Section assignments (this order is fixed and intentional):
       <p class="impact-text">[2–3 sentences with <strong> on key insights]</p>
     </div>
   </div>
-  <a class="source-link" href="[URL]" target="_blank">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-      <polyline points="15,3 21,3 21,9"/>
-      <line x1="10" y1="14" x2="21" y2="3"/>
-    </svg>
-    [Source Name] — [Article title abbreviated] ([Date])
-  </a>
+  <div class="card-footer">
+    <a class="source-link" href="[URL]" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      [Source Name] — [Article title abbreviated] ([Date])
+    </a>
+    <button class="share-btn" onclick="(function(b){var card=b.closest('.news-card');var h3=card.querySelector('h3').textContent.trim();var link=card.querySelector('.source-link').href;navigator.clipboard.writeText(h3+' '+link).then(()=>{b.textContent='✓ Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent='Share';b.classList.remove('copied')},2000)});})(this)">Share</button>
+  </div>
 </article>
 ```
 
