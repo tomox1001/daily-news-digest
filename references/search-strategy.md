@@ -92,7 +92,41 @@ for r in results[:5]:
 - ソースリンクは `https://news.ycombinator.com/item?id=XXXXX` を使う
 - HNで話題 → 1〜2週間後に日本のXでバズるパターンが多いため「先取りネタ」として有効
 
-### Section 1 補助ソース②: YouTube字幕
+## Section 2: Google Trends 急上昇 — AIキーワード速報（スキップ不可）
+
+Target cards: 1–2
+
+Step 1.5 で取得した Google Trends の急上昇クエリをカード化する。
+
+```python
+/usr/local/bin/python3 -c "
+from pytrends.request import TrendReq
+t = TrendReq(hl='ja-JP', tz=540)
+t.build_payload(['Claude Code', 'ChatGPT', 'AIエージェント', 'Gemini', 'OpenAI'], timeframe='now 7-d', geo='JP')
+rq = t.related_queries()
+for kw in ['Claude Code', 'ChatGPT', 'AIエージェント', 'Gemini', 'OpenAI']:
+    rising = rq.get(kw, {}).get('rising')
+    if rising is not None and not rising.empty:
+        print(f'=== {kw} 急上昇クエリ ===')
+        print(rising.head(5).to_string(index=False))
+        print()
+"
+```
+
+カード構成:
+- **タイトル**: 急上昇キーワード＋なぜバズっているかの文脈
+- **概要**: 急上昇の背景（新製品発表、事件、規制等）をWebSearchで裏取りして3-5文で解説
+- **メトリクス**: 急上昇率（例: +227,350%）、関連キーワード、検索ボリューム推移
+- **ソースリンク**: 急上昇の元となったニュース記事のURL
+
+選定基準:
+- 急上昇値 **10,000%以上** → 単独カード確定
+- 急上昇値 **1,000〜9,999%** → 複数まとめて1カード
+- pytrends がレート制限エラーの場合は30秒待って再実行。それでも失敗したら `WebSearch "Google Trends AI 急上昇 today"` で代替
+
+## Section 3: YouTube AI動画 — 海外テック深掘り（スキップ不可）
+
+Target cards: 1
 
 Step 1.5（Google Trends）で把握した急上昇キーワードを使って海外AI動画を検索し、字幕を取得する。
 
@@ -121,10 +155,56 @@ for f in glob.glob('/tmp/yt-digest*.vtt'):
 "
 ```
 
+カード構成:
+- **タイトル**: 動画の核心を日本語で要約（チャンネル名＋再生数を含む）
+- **概要**: 字幕から抽出した具体的な知見・手法・数値を3-5文で解説
+- **メトリクス**: 再生数、チャンネル登録者数、投稿日
+- **ソースリンク**: `https://www.youtube.com/watch?v=[VIDEO_ID]`
+
 選定基準:
 - 再生数10万以上の動画を優先
 - 字幕（英語）の最初2,000文字をClaudeに渡して日本語で要約する
 - 「具体的なツール・手法・数値を紹介している動画」を採用する（概論・宣伝系は除外）
+- yt-dlpが失敗した場合は `WebSearch "YouTube AI [急上昇キーワード] 2026"` で代替してカードを生成
+
+## Section 4: 中国SNSトレンド — 36Kr / 虎嗅（スキップ不可）
+
+Target cards: 1–2
+
+中国テック/AI市場の最新ニュースを36Krと虎嗅から直接取得する。
+
+```
+# 必須アクセス（WebFetchで直接取得）
+WebFetch: https://36kr.com/information/AI/
+WebFetch: https://www.huxiu.com/
+
+# 補助検索（中国語クエリ）
+"AI 商业价值 ROI [today's date]"
+"AI效率 业务价值 案例 [today's date]"
+"AI agent 中国 企业 [today's date]"
+
+# WebFetch失敗時の代替
+WebSearch: "36kr AI" OR "huxiu AI" [today's date]
+WebSearch: "中国 AI 企業 事例 [today's date]"
+```
+
+Key sources:
+- **36Kr**（36kr.com）— 中国テック/AIビジネス専門メディア
+- **虎嗅**（huxiu.com）— 中国テック企業の深掘り分析
+
+Topics of interest:
+- 中国企業のAI活用による事業変革事例
+- ByteDance、Alibaba、Baidu、Tencent等のAI戦略
+- 中国AIスタートアップの資金調達・新プロダクト
+- 中国AI規制・政策動向
+- 中国版AI BPO/アウトソーシング事例
+
+カード構成:
+- **タイトル**: 中国語元記事のタイトルを日本語に翻訳＋要約
+- **概要**: 記事の核心を日本語3-5文で解説（定量データを必ず含める）
+- **メトリクス**: 売上・ROI・ユーザー数など定量指標
+- **タグ**: `🇨🇳 36Kr` または `🇨🇳 虎嗅` を使用
+- **ソースリンク**: 元記事の固有URL
 
 ## Kawanoピックアップ — Xブックマーク収集
 
@@ -165,11 +245,13 @@ WebFetch: https://aiagentstore.ai/ai-agent-news/this-week
 - **Section 2（企業AI活用）・Section 3（AI BPO）・Section 5（AI/テック）のネタ探しに特に有効**
 - 各セクションの記事収集前にこのページを WebFetch して当週のトピックを把握してから検索クエリを設計する
 
-## Section 2: AI効率 → ビジネス価値変換 グローバル事例
+## Section 5: AI効率 → ビジネス価値変換 グローバル事例
 
 Target cards: 2–3
 
-**3言語で並列検索する（英語・日本語・中国語）:**
+**2言語で並列検索する（英語・日本語）:**
+
+（中国語ソースは Section 4 で独立収集する）
 
 ```
 # 英語
@@ -182,12 +264,6 @@ Target cards: 2–3
 "AI ROI 成果 事例 [今日の日付]"
 "AI 生産性 価値変換 [今日の日付]"
 "AI投資 効果 ビジネス成果 [今日の日付]"
-
-# 中国語（必須アクセスソース）
-WebFetch: https://36kr.com/information/AI/
-WebFetch: https://www.huxiu.com/
-"AI 商业价值 ROI [today's date]"
-"AI效率 业务价值 案例 [today's date]"
 ```
 
 Key sources to prioritize:
@@ -195,8 +271,6 @@ Key sources to prioritize:
 - Harvard Business Review, MIT Technology Review
 - Nikkei, 日経ビジネス, ITmedia
 - Bloomberg, Reuters, Financial Times
-- **36Kr**（36kr.com）— 中国テック/AIビジネス専門メディア
-- **虎嗅**（huxiu.com）— 中国テック企業の深掘り分析
 - SHRM, HR Dive, People Matters（HR/CHRO向け）
 
 Topics of interest:
@@ -205,11 +279,10 @@ Topics of interest:
 - AI導入後に売上・利益に接続できた/できなかった企業の差異分析
 - CHRO・CFOが語るAI価値変換の実態（人事・財務視点）
 - 「AI効率は上がったが収益に繋がっていない」という逆説事例
-- 中国企業のAI活用による事業変革事例（英語・中国語問わず）
 - 業界別ROI実績（金融、製造、ヘルスケア、小売）
 - 調査レポートの新版リリース（State of AI, AI Index, Gartner等）
 
-## Section 3: AI BPO — アウトソーシング革命
+## Section 6: AI BPO — アウトソーシング革命
 
 Target cards: 2
 
@@ -236,7 +309,7 @@ Topics of interest:
 - 業界別BPO×AI（カスタマーサポート、経理、法務）
 - アウトソーシングの「アンバンドリング→リバンドリング」トレンド
 
-## Section 4: Product Hunt トレンド — 注目プロダクト
+## Section 7: Product Hunt トレンド — 注目プロダクト
 
 Target cards: 2
 
@@ -262,7 +335,7 @@ Topics of interest:
 - ビジネスモデル（SaaS、API、フリーミアム等）
 - LMビジネスやコンサルティング業への応用可能性
 
-## Section 5: AI・テクノロジー 最新ニュース
+## Section 8: AI・テクノロジー 最新ニュース
 
 Target cards: 3–5
 
@@ -289,7 +362,7 @@ Topics of interest:
 - AIインフラ（データセンター、チップ、エネルギー）
 - AIスタートアップの資金調達
 
-## Section 6: 政治・国際動向 ｜ LMビジネス視点
+## Section 9: 政治・国際動向 ｜ LMビジネス視点
 
 Target cards: 2–3
 
@@ -316,14 +389,21 @@ Topics of interest:
 - コーポレートガバナンス（CGコード改訂）
 - 防衛・安全保障政策のビジネスへの影響
 
-## Freshness Filtering
+## Freshness Filtering（厳格運用）
 
-Every article must have a publication date within the last 24–48 hours. Strategies:
+**記事の鮮度は最重要基準。古いニュースの混入は品質を著しく下げる。**
 
-1. Include the specific date in search queries (e.g., "February 11 2026")
-2. Look for date indicators in search result snippets
-3. Cross-reference publication dates when visiting sources
-4. If a story is older but has a fresh update/development, note both dates
+- **最優先**: 24時間以内に公開された記事
+- **許容**: 48時間以内の記事（24時間以内で十分な記事数が確保できない場合のみ）
+- **禁止**: 48時間を超える記事（新たな展開・続報がない限り採用不可）
+
+Strategies:
+
+1. Include the specific date in search queries (e.g., "April 9 2026") — **当日の日付を必ず含める**
+2. Look for date indicators in search result snippets — **公開日が明示されていない記事は採用しない**
+3. Cross-reference publication dates when visiting sources — **元記事の日付を必ず目視確認する**
+4. If a story is older but has a **fresh update/development within 24h**, note both dates and「続報」タグを付ける
+5. 検索結果に古い記事しか出ない場合は、そのトピックを諦めて別のトピックを探す
 
 ## Quality Criteria
 

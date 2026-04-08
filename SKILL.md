@@ -1,7 +1,7 @@
 ---
 name: daily-news-digest
 description: >
-  毎朝の日次ニュースダイジェストをHTML形式で自動生成するスキル。5つの固定セクションでAI・ビジネス・政治のニュースを網羅し、
+  毎朝の日次ニュースダイジェストをHTML形式で自動生成するスキル。9つの固定セクションでAI・ビジネス・政治のニュースを網羅し、
   各記事にLMビジネスへの影響とHR/組織への示唆の分析ボックスを付与する。
   Use this skill whenever the user asks for: ニュースダイジェスト, daily news digest, 今日のニュース,
   朝のブリーフィング, daily briefing, morning report, news summary, intelligence brief,
@@ -13,21 +13,27 @@ description: >
 # Daily News Digest Skill
 
 毎朝24時間以内の鮮度の高いニュースを収集し、プロフェッショナルなHTMLダイジェストを生成する。
-5セクション・12-16カードで構成され、全カードに定量データと2つの分析ボックスを付与する。
+9セクション・15-18カードで構成され、全カードに定量データと2つの分析ボックスを付与する。
 
-## 6つの固定セクション（この順番を維持する）
+## 9つの固定セクション（この順番を維持する）
 
 | # | セクション | カード目安 | アイコン | グラデーション |
 |---|-----------|----------|---------|-------------|
 | 1 | X(Twitter)で話題 — AI・テック最新バズ | 2-3 | 🔥 | gradient-4 |
-| 2 | AI効率 → ビジネス価値変換 グローバル事例 | 2-3 | 💡 | gradient-3 |
-| 3 | AI BPO — アウトソーシング革命 | 2 | 🏭 | gradient-2 |
-| 4 | Product Hunt トレンド — 注目プロダクト | 2 | 🚀 | gradient-4 |
-| 5 | AI・テクノロジー 最新ニュース | 3-5 | 🤖 | gradient-1 |
-| 6 | 政治・国際動向 ｜ LMビジネス視点 | 2-3 | 🌏 | gradient-2 |
+| 2 | Google Trends 急上昇 — AIキーワード速報 | 1-2 | 📈 | gradient-1 |
+| 3 | YouTube AI動画 — 海外テック深掘り | 1 | ▶️ | gradient-3 |
+| 4 | 中国SNSトレンド — 36Kr / 虎嗅 | 1-2 | 🇨🇳 | gradient-2 |
+| 5 | AI効率 → ビジネス価値変換 グローバル事例 | 2 | 💡 | gradient-3 |
+| 6 | AI BPO — アウトソーシング革命 | 2 | 🏭 | gradient-2 |
+| 7 | Product Hunt トレンド — 注目プロダクト | 2 | 🚀 | gradient-4 |
+| 8 | AI・テクノロジー 最新ニュース | 2-3 | 🤖 | gradient-1 |
+| 9 | 政治・国際動向 ｜ LMビジネス視点 | 2-3 | 🌏 | gradient-2 |
 
-セクション順は意図的にこの順番に設定されている。Xのバズ投稿はリアルタイム性が最も高いため先頭に置き、
-マクロな政治ニュースは参考情報として末尾に配置する。
+セクション順は意図的にこの順番に設定されている。Section 1-4はソース別の速報セクション（X・Google Trends・YouTube・中国SNS）で
+リアルタイム性が高い順に配置。Section 5-9はトピック別の分析セクションで、マクロな政治ニュースは末尾に配置する。
+
+**重要: Section 2-4（Google Trends・YouTube・中国SNS）は独立セクションであり、スキップ不可。**
+各セクションに最低1枚のカードを必ず生成すること。ソースが取得不可の場合のみ、WebSearchで代替ソースを検索して補完する。
 
 ## ワークフロー
 
@@ -58,9 +64,10 @@ for kw in ['Claude Code', 'ChatGPT', 'AIエージェント', 'Gemini']:
 "
 ```
 
-- 急上昇クエリに出てきたトピックはSection 1・Section 5の検索クエリに必ず組み込む
+- 急上昇クエリに出てきたトピックはSection 1・Section 8の検索クエリに必ず組み込む
 - 急上昇値が10,000%以上のキーワードは「今日の最重要トレンド」として優先的にカードを作る
 - `trending_searches` は404になるため使用しない（`related_queries` で代替）
+- **Google Trendsの実行結果はSection 2（Google Trends 急上昇）のカード生成に必ず使用する**
 
 ### Step 2: ニュース収集
 
@@ -68,16 +75,18 @@ for kw in ['Claude Code', 'ChatGPT', 'AIエージェント', 'Gemini']:
 
 収集のルール：
 - セクションごとに **3-4件の並列Web検索** を実行する
-- 検索クエリには必ず **具体的な日付** を含め、24-48時間以内の記事を確保する
+- 検索クエリには必ず **当日の具体的な日付** を含め、**24時間以内** の記事を最優先で採用する
+- 48時間を超える記事は採用禁止（新たな続報がある場合のみ例外、その場合は「続報」タグを付ける）
+- **各カードの元記事の公開日を必ず目視確認し、古い記事が混入しないようにする**
 - **定量データ**（金額、割合、成長率、ROI）を含む記事を優先する
 - 同じストーリーを複数ソースで裏取りする
 - **記事の完全なURLを必ず記録する**（ドメインレベルではなく記事固有のパス。例: `nikkei.com/article/DGXZQO...` ）
 - 検索結果のスニペットだけでなく、**元記事を実際に閲覧して数値・事実を確認する**
-- Section 2では **英語・日本語・中国語の3言語** で検索を実行する（中国語ソース: 36Kr, 虎嗅 を必ず参照）
+- Section 5では **英語・日本語・中国語の3言語** で検索を実行する
 
-**Section 1（Xバズ）の補助ソース:**
+**Section 1（Xバズ）の補助ソース — HackerNews:**
 
-HackerNews と YouTube は Section 1 の補足として使う。詳細な手順は `references/search-strategy.md` を参照。
+HackerNews は Section 1 の補足として使う。詳細な手順は `references/search-strategy.md` を参照。
 
 ```bash
 # HackerNews トップ記事（AI関連をフィルタ）
@@ -90,16 +99,44 @@ for id in ids:
     if any(kw in title for kw in ['ai','llm','gpt','claude','gemini','agent','openai']):
         print(f'[{item.get(\"score\",0)}pts] {item.get(\"title\")} | {item.get(\"url\",\"\")[:60]}')
 "
+```
 
-# YouTube字幕取得（Step 1.5で見つかった急上昇キーワードで検索）
+**Section 3（YouTube AI動画）の収集（スキップ不可）:**
+
+Step 1.5で見つかった急上昇キーワードを使って海外AI動画を検索・字幕取得する。
+
+```bash
+# YouTube検索（急上昇キーワードで検索）
 /Users/tomonori-kawano/Library/Python/3.11/bin/yt-dlp \
-  "ytsearch3:[急上昇キーワード] 2026" \
-  --print "%(id)s | %(view_count)s | %(title)s" --skip-download
-# → 上位動画のIDで字幕取得
+  "ytsearch5:[急上昇キーワード] 2026" \
+  --print "%(id)s | %(view_count)s views | %(title)s" --skip-download
+# → 再生数10万以上の上位動画のIDで字幕取得
 /Users/tomonori-kawano/Library/Python/3.11/bin/yt-dlp \
   "https://www.youtube.com/watch?v=[VIDEO_ID]" \
   --write-auto-subs --sub-lang en,ja --skip-download --output "/tmp/yt-digest"
 ```
+
+- 字幕（英語）の最初2,000文字を要約してカードにする
+- yt-dlpが失敗した場合は `WebSearch "YouTube AI [急上昇キーワード] 2026"` で代替
+
+**Section 4（中国SNSトレンド）の収集（スキップ不可）:**
+
+36Kr と 虎嗅 から中国AI/テック市場の最新ニュースを取得する。
+
+```
+# 必須アクセス（WebFetchで直接取得）
+WebFetch: https://36kr.com/information/AI/
+WebFetch: https://www.huxiu.com/
+
+# 補助検索（中国語クエリ）
+"AI 商业价值 ROI [today's date]"
+"AI效率 业务价值 案例 [today's date]"
+"AI agent 中国 企业 [today's date]"
+```
+
+- WebFetchが失敗した場合は `WebSearch "36kr AI" OR "huxiu AI"` で代替
+- 中国企業のAI活用事例・市場動向・規制を中心にカードを生成
+- 最低1枚は必ず生成すること
 
 ### Step 2.5: 記事URL収集（Kawanoピックアップ）
 
@@ -129,7 +166,7 @@ for id in ids:
 - 3ソース合計で重複するURLは1件にまとめる
 
 収集した記事は、HTMLダイジェストの **最後のセクション（5つの固定セクションの後）** に
-「📌 Kawano ピックアップ」セクションとして追加する。通常のニュースカードとは異なるが、
+「📌 Kawano ピックアップ」セクションとして追加する（9つの固定セクションの後）。通常のニュースカードとは異なるが、
 **読むだけで内容が把握できるレベル** まで充実させる：
 
 #### 表示ルール
@@ -198,7 +235,7 @@ for id in ids:
 - **数値の出典が特定できないものは使わない**。概算値を使う場合は「約」「推定」等を付記する
 
 **ソースリンクの検証：**
-- 全15カードのソースリンクが **記事固有のURL** であることを確認する（ドメインルート不可）
+- 全カードのソースリンクが **記事固有のURL** であることを確認する（ドメインルート不可）
 - 正しいパターン: `https://nikkei.com/article/DGXZQOUA0861M0Y6A200C2000000/`
 - NGパターン: `https://nikkei.com` , `https://nikkei.com/business`
 - Step 2の検索時に記録したURLをそのまま使用する
