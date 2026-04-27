@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily News Digest — 2026年4月27日（月）</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content { position: relative; max-width: 1200px; margin: 0 auto; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px; border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff; font-size: 13px; font-weight: 500;
+  letter-spacing: 0.5px; margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px; height: 8px;
+  background: var(--accent-green); border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px; font-weight: 900; letter-spacing: -1px; line-height: 1.2; margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero .date { font-size: 18px; color: rgba(255,255,255,0.65); font-weight: 400; }
+.hero .market-strip { display: flex; gap: 24px; margin-top: 32px; flex-wrap: wrap; }
+.market-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px; backdrop-filter: blur(10px);
+}
+.market-item .label { font-size: 12px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; }
+.market-item .value { font-size: 18px; font-weight: 700; font-family: 'Inter', monospace; color: #fff; }
+.market-item .change { font-size: 13px; font-weight: 600; }
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+.section-header {
+  display: flex; align-items: center; gap: 16px;
+  margin: 56px 0 32px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; flex-shrink: 0;
+}
+.section-header h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
+.section-header .sub { font-size: 13px; color: var(--text-muted); font-weight: 400; }
+
+.news-card {
+  position: relative; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 20px;
+  padding: 32px; margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s; overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px); border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute; top: 20px; right: 24px;
+  font-size: 64px; font-weight: 900; font-family: 'Inter', sans-serif;
+  opacity: 0.06; line-height: 1;
+}
+.card-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: 6px;
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.8px; margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 { font-size: 20px; font-weight: 700; line-height: 1.4; margin-bottom: 16px; letter-spacing: -0.3px; }
+.news-card .summary { color: var(--text-muted); font-size: 14.5px; line-height: 1.9; margin-bottom: 20px; }
+.news-card .summary strong { color: var(--text); font-weight: 600; }
+
+.metrics { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+.metric {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px; background: var(--surface2);
+  border: 1px solid var(--border); border-radius: 10px; font-size: 13px;
+}
+.metric .metric-label { color: var(--text-muted); }
+.metric .metric-value { font-weight: 700; font-family: 'Inter', monospace; }
+
+.impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.impact-box { padding: 20px; border-radius: 14px; background: #f7f8fb; border: 1px solid var(--border); }
+.impact-box .impact-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.2px; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 6px;
+}
+.impact-box .impact-text { font-size: 13.5px; color: var(--text-muted); line-height: 1.8; }
+.impact-box .impact-text strong { color: var(--text); font-weight: 600; }
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+.card-footer { display: flex; align-items: center; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
+
+.source-link {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
+  font-size: 13px; color: var(--accent-blue); text-decoration: none;
+  opacity: 0.85; transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg { width: 14px; height: 14px; }
+
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07); border-color: var(--accent-blue);
+  color: var(--accent-blue); transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08); border-color: var(--accent-green);
+  color: var(--accent-green); transform: none; box-shadow: none;
+}
+
+.footer {
+  margin-top: 64px; padding: 40px;
+  text-align: center; border-top: 1px solid var(--border);
+  color: var(--text-muted); font-size: 13px;
+}
+.footer .disclaimer { max-width: 600px; margin: 0 auto; line-height: 1.8; }
+
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+  </style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年4月27日（月）｜ X速報 × Google Trends × YouTube × 中国SNS × AI ROI × AI BPO × Product Hunt × AI/Tech × 政治 × HBR × Weekly EM/Product</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">¥60,584</div>
+        </div>
+        <span class="change up">▲868円高</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">159.40</div>
+        </div>
+        <span class="change down">▼円安継続</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">7,108</div>
+        </div>
+        <span class="change down">▼0.41%</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">BPO市場</div>
+          <div class="value">$353.6B</div>
+        </div>
+        <span class="change up">▲CAGR 9.7%</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- SECTION 1: X(Twitter)で話題 — AI・テック最新バズ -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🔥</div>
+  <div>
+    <h2>X(Twitter)で話題 — AI・テック最新バズ</h2>
+    <span class="sub">Buzz on X — Last 72h | OpenAI / Anthropic / Japan AI community</span>
+  </div>
+</div>
+
+<!-- Card 01: ChatGPT Image 2.0 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-breaking">🔥 4/22</div>
+  <h3>OpenAI公式が「ChatGPT Images 2.0」発表ポストで25,151いいね・1,258万Views — 12時間でImage Arena首位、過去最大の+242点リード</h3>
+  <p class="summary">
+    OpenAIの公式アカウントが4月22日に投稿した「<strong>Introducing ChatGPT Images 2.0</strong>」のローンチポストが <strong>25,151いいね / 2,760RT / 1,258万Views</strong> を獲得し、Xの今週最大級のテックバズに。返信に並んだ第三者検証ポストでもshirish氏（@shiri_shh）が <strong>11,753いいね / 574万Views</strong> で「we are so cooked」と驚愕。<strong>ローンチ12時間でImage Arenaリーダーボード全カテゴリ1位</strong>、+242点という過去最大マージンを記録した。Thinking Modeでは画像生成前に検索・推論を実行し、<strong>テキストレンダリング精度約99%</strong>、日本語・中国語・韓国語など非ラテン文字も画素レベルで描き分ける。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">いいね</span><span class="metric-value up">25,151</span></div>
+    <div class="metric"><span class="metric-label">Views</span><span class="metric-value">12.58M</span></div>
+    <div class="metric"><span class="metric-label">Image Arena</span><span class="metric-value up">+242pt</span></div>
+    <div class="metric"><span class="metric-label">テキスト精度</span><span class="metric-value up">~99%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">提案書・ピッチ資料の<strong>図版作成工数を実質ゼロに圧縮できる水準</strong>に達した。コンサルファームのデザインチームは「<strong>ビジュアル制作の差別化軸を1〜2四半期内に再設計</strong>」しないと工数積み上げ型の単価が崩れる。クライアント納品物のグラフィック品質基準を即時に引き上げる方針を、提案テンプレ管理者と合意すべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">「画像が読める／指示が書ける」社員と書けない社員で<strong>1日あたり生産物の差が10倍以上</strong>になる。研修部門は4月中にPlus/Pro契約を全マネジャー以上に配布し、<strong>「Thinking Mode前提の社内画像ガイドライン」を5月中に整備</strong>すべき。デザイン職の評価基準も「制作スピード」から「ディレクション品質」へ移行する設計が必要。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://x.com/OpenAI/status/2046670977145372771" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      OpenAI on X — Introducing ChatGPT Images 2.0 (Apr 22, 2026)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 02: Claude Code 90% cheaper tool -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-tech">🔥 4/24</div>
+  <h3>「Claude Codeを90%安くするOSSツール」がX上で515いいね・48,515Views — シェル出力を圧縮してコンテキスト消費を削減</h3>
+  <p class="summary">
+    @HowToAI_アカウントの投稿が4月24日にバズ。<strong>AIとシェルの間に挟むだけでコマンド出力を圧縮し、Claude Codeのコスト約90%削減</strong>を謳うOSSツールを紹介。<code>git push</code> / <code>cargo test</code> / <code>ls</code> / <code>grep</code> など頻出コマンドの出力を自動でリライトしてLLMコンテキストに渡すため、長時間セッションでも有料プランの上限に到達しにくい。<strong>Claude Code、Cursor、Gemini、Codex、GitHub Copilot</strong>と互換と説明。Pragmatic Engineerの最新調査でも有料AIツールの上限到達は<strong>回答者の約30%</strong>に達しており、コスト圧縮ツールへの関心は急速に高まっている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">いいね</span><span class="metric-value up">515</span></div>
+    <div class="metric"><span class="metric-label">RT</span><span class="metric-value">64</span></div>
+    <div class="metric"><span class="metric-label">Views</span><span class="metric-value">48,515</span></div>
+    <div class="metric"><span class="metric-label">削減率</span><span class="metric-value up">~90%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">クライアント常駐エンジニアの<strong>AI利用コストが実費請求できないPJTでは、コンテキスト圧縮ツールの導入可否が粗利を直撃</strong>する。SREイネU・DXUの両U長は「Claude Code/Codex運用ガイドライン」に<strong>シェル出力の自動圧縮レイヤー導入の検討項目を追加</strong>すべき。社内POCを5月中に小規模PJTで回し、削減効果を可視化する。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">「AI上限に当たって作業が止まる」事象は若手ほど発生しやすい。<strong>個人のAI浪費傾向（ログ垂れ流し、巨大grep結果のコピペ）を可視化する仕組み</strong>を導入し、評価ではなく育成のための1on1ネタにする。マネジャーは「コンテキスト設計力」を新しい技術力指標として加える運用にする。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://x.com/HowToAI_/status/2047609189833580713" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      How To AI on X — Open-source tool that makes Claude Code 90% cheaper (Apr 24, 2026)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 03: AI agent deleted production database -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-breaking">🔥 4/25</div>
+  <h3>「AIエージェントが本番DBを削除」 — HackerNews 544pt / X連動でAIガバナンス論争に火</h3>
+  <p class="summary">
+    @lifeof_jer氏の「<strong>An AI agent deleted our production database</strong>」というポストが4月25日にHackerNewsで <strong>544pt</strong> を獲得し1日トップ。「エージェントの『懺悔ログ』」を公開する形でAIの自律実行リスクを生々しく可視化した。AI BPO・自律エージェント市場が <strong>171% 平均ROI</strong> と好調な裏側で、本番権限を持つエージェントの<strong>RBAC設計・破壊的操作のヒューマンインザループ判断</strong>が業界共通の宿題として再浮上。Gemini Enterprise Agent Platformが<strong>暗号学的Agent IDとAgent Anomaly Detection</strong>を打ち出した直後だけに、ガバナンス機能の説明力が選定軸として一気に上がっている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">HN Score</span><span class="metric-value up">544pt</span></div>
+    <div class="metric"><span class="metric-label">エージェントROI</span><span class="metric-value">171%</span></div>
+    <div class="metric"><span class="metric-label">露出ID</span><span class="metric-value down">28,663台</span></div>
+    <div class="metric"><span class="metric-label">対象</span><span class="metric-value">production DB</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">クライアントへの<strong>「AIエージェントPoCの本番昇格判定基準」</strong>を必ず提示できるようにする。具体的には①破壊的操作の人手承認、②監査ログ、③ロールバック手順、④Kill Switch — の4項目をPoC契約書のチェックリストに加える。これがないPoCは「失敗時に責任が誰にも取れない」状態になり、コンサル側の評判リスクに直結する。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">SREイネU・DXU両側で「<strong>エージェント運用のオンコール体制</strong>」をどう編成するかを5月までに合意する。深夜や休日にエージェントが暴走した場合の連絡経路・権限停止オペレーション・障害共有テンプレを用意する。<strong>AIガバナンスを担う人材は「DevOps＋セキュリティ＋契約理解」の3点持ち</strong>になり、採用基準・評価項目をアップデートすべき。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://news.ycombinator.com/item?id=46019999" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Hacker News — AI agent deleted our production database (Apr 25, 2026, 544pt)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 2: Google Trends 急上昇 — AIキーワード速報 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">📈</div>
+  <div>
+    <h2>Google Trends 急上昇 — AIキーワード速報</h2>
+    <span class="sub">pytrends rising queries (JP, last 7 days) — Apr 21–27, 2026</span>
+  </div>
+</div>
+
+<!-- Card 04: Trends -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-research">📈 4/27</div>
+  <h3>日本のGoogle検索で「ChatGPT Images 2.0」が急上昇率+33,600%、「Gemini Enterprise Agent Platform」も+4,100% — 今週は画像×エージェントの2強</h3>
+  <p class="summary">
+    pytrendsで取得した日本語クエリ（過去7日）の<strong>急上昇トップは「chatgpt images 2.0」+33,600%</strong>、続いて「<strong>gemini enterprise agent platform」+4,100%</strong>、「gpt 5.5」+1,350%、「openai image 2.0」+950%。OpenAIの画像モデル刷新（4/21）とGoogle Cloud Next '26（4/22）が同週に重なり、検索行動が一気に「画像生成の世代交代」と「エンタープライズ・エージェント基盤」へシフトした。Claude Code関連の急上昇は「<strong>claude pro claude code +180%</strong>」程度に留まり、有料プランの位置づけ確認に検索動機が集中している。OpenAIとGoogleの両方が同週に大型アップデートをぶつけてきた構図で、日本のテック層の検索動線にエンタープライズ用語が初めて大量流入した。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">chatgpt images 2.0</span><span class="metric-value up">+33,600%</span></div>
+    <div class="metric"><span class="metric-label">gemini enterprise agent</span><span class="metric-value up">+4,100%</span></div>
+    <div class="metric"><span class="metric-label">gpt 5.5</span><span class="metric-value up">+1,350%</span></div>
+    <div class="metric"><span class="metric-label">取得</span><span class="metric-value">JP / 7d</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">日本のクライアント役員層が「ChatGPT Images 2.0は何が違うのか」「Gemini Enterprise Agentはなぜ騒がれているのか」を<strong>今週中にCxOブリーフで聞いてくる</strong>のはほぼ確実。コンサル側は提案前の30分で答えられるよう「2サービス×LMビジネスへの応用例×他社事例」の<strong>1枚サマリを今週中に共有資産化</strong>すべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">急上昇キーワードの社内浸透度はマネジャーの<strong>「アンテナ感度」のリアルタイム指標</strong>になる。週次の「今週のAIニュース3行サマリ」を全マネジャー必読にし、知らないキーワードはslackで質問して良い文化を運用する。<strong>キャッチアップ速度の差を放置すると、半期で意思決定の質に1段の差が生じる</strong>。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://trends.google.co.jp/trends/explore?date=now%207-d&geo=JP&q=ChatGPT,Gemini,Claude%20Code,AI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88,OpenAI" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Google Trends (JP) — Rising queries last 7 days (pytrends, Apr 27, 2026)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 3: YouTube AI動画 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">▶️</div>
+  <div>
+    <h2>YouTube AI動画 — 海外テック深掘り</h2>
+    <span class="sub">Tech YouTube — agentic AI / image gen / coding agents</span>
+  </div>
+</div>
+
+<!-- Card 05: YouTube -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-tech">▶️ 4/26</div>
+  <h3>Wharton教授Ethan Mollick「Agentic AI will rise in 2026」 — 「co-intelligenceの時代から、AIをマネジメントする時代へ」を宣言</h3>
+  <p class="summary">
+    Whartonスクール教授・Ethan Mollick（『Co-Intelligence』著者）がValenceの「<strong>2026 AI &amp; The Workforce Summit</strong>」で行った講演がYouTube Shortsとブログ「One Useful Thing」で同時公開。要旨は「<strong>2024年〜2025年は人間とAIが対話で共作するco-intelligence、2026年以降はAIに数時間分の仕事を渡してマネジメントするagentic eraに入った</strong>」。Claude Code、OpenAI Codex、OpenClawなどのエージェントを例に、「数分で数時間分のアウトプットが返ってくる」マネジメント対象としてのAIへの認識転換を促す。HBR4月号の論調（「<strong>AI時代に合議制意思決定は機能しない</strong>」）とも整合。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">登壇</span><span class="metric-value">2026 AI &amp; Workforce</span></div>
+    <div class="metric"><span class="metric-label">Substack購読</span><span class="metric-value">~1M</span></div>
+    <div class="metric"><span class="metric-label">テーマ</span><span class="metric-value">agentic era</span></div>
+    <div class="metric"><span class="metric-label">主張</span><span class="metric-value">co-int → manage</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">クライアント提案の枕詞を<strong>「AIアシスタントを導入しましょう」から「AIエージェントの管理体制を設計しましょう」に書き換える</strong>。提案書のサンプルテンプレを5月初旬に更新し、責任範囲・KPI・人手レビュー設計を<strong>提案書1ページ目に固定</strong>することでコンサル単価の説明可能性が上がる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">マネジャー研修のテーマを「<strong>AIをチームメンバーとして管理する</strong>」に切り替える。具体的には①AIへの仕事の渡し方、②品質レビュー、③エスカレーション基準、④評価面談での扱い — の4観点でロールプレイ研修を5月の評価面談ラッシュ前に1回挟む。AIがチームに加わった前提でメンバー数の数え方も再定義する。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.youtube.com/shorts/M257ESTQLrs" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      YouTube — Wharton's Ethan Mollick: Agentic AI will rise in 2026
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 4: 中国SNSトレンド -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🇨🇳</div>
+  <div>
+    <h2>中国SNSトレンド — 36Kr / 虎嗅</h2>
+    <span class="sub">36Kr / Huxiu — China AI market &amp; capex</span>
+  </div>
+</div>
+
+<!-- Card 06: Aishi $300M -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-market">🇨🇳 4/24</div>
+  <h3>中国AI動画スタートアップ「愛詩科技（Aishi）」が3億ドル調達 — Runwayに次ぐ世界2位、リアルタイム世界モデルへ</h3>
+  <p class="summary">
+    36Krによれば、AI動画生成スタートアップの<strong>愛詩科技（Aishi Technology）</strong>がシリーズCで <strong>3億ドル（約470億円）</strong>を調達。<strong>分野史上2位</strong>の規模で、3月に発表されたRunwayのシリーズE 3億1,500万ドルに次ぐ。資金は「<strong>リアルタイム世界モデル（real-time world model）</strong>」の開発に投じる方針で、中国系プレイヤーが映像生成からインタラクティブな世界シミュレーションへ前線を押し上げる。中国AIクラウド市場では<strong>トークン需要が2年で1,000倍</strong>、3月にはGoogle Cloud / AWS / Tencent / Alibaba / Baiduが<strong>3〜5%値上げ</strong>に動いており、需給逼迫が新興クラウド・モデルベンダーに資金を集中させている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">調達額</span><span class="metric-value up">$300M</span></div>
+    <div class="metric"><span class="metric-label">分野順位</span><span class="metric-value">世界2位</span></div>
+    <div class="metric"><span class="metric-label">トークン需要</span><span class="metric-value up">×1,000 / 2年</span></div>
+    <div class="metric"><span class="metric-label">中国クラウド値上げ</span><span class="metric-value up">+3〜5%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>「中国系の動画／世界モデル」をベンチに入れた提案</strong>を作れる体制が必要。米中両極のモデルから選定する前提を提案書に明記し、価格・地政学・データ主権の3軸でクライアントが選べる比較表を社内ナレッジに固定。<strong>BPO型のAIアウトソーシングも中国系を含めた価格競争に晒される</strong>ことを織り込む。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">中国テック動向を読む人材は社内で希少。<strong>36Kr / 虎嗅 / WeChat公式アカウントの定点観測</strong>を週1で行う担当者を兼務で1名指名し、月次でDXU内に共有する仕組みを5月から開始する。中国語の一次情報が読めるメンバーは採用評価で加点する基準に切り替え、半年で1名の採用を狙う。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://36kr.com/p/3720847358654849" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      36Kr — 3亿美元巨额融资，AI视频新独角兽爱诗科技 (Apr 2026)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 5: AI効率 → ビジネス価値変換 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">💡</div>
+  <div>
+    <h2>AI効率 → ビジネス価値変換 グローバル事例</h2>
+    <span class="sub">McKinsey / Deloitte / Fortune — Apr 2026 enterprise AI ROI</span>
+  </div>
+</div>
+
+<!-- Card 07: Deloitte/McKinsey ROI gap -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-research">💡 4/20</div>
+  <h3>Deloitte「エージェントAIで本物のROIを得ている企業はわずか10%」 — Fortune 4月20日報道、効率化66%・売上増20%の落差</h3>
+  <p class="summary">
+    Fortune（4/20）によれば、Deloitteの最新調査で「<strong>エージェントAIで意義のあるROIを実現できている企業は10%</strong>」、McKinseyの2026 State of AIでも「<strong>AI投資から実際のリターンを得られている企業は5.5%</strong>」に留まる。一方で<strong>66%の企業が効率向上を報告</strong>しており、「効率化はできるが売上には繋がっていない」というギャップが鮮明に。Visionary企業（上位）はLaggardに対し<strong>売上1.7倍・3年TSR 3.6倍・ROIC 2.7倍・EBITマージン1.6倍</strong>と差を広げた。リターンが出るまでの期間は<strong>初期効果6〜18ヶ月、財務インパクト18〜36ヶ月、企業ROIは3〜5年</strong>と整理されている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">本物ROI</span><span class="metric-value down">10%のみ</span></div>
+    <div class="metric"><span class="metric-label">効率向上</span><span class="metric-value up">66%</span></div>
+    <div class="metric"><span class="metric-label">Visionary売上</span><span class="metric-value up">1.7×</span></div>
+    <div class="metric"><span class="metric-label">企業ROI期間</span><span class="metric-value">3〜5年</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">「<strong>AIで効率化したが収益化できない</strong>」がクライアントの最大の課題に確定した。LMビジネスは「効率化PoC」から「<strong>効率化→価格再設計→新製品ライン→収益化までの12〜36ヶ月ロードマップ</strong>」に提案範囲を拡張すべき。<strong>請求軸も時間チャージから成果連動の比率を上げる</strong>議論を5月の経営会議に上げる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">「AIで何時間削った」というKPIは社内で1年で陳腐化する。マネジャーは<strong>削減した時間を「次にどの新規業務に投下したか」まで追跡するKPI</strong>に組み替える。評価面談Q1初目標で「効率化×新規開拓のセット目標」を全員に設定し、効率化単独の評価を打ち切る方向で人事制度を5〜6月に見直す。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://fortune.com/2026/04/20/hidden-roi-of-ai-what-leaders-should-actually-measure-deloitte-report/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Fortune — The hidden ROI of AI: What leaders should actually measure (Apr 20, 2026)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 08: JPMorgan / Walmart / Healthcare agent ROI -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">08</span>
+  <div class="card-tag tag-research">💡 4/24</div>
+  <h3>JPMorgan・Walmart・Healthcareの本番エージェント事例 — 平均ROI 171%、Time-to-ROIは2週間〜12ヶ月</h3>
+  <p class="summary">
+    AI Monk・Stanford Digital Economyの最新まとめによれば、本番投入されたエージェントAIの<strong>平均ROIは171%</strong>、米国企業に絞ると<strong>192%</strong>と従来型自動化の3倍を記録。<strong>JPMorganでは投資銀行向けプレゼンを30秒で生成</strong>（従来は若手が数時間）、<strong>Walmartは4,700店舗・物流拠点の補充判断を人手承認なしで自律実行</strong>、<strong>ヘルスケアは1ドル投資あたり3.2ドルのリターンを14ヶ月で回収</strong>。Time-to-ROIはカスタマーサポートで2週間、サプライチェーンで12ヶ月以上と幅があり、<strong>74%の経営層が初年度内にROI達成、39%が生産性が2倍以上</strong>と回答。「PoCから本番昇格できた企業」と「PoC止まりの企業」の差が急拡大している。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">平均ROI</span><span class="metric-value up">171%</span></div>
+    <div class="metric"><span class="metric-label">米国企業</span><span class="metric-value up">192%</span></div>
+    <div class="metric"><span class="metric-label">初年度ROI達成</span><span class="metric-value up">74%</span></div>
+    <div class="metric"><span class="metric-label">生産性2倍超</span><span class="metric-value">39%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">「<strong>2週間で効果が出るカスタマーサポート系</strong>」と「<strong>12ヶ月以上かかるサプライチェーン系</strong>」を明確に分けた提案体系を作る。Time-to-ROIで分けることでクライアントの予算稟議が通りやすくなる。SREイネU・DXUは「2週間PoC型」と「年単位プログラム型」の<strong>2系統で見積りテンプレを5月までに整備</strong>。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">JPMorganのプレゼン生成事例は<strong>若手の「学習機会」が減るリスク</strong>と表裏一体。OJTを「自分で資料を作る」から「<strong>AI生成物のレビューと改善提案</strong>」にシフトし、若手の評価項目に「AI出力の批判的検証力」を加える。新卒〜2年目の育成プログラムは5〜6月に全面再設計を始めるべき。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://aimonk.com/agentic-ai-examples-enterprise-roi-case-studies/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      AI Monk — 12 Agentic AI Examples With Measurable ROI (2025-2026)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 6: AI BPO -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🏭</div>
+  <div>
+    <h2>AI BPO — アウトソーシング革命</h2>
+    <span class="sub">Wipro / Accenture / Astute — Apr 2026 BPO restructuring</span>
+  </div>
+</div>
+
+<!-- Card 09: Wipro AI-native unit -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">09</span>
+  <div class="card-tag tag-market">🏭 4/24</div>
+  <h3>Wipro、AIネイティブ「Business and Platforms Unit」を新設しBandaru氏をCEOに — 「Services as Software」への転換を本気化</h3>
+  <p class="summary">
+    Wiproが大型組織再編を発表。<strong>AIネイティブの新ユニット「Business and Platforms Unit」</strong>を新設し、<strong>Nagendra Bandaru氏をCEOに任命</strong>。狙いは「<strong>Services as Software</strong>」への戦略シフトで、既存のNetOxygen / CROAMIS / HPS（ヘルスケア）といった社内AIプラットフォームを統合し、業界別のAI主導ビジネスストリームを束ねる。Technology Services Global Business Linesには<strong>Accenture在籍19年・米州大型変革を率いたKanwar Singh氏</strong>をPresidentに招聘。AccentureのQ2決算でManagedサービスがインド勢の競合圧力として再確認された直後で、<strong>BPO市場は2026年USD 353.6BからUSD 741.6Bへ年9.7%成長</strong>と試算される中、人月モデルからAI主導モデルへの再定義が不可避になった。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">新ユニットCEO</span><span class="metric-value">Bandaru氏</span></div>
+    <div class="metric"><span class="metric-label">統合プラットフォーム</span><span class="metric-value">3製品以上</span></div>
+    <div class="metric"><span class="metric-label">BPO市場2026</span><span class="metric-value">$353.6B</span></div>
+    <div class="metric"><span class="metric-label">CAGR</span><span class="metric-value up">9.7%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>「人月で売る」モデルが2〜3年以内に粗利を圧迫</strong>することがWiproの動きで再確認された。LMビジネスは「人 + AIプラットフォーム」のセットで成果コミット型契約を作る方向にシフトすべき。<strong>顧客企業に対する「AIプラットフォーム提供＋運用」のリカーリング売上比率</strong>を経営KPIに組み込む議論を5月の経営合宿で立ち上げる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">Wiproは<strong>「組織図そのものをAIに合わせて作り直した」</strong>。同様に当社のSREイネ / DXUの両ユニットも、AI主導のサービスラインを横軸として再定義する選択肢を検討すべき。「<strong>サービス×AIプラットフォーム×顧客業界</strong>」のマトリクス設計を6月までにDr.化し、半年後の組織再編候補としてOption化する。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.whalesbook.com/news/English/tech/Wipro-Bets-Big-on-AI-With-New-Unit-Key-Leadership-Changes/69cd30673f30946a7240bada" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Whalesbook — Wipro Bets Big on AI With New Unit, Key Leadership Changes (Apr 2026)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 10: BPO market size -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">10</span>
+  <div class="card-tag tag-market">🏭 4/26</div>
+  <h3>世界BPO市場、2026年USD 353.6B→2034年USD 741.6Bへ — Astute Analyticaは2033年USD 861Bと予測、AI/RPA統合が成長エンジン</h3>
+  <p class="summary">
+    Fortune Business Insightsは2026年の世界BPO市場規模を<strong>USD 353.64B</strong>と推定し、2034年に<strong>USD 741.60B（CAGR 9.7%）</strong>に到達すると予測。Grand View Researchは2025年USD 328.37B→2033年USD 695.77B（CAGR 9.9%）、Astute Analyticaは2033年に<strong>USD 861.45B</strong>に達すると独自に試算する。共通するのは<strong>「AI / RPA / アドバンスト・アナリティクスの統合がF&amp;A・カスタマーオペで成長を牽引している」</strong>という構造変化。<strong>定型タスクの自動化を超えて、知識労働をBPOに切り出す動き</strong>が広がっており、コンサルとBPOの境界線が薄まりつつある。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">2026市場</span><span class="metric-value">$353.6B</span></div>
+    <div class="metric"><span class="metric-label">2034予測</span><span class="metric-value up">$741.6B</span></div>
+    <div class="metric"><span class="metric-label">CAGR</span><span class="metric-value up">9.6〜9.9%</span></div>
+    <div class="metric"><span class="metric-label">2033 高位推計</span><span class="metric-value up">$861.5B</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">「<strong>BPO×AI</strong>」は今後5〜10年でLMビジネスの隣接市場として最大の機会領域。コンサルだけ売るのではなく、<strong>「業務プロセスを引き受けて運用しつつAIで効率化を回す」サービスラインの設計</strong>を経営アジェンダ化すべき。最初の1ステップは、既存顧客の中からBPO委託意向のあるクライアント3社を6月までにヒアリングする。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">BPO人材は<strong>「業務理解＋AI運用＋プロジェクトマネジメント」の3点持ち</strong>が必須。既存のコンサル人材をリスキリングするより、<strong>BPO業界経験者の中途採用とパートナー協業の方が早い</strong>。HRはBPO/SaaS業界経験者の中途要件定義を5月中に整備し、リファラル経路を含めて確保戦略を立てる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.fortunebusinessinsights.com/business-process-outsourcing-market-111583" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Fortune Business Insights — BPO Market Size, Share [2026-2034]
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 7: Product Hunt -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🚀</div>
+  <div>
+    <h2>Product Hunt トレンド — 注目プロダクト</h2>
+    <span class="sub">Product Hunt — agentic compliance / collaborative AI workspace</span>
+  </div>
+</div>
+
+<!-- Card 11: Auxilius.ai -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">11</span>
+  <div class="card-tag tag-tech">🚀 4/25</div>
+  <h3>Auxilius.ai — 規制コンプライアンスを「実行可能なコード」に変えるエージェント基盤</h3>
+  <p class="summary">
+    Product Huntに登場した<strong>Auxilius.ai</strong>は、「<strong>compliance as executable code</strong>」を掲げるエージェントAIプラットフォーム。SOC 2・ISO 27001・GDPR・SOX等の規制要件をエージェントが解釈し、<strong>監査証跡・コントロールテスト・例外検知を自動コード化</strong>する。従来は監査法人＋GRCツール＋エンジニアリングの3者協業で半年かかっていた工程を「数週間」に圧縮するというピッチ。<strong>HackerNewsで議論されたエージェントの本番DB削除事件</strong>と同週に登場した点で、エージェント運用とコンプライアンスを<strong>同じレイヤーで管理する</strong>方向性を象徴している。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">カテゴリ</span><span class="metric-value">Agentic compliance</span></div>
+    <div class="metric"><span class="metric-label">対象規制</span><span class="metric-value">SOC2 / ISO / GDPR</span></div>
+    <div class="metric"><span class="metric-label">価格モデル</span><span class="metric-value">SaaS（要問合せ）</span></div>
+    <div class="metric"><span class="metric-label">差別化</span><span class="metric-value">コード化された監査</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">国内クライアントの<strong>SOC2 / ISMS / 個人情報保護対応はコンサル＋GRCツールで人月積み上げ型</strong>になっている。Auxilius的なアプローチが入ると人月の50%以上が消える可能性がある。逆に「<strong>コンプライアンス・コードのレビューと監査責任を担う高単価コンサル</strong>」という新ポジションが立つ。提案ラインの再設計を6月までに検討する。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">監査・コンプラ系人材の<strong>キャリアパスを「ドキュメント作成」から「コード化された監査の設計者」</strong>に書き換える。既存の監査担当者には①Pythonリテラシー、②ASTレベルでのコントロール理解、③エージェント挙動のレビュー — の3点リスキリングプログラムを下期から段階導入する。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.producthunt.com/products/auxilius-ai" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Product Hunt — Auxilius.ai: Turn compliance into code with agentic AI
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 12: Agnes AI -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">12</span>
+  <div class="card-tag tag-tech">🚀 4/24</div>
+  <h3>Agnes AI — 「リアルタイム共同編集×共有メモリ」の対話型AIエージェントワークスペース</h3>
+  <p class="summary">
+    Product Huntで注目された<strong>Agnes AI</strong>は、対話型AIエージェントに<strong>リアルタイム共同編集・共有メモリ・チームワークフロー</strong>を組み合わせたワークスペース。スライド・レポート・戦略ドキュメントを「<strong>チームメンバーとAIが同じドキュメント上で同時に共作する</strong>」体験を提供する。Notion AIやGoogle DocsのGemini統合に対し、Agnesは「<strong>エージェントを人格化して命名し、メンバー単位で記憶を持たせる</strong>」アプローチが差別化軸。Mollick教授の「co-intelligence → managing AIs」論と整合し、<strong>チームのAI共同管理</strong>というユースケースに着地している。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">カテゴリ</span><span class="metric-value">Collaborative AI</span></div>
+    <div class="metric"><span class="metric-label">主要機能</span><span class="metric-value">共同編集 / 共有メモリ</span></div>
+    <div class="metric"><span class="metric-label">対比</span><span class="metric-value">Notion AI / Gemini</span></div>
+    <div class="metric"><span class="metric-label">対象</span><span class="metric-value">企画／戦略チーム</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">クライアントの企画・戦略部門への<strong>「Agnes的ワークスペース導入支援」が新しい提案フォーマット</strong>になる。「資料を作る」ではなく「資料が育つ場を設計する」方向で、<strong>提案テンプレを5月中に1件試作</strong>。Notion / Microsoft 365 / Google Workspaceとの併用シナリオで比較提案資料を整える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">チームに「AI同僚」を入れると<strong>役割設計と1on1テーマが変わる</strong>。マネジャーは「AI同僚との分業設計」を1on1のレギュラー議題に追加し、メンバーが自分の付加価値を語り直す機会を提供する。HRは「AIを含めたチーム編成」をメンバーノートに記録するルールを6月から運用開始すべき。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.producthunt.com/products/agnes-ai?launch=agnes-ai" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Product Hunt — Agnes AI: AI Agent for collaborative workspace
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 8: AI・テクノロジー 最新ニュース -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース</h2>
+    <span class="sub">Google / Anthropic / Microsoft — Apr 21–25, 2026</span>
+  </div>
+</div>
+
+<!-- Card 13: Gemini Enterprise Agent Platform -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">13</span>
+  <div class="card-tag tag-breaking">🤖 4/22</div>
+  <h3>Google「Gemini Enterprise Agent Platform」をGAリリース — Vertex AIを統合、$750Mのパートナーファンドも同時投入</h3>
+  <p class="summary">
+    Google CloudはCloud Next '26（ラスベガス）で<strong>Gemini Enterprise Agent Platform</strong>を発表し、4月22日からGA提供を開始。Vertex AIを統合・改名し、<strong>Agent Studio（ローコード）／Agent Gateway／Model Gardenの200超モデル／グラフベースのADK（Agent Development Kit）</strong>を1基盤に束ねた。今後Vertex AIのロードマップは全てこの新プラットフォーム経由で提供される。Gartner調査では<strong>「2026年末までにエンタープライズアプリの40%がAIエージェントを内蔵する」</strong>と予測されており、120,000社のパートナーエコシステムには<strong>$750M（約1,170億円）のパートナーファンド</strong>を同時投入する。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">GA</span><span class="metric-value up">2026/4/22</span></div>
+    <div class="metric"><span class="metric-label">モデル数</span><span class="metric-value">200+</span></div>
+    <div class="metric"><span class="metric-label">パートナーファンド</span><span class="metric-value up">$750M</span></div>
+    <div class="metric"><span class="metric-label">アプリAI化率</span><span class="metric-value up">40%（年末）</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">クライアントの<strong>「AzureかGoogle CloudかでエージェントPaaSを選ぶ」相談が5月から急増</strong>する。LMビジネスは「比較検討の中立アドバイザー」「実装と運用」の2レイヤーで提案する型を明確化し、<strong>Gemini Enterprise / Azure AI Foundry / AWS Bedrock Agentsの3社比較表</strong>を5月中に社内ナレッジ化すべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">SREイネU・DXUの両側で「<strong>Gemini Enterprise / Azure AI Foundry / AWS Bedrock Agents</strong>」の3社対応スキルを6月までに最低2人ずつ確保する目標を掲げる。Google Cloud側のパートナー認定スキームは$750Mファンドが背景にあり、<strong>認定取得のスピードが商機の取り合いを決める</strong>。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Google Cloud Blog — Introducing Gemini Enterprise Agent Platform (Apr 22, 2026)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 14: ChatGPT Images 2.0 official -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">14</span>
+  <div class="card-tag tag-breaking">🤖 4/21</div>
+  <h3>OpenAI「ChatGPT Images 2.0（gpt-image-2）」リリース — 思考モード搭載、2K解像度・最大8枚一貫生成、Image Arena首位独走</h3>
+  <p class="summary">
+    OpenAIは4月21日、画像モデル<strong>gpt-image-2</strong>を正式リリース。<strong>思考モード（Thinking）</strong>では生成前にWeb検索・レイアウト推論・出力検証まで実行し、<strong>2K解像度・3:1〜1:3のアスペクト比・1プロンプトで最大8枚の一貫した画像</strong>を生成。テキストレンダリングは<strong>ラテン・中国語・日本語・韓国語・アラビア語で精度95%超</strong>、ローンチ12時間で<strong>Image Arena全カテゴリ1位（+242点リード）</strong>。Instantモードは無料ユーザーにも開放、Thinkingモードは<strong>Plus（$20/月）／Pro（$200/月）／Business／Enterprise</strong>限定。OpenAIエコシステムの収益化と「思考型マルチモーダル」の主導権争いが本格化した。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">解像度</span><span class="metric-value">2K</span></div>
+    <div class="metric"><span class="metric-label">一貫生成</span><span class="metric-value">最大8枚</span></div>
+    <div class="metric"><span class="metric-label">テキスト精度</span><span class="metric-value up">95%超（多言語）</span></div>
+    <div class="metric"><span class="metric-label">Pro価格</span><span class="metric-value">$200/月</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text"><strong>提案資料の図版・コンセプトビジュアルがThinkingモード前提で「論理整合のとれた図」になる</strong>。コンサルの差別化軸が「ビジュアルの巧拙」から「<strong>図に込めるロジック設計力</strong>」へ完全に移った。アサインしているデザイナーの稼働を、論理整合チェックとブランド一貫性の番人にシフトすべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">「画像が読める／指示が書ける」社員と書けない社員で<strong>1日あたり生産物の差が10倍以上</strong>になる。研修部門は4月中にPlus/Pro契約を全マネジャー以上に配布し、<strong>「Thinking Mode前提の社内画像ガイドライン」を5月中に整備</strong>すべき。デザイン職の評価基準も「制作スピード」から「ディレクション品質」へ移行する設計が必要。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://openai.com/index/introducing-chatgpt-images-2-0/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      OpenAI — Introducing ChatGPT Images 2.0 (Apr 21, 2026)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 15: Microsoft & Google AI capex -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">15</span>
+  <div class="card-tag tag-market">🤖 4/26</div>
+  <h3>ハイパースケーラー4社のAI設備投資が今年$700B規模に — Microsoft FY26で$120B超、Alphabetは$185Bへ倍増、4/29決算が次の試金石</h3>
+  <p class="summary">
+    CNBC・FortuneのまとめでAlphabet・Microsoft・Meta・Amazonの<strong>2026年AI設備投資は合計$700B規模</strong>と試算される。Microsoftは<strong>直近四半期だけで$37.5B</strong>、FY26通年で$120B超ペース、AIキャパシティを年内に80%以上拡張、データセンターのフットプリントは2年で倍増を計画。Alphabetは<strong>2026年Capexを倍増の$175〜185B</strong>とし、クラウド受注残高は<strong>四半期で55%増の$240B</strong>。今週末（4/29）にMicrosoft（FY26 Q3）とMeta（Q1）が同時決算を予定し、<strong>「AI需要は本物か」の四半期試金石</strong>になる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">4社合計Capex</span><span class="metric-value up">~$700B</span></div>
+    <div class="metric"><span class="metric-label">Microsoft Q</span><span class="metric-value">$37.5B</span></div>
+    <div class="metric"><span class="metric-label">Alphabet 2026</span><span class="metric-value up">$175〜185B</span></div>
+    <div class="metric"><span class="metric-label">Cloud受注残</span><span class="metric-value up">$240B</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">クライアントの<strong>「AIインフラ投資は2026年がピークか、それともまだ先か」という意思決定</strong>に対して、4/29決算の読み解きを提供できる体制を作る。コンサル側は決算翌週（5/4-9）に「<strong>4社決算サマリ＋日本企業への示唆</strong>」のクライアント向けレターを発行する案を週次定例で承認する。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">$700B規模のAI設備投資は<strong>クラウド人材・AIインフラ人材の単価上昇</strong>を年単位で押し上げる。当社のSREイネU側で「クラウド原価最適化（FinOps）」のスキルを持つメンバーは<strong>市場価値が前年比1.5〜2倍</strong>に動く可能性が高く、リテンション施策（評価・配置・アサイン）を6月までに先回りで打つ。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      CNBC / Fortune / Microsoft IR — Hyperscaler AI Capex 2026
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 9: 政治・国際動向 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🌏</div>
+  <div>
+    <h2>政治・国際動向 ｜ LMビジネス視点</h2>
+    <span class="sub">Japan economy / US trade — Apr 24–27, 2026</span>
+  </div>
+</div>
+
+<!-- Card 16: Nikkei 60,584 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">16</span>
+  <div class="card-tag tag-market">🌏 4/27</div>
+  <h3>日経平均6万円突破 — 4/27午前終値60,584円、ファナック決算と中東情勢緩和でAI半導体株が牽引、企業増益期待が崩れず</h3>
+  <p class="summary">
+    27日の東京株式市場で日経平均株価は午前終値が前週末比 <strong>+868円19銭（+1.45%）の60,584円37銭</strong>。<strong>ファナックの大幅高</strong>と中東情勢の緊張緩和への期待を背景に、AI半導体銘柄が再び主導した。23日に一時6万円を初突破した後の利益確定売りを24日（終値59,716円）にこなし、月曜から再度6万円台に乗せた格好。日経の社説・コラムは<strong>「企業増益期待が崩れず、戦闘終結観測の中で資金が日本株に向かう」</strong>と整理。一方で野村證券は「6万円は通過点」と分析するアナリストと、「7万円は条件付き」と分析するアナリストで見方が割れている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">午前終値</span><span class="metric-value up">¥60,584</span></div>
+    <div class="metric"><span class="metric-label">前週末比</span><span class="metric-value up">+868円(+1.45%)</span></div>
+    <div class="metric"><span class="metric-label">USD/JPY</span><span class="metric-value down">~159.4</span></div>
+    <div class="metric"><span class="metric-label">主導</span><span class="metric-value">AI半導体・ファナック</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">クライアントの<strong>「自社株価とDXの関係」が経営層の議題に上る</strong>頻度が増える。LMビジネスは「DXによる粗利改善のIR向け説明資料サポート」というニッチを公式メニュー化する好機。<strong>5月のIR説明会前後で「DX→粗利→株価のロジック」を伝えるコンサルパッケージ</strong>を1社向けに試作する。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">日経6万円超は<strong>従業員の自社株報酬・持株会・SO評価額に直撃</strong>する。HRはストックベース報酬の含み益・実現益のシミュレーションを部門マネジャーに5月初旬に共有し、<strong>採用面談・1on1での話材としてマネジャーが説明できる状態</strong>にする。市況頼みの満足度ではなく、報酬設計そのものの納得感を点検する機会にする。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.nikkei.com/article/DGXZQOUB165750W6A410C2000000/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      日本経済新聞 — 日経平均株価初の6万円、崩れぬ企業増益期待 (2026年4月)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 17: Trump tariff Japan -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">17</span>
+  <div class="card-tag tag-policy">🌏 4/28（公聴会）</div>
+  <h3>USTRが対日Section 301調査の公聴会を4/28実施 — 日本は$550B対米投資コミット、トランプ関税は「IEEPA→Section 122 10%」へ</h3>
+  <p class="summary">
+    USTRは3月に対日を含むSection 301調査を開始し、<strong>4月28日に公聴会</strong>を実施。米最高裁の2026年2月判決でIEEPAに基づく関税権限が否定されたため、<strong>トランプ政権は通商法Section 122に基づく「10%の暫定輸入課徴金」</strong>に切り替えた。日米は2025年7月の戦略的貿易・投資協定で<strong>対日輸入の大半に15%関税</strong>を課す一方、日本は<strong>2029年までに$550B（約86兆円）を半導体・重要鉱物・エネルギー・AI・量子に対米投資</strong>することを誓約。日本の25年度貿易収支は<strong>5年連続赤字（▲1.7兆円）</strong>で、自動車輸出への関税影響が続く。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">公聴会</span><span class="metric-value">2026/4/28</span></div>
+    <div class="metric"><span class="metric-label">対日関税</span><span class="metric-value down">15%</span></div>
+    <div class="metric"><span class="metric-label">対米投資</span><span class="metric-value up">$550B</span></div>
+    <div class="metric"><span class="metric-label">25年度貿易赤字</span><span class="metric-value down">▲1.7兆円</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">クライアントの<strong>米国投資（半導体・AI・エネルギー）の意思決定支援が今年の最大テーマ</strong>。LMビジネスは「日米通商×AI設備投資×サプライチェーン再設計」のクロスファンクションで提案体系を作り、<strong>4/28公聴会の論点メモを5月初週にIRレターで顧客に届ける</strong>運用にすべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">対米投資$550Bは<strong>「日本人材の米国アサイン需要」を中期で押し上げる</strong>。HRはグローバルアサインメントの社内公募制度を5月までに見直し、米国受け入れ要件・帯同家族支援・税務手続のテンプレを再整備する。<strong>英語＋AI＋業界知見の3点持ち人材</strong>を採用要件で明示するべき。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.congress.gov/crs-product/IF11120" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Congress.gov CRS — U.S.-Japan Trade Agreements and Tariff Negotiations (Apr 2026 update)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 10: HBR -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">📚</div>
+  <div>
+    <h2>HBR — マネジメント・戦略インサイト</h2>
+    <span class="sub">Harvard Business Review — Apr 2026 leadership / decision making</span>
+  </div>
+</div>
+
+<!-- Card 18: HBR consensus decision-making -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">18</span>
+  <div class="card-tag tag-research">📚 4月号</div>
+  <h3>HBR「合議制の意思決定はAI時代に機能しない」 — 遅さと情報歪曲の2点で組織の競争力を毀損、CEOの単独裁断とAIアシストへの転換を提唱</h3>
+  <p class="summary">
+    HBR 2026年4月号の論考<strong>「Decision-Making by Consensus Doesn't Work in the AI Era」</strong>は、<strong>多くのリーダーがAIへの組織適応の必要性に同意しつつ、合議制の意思決定を捨てられていない</strong>と指摘。AI時代の合議制は<strong>①遅すぎる、②議論の中で情報が歪曲される</strong>の2点で機能不全に陥ると論じる。同号の別記事「The AI Leadership Imperative」は<strong>「Change Fitness」を中核能力に据える</strong>ことを推奨し、AIリテラシーへの広い投資・ジョブではなくワークフローの再設計・学習速度の評価への組み込みを4つの柱として提示。Cisco社長Jeetu Patel氏インタビューも、「<strong>少数の企業しかオペレーティングモデルとビジネスモデルをAIに合わせて再設計できていない</strong>」と現状認識を共有する。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">論考</span><span class="metric-value">Decision by Consensus</span></div>
+    <div class="metric"><span class="metric-label">合議制の弱点</span><span class="metric-value down">遅い／歪む</span></div>
+    <div class="metric"><span class="metric-label">推奨</span><span class="metric-value up">Change Fitness</span></div>
+    <div class="metric"><span class="metric-label">対象号</span><span class="metric-value">HBR 2026 Apr</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">日本企業の<strong>稟議・リング決裁文化はHBRの定義する「合議制」そのもの</strong>。LMビジネスは「<strong>意思決定の解像度を1段上げるDXコンサル</strong>」として、稟議プロセスのRedesign＋AIアシストの提案を新メニュー化できる。AIの導入支援だけでは弱く、<strong>意思決定設計まで踏み込む</strong>のが差別化軸。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">マネジャー15名の評価面談Q1初目標に「<strong>意思決定速度</strong>」と「<strong>情報歪曲を抑える1on1の質</strong>」を加える。具体的には①決裁待ち平均日数、②議事録に対する事後反論率、③AIサマリと実際の合議結果のズレ率 — の3指標で、5月の評価面談ラッシュ前にトライアル運用を始める。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://hbr.org/2026/04/decision-making-by-consensus-doesnt-work-in-the-ai-era" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Harvard Business Review — Decision-Making by Consensus Doesn't Work in the AI Era (Apr 2026)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 11: Weekly EM/Product インテリジェンス（月曜のみ） -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🌐</div>
+  <div>
+    <h2>Weekly EM/Product インテリジェンス（月曜版）</h2>
+    <span class="sub">Pragmatic Engineer / Lenny / One Useful Thing / Platform Engineering — week of Apr 21–27</span>
+  </div>
+</div>
+
+<!-- Card 19: Pragmatic Engineer -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">19</span>
+  <div class="card-tag tag-research">🌐 Pragmatic Eng.</div>
+  <h3>Gergely Orosz「The impact of AI on software engineers in 2026」 — 900名超サーベイ、30%が利用上限到達、コスト不安が増加</h3>
+  <p class="summary">
+    The Pragmatic Engineer（Gergely Orosz）の最新号は<strong>900名超のサーベイ</strong>に基づき、エンジニアのAIツール利用実態を整理。<strong>約30%が有料プランの利用上限に到達</strong>しており、対処法は<strong>①ツール切り替え、②プランアップグレード、③API課金へ移行</strong>の3パターンに分かれる。「<strong>会社が予算を持つケースが大半</strong>」だが、<strong>予算管理者ほどAI関連コストの上昇に神経質</strong>になっている。「Builder（大きなコード変更を行う層）」は<strong>AIスロップ（粗悪な自動生成コード）</strong>のレビュー負荷が増大しており、コード品質保証の責任所在が組織課題として浮上。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">サーベイ</span><span class="metric-value">900+ resp.</span></div>
+    <div class="metric"><span class="metric-label">上限到達</span><span class="metric-value down">~30%</span></div>
+    <div class="metric"><span class="metric-label">予算負担</span><span class="metric-value">会社が大半</span></div>
+    <div class="metric"><span class="metric-label">課題</span><span class="metric-value down">AI slop</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">「AIコストはサブスク定額で予測可能」というクライアントへの説明が<strong>「上限・APIモード移行・ツール切替の3軸でコストが動的に変動する」</strong>に書き換わる。LMビジネスはクライアントへの<strong>AIコストガバナンス支援（FinOps for AI）</strong>を独立メニュー化すべき。Pragmatic Engineerのデータは提案資料の根拠として5月から活用する。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">SREイネ・DXUの両側で<strong>「AIコスト責任者（個人レベル）」を月単位で可視化</strong>する。1on1で「<strong>あなたが今月最も投じたAIコストはどのタスクで、それは何のリターンを生んだか</strong>」をテンプレ質問にする。<strong>AIスロップのレビューを評価項目に組み込む</strong>と、コードオーナーシップが担保される。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://newsletter.pragmaticengineer.com/p/the-impact-of-ai-on-software-engineers-2026" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      The Pragmatic Engineer — The impact of AI on software engineers in 2026
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 20: Platform Engineering predictions -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">20</span>
+  <div class="card-tag tag-tech">🌐 Platform Eng.</div>
+  <h3>platformengineering.org「2026 予測10本」 — AIエージェントが「プラットフォームの一級市民」化、FinOpsはPre-deployゲートに進化</h3>
+  <p class="summary">
+    platformengineering.orgの最新コミュニティ予測は、<strong>2026年に内部開発者プラットフォーム（IDP）が"競争優位"から"必須インフラ"に移行</strong>と整理。①<strong>AIエージェントが実験ツールから「プラットフォームの一級市民」へ</strong>昇格し、ユーザーペルソナとしてRBAC・ガバナンスが付与される、②<strong>FinOpsがリアクティブなダッシュボードからプリデプロイのコストゲート</strong>へ進化、③<strong>「Shift Left」の終わりとしてコンプライアンスコントロールがインフラ層に組み込まれる</strong>、と方向性が示された。Gartnerは「<strong>2026年までに大企業の80%がプラットフォームチームを運用</strong>」と予測しており、当社のSREイネU・DXUの活動と直結する。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">大企業の運用率</span><span class="metric-value up">80%（2026）</span></div>
+    <div class="metric"><span class="metric-label">エージェント</span><span class="metric-value">一級市民化</span></div>
+    <div class="metric"><span class="metric-label">FinOps</span><span class="metric-value up">Pre-deploy gate</span></div>
+    <div class="metric"><span class="metric-label">コンプラ統制</span><span class="metric-value">インフラ層</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">国内クライアントは「<strong>プラットフォームチームを作るかどうか</strong>」が今年の最大の組織判断になる。LMビジネスは「<strong>プラットフォームチーム立ち上げの組織設計＋IDP導入支援</strong>」を新メニューとしてパッケージ化し、6月までに最低1社の試行プロジェクトを立ち上げるべき。Auxilius的なコンプラのコード化との合わせ技で説得力が増す。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">SREイネU側の役割定義を「Platform Engineering」の語彙に合わせて書き直す。具体的には①Platform Product Manager、②Platform Engineer、③Reliability Engineer、④<strong>AI Agent Operator</strong>の4ロールに整理し、5月の評価面談前にメンバーノートのロール定義を更新。<strong>キャリアラダーとしてAI Agent Operatorの新設</strong>は当社の人材リテンションの強い武器になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://platformengineering.org/blog/10-platform-engineering-predictions-for-2026" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      platformengineering.org — 10 Platform Engineering Predictions for 2026
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年4月27日 — For internal use
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
