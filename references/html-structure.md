@@ -19,7 +19,7 @@ This document describes the exact HTML structure for the news digest output. The
   <main class="container">
     <!-- SECTION 1: 企業・開発組織のAI活用 最新事例 -->
     [Cards 01–03]
-    <!-- SECTION 2: AI BPO — アウトソーシング革命 -->
+    <!-- SECTION 2: AI RPO — アウトソーシング革命 -->
     [Cards 04–05]
     <!-- SECTION 3: Product Hunt トレンド — 注目プロダクト -->
     [Cards 06–07]
@@ -43,7 +43,7 @@ This document describes the exact HTML structure for the news digest output. The
       DAILY INTELLIGENCE BRIEF
     </div>
     <h1>News Digest</h1>
-    <p class="date">[YYYY]年[M]月[D]日（[曜日]）｜ 企業AI活用 × AI BPO × AI・テクノロジー × 政治・政策 × Product Hunt</p>
+    <p class="date">[YYYY]年[M]月[D]日（[曜日]）｜ 企業AI活用 × AI RPO × AI・テクノロジー × 政治・政策 × Product Hunt</p>
 
     <div class="market-strip">
       <!-- Fixed 4 market indicators -->
@@ -70,7 +70,7 @@ This document describes the exact HTML structure for the news digest output. The
       </div>
       <div class="market-item">
         <div>
-          <div class="label">AI BPO市場</div>
+          <div class="label">AI RPO市場</div>
           <div class="value">[VALUE]</div>
         </div>
         <span class="change up|down">[CHANGE TEXT]</span>
@@ -81,7 +81,7 @@ This document describes the exact HTML structure for the news digest output. The
 ```
 
 Market strip guidelines:
-- Always exactly 4 items in the fixed order: 日経平均, USD/JPY, S&P 500, AI BPO市場
+- Always exactly 4 items in the fixed order: 日経平均, USD/JPY, S&P 500, AI RPO市場
 - Use class "up" (green) for positive, "down" (red) for negative
 - Values should be concise (use abbreviations like $49.6B, ¥57,650)
 - 祝日・休場日は直近取引日のデータを使い、その旨を記載する
@@ -105,7 +105,7 @@ Section assignments (this order is fixed and intentional):
 |---|---------|----------|-------|-------------|
 | 1 | X(Twitter)で話題 — AI・テック最新バズ | gradient-4 | 🔥 | tag-breaking, tag-tech |
 | 2 | AI効率 → ビジネス価値変換 グローバル事例 | gradient-3 | 💡 | tag-research, tag-market |
-| 3 | AI BPO — アウトソーシング革命 | gradient-2 | 🏭 | tag-market, tag-research |
+| 3 | AI RPO — アウトソーシング革命 | gradient-2 | 🏭 | tag-market, tag-research |
 | 4 | Product Hunt トレンド — 注目プロダクト | gradient-4 | 🚀 | tag-tech |
 | 5 | AI・テクノロジー 最新ニュース | gradient-1 | 🤖 | tag-tech, tag-breaking, tag-market |
 | 6 | 政治・国際動向 ｜ LMビジネス視点 | gradient-2 | 🌏 | tag-policy |
@@ -234,7 +234,7 @@ Each card should have 2–4 metrics. Guidelines:
 ### Card Count
 - Target: 12–16 cards total across all 5 sections
 - Section 2 (AI効率→価値変換): 2–3 cards
-- Section 2 (AI BPO): 2 cards
+- Section 2 (AI RPO): 2 cards
 - Section 3 (Product Hunt): 2 cards
 - Section 4 (AI/Tech): 3–5 cards
 - Section 5 (政治): 2–3 cards

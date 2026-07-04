@@ -197,7 +197,7 @@ Topics of interest:
 - ByteDance、Alibaba、Baidu、Tencent等のAI戦略
 - 中国AIスタートアップの資金調達・新プロダクト
 - 中国AI規制・政策動向
-- 中国版AI BPO/アウトソーシング事例
+- 中国版AI RPO/アウトソーシング事例
 
 カード構成:
 - **タイトル**: 中国語元記事のタイトルを日本語に翻訳＋要約
@@ -242,7 +242,7 @@ WebFetch: https://aiagentstore.ai/ai-agent-news/this-week
 - 毎週（月〜日）のAIエージェント関連ニュースを日次更新で集約
 - エンタープライズAI導入・セキュリティ・市場動向・技術革新・規制政策を横断カバー
 - ROI・コスト・導入規模などの具体的数値を含む実装志向の記事が多い
-- **Section 2（企業AI活用）・Section 3（AI BPO）・Section 5（AI/テック）のネタ探しに特に有効**
+- **Section 2（企業AI活用）・Section 3（AI RPO）・Section 5（AI/テック）のネタ探しに特に有効**
 - 各セクションの記事収集前にこのページを WebFetch して当週のトピックを把握してから検索クエリを設計する
 
 ## Section 5: AI効率 → ビジネス価値変換 グローバル事例
@@ -282,17 +282,17 @@ Topics of interest:
 - 業界別ROI実績（金融、製造、ヘルスケア、小売）
 - 調査レポートの新版リリース（State of AI, AI Index, Gartner等）
 
-## Section 6: AI BPO — アウトソーシング革命
+## Section 6: AI RPO — アウトソーシング革命
 
 Target cards: 2
 
 Run 3–4 parallel searches:
 
 ```
-"AI BPO outsourcing [today's date month day year]"
+"AI RPO outsourcing [today's date month day year]"
 "BPO automation artificial intelligence [today's date month day year]"
 "business process outsourcing AI transformation [today's date month day year]"
-"AI BPO market size growth [today's date month day year]"
+"AI RPO market size growth [today's date month day year]"
 ```
 
 Key sources to prioritize:
@@ -302,7 +302,7 @@ Key sources to prioritize:
 - Astute Analytica, Grand View Research (market data)
 
 Topics of interest:
-- AI BPO市場規模と成長予測（CAGR、TAM）
+- AI RPO市場規模と成長予測（CAGR、TAM）
 - 従来型BPOベンダーのAIピボット事例
 - AIネイティブBPOスタートアップの台頭
 - コスト削減と品質向上の定量データ
@@ -421,7 +421,7 @@ For the hero header market strip, search for the **4 fixed indicators**:
 "日経平均 今日 終値 [today's date]"
 "USD JPY exchange rate today [today's date]"
 "S&P 500 closing price today [today's date]"
-"AI BPO market size 2025 2026"
+"AI RPO market size 2025 2026"
 ```
 
 Fixed indicators:
@@ -431,4 +431,100 @@ Fixed indicators:
 | 日経平均 | 前営業日の終値 | 祝日・休場日は直近取引日 |
 | USD/JPY | 直近の為替レート | 円高・円安の方向性を表示 |
 | S&P 500 | 前営業日の終値 | 米国市場の温度感 |
-| AI BPO市場 | 最新の市場規模推計 | CAGR等の成長率も表示 |
+| AI RPO市場 | 最新の市場規模推計 | CAGR等の成長率も表示 |
+
+## Section 10: HBR — マネジメント・戦略インサイト（毎日）
+
+Target cards: 1–2
+
+Harvard Business Review の日本語版・英語版から、EM/経営層に直結するマネジメント・戦略記事を収集する。
+
+**検索クエリ（3並列）:**
+
+```
+# 日本語版
+WebFetch: https://dhbr.diamond.jp/
+"Harvard Business Review 日本語 マネジメント [today's date month year]"
+
+# 英語版（AI・組織・リーダーシップに絞る）
+"Harvard Business Review AI leadership management [today's date month day year]"
+"HBR organizational transformation digital [today's date month day year]"
+```
+
+Key sources:
+- **dhbr.diamond.jp** — HBR日本語版（ダイヤモンド社）
+- **hbr.org** — HBR英語版
+
+Topics of interest（河野さんのミッションに直結するテーマを優先）:
+- **AI前提での事業構造変革**（トランスフォーメーション、ビジネスモデル再設計）
+- **組織にAIを浸透させるチェンジマネジメント**
+- **ピープルマネジメント**（評価、育成、昇格判断、チームビルディング）
+- **プラットフォーム型組織設計**（エンジニアリング組織、DevEx、生産性エコシステム）
+- **コスト構造変革・生産性向上**の経営フレームワーク
+- **リーダーシップ・意思決定**の研究知見
+
+カード構成:
+- **タイトル**: 記事の核心を日本語で要約（著者の肩書きを含む）
+- **概要**: 3-5文で主要な主張・フレームワーク・数値を抽出
+- **メトリクス**: 調査サンプル数、効果の定量データ、対象企業数など
+- **分析ボックス**: LMビジネスへの影響はコンサル×AI、HR示唆は15名のEM視点で具体化
+- **ソースリンク**: 記事固有のURL
+
+注意:
+- 有料記事の場合はWebSearchでタイトル・要旨を推定し、読者が判断できる程度の概要を書く
+- 英語記事は日本語で要約する
+
+## Section 11: Weekly EM/Product インテリジェンス（月曜日のみ）
+
+Target cards: 2–3
+
+**このセクションは月曜日のみ生成する。火〜日はスキップ。**
+
+過去1週間に公開された、世界のEM/プロダクトリーダー向けニュースレター・ブログの最新記事を収集する。
+
+**対象ソース（4つの固定ソース）:**
+
+| ソース | URL | 著者 | テーマ |
+|--------|-----|------|--------|
+| The Pragmatic Engineer | newsletter.pragmaticengineer.com | Gergely Orosz | EM組織論・Big Techの内部事情・エンジニアのキャリア |
+| Lenny's Newsletter | lennysnewsletter.com | Lenny Rachitsky | プロダクトマネジメント・事業成長・指標設計 |
+| One Useful Thing | oneusefulthing.org | Ethan Mollick（ウォートンスクール教授） | AI活用の組織浸透・教育・業務変革 |
+| platformengineering.org | platformengineering.org/blog | コミュニティ | プラットフォームエンジニアリング・Developer Experience |
+
+**検索クエリ（4並列）:**
+
+```
+# 各ソースの最新記事を検索
+"pragmatic engineer" site:newsletter.pragmaticengineer.com OR site:blog.pragmaticengineer.com
+"Lenny Rachitsky" site:lennysnewsletter.com OR site:substack.com
+"Ethan Mollick" site:oneusefulthing.org OR site:substack.com
+site:platformengineering.org blog OR "platform engineering" "internal developer"
+```
+
+**補助検索（ソースのRSSが取れない場合）:**
+
+```
+"pragmatic engineer newsletter this week"
+"lenny newsletter latest"
+"one useful thing ethan mollick latest"
+"platform engineering blog latest"
+```
+
+選定基準:
+- 過去7日以内に公開された記事を対象
+- 各ソースから最低1記事、合計2-3カード
+- 4ソースすべてに新記事がある場合は、河野さんのミッション（AI×組織変革、EM、DX）との関連度で優先順位付け
+
+カード構成:
+- **タイトル**: 記事タイトルの日本語訳＋著者名
+- **概要**: 3-5文で日本語要約。具体的なフレームワーク・数値・事例を抽出
+- **メトリクス**: Substack購読者数、記事のいいね数など（取得可能な場合）
+- **分析ボックス**:
+  - 📊 LMビジネスへの影響 — コンサル事業・DX推進への具体的な示唆
+  - 👥 HR／組織への示唆 — 15名のチームマネジメント（DX推進U/SREイネーブリングU）への適用アイデア
+- **ソースリンク**: 記事固有のURL
+
+注意:
+- 英語記事は必ず **日本語で要約** する
+- 有料コンテンツの場合は公開部分のみを要約し「全文は有料」と注記する
+- 月曜が祝日の場合も生成する（情報の空白を作らない）
