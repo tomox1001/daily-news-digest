@@ -1,7 +1,7 @@
 ---
 name: daily-news-digest
 description: >
-  毎朝の日次ニュースダイジェストをHTML形式で自動生成するスキル。11の固定セクション（うち1つは月曜のみ）でAI・ビジネス・政治・EM/組織のニュースを網羅し、
+  毎朝の日次ニュースダイジェストをHTML形式で自動生成するスキル。12の固定セクション（うち1つは月曜のみ）でAI・ビジネス・政治・国内企業動向・EM/組織のニュースを網羅し、
   各記事にLMビジネスへの影響とHR/組織への示唆の分析ボックスを付与する。
   Use this skill whenever the user asks for: ニュースダイジェスト, daily news digest, 今日のニュース,
   朝のブリーフィング, daily briefing, morning report, news summary, intelligence brief,
@@ -13,9 +13,9 @@ description: >
 # Daily News Digest Skill
 
 毎朝24時間以内の鮮度の高いニュースを収集し、プロフェッショナルなHTMLダイジェストを生成する。
-11セクション（うちSection 11は月曜のみ）・15-20カードで構成され、全カードに定量データと2つの分析ボックスを付与する。
+12セクション（うちSection 12は月曜のみ）・16-22カードで構成され、全カードに定量データと2つの分析ボックスを付与する。
 
-## 11の固定セクション（この順番を維持する）
+## 12の固定セクション（この順番を維持する）
 
 | # | セクション | カード目安 | アイコン | グラデーション | 頻度 |
 |---|-----------|----------|---------|-------------|------|
@@ -28,16 +28,21 @@ description: >
 | 7 | Product Hunt トレンド — 注目プロダクト | 2 | 🚀 | gradient-4 | 毎日 |
 | 8 | AI・テクノロジー 最新ニュース | 2-3 | 🤖 | gradient-1 | 毎日 |
 | 9 | 政治・国際動向 ｜ LMビジネス視点 | 2-3 | 🌏 | gradient-2 | 毎日 |
-| 10 | HBR — マネジメント・戦略インサイト | 1-2 | 📚 | gradient-3 | 毎日 |
-| 11 | Weekly EM/Product インテリジェンス | 2-3 | 🌐 | gradient-4 | **月曜のみ** |
+| 10 | 国内企業動向 ｜ 競合・隣接・スタートアップ | 2-3 | 🏢 | gradient-1 | 毎日 |
+| 11 | HBR — マネジメント・戦略インサイト | 1-2 | 📚 | gradient-3 | 毎日 |
+| 12 | Weekly EM/Product インテリジェンス | 2-3 | 🌐 | gradient-4 | **月曜のみ** |
 
 セクション順は意図的にこの順番に設定されている。Section 1-4はソース別の速報セクション（X・Google Trends・YouTube・中国SNS）で
-リアルタイム性が高い順に配置。Section 5-9はトピック別の分析セクション。Section 10-11はEM/経営層向けの深掘りセクション。
+リアルタイム性が高い順に配置。Section 5-10はトピック別の分析セクション。Section 11-12はEM/経営層向けの深掘りセクション。
 
 **重要: Section 2-4（Google Trends・YouTube・中国SNS）は独立セクションであり、スキップ不可。**
 各セクションに最低1枚のカードを必ず生成すること。ソースが取得不可の場合のみ、WebSearchで代替ソースを検索して補完する。
 
-**Section 11は月曜日のみ生成する。** 火〜日はSection 10まで。月曜日かどうかは Step 1 の日付取得で曜日を判定する。
+**Section 10（国内企業動向）もスキップ不可。** 2026-09-02に追加した。目的は、経営層がICC等の場で得ている「他社が今どう動いているか」の情報を、公開一次情報（プレスリリース・資金調達・決算・導入事例）で毎朝補うこと。
+収集は `references/domestic-watchlist.json` を正本とし、`scripts/domestic_watch.py fetch` で Google News RSS と業界メディアRSSを機械的に取得してから、候補をWebFetchで裏取りする。
+詳細は `references/search-strategy.md` の Section 10 を参照。
+
+**Section 12は月曜日のみ生成する。** 火〜日はSection 11まで。月曜日かどうかは Step 1 の日付取得で曜日を判定する。
 
 ## ワークフロー
 
@@ -142,6 +147,19 @@ WebFetch: https://www.huxiu.com/
 - 中国企業のAI活用事例・市場動向・規制を中心にカードを生成
 - 最低1枚は必ず生成すること
 
+**Section 10（国内企業動向）の収集（スキップ不可）:**
+
+```bash
+# ウォッチリスト全社と業界メディアの直近48時間分を機械取得（Markdown一覧を標準出力に出す）
+python3 scripts/domestic_watch.py fetch --hours 48 --markdown --out /tmp/domestic-watch.json
+```
+
+- 出力の一覧から「資金調達・決算・新商品・大型導入・提携・経営層の人事」に該当する記事を選び、元記事をWebFetchで裏取りしてカード化する
+- 同じ企業の複数記事は1枚にまとめる。1日2〜3枚、最低1枚
+- 直接競合グループ（アトラエ・カオナビ・SmartHR・識学など）の動きは、他グループより優先して採用する
+- 該当が薄い日はキーワードフィード（HRテック資金調達・AI面接導入）やメディアフィード（BRIDGE・HRzine）の記事で補う
+- スクリプトが失敗した場合は、ウォッチリストの直接競合8社について `WebSearch "[企業名] [today's date]"` を実行して代替する
+
 ### Step 2.5: 記事URL収集（Kawanoピックアップ）
 
 ニュース検索と並行して、以下の **3つのソース** から当日〜前日のURLを収集する。
@@ -214,7 +232,7 @@ WebFetch: https://www.huxiu.com/
 
 カード構成の必須要素（1枚も省略しない）：
 - 左端アクセントバー（色分けグラデーション）
-- 番号ウォーターマーク（01〜16、右上、薄い）
+- 番号ウォーターマーク（01〜22、右上、薄い）
 - カテゴリタグ（絵文字＋日付）
 - **日本語の見出し**（20px、bold）
 - **要約文**（3-5文、データリッチ、`<strong>` でキー数値を強調）
@@ -295,5 +313,7 @@ gradient は日付ごとに g1→g2→g3→g4 のローテーションで割り�
 
 - `references/search-strategy.md` — セクション別の検索クエリ戦略、ソース優先度、鮮度フィルタリング
 - `references/html-structure.md` — HTML構造の完全リファレンス（各コンポーネントのコード例付き）
+- `references/domestic-watchlist.json` — Section 10 の監視対象企業・キーワード・メディアの正本（Feedly用OPMLもここから生成する）
+- `scripts/domestic_watch.py` — ウォッチリストからのRSS取得（`fetch`）とFeedly用OPML生成（`opml`）
 - `assets/template.css` — HTMLに埋め込むCSSテンプレート
 - `news-digest-index.html` — 全ダイジェストのアーカイブインデックス（同じdocs/ディレクトリに配置）

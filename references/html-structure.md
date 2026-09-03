@@ -104,11 +104,19 @@ Section assignments (this order is fixed and intentional):
 | # | Section | Gradient | Emoji | Tag Classes |
 |---|---------|----------|-------|-------------|
 | 1 | X(Twitter)で話題 — AI・テック最新バズ | gradient-4 | 🔥 | tag-breaking, tag-tech |
-| 2 | AI効率 → ビジネス価値変換 グローバル事例 | gradient-3 | 💡 | tag-research, tag-market |
-| 3 | AI RPO — アウトソーシング革命 | gradient-2 | 🏭 | tag-market, tag-research |
-| 4 | Product Hunt トレンド — 注目プロダクト | gradient-4 | 🚀 | tag-tech |
-| 5 | AI・テクノロジー 最新ニュース | gradient-1 | 🤖 | tag-tech, tag-breaking, tag-market |
-| 6 | 政治・国際動向 ｜ LMビジネス視点 | gradient-2 | 🌏 | tag-policy |
+| 2 | Google Trends 急上昇 — AIキーワード速報 | gradient-1 | 📈 | tag-tech, tag-breaking |
+| 3 | YouTube AI動画 — 海外テック深掘り | gradient-3 | ▶️ | tag-tech |
+| 4 | 中国SNSトレンド — 36Kr / 虎嗅 | gradient-2 | 🇨🇳 | tag-market, tag-tech |
+| 5 | AI効率 → ビジネス価値変換 グローバル事例 | gradient-3 | 💡 | tag-research, tag-market |
+| 6 | AI RPO — アウトソーシング革命 | gradient-2 | 🏭 | tag-market, tag-research |
+| 7 | Product Hunt トレンド — 注目プロダクト | gradient-4 | 🚀 | tag-tech |
+| 8 | AI・テクノロジー 最新ニュース | gradient-1 | 🤖 | tag-tech, tag-breaking, tag-market |
+| 9 | 政治・国際動向 ｜ LMビジネス視点 | gradient-2 | 🌏 | tag-policy |
+| 10 | 国内企業動向 ｜ 競合・隣接・スタートアップ | gradient-1 | 🏢 | tag-market, tag-breaking |
+| 11 | HBR — マネジメント・戦略インサイト | gradient-3 | 📚 | tag-research, tag-hr |
+| 12 | Weekly EM/Product インテリジェンス（月曜のみ） | gradient-4 | 🌐 | tag-research, tag-tech |
+
+（2026-09-02更新: 6セクション時代の旧表を現行12セクションに差し替え。Section 10 を新設）
 
 ## News Card
 

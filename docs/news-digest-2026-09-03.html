@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年9月3日（木）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+.card-footer {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 16px; flex-wrap: wrap;
+}
+
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年9月3日（木）｜ X バズ × Google Trends × YouTube × 中国SNS × AI ROI × AI RPO × Product Hunt × AI Tech × 政治・国際 × 国内企業動向 × HBR</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">64,325.64円</div>
+        </div>
+        <span class="change down">▼1,889.70円 (-2.85%)</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">158.90</div>
+        </div>
+        <span class="change down">▼円高進行（日銀高官のタカ派発言）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">7,666.60</div>
+        </div>
+        <span class="change up">▲0.46%</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">AI RPO市場</div>
+          <div class="value">$24.32B</div>
+        </div>
+        <span class="change up">▲CAGR 16.1%</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- SECTION 1: X(Twitter)で話題 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🔥</div>
+  <div>
+    <h2>X(Twitter)で話題 — AI・テック最新バズ</h2>
+    <span class="sub">X Buzz — Sep 2 Sources</span>
+  </div>
+</div>
+
+<!-- Card 1 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-tech">🔥 Sep 2</div>
+  <h3>Anthropic、商取引エージェント参照実装をオープンソース化——カート単価35%増・購入完了率60%向上の実測値も公開</h3>
+  <p class="summary">
+    Anthropic公式開発者アカウントが、ショッピング・店舗運営向けエージェントの参照実装「Claude Commerce Agents」をオープンソース公開したと発表した。小売・旅行・通信・エンタメの4業種向けデモと、バックエンドに接続するClaude Codeプラグインを含む。同スレッドでは、Claude上で稼働する購買エージェントを導入した小売事業者で<strong>カート単価が最大35%増加</strong>し、<strong>購入完了率が60%向上</strong>したという実測データも公開され、具体的なROI数値を伴う投稿として拡散した。コードはGitHub（anthropics/commerce-agents）で公開済み。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">いいね</span><span class="metric-value">5,623</span></div>
+    <div class="metric"><span class="metric-label">表示回数</span><span class="metric-value up">59.9万</span></div>
+    <div class="metric"><span class="metric-label">カート単価</span><span class="metric-value up">+35%</span></div>
+    <div class="metric"><span class="metric-label">購入完了率</span><span class="metric-value up">+60%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">EC・小売クライアントへの提案素材として、<strong>カート単価35%増・購入完了率60%向上</strong>という実測数値をそのまま引用できる状態にすべき。GitHub公開の参照実装は自社検証環境に取り込み、新規事業リサーチ（EC領域）の技術検証候補に加える必要がある。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">「エージェントが売上に直結する」事例が具体的な数値で示されたことで、営業・商品企画部門にもエージェント設計の基礎知識が求められる局面に入った。<strong>非エンジニア職向けのAIエージェント活用リテラシー研修</strong>を設計すべきタイミングにある。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://x.com/ClaudeDevs/status/2095233745167282602" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      @ClaudeDevs — Claude Commerce Agents open source release (Sep 2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 2 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-breaking">🔥 Sep 2</div>
+  <h3>マスク氏「Grok 4.7は10日後」と予告——719万閲覧のバズも、性能主張は未検証</h3>
+  <p class="summary">
+    イーロン・マスク氏が「Grok 4.7が10日後に登場する」と一言で投稿し、<strong>閲覧数719万件</strong>という爆発的な拡散を記録した。関連報道によれば、Grok 4.7は<strong>2.1兆パラメータ</strong>（Grok 4.6の1.5兆から約40%増）で、SpaceXのロケット・衛星・製造データを学習に組み込んでいるとされる。マスク氏自身は「Grok 4.7はGrok 4.6を全ての面で上回る」と主張する一方、同じ投稿内で「Anthropicは素晴らしい会社であり、まもなく改良モデルを出すだろう」とも述べている。過去にGrok 4.6のGDPVal「1位」主張が裏取りで誤りと判明した経緯があり、性能面の具体的な主張は<strong>未確認</strong>として扱う必要がある。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">いいね</span><span class="metric-value up">31,118</span></div>
+    <div class="metric"><span class="metric-label">表示回数</span><span class="metric-value up">719万</span></div>
+    <div class="metric"><span class="metric-label">主張パラメータ数</span><span class="metric-value">2.1兆(未検証)</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">xAI系モデルの採用可否判断は、<strong>公開後の第三者ベンチマーク結果を待ってから</strong>行うべき（Grok 4.6の性能主張が過去に誤りだった前例があるため）。9月中旬に主要ベンダーが同時期にモデルを投入する可能性が高く、マルチモデル運用体制の整備を前倒しで検討する必要がある。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">経営層・マネジャー層に対し、<strong>SNS上のモデル性能主張と実測ベンチマークを区別</strong>して報告する情報リテラシーの徹底が必要。週次AI活用共有では未検証の発表は「速報」と「検証済み」を明示的にラベル分けすべき。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://x.com/elonmusk/status/2094983639780204846" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      @elonmusk — Grok 4.7 teaser post (Sep 2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 2: Google Trends 急上昇 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">📈</div>
+  <div>
+    <h2>Google Trends 急上昇 — AIキーワード速報</h2>
+    <span class="sub">Google Trends — Sep 2 Source</span>
+  </div>
+</div>
+
+<!-- Card 3 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-tech">📈 Sep 2</div>
+  <h3>Gemini 3.8 Flash、3.7からわずか3週間で電撃投入——「開発サイクルの短縮」自体が検索・言及急増の震源に</h3>
+  <p class="summary">
+    Google DeepMindが9月2日、新モデル「Gemini 3.8 Flash」を発表し、前バージョン3.7 Flashから<strong>わずか3週間</strong>という異例のペースでの投入となった。長期推論を要するソフトウェア開発・自律エージェント・多段階のエンタープライズ推論向けに最適化されており、DeepSWE v1.1ベンチマークでは大型フロンティアモデルの多くを上回る性能を低コストで実現したという。価格は2026年12月31日までの導入価格として入力<strong>0.75ドル/100万トークン</strong>、出力<strong>3.75ドル/100万トークン</strong>に設定された。発表直後から日本語圏でも検索・言及が急増し、Chrome Securityチームの検証では大型商用モデル比で脆弱性パッチ生成数が<strong>2.6倍</strong>という結果も報告されている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">前版からの間隔</span><span class="metric-value">3週間</span></div>
+    <div class="metric"><span class="metric-label">入力価格</span><span class="metric-value down">$0.75/M</span></div>
+    <div class="metric"><span class="metric-label">出力価格</span><span class="metric-value">$3.75/M</span></div>
+    <div class="metric"><span class="metric-label">脆弱性パッチ生成</span><span class="metric-value up">2.6倍</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">Gemini系エージェントを業務提案に組み込む案件では、<strong>3週間というモデル更新サイクルの速さ</strong>自体が顧客への訴求材料になる。低価格帯（$0.75/$3.75）は既存のコーディング支援ツール導入のコスト試算を月次で見直す必要があることを意味する。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">モデル更新が3週間サイクルに突入したことで、社内のAIツール選定・検証プロセスも<strong>「四半期レビュー」から「月次スポットチェック」への切り替え</strong>が必要になる可能性がある。ベンチマーク数値を鵜呑みにせず自社ユースケースで再検証する習慣化が要る。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://9to5google.com/2026/09/02/gemini-3-8-flash-launch/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      9to5Google — Gemini 3.8 Flash launch (Sep 2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 3: YouTube AI動画 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">▶️</div>
+  <div>
+    <h2>YouTube AI動画 — 海外テック深掘り</h2>
+    <span class="sub">YouTube — Sep 1 Source</span>
+  </div>
+</div>
+
+<!-- Card 4 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-tech">▶️ Sep 1 続報</div>
+  <h3>【実測検証】Fable 5.1の「25%値下げ」実態はキャッシュ読込料金のみ、ゼロデータ保持も「妥協策」——Matthew Berman氏が全ベンチマークを検証</h3>
+  <p class="summary">
+    Matthew Berman氏（登録63.2万人）が9月1日発表のClaude Fable 5.1／Mythos 5.1を検証し、<strong>13.2万回再生</strong>を集めた。Anthropicが謳う「典型利用で25%、エージェント用途で最大45%」のコスト削減について、入力・出力トークンの単価自体はFable 5と同一で、実際に値下げされたのはキャッシュ読込料金のみという内訳を指摘した。コーディング検証の「Cursor Bench」では最大推論設定時のスコアがFable 5の70.5%（コスト17.32ドル）からFable 5.1では<strong>73.4%（コスト9.64ドル）</strong>へ、精度向上とコスト減を同時に達成した数少ない実例として紹介している。一方、新設のエンタープライズ向けゼロデータ保持策「EFS」については、データの保存先を顧客管理インフラに移すだけでAnthropic自身は不正利用検知目的での閲覧権限を保持し続けるとして、<strong>「妥協策（half measure）」</strong>と評した。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">再生数</span><span class="metric-value">13.2万回</span></div>
+    <div class="metric"><span class="metric-label">登録者数</span><span class="metric-value">63.2万人</span></div>
+    <div class="metric"><span class="metric-label">Cursor Bench精度</span><span class="metric-value up">70.5%→73.4%</span></div>
+    <div class="metric"><span class="metric-label">同コスト</span><span class="metric-value down">$17.32→$9.64</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">「コスト削減率」の見出し数値だけでなく、値下げの発生源（キャッシュ読込のみか単価そのものか）を切り分けないと費用対効果試算を誤る。<strong>AIツール導入提案では料金体系の内訳を一次資料で確認</strong>したうえで削減額を算出すべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">精度とコストが同時に改善したベンチマークがある一方、他では横ばいという結果は<strong>用途別にモデルを使い分ける判断</strong>が必要なことを示す。ベンダーの発表数値を鵜呑みにせず第三者検証動画で裏取りする運用を定着させるべき。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.youtube.com/watch?v=epogfA_0R4E" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      YouTube(Matthew Berman) — Fable 5.1 / Mythos 5.1 Benchmark Deep Dive (Sep 1)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 4: 中国SNSトレンド -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🇨🇳</div>
+  <div>
+    <h2>中国SNSトレンド — 36Kr / 虎嗅</h2>
+    <span class="sub">Huxiu — Sep 2-3 Sources</span>
+  </div>
+</div>
+
+<!-- Card 5 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-market">🇨🇳 虎嗅 · Sep 3 続報</div>
+  <h3>月之暗面（Kimi）、香港取引所へIPO秘密申請——ARRは3ヶ月で3倍、「夢で値付けできる最後の窓」が閉じ始める</h3>
+  <p class="summary">
+    虎嗅（9/3）によると、月之暗面（Kimi）が香港取引所にA1文件（上場申請書類）を秘密裏に提出した。投前評価額<strong>500億ドル</strong>のPre-IPO輪から、実際の上場手続きに進んだ形になる。年間経常収益（ARR）は<strong>3月の1億ドルから6月には3億ドルへ3ヶ月で3倍</strong>に伸び、うちB向けAPI収入が約<strong>70%</strong>を占める。記事は、先行上場した智谱（初日+13%）・MiniMax（初日+109%）の値動きを引き合いに、公開市場が「モデル能力の希少性」ではなく「収益成長の実現可能性」で評価する段階に移ったと指摘しており、独立系大規模言語モデル企業が高評価のまま上場できる最後の局面との見方を示している。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">評価額(Pre-IPO)</span><span class="metric-value up">$500億</span></div>
+    <div class="metric"><span class="metric-label">ARR推移(3→6月)</span><span class="metric-value up">3倍</span></div>
+    <div class="metric"><span class="metric-label">B向けAPI比率</span><span class="metric-value">約70%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">中国AIユニコーンの上場が「夢の値付け」から「収益実証」への評価転換点になっている。Kimiの目論見書公開後に<strong>API原価率・粗利率</strong>を確認し、自社のAI活用コスト試算のベンチマークに組み込むべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">上場審査に伴う収益化圧力は研究開発人員から法人営業・カスタマーサクセス人員への配置転換を招きやすい。<strong>中国発AIツール導入検討時の相手先サポート体制</strong>を評価する際の留意事項として社内共有すべき。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.huxiu.com/article/4888116.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      虎嗅 — 月之暗面秘密递交港交所A1文件 (Sep 3)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 6 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-tech">🇨🇳 虎嗅 · Sep 2</div>
+  <h3>米制裁下で中国国産AIチップに「算力逼迫の恩恵」——智能算力2,185EFLOPS(+177%)、出荷規模で3陣営に分化</h3>
+  <p class="summary">
+    虎嗅（9/2）によると、米国の対中制裁でエヌビディア最新チップの入手が困難な中、中国のAI算力需要の伸びが供給の伸びの<strong>3倍以上</strong>に達し、国産チップメーカーが供給不足の恩恵を受けている。中国の智能算力規模は<strong>2,185EFLOPS（前年比+177%）</strong>に拡大し、メーカーは出荷規模で3陣営に分化した。出荷10万枚超・時価総額500億ドル超の第一陣営（華為昇腾、アリババ平頭哥、百度昆仑芯、寒武纪、海光信息）が先行する一方、ファーウェイは在庫を前年末比<strong>45%増の2,775億元</strong>まで積み増しており、需要先取りのための先行生産が進んでいる実態がうかがえる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">中国智能算力</span><span class="metric-value up">2,185EFLOPS</span></div>
+    <div class="metric"><span class="metric-label">前年比</span><span class="metric-value up">+177%</span></div>
+    <div class="metric"><span class="metric-label">ファーウェイ棚卸資産</span><span class="metric-value up">+45%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">供給制約下での中国AI半導体の陣営分化は、中国発AIサービスの価格・性能競争力が今後どちらの陣営のチップを使うかで左右されることを示唆する。<strong>中国発AIツールの性能・価格改定動向</strong>を追う際は背後の算力調達構造まで踏み込んで定点観測すべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">半導体・AIインフラ人材の需要増は中国国内の話であり直接的な示唆は薄いが、<strong>中国AI企業の投資余力</strong>は人材獲得競争力の指標にもなるため、中国発AI人材市場の動向を注視する際の背景情報として記録しておく。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.huxiu.com/article/4888109.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      虎嗅 — 中国AI芯片三大阵营 (Sep 2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 5: AI効率 → ビジネス価値変換 グローバル事例 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">💡</div>
+  <div>
+    <h2>AI効率 → ビジネス価値変換 グローバル事例</h2>
+    <span class="sub">Global AI ROI — Sep 1-2 Sources</span>
+  </div>
+</div>
+
+<!-- Card 7 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-research">💡 Sep 1</div>
+  <h3>レガシー刷新を「技術更新」でなく「事業変革」に位置づけ、Bupaはアプリ再構築を18ヶ月から7ヶ月に短縮</h3>
+  <p class="summary">
+    MIT Technology ReviewがInfosysとの提携企画として報じたところによると、英保険大手Bupaは自社アプリ「My Bupa」の刷新を単なるレガシーマイグレーションではなく事業変革と位置づけて実施し、当初<strong>18ヶ月を見込んだ開発期間を7ヶ月に短縮</strong>した。刷新後はアプリの評価が<strong>5点満点中3.7から4.7に向上</strong>し、Androidのクラッシュ率を24ポイント、iOSを8ポイント削減、ログイン成功率はAndroidで倍増した。手動のビジネス分析作業を400時間削減し、コードベースを30%、アプリのフットプリントを18%圧縮するなど、開発効率の改善が具体的な品質・速度指標に直結した点が特徴。決済処理速度も<strong>4倍に向上</strong>し、累計180万件のユニークダウンロードを記録している。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">開発期間</span><span class="metric-value down">18ヶ月→7ヶ月</span></div>
+    <div class="metric"><span class="metric-label">アプリ評価</span><span class="metric-value up">3.7→4.7</span></div>
+    <div class="metric"><span class="metric-label">決済処理速度</span><span class="metric-value up">4倍</span></div>
+    <div class="metric"><span class="metric-label">BA作業削減</span><span class="metric-value down">400時間</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">基幹システム刷新をコスト削減目的の「技術更新」として扱いがちだが、Bupa事例は<strong>事業指標（アプリ評価・クラッシュ率・処理速度）</strong>に紐づけて設計・報告する重要性を示す。次期の基幹システム更新提案では顧客体験指標への影響を事前に定義すべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">400時間の手動BA作業削減は「AIが人を代替した」というより<strong>浮いた時間で何を実現したか</strong>という開発期間短縮という具体的な事業目標への再配分と読める。AI活用研修では削減量より成果を指標に加える設計が有効。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.technologyreview.com/2026/09/01/1142180/making-the-ai-powered-case-for-legacy-modernization" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      MIT Technology Review (Infosys提携企画) — Making the AI-powered case for legacy modernization (Sep 1)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 8 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">08</span>
+  <div class="card-tag tag-research">💡 Sep 2</div>
+  <h3>トークン消費「6.7倍」でも支出は2.2倍どまり——GlobantのCIOが説くAI ROI測定の新基準「コスト・パー・タスク」</h3>
+  <p class="summary">
+    Globant最高情報責任者Sebastian Arriada氏がAIwire（HPCwire）への寄稿で、AI投資のROIを「トークン単価」ではなく「タスク単価」で測るべきだと提言した。同氏によれば2026年1〜7月にかけて業界全体のトークン消費量は<strong>6.7倍</strong>に急増した一方、実際の支出増加は<strong>2.2倍</strong>にとどまっており、コスト効率化の余地は単価最適化ではなく「どのタスクにどのモデルを割り当てるか」というルーティング設計にあると指摘する。Globant自身も7ヶ月間、オープンソースモデルと商用APIを並行運用し、品質を落とさずにハードウェア投資を初年度で回収したという。適切なモデルルーティングを実施した組織では、コストの伸びに対して<strong>採用速度が3倍のペース</strong>で拡大したとしている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">トークン消費増(1-7月)</span><span class="metric-value up">6.7倍</span></div>
+    <div class="metric"><span class="metric-label">支出増(同期間)</span><span class="metric-value up">2.2倍</span></div>
+    <div class="metric"><span class="metric-label">採用速度</span><span class="metric-value up">コスト増の3倍</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">「トークン消費量」や「API利用料」だけをコスト指標にすると業務価値を見誤るリスクがある。次期のAI投資対効果レポートでは<strong>モデル別のタスク完了単価</strong>を集計する仕組みを導入し、高価格モデルへの一括依存を避けるルーティング方針を検討すべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">「タスク単価」という発想は、AI活用研修でも「どれだけAIを使ったか」ではなく<strong>1件のアウトプットに要したコスト・時間</strong>を評価軸に据える転換を促す。マネジャー研修でこの指標の扱い方を扱う余地がある。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.hpcwire.com/aiwire/2026/09/02/cost-per-token-vs-cost-per-task-what-really-determines-ai-roi/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      AIwire(HPCwire) — Cost-Per-Token vs Cost-Per-Task (Sep 2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 6: AI RPO — アウトソーシング革命 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🏭</div>
+  <div>
+    <h2>AI RPO — アウトソーシング革命</h2>
+    <span class="sub">AI RPO/BPO — Aug 31 Source</span>
+  </div>
+</div>
+
+<!-- Card 9 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">09</span>
+  <div class="card-tag tag-market">🏭 Aug 31 続報</div>
+  <h3>BPOのAI再価格化、2035年までに4,220億ドル市場に——旧来型受託業務の75%がSaaS化で淘汰の危機</h3>
+  <p class="summary">
+    HFS Research（8/31付「Is this the end of BPO as we know it? How SaS is creating a $422 billion market」）によると、AIソフトウェアが成果を直接提供する<strong>Services-as-Software（SaS）</strong>は2035年までに<strong>4,220億ドル</strong>規模の市場を形成し、旧来型の人員稼働ベースBPO業務を<strong>約600億ドル</strong>分縮小させると試算されている。業界全体の総市場規模（TAM）も通常想定の7,860億ドルから<strong>7,250億ドル</strong>へ下方修正された。現行の受託業務の<strong>75%</strong>がSaSによる代替リスクにさらされ、「場所依存・人手作業」型の従来モデル比率は今後2年で<strong>55%から37%</strong>へ縮小する見通しという。同社は、1件あたり0.99〜2.00ドルという成果単価ベンチマークが定着しつつあると指摘する。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">SaS市場(2035年)</span><span class="metric-value up">$422B</span></div>
+    <div class="metric"><span class="metric-label">旧来型業務縮小額</span><span class="metric-value down">$60B</span></div>
+    <div class="metric"><span class="metric-label">従来モデル比率</span><span class="metric-value down">55%→37%</span></div>
+    <div class="metric"><span class="metric-label">代替リスク業務</span><span class="metric-value">75%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">「4,220億ドル市場の75%が代替リスク」という試算は、自社コンサル契約でも<strong>成果単価型（$0.99〜2.00/件のようなベンチマーク）</strong>への切り替え提案の説得材料になる。買収による能力獲得も自社のアライアンス戦略検討時の参考事例にすべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">従来型の「場所依存・人手作業」モデル比率が2年で55%→37%へ急減する前提に立つなら、<strong>人員計画も「席数」から「成果単価」への評価転換</strong>を先取りすべき。対外的な実績可視化も差別化施策として有効。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.hfsresearch.com/research/bpo-sas-creating-market/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      HFS Research — Is this the end of BPO as we know it? (Aug 31)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 7: Product Hunt トレンド -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🚀</div>
+  <div>
+    <h2>Product Hunt トレンド — 注目プロダクト</h2>
+    <span class="sub">Product Hunt — Sep 2-3 Sources</span>
+  </div>
+</div>
+
+<!-- Card 10 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">10</span>
+  <div class="card-tag tag-tech">🚀 Sep 2</div>
+  <h3>「Monid」、AIツール向け"OpenRouter"としてProduct Hunt本日1位——1,800超のAPIを単一残高で従量課金</h3>
+  <p class="summary">
+    AIエージェント向けツール接続基盤「Monid」が、Product Huntで本日のProduct of the Dayを獲得した（PH掲載3回目、フォロワー2,000人）。AIモデル呼び出しを一本化するOpenRouterと同じ発想で、SEO・リード獲得・SNSスクレイピング・競合トラッキングなど<strong>1,800以上のAPI/ツール</strong>をMCPサーバー・CLI・HTTP APIから単一キーで呼び出せる。差別化ポイントは、エージェントが実行時に「発見→仕様確認→実行」の3ステップでツールを自律選定し、価格・信頼性・パフォーマンスで最適なAPIを比較検討できる点。累計<strong>400万件</strong>のエージェント間トランザクションを処理し、$210万のプレシード資金を調達済みという実績も持つ。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">Upvote</span><span class="metric-value up">356(本日1位)</span></div>
+    <div class="metric"><span class="metric-label">接続API数</span><span class="metric-value">1,800超</span></div>
+    <div class="metric"><span class="metric-label">累計取引数</span><span class="metric-value up">400万件</span></div>
+    <div class="metric"><span class="metric-label">調達額</span><span class="metric-value">$2.1M</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">クライアント向けAIエージェント構築時、市場データ・競合トラッキング・リード獲得といった外部API連携は個別契約の調整コストが導入の律速になりやすい。<strong>単一窓口型のツール接続基盤</strong>を評価し、PoC段階でのベンダー契約交渉を省略できないか検証する価値がある。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">従量課金・複数ベンダー相乗りの仕組みはエージェントの意図しない高額課金リスクを伴う。社内でAIエージェントにツール利用権限を渡す際は、<strong>支出上限の設定・承認フローの明確化</strong>を誰が担うか、導入前に役割を決めておく必要がある。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.producthunt.com/products/monid" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      Product Hunt — Monid (Sep 2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 11 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">11</span>
+  <div class="card-tag tag-tech">🚀 Sep 3</div>
+  <h3>「Dial」、AIエージェントに10秒で電話番号を付与——SIM不要の"エージェント専用電話網"がProduct Hunt本日6位</h3>
+  <p class="summary">
+    AIエージェント向け通信インフラ「Dial」（getdial.ai）がProduct Huntで本日ランク6位につけた。単一のAPI呼び出しでエージェント専用の電話番号を約<strong>10秒</strong>で発行し、音声通話（リアルタイム文字起こし付き）・SMS（<strong>200カ国以上</strong>対応）・iMessage/RCSを一つの番号・一つのWebhookで扱える。「電話網は人間向けに作られており、自律型エージェントを締め出してきた」という課題意識から、キャリア契約やSIMカードなしにエージェント自身の"電話アイデンティティ"を構築する点が差別化。料金は登録時$5分の無料クレジット付与、以降は番号あたり月$3＋通話・SMSの従量課金で、REST API・MCPサーバー・CLI・SDKに対応する。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">本日ランク</span><span class="metric-value">6位</span></div>
+    <div class="metric"><span class="metric-label">番号発行時間</span><span class="metric-value down">10秒</span></div>
+    <div class="metric"><span class="metric-label">SMS対応国数</span><span class="metric-value">200超</span></div>
+    <div class="metric"><span class="metric-label">料金</span><span class="metric-value">$3/月+従量</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">採用面接の日程調整連絡や候補者へのリマインド電話・SMSなど、人手対応してきた定型的な電話接点をAIエージェントに任せる実証実験の土台になりうる。<strong>候補者への自動リマインドコールのPoCコスト</strong>を試算する際の比較対象として押さえておきたい。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">AIが候補者や顧客に発信する電話・SMSは、開示義務（AIである旨の告知）や通信関連法規の順守が論点になる。社内でAI音声エージェントによる外部発信を試す前に<strong>「AI発信ポリシー」の策定・承認オーナー</strong>を先に決めておくべき。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.producthunt.com/products/dial-3" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      Product Hunt — Dial (Sep 3)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 8: AI・テクノロジー 最新ニュース -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース</h2>
+    <span class="sub">AI/Tech — Sep 1-2 Sources</span>
+  </div>
+</div>
+
+<!-- Card 12 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">12</span>
+  <div class="card-tag tag-tech">🤖 Sep 1</div>
+  <h3>Google、Geminiに「エージェント型動画理解」を導入——トークン消費最大88%削減、コスト最大66%減で精度も向上</h3>
+  <p class="summary">
+    Googleは9月1日、Gemini 3.7 Flash・3.6 Flash・3.5 Flash-Liteの3モデルに「エージェント型動画理解（agentic video understanding）」機能を導入したと発表した。従来の固定フレームレート処理と異なり、モデル自身が動画のどこをどの速度で見るか、フレーム・音声・文字起こしのどれを使うかを動的に判断する仕組みで、長尺動画の分析効率を大きく高める。Googleの発表によれば<strong>トークン消費を最大88%削減</strong>し<strong>分析コストを最大66%削減</strong>しながら、精度は<strong>最大7%向上</strong>するという。すでにGoogle AI StudioとGemini Enterprise Agent Platform経由でGemini APIから利用可能で、追加課金なしのプレビュー機能として提供されている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">トークン削減</span><span class="metric-value down">最大88%</span></div>
+    <div class="metric"><span class="metric-label">コスト削減</span><span class="metric-value down">最大66%</span></div>
+    <div class="metric"><span class="metric-label">精度向上</span><span class="metric-value up">最大7%</span></div>
+    <div class="metric"><span class="metric-label">対象モデル</span><span class="metric-value">3モデル</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">長尺動画（研修動画・商談録画・監視カメラ映像など）を扱うクライアント案件で、動画解析コストが実質1/3程度に下がる可能性がある。<strong>動画データを活用したAIエージェント提案の採算ライン</strong>を見直し、コスト面で見送っていたユースケースを再検討すべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">研修動画やオンボーディング動画のAI自動要約・検索が低コストで実現しやすくなる。<strong>社内研修コンテンツのAI検索化</strong>を、実証実験候補として検討する価値がある。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-agentic-video-in-gemini/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      Google Blog — Introducing agentic video in Gemini (Sep 1)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 13 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">13</span>
+  <div class="card-tag tag-tech">🤖 Sep 1</div>
+  <h3>Meta、リアルタイム音声認識モデル「Muse Voice Transcribe」を投入——70言語対応・話者20人超の同時識別に対応</h3>
+  <p class="summary">
+    Meta Superintelligence Labsは9月1日、ストリーミング音声認識・話者識別・発話終端検出を単一モデルで処理する「Muse Voice Transcribe」を発表した。従来は3つの別モデルで担っていた機能を統合し、<strong>最終確定テキストの誤り率3.1%</strong>を発話終了からわずか<strong>0.16秒</strong>で達成する。<strong>70以上の言語</strong>で学習され、うち25言語はローンチ時点で本格検証済み。1時間を超える長時間音声や<strong>20人超の話者</strong>が混在する「雑然とした実際の会話」にも対応する。Meta Model API上で提供され、価格は音声<strong>1,000分あたり3.00ドル</strong>。Mac版Meta AIのディクテーション機能とコーディングツール「Muse Code」に既に統合済み。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">認識誤り率</span><span class="metric-value down">3.1%(0.16秒)</span></div>
+    <div class="metric"><span class="metric-label">対応言語数</span><span class="metric-value">70以上</span></div>
+    <div class="metric"><span class="metric-label">同時話者数</span><span class="metric-value">20人超</span></div>
+    <div class="metric"><span class="metric-label">価格</span><span class="metric-value">$3.00/1000分</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">議事録・コールセンター音声・多人数会議の自動文字起こしを低遅延・低コストで提供できる基盤モデルが増えたことで、<strong>議事録自動化ツールの技術選定</strong>において既存ツールの裏側モデルとの比較検討材料になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">20人超の話者を識別できる精度は、大人数の全社会議や研修の記録自動化に直結する。<strong>社内会議の自動議事録化の対象範囲拡大</strong>（大人数会議への適用）を検討すべきタイミング。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.marktechpost.com/2026/09/01/meta-superintelligence-labs-releases-muse-voice-transcribe-one-real-time-model-for-streaming-asr-diarization-and-endpointing/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      MarkTechPost — Meta Superintelligence Labs releases Muse Voice Transcribe (Sep 1)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 14 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">14</span>
+  <div class="card-tag tag-market">🤖 Sep 2</div>
+  <h3>エンタープライズAI「Wonderful」、半年で評価額2倍超の50億ドルに——Salesforceも新規出資</h3>
+  <p class="summary">
+    イスラエル・オランダ発のエンタープライズAIスタートアップWonderfulが、シリーズCで<strong>5.5億ドル</strong>を調達し、評価額<strong>50億ドル</strong>に達したと9月2日に報じられた。約6ヶ月前のシリーズB（1.5億ドル・評価額<strong>20億ドル</strong>）から評価額が2倍以上に急伸した。Insight Partnersが主導し、Index Ventures・IVP・Vine Ventures・9Yards・Bessemer Venture Partnersが再参加、今回新たにSalesforceも出資に加わった。同社は当初、多言語対応の顧客対応AIエージェント基盤として事業展開していたが、現在は複数のAIエージェント・ワークフロー・業務アプリを企業データと統合する「Wonderful AI OS」へと事業を拡張し、<strong>35カ国以上</strong>で展開している。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">調達額(Series C)</span><span class="metric-value up">$550M</span></div>
+    <div class="metric"><span class="metric-label">評価額</span><span class="metric-value up">$5B</span></div>
+    <div class="metric"><span class="metric-label">半年前評価額</span><span class="metric-value">$2B</span></div>
+    <div class="metric"><span class="metric-label">展開国数</span><span class="metric-value">35カ国超</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">顧客対応AIエージェントから企業横断の「AI OS」へ事業領域を拡張し半年で評価額を倍増させた事例は、<strong>単機能AIエージェント提案から統合プラットフォーム提案への移行タイミング</strong>を検討する参考事例になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">SalesforceのようなCRM大手が個別のAIエージェント企業に直接出資する動きは、既存SaaSベンダーがAIエージェント企業を取り込みにいく構図を示す。<strong>既存クライアントのSaaSベンダー選定にAIエージェント機能が組み込まれていく流れ</strong>を営業チームに共有すべき。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://techcrunch.com/2026/09/02/wonderful-more-than-doubles-its-valuation-to-5b-in-under-6-months/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      TechCrunch — Wonderful more than doubles its valuation to $5B (Sep 2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 9: 政治・国際動向 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🌏</div>
+  <div>
+    <h2>政治・国際動向 ｜ LMビジネス視点</h2>
+    <span class="sub">Politics/Economy — Sep 1-2 Sources</span>
+  </div>
+</div>
+
+<!-- Card 15 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">15</span>
+  <div class="card-tag tag-policy">🌏 Sep 1-2</div>
+  <h3>沖縄県知事選、投開票まで10日で「横一線」——琉球新報調査で古謝氏猛追、争点は辺野古移設と物価高</h3>
+  <p class="summary">
+    琉球新報とJX通信社の合同調査（8月28〜30日実施、9月1日公表）で、自民党推薦の新人・古謝玄太氏（42）と再選を目指す現職・玉城デニー氏（66）が<strong>「横一線」</strong>の情勢と判明した。同時期の自民党内部調査では古謝氏<strong>44.1%</strong>対玉城氏<strong>40.9%</strong>で古謝氏が逆転したとの情報も流れており、調査主体によって数値に開きがある。投票先<strong>未定は5割</strong>、投票意向は<strong>7割</strong>。争点は米軍普天間飛行場の辺野古移設の是非と物価高対策で、投開票は9月13日。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">投開票日</span><span class="metric-value">9月13日</span></div>
+    <div class="metric"><span class="metric-label">自民内部調査</span><span class="metric-value">44.1%対40.9%</span></div>
+    <div class="metric"><span class="metric-label">投票先未定</span><span class="metric-value">50%</span></div>
+    <div class="metric"><span class="metric-label">投票意向</span><span class="metric-value up">70%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">基地関連経済や振興予算の方向性が知事交代の有無で変わりうるため、沖縄拠点や公共事業関連の取引先企業は<strong>9月13日の結果を待って投資判断</strong>を確定させるべき。両陣営とも物価高対策を前面に出しており、県内の賃上げ機運を注視する必要がある。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">沖縄拠点を持つ企業は、知事選後の政策転換（基地負担軽減策・産業振興策）を見据えた<strong>人員配置計画を9月中旬以降に見直す</strong>準備をしておくとよい。選挙結果次第で県内採用市場のインセンティブ設計が変わる可能性がある。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://ryukyushimpo.jp/politics/entry-5492940.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      琉球新報 — 沖縄県知事選、横一線の情勢 (Sep 1)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 16 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">16</span>
+  <div class="card-tag tag-policy">🌏 Sep 2</div>
+  <h3>食品消費税1%減税、価格表示の特例を自民税調が了承——コンビニ等の値札切替負担に配慮</h3>
+  <p class="summary">
+    自民党税制調査会は9月2日、2027年4月開始の飲食料品消費税1%減税（2年間の時限措置）に伴う<strong>総額表示義務の特例制度</strong>を了承した。税率変更の前後<strong>2ヶ月間</strong>は、店舗が旧税率・新税率どちらの総額表示を維持してもよいとし、レジで正しい税率に精算する旨の掲示を条件とする。24時間営業のコンビニなど、値札の一斉切替が困難な業態への配慮が背景にある。定期契約の食品配送サービスについても税率変更時の混乱防止措置が盛り込まれた。対応は小野寺五典税調会長に一任された。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">減税期間</span><span class="metric-value">2年間</span></div>
+    <div class="metric"><span class="metric-label">減税幅</span><span class="metric-value down">8%→1%</span></div>
+    <div class="metric"><span class="metric-label">表示特例期間</span><span class="metric-value">前後2ヶ月</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">小売・外食・食品卸を顧客に持つ企業は、2027年3月までに<strong>POS・値札システムの改修計画</strong>を立てる必要があり、この特例により切替時期を数ヶ月分散できる。税率変更に伴う顧客企業向けサポート需要が2027年春に集中する見込みで、早期の体制整備が商機になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">小売・外食企業では、値札切替・レジ対応・顧客説明を担う店舗スタッフへの実務研修が2027年1〜3月に集中する見通し。<strong>当該時期のシフト増員や研修計画</strong>を今から織り込んでおくべき。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.jimin.jp/news/information/214122.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      自由民主党 — 消費税1%減税に伴う総額表示特例を了承 (Sep 2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 10: 国内企業動向 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🏢</div>
+  <div>
+    <h2>国内企業動向 ｜ 競合・隣接・スタートアップ</h2>
+    <span class="sub">Domestic Watch — Sep 1-2 Sources</span>
+  </div>
+</div>
+
+<!-- Card 17 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">17</span>
+  <div class="card-tag tag-market">🏢 競合 · Sep 2</div>
+  <h3>HRBrain調査、人事異動きっかけに約6割が離職検討——面談「5分未満」で不満率は1.6倍に急増</h3>
+  <p class="summary">
+    HRBrainが9月2日発表した調査（全国20〜50代の異動経験者378名対象、8月4〜5日実施）によると、過去に人事異動を経験した従業員の<strong>56.9%</strong>が「異動をきっかけに離職・転職を検討した」と回答した。面談時間別に見ると、「5分未満・口頭説明なし」の層はコミュニケーション不足への不満率が<strong>40.5%</strong>に達し、「5〜15分」（25.0%）・「15分以上」（27.4%）の層と比べて<strong>約1.6倍</strong>にはね上がる。また、過去の面談記録が「正しく引き継がれ活かされている」と実感する従業員は<strong>わずか7.9%</strong>にとどまった。同社はタレントマネジメント基盤で面談ログ・評価データを一元管理し、データに基づく適正配置を支援するサービスを展開する。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">離職検討率</span><span class="metric-value up">56.9%</span></div>
+    <div class="metric"><span class="metric-label">5分未満の不満率</span><span class="metric-value up">40.5%</span></div>
+    <div class="metric"><span class="metric-label">不満率倍率</span><span class="metric-value up">1.6倍</span></div>
+    <div class="metric"><span class="metric-label">記録引継ぎ実感</span><span class="metric-value down">7.9%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">タレントマネジメント領域の直接競合が「面談時間×離職検討率」という定量データで異動面談の質を訴求しており、<strong>MCEMの異動・配置提案でも面談時間の下限設定と記録引き継ぎ機能</strong>を具体的な差別化ポイントとして訴求すべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">自社の人事異動運用でも「5分未満の一方的通知」になっていないか点検が必要。<strong>面談ログ・評価履歴の引き継ぎ体制</strong>を自社の異動プロセスにも組み込むべき具体的な論点として提示できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000222.000023143.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      PR TIMES(HRBrain) — 人事異動をきっかけに約6割が離職を検討 (Sep 2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 18 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">18</span>
+  <div class="card-tag tag-market">🏢 隣接 · Sep 1</div>
+  <h3>メルカリ・パーソル・村田製作所・ソフトバンクが参画——AICX協会「組織AI変革推進委員会」が発足</h3>
+  <p class="summary">
+    一般社団法人AICX協会は9月1日、AIエージェントを前提に人・組織・制度を進化させる企業を増やすことを目的とした「組織AI変革推進委員会」を設立したと発表した。委員長にはグロービス マネジング・ディレクターの鳥潟幸志氏が就任し、メルカリ・パーソルホールディングス・村田製作所・ソフトバンク・マーサージャパン・テックビズの<strong>6社</strong>から各社のCHRO・データ戦略部長らが委員として参画する。活動は「気付く（成熟度診断）」「試す（実証テーマ設定）」「再現する（ホワイトペーパー化）」の3段階で進め、組織体制・評価制度・採用育成などAI時代の組織課題を企業横断で検証する。鳥潟氏は「AIをどう導入するかから、AIを前提に組織をどう設計するかへの転換」を掲げる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">参画企業数</span><span class="metric-value up">6社</span></div>
+    <div class="metric"><span class="metric-label">活動ステップ</span><span class="metric-value">3段階</span></div>
+    <div class="metric"><span class="metric-label">設立日</span><span class="metric-value">9/1</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">大手企業6社が「AI前提の組織設計」を横断検証する枠組みを立ち上げたのは、LMIのMCEM/DXL事業と<strong>直接競合しうる組織変革コンサルの新興プレイヤー</strong>の登場を意味する。委員会の実証テーマ・ホワイトペーパーの公開動向を継続的にウォッチすべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">「気付く→試す→再現する」という3段階アプローチは、自社のAI組織変革支援メニューの型として転用できる。<strong>成熟度診断ツールの自社版開発</strong>を検討する価値がある。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000160.000155740.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      PR TIMES(AICX協会) — 「組織AI変革推進委員会」を設立 (Sep 1)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 19 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">19</span>
+  <div class="card-tag tag-breaking">🏢 調達 · Sep 2</div>
+  <h3>AI面接のPeopleX、シリーズAで54.5億円調達——人事特化LLM「Athena」開発へ、ARRは15ヶ月で10億円到達</h3>
+  <p class="summary">
+    AI面接プラットフォームを手がけるPeopleXが9月2日、シリーズAラウンドでエクイティ・デットファイナンス合計<strong>54.5億円</strong>を調達したと発表した。エン、Angel Bridge、OpenUpグループ、WiL、One Capitalが出資し、2024年4月の創業以来の累計調達額は<strong>78.2億円</strong>に達した。調達資金は人事領域に特化した大規模言語モデル、および自社AIプロダクト群の基盤となるMotherAI OS「Athena」の開発に充てる。現状の支援実績は<strong>3,000社超</strong>、月次売上高2億円超、ARRはサービス提供開始から<strong>15ヶ月で10億円</strong>に到達しており、2031年度の売上高目標1,000億円とIPOを掲げる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">調達額</span><span class="metric-value up">54.5億円</span></div>
+    <div class="metric"><span class="metric-label">累計調達額</span><span class="metric-value up">78.2億円</span></div>
+    <div class="metric"><span class="metric-label">ARR到達</span><span class="metric-value up">10億円(15ヶ月)</span></div>
+    <div class="metric"><span class="metric-label">支援実績</span><span class="metric-value">3,000社超</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">人事特化LLM開発への大型資金投入は、LMの採用・RPO事業の競合環境を変える動きとして注視が必要（PeopleXのAI面接官・AIロープレは<strong>選考プロセスの一部を代替</strong>しうる）。自社のAI活用提案において業界特化LLMを武器にする競合が増える前提で、差別化ポイントの再点検を検討すべき。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">ARR15ヶ月で10億円という成長速度は、<strong>AI面接・AIロープレのような「対人業務の一部自動化」</strong>に対する企業側の受容度が急速に高まっている証左。自社の採用担当・RPOメンバーにもAI面接官との協働を前提としたスキルセットの育成を早めに検討する価値がある。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000290.000139786.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      PR TIMES(PeopleX) — シリーズAで54.5億円調達 (Sep 2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 11: HBR -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">📚</div>
+  <div>
+    <h2>HBR — マネジメント・戦略インサイト</h2>
+    <span class="sub">Harvard Business Review — Sep 1 Sources</span>
+  </div>
+</div>
+
+<!-- Card 20 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">20</span>
+  <div class="card-tag tag-hr">📚 HBR(English) · Sep 1</div>
+  <h3>マネジャー5類型で分かるAI導入の分岐点——「懐疑派」から「触媒」まで、中間管理職の受け止め方が生成AI浸透の成否を決める</h3>
+  <p class="summary">
+    Gleb Tsipursky氏（AIコンサルティング会社Disaster Avoidance Experts CEO）は、生成AI導入の失敗要因は取締役会でもベンダー選定でも研修でもなく、戦略を日常業務に翻訳する<strong>中間管理職</strong>の層にあると主張する。中間管理職を「AI懐疑派」「様子見の伝統主義者」「慎重な導入者」「熱心な実験者」「AI触媒」の<strong>5類型</strong>に分け、各類型はリスク・エビデンス・インセンティブ・支援への反応が異なるため、画一的な研修ではなく類型別の働きかけが必要だと提言する。著者の主張は<strong>100件超</strong>の企業事例分析と<strong>30人超</strong>のリーダーへのインタビューをまとめた著書がベースになっている。Pew Researchの調査では、AIに対し「不安の方が期待より大きい」と回答した人が約<strong>50%</strong>に上る一方、「期待の方が大きい」は<strong>10%</strong>にとどまるという社会的背景データも引用されている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">事例分析数</span><span class="metric-value">100件超</span></div>
+    <div class="metric"><span class="metric-label">リーダー取材数</span><span class="metric-value">30人超</span></div>
+    <div class="metric"><span class="metric-label">「不安>期待」</span><span class="metric-value up">50%</span></div>
+    <div class="metric"><span class="metric-label">「期待>不安」</span><span class="metric-value down">10%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">「中間管理職のタイプ別に抵抗パターンが異なる」という切り口は、AI導入支援案件で「一律研修では動かない」ことの説得材料になる。<strong>管理職層を5類型でセグメント分析するアセスメント</strong>を提案商品化する余地がある。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">配下のEMも懐疑派〜触媒のスペクトラムに分布しているはず。1on1でEM個々のAIへの受け止め方を類型化し、<strong>触媒役のEMを他EMのメンター役に配置する</strong>など、画一的でない働きかけを検討する価値がある。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://hbr.org/2026/09/middle-managers-will-make-or-break-ai-adoption" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      HBR — Middle Managers Will Make or Break AI Adoption (Sep 1)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 21 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">21</span>
+  <div class="card-tag tag-research">📚 HBR(English) · Sep 2026</div>
+  <h3>AI導入は「単発タスク」では進むが「部門横断業務」で頓挫する——HBS/ウィスコンシン大教授が提唱する「エージェント・オーケストレーション」</h3>
+  <p class="summary">
+    Kris Johnson Ferreira氏（ハーバード・ビジネス・スクール准教授）とJordan Tong氏（ウィスコンシン大学ビジネススクール教授）は、個別タスクへのAI活用は多くの企業で軌道に乗っている一方、調達・物流・財務・法務・マーケティング・営業・マーチャンダイジングなど<strong>部門をまたぐ業務</strong>では「最適でない対応の寄せ集め」に陥りやすいと指摘する。例として、新関税発表時にCEOが在庫前倒し購入を号令しても、各部門がバラバラに動き全体最適に至らない事例を挙げる。解決策として、タスク単位のAIツールと組織のワークフローをつなぐ「エージェント・オーケストレーション」を次のフロンティアと位置づけ、Walmart・Amazon・Ericsson・Ramp・Medtronicの<strong>5社</strong>でのフィールド調査に基づく分析としている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">関与部門数</span><span class="metric-value">7部門</span></div>
+    <div class="metric"><span class="metric-label">調査対象企業</span><span class="metric-value">5社</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 LMビジネスへの影響</div>
+      <p class="impact-text">「タスク単位のAI導入は進むが部門横断では効果が出ない」という指摘は、LMのAI×業務コンサルの提案余地そのもの。<strong>単発の業務改善ではなく部門横断ワークフローの再設計</strong>をパッケージ提案する論拠に使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 HR／組織への示唆</div>
+      <p class="impact-text">各チームでのAIツール導入は進んでも、チーム間をまたぐ業務（引き継ぎ、横断プロジェクト）でのAI活用は手つかずになりがち。<strong>EM連携会議で「エージェント・オーケストレーション」観点の棚卸し</strong>を行う価値がある。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://hbr.org/2026/09/how-ai-agents-orchestrate-work-across-silos" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      HBR — How AI Agents Orchestrate Work Across Silos (Sep/Oct 2026)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年9月3日 — For internal use
+    </p>
+  </div>
+</footer>
+</body>
+</html>
