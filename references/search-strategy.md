@@ -2,7 +2,9 @@
 
 ## Overview
 
-This document defines the web search strategy for collecting fresh news (last 24–48 hours) across the 6 fixed sections. The goal is to find 14–18 high-quality articles with verifiable sources, quantitative data, and analytical depth.
+This document defines the web search strategy for collecting fresh news (last 24–48 hours) across the 12 fixed sections. The goal is to find 18–21 high-quality articles with verifiable sources, quantitative data, and a clear connection to the reader's KRs (see SKILL.md Step 0: `memory/context/current-focus.md` が正本).
+
+2026-09-05にB案の見直しを実施した。変更点: Section 6をAI RPO→AI BPOへ、Section 2と9を各1枚に縮小、Section 7・8・10の収集条件をKR語で再定義、分析ボックスを「KRへの接続」「チーム／育成への示唆」へ置き換え。
 
 Run searches **section by section**, with 3–4 parallel web searches per section. Always include a concrete date string (e.g., "February 11 2026") in every query to ensure freshness.
 
@@ -92,9 +94,11 @@ for r in results[:5]:
 - ソースリンクは `https://news.ycombinator.com/item?id=XXXXX` を使う
 - HNで話題 → 1〜2週間後に日本のXでバズるパターンが多いため「先取りネタ」として有効
 
-## Section 2: Google Trends 急上昇 — AIキーワード速報（スキップ不可）
+## Section 2: Google Trends 急上昇 — AIキーワード速報（スキップ不可・1枚まで）
 
-Target cards: 1–2
+Target cards: 1
+
+日本の一般検索の関心は河野の判断材料になりにくいため、1枚に絞る。優先順は ①KRに関わるツール・ベンダー・モデル価格の急上昇（例: Claude Codeの既定モデル切替、UiPath、RPA） ②メンバーが翌日話題にしそうな急上昇語の「正体」解説 ③それ以外。①②に該当しない日は、急上昇語を複数まとめて1枚にする。
 
 Step 1.5 で取得した Google Trends の急上昇クエリをカード化する。
 
@@ -120,8 +124,9 @@ for kw in ['Claude Code', 'ChatGPT', 'AIエージェント', 'Gemini', 'OpenAI']
 - **ソースリンク**: 急上昇の元となったニュース記事のURL
 
 選定基準:
-- 急上昇値 **10,000%以上** → 単独カード確定
+- 急上昇値 **10,000%以上** でも1枚まで。複数ある場合はKR接続の強い方を選び、残りはメトリクスに併記する
 - 急上昇値 **1,000〜9,999%** → 複数まとめて1カード
+- 急上昇の正体が「既に別セクションで扱う事象」の場合は、Section 2側は検索行動の切り口（検索急増の規模・混同の有無）に限定し、事象の本体は担当セクションに譲る
 - pytrends がレート制限エラーの場合は30秒待って再実行。それでも失敗したら `WebSearch "Google Trends AI 急上昇 today"` で代替
 
 ## Section 3: YouTube AI動画 — 海外テック深掘り（スキップ不可）
@@ -197,7 +202,7 @@ Topics of interest:
 - ByteDance、Alibaba、Baidu、Tencent等のAI戦略
 - 中国AIスタートアップの資金調達・新プロダクト
 - 中国AI規制・政策動向
-- 中国版AI RPO/アウトソーシング事例
+- 中国のAI BPO・業務自動化・エージェント実装事例（KR1・KR3に接続できるもの）
 
 カード構成:
 - **タイトル**: 中国語元記事のタイトルを日本語に翻訳＋要約
@@ -242,7 +247,7 @@ WebFetch: https://aiagentstore.ai/ai-agent-news/this-week
 - 毎週（月〜日）のAIエージェント関連ニュースを日次更新で集約
 - エンタープライズAI導入・セキュリティ・市場動向・技術革新・規制政策を横断カバー
 - ROI・コスト・導入規模などの具体的数値を含む実装志向の記事が多い
-- **Section 2（企業AI活用）・Section 3（AI RPO）・Section 5（AI/テック）のネタ探しに特に有効**
+- **Section 5（AI ROI）・Section 6（AI BPO）・Section 8（AI/テック）のネタ探しに特に有効**
 - 各セクションの記事収集前にこのページを WebFetch して当週のトピックを把握してから検索クエリを設計する
 
 ## Section 5: AI効率 → ビジネス価値変換 グローバル事例
@@ -282,32 +287,36 @@ Topics of interest:
 - 業界別ROI実績（金融、製造、ヘルスケア、小売）
 - 調査レポートの新版リリース（State of AI, AI Index, Gartner等）
 
-## Section 6: AI RPO — アウトソーシング革命
+## Section 6: AI BPO — 納品の自動化とアウトカム型デリバリー
 
 Target cards: 2
+KR接続: `KR1 AI BPO`（社員なしで回せる納品、粗利率向上、RPA/UiPath採否、価格30%減試作）
+
+2026-09-05までは「AI RPO（採用アウトソーシング）」だったが、KR1の対象はBPO（納品業務の自動化）なので改めた。RPO（採用代行）の市場データは扱わない。
 
 Run 3–4 parallel searches:
 
 ```
-"AI RPO outsourcing [today's date month day year]"
-"BPO automation artificial intelligence [today's date month day year]"
-"business process outsourcing AI transformation [today's date month day year]"
-"AI RPO market size growth [today's date month day year]"
+"AI BPO outcome-based pricing [today's date month day year]"
+"business process outsourcing AI agents delivery [today's date month day year]"
+"agentic automation RPA UiPath OR "Automation Anywhere" [today's date month day year]"
+"BPO provider AI margin headcount [today's date month day year]"
+"BPO AI エージェント 納品 自動化 [今日の日付]"
 ```
 
 Key sources to prioritize:
-- Gartner, Forrester, Everest Group, HFS Research
-- Bloomberg, Reuters, Financial Times
-- a16z, Bain & Company, McKinsey
-- Astute Analytica, Grand View Research (market data)
+- Everest Group, HFS Research, Gartner, Forrester（契約構造・課金モデルの分析）
+- Bloomberg, Reuters, Financial Times（大手BPO・ITサービスの決算・方針転換）
+- Cognizant, Accenture, Genpact, TCS, Infosys, トランスコスモス, ベルシステム24 の一次発表
+- UiPath, Automation Anywhere, Microsoft Power Automate の製品・価格発表
 
-Topics of interest:
-- AI RPO市場規模と成長予測（CAGR、TAM）
-- 従来型BPOベンダーのAIピボット事例
-- AIネイティブBPOスタートアップの台頭
-- コスト削減と品質向上の定量データ
-- 業界別BPO×AI（カスタマーサポート、経理、法務）
-- アウトソーシングの「アンバンドリング→リバンドリング」トレンド
+Topics of interest（KR1のゲート判断に使えるものを優先）:
+- 請求時間・FTE課金からアウトカム課金への転換事例と、その価格水準・粗利への影響
+- 「人を介さずに回る納品」を実現したBPO・ITサービスの実装構成（RPA＋エージェント、監督者の配置）
+- RPA/UiPathと生成AIエージェントの役割分担、採否判断に使える比較データ
+- BPO事業者の人員計画（新卒採用の維持・削減、監督職の新設）
+- AI化に伴うBPO契約の構造変化（SLA、知財帰属、責任範囲）
+- 市場規模データは「AI in BPO」「intelligent process automation」の最新推計を使い、ヘッダー指標（AI BPO市場）と出典を揃える
 
 ## Section 7: Product Hunt トレンド — 注目プロダクト
 
@@ -327,67 +336,71 @@ Key sources to prioritize:
 - BetaList, HackerNews
 - 各プロダクトの公式サイト
 
-Topics of interest:
-- 当日または直近24時間のTop Productsからピックアップ
-- AI関連プロダクトを優先（ただし非AI有望プロダクトも可）
-- Upvote数、コメント数など定量指標をメトリクスに含める
-- プロダクトのユニークな差別化ポイントに注目
-- ビジネスモデル（SaaS、API、フリーミアム等）
-- LMビジネスやコンサルティング業への応用可能性
+選定基準（KR接続: `KR3 中継業務`・`SRE-LT`）:
+- 当日または直近24時間のTop Productsから、**今週メンバーが試せるエージェント／自動化ツール**を選ぶ。順位よりも「中継業務（情報を誰かに届けるために発生している仕事）を代替できるか」「開発フロー（タスク管理・コードレビュー・QA）に入れられるか」を優先する
+- 次点は、河野が経営との会話で引ける「AIネイティブなプロダクトの作り方・課金モデル」の事例
+- 純粋な消費者向けアプリ、動画生成、画像生成は原則除外（KRに接続しない）
+- Upvote数、コメント数、価格モデル、無料枠の有無をメトリクスに含める。「試用可否」（無料枠・セルフサーブで今日試せるか）を1つ入れる
+- ビジネスモデル（SaaS、API、従量課金）と、既存ツール（Slack、Notion、GitHub、Jira）との接続可否を概要に書く
 
-## Section 8: AI・テクノロジー 最新ニュース
+## Section 8: AI・テクノロジー 最新ニュース ｜ 自動化・開発生産性・コスト
 
-Target cards: 3–5
+Target cards: 2–3
+KR接続: `KR1 AI BPO`・`KR3 中継業務`・`SRE-LT`（モデルの新発表そのものは対象外。価格・性能がツール選定やコスト計画を変える場合のみ採用）
 
-Run 3–4 parallel searches:
+Run 3–4 parallel searches（3つの枝を必ず1本ずつ回す）:
 
 ```
-"AI technology news [today's date month day year]"
-"artificial intelligence [today's date month day year]"
-"tech industry news [today's date month day year]"
-"AI investment capex [today's date month day year]"
+# 枝A: エージェント実装・自動化プラットフォーム（KR1・KR3）
+"AI agent deployment enterprise workflow results [today's date month day year]"
+"agentic automation platform launch OR pricing [today's date month day year]"
+
+# 枝B: 開発生産性・コーディング／タスク管理エージェントの実測（SRE-LT）
+"coding agent productivity study lead time [today's date month day year]"
+"Claude Code OR Codex OR Copilot enterprise adoption metrics [today's date month day year]"
+
+# 枝C: APIコスト・価格変動・供給制約（事前検死: OpenAIコスト超過×費用圧縮）
+"LLM API pricing change OR rate limit [today's date month day year]"
+"GPU cloud capacity price AI compute [today's date month day year]"
 ```
 
 Key sources to prioritize:
 - Bloomberg, Reuters, CNBC, Financial Times
 - Axios, The Information, TechCrunch
-- Fortune, Wired, MIT Technology Review
-- ArsTechnica, The Verge
+- ArsTechnica, The Verge, MIT Technology Review
+- 各社の公式ドキュメント・価格ページ（価格変更は一次ソースで確認）
 
 Topics of interest:
-- AIモデルの新リリース、ベンチマーク、新機能
-- Big TechのCapEx、投資動向、決算
-- SaaS/ソフトウェア市場の動き
-- AI規制とガバナンス
-- AIインフラ（データセンター、チップ、エネルギー）
-- AIスタートアップの資金調達
+- エージェントの本番導入事例と実測値（処理件数、エラー率、監督者の人数、削減した中継工程）
+- タスク管理・コーディングエージェントのリードタイム／レビュー工数への効果データ
+- LLM API・GPUクラウドの価格変動、レート制限、供給制約（コスト計画の前提を変えるもの）
+- 自律エージェントの逸脱・安全性インシデント（導入提案の監査項目に直結）
+- AIモデルの新リリースは、価格または性能がClaude Code／UiPath等の採否・コスト試算を変える場合に限る。Big TechのCapEx・決算、AIスタートアップの資金調達は「結節」ネタとして1枚まで
 
-## Section 9: 政治・国際動向 ｜ LMビジネス視点
+## Section 9: 政策・規制動向 ｜ 顧客需要とAIガバナンス
 
-Target cards: 2–3
+Target cards: 1–2
+KR接続: `結節`・`AXL`（日銀・為替・内閣人事などのマクロ政治は原則対象外。顧客である人事部門・経営層の需要や、AI導入のガバナンス要件を動かすものに絞る）
 
-Run 3–4 parallel searches:
+Run 3 parallel searches:
 
 ```
-"Japan politics policy [today's date month day year]"
-"Japan economy business [today's date month day year]"
-"global politics business impact [today's date month day year]"
-"regulation policy technology [today's date month day year]"
+"AI規制 OR AI事業者ガイドライン 改定 [今日の日付]"
+"労働法制 OR 人的資本開示 OR 賃上げ 政策 企業 対応 [今日の日付]"
+"リスキリング 助成金 OR 人材開発支援助成金 生成AI [今日の日付]"
+"AI regulation enterprise compliance [today's date month day year]"
 ```
 
 Key sources to prioritize:
+- 経産省・厚労省・デジタル庁・個人情報保護委員会の一次発表
 - Japan Times, Nikkei Asia, NHK World
-- Nippon.com, Mainichi English
-- Al Jazeera, BBC, Reuters
-- Bloomberg, Financial Times
+- Reuters, Bloomberg, Financial Times（海外AI規制）
 
 Topics of interest:
-- 日本の国内政治、選挙、内閣
-- 財政・金融政策（日銀、予算、税制）
-- 通商政策、日米関係
-- ESG/サステナビリティ規制（SSBJ、ISSB）
-- コーポレートガバナンス（CGコード改訂）
-- 防衛・安全保障政策のビジネスへの影響
+- 顧客企業の人事部門・経営層の需要を直接動かす政策（人的資本開示、労働法制、賃上げ税制、106万円の壁のような就業調整）
+- AIリスキリング・人材育成の助成金・補助金（AXLの販売条件に直結）
+- AI規制・ガイドライン改定（導入支援提案に載せるガバナンス要件）
+- 日銀・為替・内閣人事は、顧客の投資判断（研修予算・IT予算の凍結）を直撃する場合のみ1枚。その場合も「顧客予算への影響」を先頭に書く
 
 ## Freshness Filtering（厳格運用）
 
@@ -421,7 +434,7 @@ For the hero header market strip, search for the **4 fixed indicators**:
 "日経平均 今日 終値 [today's date]"
 "USD JPY exchange rate today [today's date]"
 "S&P 500 closing price today [today's date]"
-"AI RPO market size 2025 2026"
+"AI in BPO market size 2026" OR "intelligent process automation market size 2026"
 ```
 
 Fixed indicators:
@@ -431,7 +444,7 @@ Fixed indicators:
 | 日経平均 | 前営業日の終値 | 祝日・休場日は直近取引日 |
 | USD/JPY | 直近の為替レート | 円高・円安の方向性を表示 |
 | S&P 500 | 前営業日の終値 | 米国市場の温度感 |
-| AI RPO市場 | 最新の市場規模推計 | CAGR等の成長率も表示 |
+| AI BPO市場 | 最新の市場規模推計 | CAGR等の成長率も表示。Section 6の出典と揃える。2026-09-05までは「AI RPO市場」だった |
 
 ## Section 10: 国内企業動向 ｜ 競合・隣接・スタートアップ（毎日・スキップ不可）
 
@@ -440,7 +453,7 @@ Target cards: 2–3
 **目的:** 経営層がICCサミット等のクローズドな場で得ている「他社が今どう動いているか」を、公開一次情報で毎朝補う。
 対象は LMI の直接競合、隣接領域（採用・AI面接、AI/DX支援、研修・リスキリング）、国内スタートアップの資金調達。
 
-**正本:** `references/domestic-watchlist.json`（企業4グループ24社、キーワード5本、業界メディア5本）。
+**正本:** `references/domestic-watchlist.json`（企業6グループ、キーワード8本、業界メディア5本。2026-09-05にBPO・RPA事業者と営業AIの2グループ、研修グループへの追加を実施）。
 企業の追加・削除はこのJSONだけを編集する。Feedly用OPMLも同じファイルから生成するため、二重管理しない。
 
 **Step A: 機械取得（必須）**
@@ -461,8 +474,11 @@ python3 scripts/domestic_watch.py fetch --hours 48 --markdown --out /tmp/domesti
 4. 大型導入事例・提携（導入社数、対象規模）
 5. 経営層の人事・組織変更
 6. ICC / IVS等カンファレンスの登壇・受賞
+7. KR直結の動き。BPO事業者のAI化・アウトカム課金（`KR1`）、営業AIツールの導入事例と成果数値（`KR2`）、AI研修・リスキリングの法人導入と助成金活用（`AXL`）は、種類1〜6に当たらなくても採用候補にする
 
 除外するもの: セミナー告知、単発のメディア掲載告知、受賞歴の焼き直し、採用広報。
+
+毎日の2〜3枚のうち、少なくとも1枚は `結節`（直接競合・経営が話題にする企業）、もう1枚は `KR1`・`KR2`・`AXL` のいずれかに接続させる。
 
 **Step C: 裏取り**
 
@@ -480,7 +496,7 @@ python3 scripts/domestic_watch.py fetch --hours 48 --markdown --out /tmp/domesti
 - **概要**: 3-5文。事実（誰が・何を・いくらで）の後に、LMIの該当商品（MC / MCEM / DXL / AXL）との位置関係を1文添える
 - **メトリクス**: 調達額、ARR、導入社数、成長率など
 - **タグ**: `🏢 競合` `🏢 隣接` `🏢 調達` を内容で使い分ける。tag-market を基本にし、資金調達は tag-breaking
-- **分析ボックス**: LMビジネスへの影響は「どの商品の、どの顧客層が取られるか／取れるか」を具体的に。HR示唆は自社の採用・育成・組織設計への含意
+- **分析ボックス**: KRへの接続は「どの商品（MC／MCEM／DXL／AXL）の、どの顧客層が取られるか／取れるか」と、河野がBU長・経営との結節で使う一言を具体的に。チーム／育成への示唆は、直下メンバーの誰が何を学ぶべきかへの含意
 - **ソースリンク**: 元記事またはプレスリリースの固有URL
 
 注意:
@@ -521,7 +537,7 @@ Topics of interest（河野さんのミッションに直結するテーマを�
 - **タイトル**: 記事の核心を日本語で要約（著者の肩書きを含む）
 - **概要**: 3-5文で主要な主張・フレームワーク・数値を抽出
 - **メトリクス**: 調査サンプル数、効果の定量データ、対象企業数など
-- **分析ボックス**: LMビジネスへの影響はコンサル×AI、HR示唆は15名のEM視点で具体化
+- **分析ボックス**: KRへの接続は `育成` または `結節` ラベルで、河野の関与の型（強化選手への直接介入、探索と実行の物差しの使い分け）に落とす。チーム／育成への示唆は直下15名の具体的な課題（要件定義力、AI以前の業界インプット、26卒立ち上げ）に接続する
 - **ソースリンク**: 記事固有のURL
 
 注意:
@@ -574,8 +590,8 @@ site:platformengineering.org blog OR "platform engineering" "internal developer"
 - **概要**: 3-5文で日本語要約。具体的なフレームワーク・数値・事例を抽出
 - **メトリクス**: Substack購読者数、記事のいいね数など（取得可能な場合）
 - **分析ボックス**:
-  - 📊 LMビジネスへの影響 — コンサル事業・DX推進への具体的な示唆
-  - 👥 HR／組織への示唆 — 15名のチームマネジメント（DX推進U/SREイネーブリングU）への適用アイデア
+  - 📊 KRへの接続 — `SRE-LT`（開発リードタイム、タスク管理エージェント）または `育成`・`結節` ラベルで、DX推進・SREイネーブリングの具体的な打ち手に落とす
+  - 👥 チーム／育成への示唆 — 15名のチームマネジメント（DX推進U/SREイネーブリングU）への適用アイデア。誰に、いつ、何を渡すかまで書く
 - **ソースリンク**: 記事固有のURL
 
 注意:

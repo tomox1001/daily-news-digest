@@ -17,16 +17,18 @@ This document describes the exact HTML structure for the news digest output. The
 <body>
   <header class="hero">...</header>
   <main class="container">
-    <!-- SECTION 1: 企業・開発組織のAI活用 最新事例 -->
-    [Cards 01–03]
-    <!-- SECTION 2: AI RPO — アウトソーシング革命 -->
-    [Cards 04–05]
-    <!-- SECTION 3: Product Hunt トレンド — 注目プロダクト -->
-    [Cards 06–07]
-    <!-- SECTION 4: AI・テクノロジー 最新ニュース -->
-    [Cards 08–12]
-    <!-- SECTION 5: 政治・国際動向 ｜ LMビジネス視点 -->
-    [Cards 13–15]
+    <!-- SECTION 1: X(Twitter)で話題 -->            [2 cards]
+    <!-- SECTION 2: Google Trends 急上昇 -->         [1 card]
+    <!-- SECTION 3: YouTube AI動画 -->               [1 card]
+    <!-- SECTION 4: 中国SNSトレンド -->              [1 card]
+    <!-- SECTION 5: AI効率 → ビジネス価値変換 -->    [2 cards]
+    <!-- SECTION 6: AI BPO -->                       [2 cards]
+    <!-- SECTION 7: Product Hunt トレンド -->        [2 cards]
+    <!-- SECTION 8: AI・テクノロジー 最新ニュース --> [2–3 cards]
+    <!-- SECTION 9: 政策・規制動向 -->               [1–2 cards]
+    <!-- SECTION 10: 国内企業動向 -->                [2–3 cards]
+    <!-- SECTION 11: HBR -->                         [1–2 cards]
+    <!-- SECTION 12: Weekly EM/Product（月曜のみ） --> [2–3 cards]
   </main>
   <footer class="footer">...</footer>
 </body>
@@ -43,7 +45,7 @@ This document describes the exact HTML structure for the news digest output. The
       DAILY INTELLIGENCE BRIEF
     </div>
     <h1>News Digest</h1>
-    <p class="date">[YYYY]年[M]月[D]日（[曜日]）｜ 企業AI活用 × AI RPO × AI・テクノロジー × 政治・政策 × Product Hunt</p>
+    <p class="date">[YYYY]年[M]月[D]日（[曜日]）｜ X バズ × Google Trends × YouTube × 中国SNS × AI ROI × AI BPO × Product Hunt × AI Tech × 政策・規制 × 国内企業動向 × HBR</p>
 
     <div class="market-strip">
       <!-- Fixed 4 market indicators -->
@@ -70,7 +72,7 @@ This document describes the exact HTML structure for the news digest output. The
       </div>
       <div class="market-item">
         <div>
-          <div class="label">AI RPO市場</div>
+          <div class="label">AI BPO市場</div>
           <div class="value">[VALUE]</div>
         </div>
         <span class="change up|down">[CHANGE TEXT]</span>
@@ -81,7 +83,7 @@ This document describes the exact HTML structure for the news digest output. The
 ```
 
 Market strip guidelines:
-- Always exactly 4 items in the fixed order: 日経平均, USD/JPY, S&P 500, AI RPO市場
+- Always exactly 4 items in the fixed order: 日経平均, USD/JPY, S&P 500, AI BPO市場（2026-09-05までは AI RPO市場）
 - Use class "up" (green) for positive, "down" (red) for negative
 - Values should be concise (use abbreviations like $49.6B, ¥57,650)
 - 祝日・休場日は直近取引日のデータを使い、その旨を記載する
@@ -108,15 +110,16 @@ Section assignments (this order is fixed and intentional):
 | 3 | YouTube AI動画 — 海外テック深掘り | gradient-3 | ▶️ | tag-tech |
 | 4 | 中国SNSトレンド — 36Kr / 虎嗅 | gradient-2 | 🇨🇳 | tag-market, tag-tech |
 | 5 | AI効率 → ビジネス価値変換 グローバル事例 | gradient-3 | 💡 | tag-research, tag-market |
-| 6 | AI RPO — アウトソーシング革命 | gradient-2 | 🏭 | tag-market, tag-research |
-| 7 | Product Hunt トレンド — 注目プロダクト | gradient-4 | 🚀 | tag-tech |
-| 8 | AI・テクノロジー 最新ニュース | gradient-1 | 🤖 | tag-tech, tag-breaking, tag-market |
-| 9 | 政治・国際動向 ｜ LMビジネス視点 | gradient-2 | 🌏 | tag-policy |
+| 6 | AI BPO — 納品の自動化とアウトカム型デリバリー | gradient-2 | 🏭 | tag-market, tag-research |
+| 7 | Product Hunt トレンド — 今週使えるエージェント／自動化ツール | gradient-4 | 🚀 | tag-tech |
+| 8 | AI・テクノロジー 最新ニュース ｜ 自動化・開発生産性・コスト | gradient-1 | 🤖 | tag-tech, tag-breaking, tag-market |
+| 9 | 政策・規制動向 ｜ 顧客需要とAIガバナンス | gradient-2 | 🌏 | tag-policy |
 | 10 | 国内企業動向 ｜ 競合・隣接・スタートアップ | gradient-1 | 🏢 | tag-market, tag-breaking |
 | 11 | HBR — マネジメント・戦略インサイト | gradient-3 | 📚 | tag-research, tag-hr |
 | 12 | Weekly EM/Product インテリジェンス（月曜のみ） | gradient-4 | 🌐 | tag-research, tag-tech |
 
 （2026-09-02更新: 6セクション時代の旧表を現行12セクションに差し替え。Section 10 を新設）
+（2026-09-05更新: Section 6 を AI RPO→AI BPO に改名、Section 7・8・9 の副題をKR接続の焦点に合わせて変更。CSSクラス・グラデーション・絵文字は変更なし）
 
 ## News Card
 
@@ -138,12 +141,12 @@ Section assignments (this order is fixed and intentional):
   </div>
   <div class="impact-grid">
     <div class="impact-box lm-impact">
-      <div class="impact-label">📊 LMビジネスへの影響</div>
-      <p class="impact-text">[2–3 sentences with <strong> on key insights]</p>
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>[KRラベル]</strong>｜[3本柱またはKR指標]：[どう効くか1文]。[河野の打ち手1文]</p>
     </div>
     <div class="impact-box hr-impact">
-      <div class="impact-label">👥 HR／組織への示唆</div>
-      <p class="impact-text">[2–3 sentences with <strong> on key insights]</p>
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">[直下15名のどの層・どの課題に効くか、誰に何を渡すか。2文まで]</p>
     </div>
   </div>
   <div class="card-footer">
@@ -190,13 +193,18 @@ Vary gradients across cards for visual diversity:
 
 ### Impact Analysis Boxes
 
-EVERY card must have both impact boxes:
-1. **LMビジネスへの影響** (lm-impact): How this news affects the consulting/LM business specifically
-2. **HR／組織への示唆** (hr-impact): Implications for HR strategy, workforce, organization design
+EVERY card must have both impact boxes (CSS classes unchanged since the 2026-09-05 redesign; only the labels and content rules changed):
+1. **KRへの接続** (lm-impact): 先頭に SKILL.md Step 0 のKR接続ラベル（`KR1 AI BPO` / `KR2 営業生産性` / `KR3 中継業務` / `SRE-LT` / `SRE-マスク` / `AXL` / `結節` / `育成`）を `<strong>` で置く。次に「受注率・粗利率・設置率、またはKR指標のどれに、どう効くか」を1文。最後に河野が取る打ち手（ゲート判定への同席、外部依頼の遮断、BU長・経営との結節、メンバーへの直接介入のいずれか）を1文
+2. **チーム／育成への示唆** (hr-impact): 直下15名（DXU 9名・SREイネ 6名）のどの層・どの課題に効くか。能力開発（強化選手、要件定義力、AI以前の業界インプット）、26卒2名の立ち上げ、会議時間の制約、探索と実行の物差しの使い分けに接続する。LMIの人事部門や「企業のHR一般」への示唆は書かない
 
-Each box should be 2–3 sentences. Use `<strong>` to highlight the key takeaway.
+Each box should be 1–2 sentences. Use `<strong>` for the KR label and the key number.
 
-The analysis should be specific and actionable — not generic observations. Write at a level of granularity where the reader can bring the insight into a meeting the next day. Avoid phrases like「注目すべき」「重要である」and instead use concrete recommendations like「〜すべき」「〜の検討が急務」.
+The analysis should be specific and actionable. Do not write「注目すべき」「重要である」「〜すべき」「〜の検討が急務」— these hide who changes what. Name the KR, the metric, and the concrete move. A card whose KRへの接続 box cannot start with a label is rejected (except in Sections 9–11, where `結節` / `育成` is the label).
+
+Example:
+```html
+<p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：Cognizantが請求時間からアウトカム課金へ転換した事実は、ルーフ（AEPS）の価格30%減試作案を「業界標準への追随」として説明する根拠になる。8月頭の方針決定資料に競合事例として1枚追加する。</p>
+```
 
 ### Metrics Pills
 
@@ -240,13 +248,11 @@ Each card should have 2–4 metrics. Guidelines:
 - Impact boxes should be actionable, not just descriptive
 
 ### Card Count
-- Target: 12–16 cards total across all 5 sections
-- Section 2 (AI効率→価値変換): 2–3 cards
-- Section 2 (AI RPO): 2 cards
-- Section 3 (Product Hunt): 2 cards
-- Section 4 (AI/Tech): 3–5 cards
-- Section 5 (政治): 2–3 cards
-- Adjust based on the day's news importance
+- Target: 18–21 cards total across 11 sections (Mon: +2–3 for Section 12)
+- Sections 1–4 (速報系): 2+1+1+1 = 5 cards max
+- Section 5 (AI ROI): 2 / Section 6 (AI BPO): 2 / Section 7 (Product Hunt): 2
+- Section 8 (AI/Tech): 2–3 / Section 9 (政策・規制): 1–2 / Section 10 (国内企業): 2–3 / Section 11 (HBR): 1–2
+- Adjust based on the day's news importance, but never exceed 22 on a non-Monday
 
 ### Card Numbering
 - Cards are numbered sequentially 01–15 across all sections
