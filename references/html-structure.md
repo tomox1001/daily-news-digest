@@ -72,7 +72,7 @@ This document describes the exact HTML structure for the news digest output. The
       </div>
       <div class="market-item">
         <div>
-          <div class="label">AI BPO市場</div>
+          <div class="label">BPO市場</div>
           <div class="value">[VALUE]</div>
         </div>
         <span class="change up|down">[CHANGE TEXT]</span>
@@ -83,7 +83,7 @@ This document describes the exact HTML structure for the news digest output. The
 ```
 
 Market strip guidelines:
-- Always exactly 4 items in the fixed order: 日経平均, USD/JPY, S&P 500, AI BPO市場（2026-09-05までは AI RPO市場）
+- Always exactly 4 items in the fixed order: 日経平均, USD/JPY, S&P 500, BPO市場（2026-09-05までは AI RPO市場。値はBPO市場全体の推計、変化欄にAIが牽引している旨を添える）
 - Use class "up" (green) for positive, "down" (red) for negative
 - Values should be concise (use abbreviations like $49.6B, ¥57,650)
 - 祝日・休場日は直近取引日のデータを使い、その旨を記載する
@@ -203,7 +203,12 @@ The analysis should be specific and actionable. Do not write「注目すべき�
 
 Example:
 ```html
-<p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：Cognizantが請求時間からアウトカム課金へ転換した事実は、ルーフ（AEPS）の価格30%減試作案を「業界標準への追随」として説明する根拠になる。8月頭の方針決定資料に競合事例として1枚追加する。</p>
+<p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：Cognizantが請求時間からアウトカム課金へ転換した事実は、納品自動化の価格を成果連動にする裁量の根拠になる。9月の方針報告に業界の課金モデル転換を1枚添える。</p>
+```
+
+公開ページのため、分析ボックスに顧客名・メンバー名・内部の価格や数値目標・社内コード名を書かない（SKILL.md Step 0 の「公開ページに書かない情報」を参照）。
+
+```html
 ```
 
 ### Metrics Pills
