@@ -290,7 +290,7 @@ Topics of interest:
 ## Section 6: AI BPO — 納品の自動化とアウトカム型デリバリー
 
 Target cards: 2
-KR接続: `KR1 AI BPO`（社員なしで回せる納品、粗利率向上、RPA/UiPath採否、価格30%減試作）
+KR接続: `KR1 AI BPO`（社員なしで回せる納品、粗利率向上、RPA・エージェントの採否）
 
 2026-09-05までは「AI RPO（採用アウトソーシング）」だったが、KR1の対象はBPO（納品業務の自動化）なので改めた。RPO（採用代行）の市場データは扱わない。
 
