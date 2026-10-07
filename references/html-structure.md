@@ -199,7 +199,7 @@ EVERY card must have both impact boxes (CSS classes unchanged since the 2026-09-
 
 Each box should be 1–2 sentences. Use `<strong>` for the KR label and the key number.
 
-The analysis should be specific and actionable. Do not write「注目すべき」「重要である」「〜すべき」「〜の検討が急務」— these hide who changes what. Name the KR, the metric, and the concrete move. A card whose KRへの接続 box cannot start with a label is rejected (except in Sections 9–11, where `結節` / `育成` is the label).
+The analysis should be specific and actionable. Do not write「注目すべき」「重要である」「〜すべき」「〜の検討が急務」— these hide who changes what. Name the KR, the metric, and the concrete move when a label fits naturally. A card is never rejected merely for lacking a clean KR label (2026-10-08: KR-label gating removed) — when no label fits, start the box with 「参考」or a plain note on why it matters to 河野's role (結節 / 育成 remain the defaults for Sections 9–11).
 
 Example:
 ```html
