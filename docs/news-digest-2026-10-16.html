@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年10月16日（金）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero Header ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+/* ── Layout ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── News Card ── */
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Key Metrics */
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+/* Impact Boxes */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+/* Card Footer */
+.card-footer {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 16px; flex-wrap: wrap;
+}
+
+/* Source Link */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Share Button */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年10月16日（金）｜ 中国SNS × AI・テクノロジー × 国内企業動向 × HBR</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">67,566円</div>
+        </div>
+        <span class="change down">▼1,465円（10/13 14時速報・直近取引日）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">158.23</div>
+        </div>
+        <span class="change down">円安基調（10/13・直近取引日）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">7,719</div>
+        </div>
+        <span class="change down">▼1.11%（10/14終値・直近取引日）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">BPO市場</div>
+          <div class="value">$358.6B</div>
+        </div>
+        <span class="change up">▲CAGR 9.9%（AI・クラウドが牽引）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- SECTION 4: 中国SNSトレンド -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🇨🇳</div>
+  <div>
+    <h2>中国SNSトレンド — 36Kr / 虎嗅</h2>
+    <span class="sub">虎嗅（huxiu.com） — 2026年10月15日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 1: 上海 人形ロボット8000台 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-market">🇨🇳 虎嗅 10/15</div>
+  <h3>上海市、人形ロボット8,000台を2028年までに工場導入へ 国際博が号砲</h3>
+  <p class="summary">
+    虎嗅（IT时报）が2026年10月15日付で報じたところによると、上海市は第26回中国国際工業博覧会（10/12開幕）を機に、<strong>2028年までに人形ロボット8,000台</strong>を工場に導入する方針を打ち出した。工業ロボット密度は<strong>1万人あたり600台</strong>、スマート製造装置の生産額は<strong>2,000億元</strong>を目標に掲げる。導入事例として、JAKAの車輪型人形ロボットは自動車部品工場で作業サイクルを105秒から<strong>28秒へ73%短縮</strong>し、新規ラインの展開期間も12か月から<strong>57日へ84%短縮</strong>した。Siemens中国やAnt Group系Ant Lingboも量産導入を計画しており、人形ロボット向け国家標準（GB/T 47859-2026、2027年2月施行）も既に公布済み。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">導入目標</span><span class="metric-value">8,000台（〜2028年）</span></div>
+    <div class="metric"><span class="metric-label">作業サイクル</span><span class="metric-value down">▼73%（105→28秒）</span></div>
+    <div class="metric"><span class="metric-label">新規展開期間</span><span class="metric-value down">▼84%（12カ月→57日）</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜人形ロボットの量産導入を政府目標に落とし込み、作業サイクル・展開期間という具体的な定量指標で効果を示す進め方は、国内のAI・自動化投資の意思決定に使われる比較軸の参考になる。経営層が海外のAI実装水準を話題にする場で、具体的な数値付きの最新事例として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AI以前の業界インプットを広げたいメンバーに、ソフトウェアエージェントとは異なる「物理空間の自動化」が同じAI投資の物差し（作業サイクル・展開期間）で語られている事例として共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.huxiu.com/article/4897831.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      虎嗅（IT时报） — 上海8,000台人形ロボット工場導入方針 (10/15)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 8: AI・テクノロジー 最新ニュース -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース ｜ 自動化・開発生産性・コスト</h2>
+    <span class="sub">Google AI for Developers（公式） — 2026年10月13日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 2: Gemini 4 Argon GA + 価格 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-breaking">🤖 AI 10/13</div>
+  <h3>Google「Gemini 4 Argon」が一般提供開始、12月1日から価格が2倍に</h3>
+  <p class="summary">
+    Googleが2026年10月13日、新フラッグシップモデル「Gemini 4 Argon」（gemini-4-argon）をGemini API・AI Studio・Gemini appへ一般提供（GA）開始したと公式チェンジログで発表した。Googleの公式価格ページによると、導入価格は<strong>100万トークンあたり入力$2・出力$10</strong>（思考トークン含む）だが、<strong>2026年12月1日から入力$4・出力$10→$20へ価格が2倍</strong>に上がることが明記されている。Batch・Flex・Priorityの各利用枠も同時期に同率で値上げされる。Google Trendsで「gemini 4 argon」が急上昇していたのは、この一般提供開始のタイミングと一致する。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">導入価格</span><span class="metric-value">$2 / $10（100万tok）</span></div>
+    <div class="metric"><span class="metric-label">12/1以降</span><span class="metric-value up">$4 / $20（2倍）</span></div>
+    <div class="metric"><span class="metric-label">GA日</span><span class="metric-value">2026-10-13</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜主要モデルの価格が3か月弱の導入期間後に2倍へ切り替わるという価格設計は、開発リードタイム短縮の施策で使うAPIコストの試算に前提として織り込む必要がある。コーディング・タスク管理エージェントのコスト計画を見直す会議で、他社モデルの値上げペースの参考値として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">エージェントのコスト試算を担うメンバーに、「導入価格は一時的」という前提でROI計算をやり直す視点を渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Google AI for Developers — Gemini API Pricing（Gemini 4 Argon） (10/13確認)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 10: 国内企業動向 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🏢</div>
+  <div>
+    <h2>国内企業動向 ｜ 競合・隣接・スタートアップ</h2>
+    <span class="sub">PR TIMES / 株探 / フィスコ — 2026年10月15日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 3: 識学 経常赤字転落 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-breaking">🏢 競合 10/15</div>
+  <h3>識学、27年2月期2Q累計で経常損益が赤字転落 前年同期+8.6億円→▲1.5億円</h3>
+  <p class="summary">
+    組織運営コンサルティングを手がける識学（東証グロース）が2026年10月15日16時30分、2027年2月期第2四半期累計（3〜8月）の決算を発表した。売上高は<strong>26億6,200万円</strong>となった一方、経常損益は<strong>▲1億4,600万円の赤字</strong>に転落した。前年同期は<strong>8億5,700万円の経常黒字</strong>だったため、黒字から赤字への大きな反転となる。M&amp;A関連の先行投資やファンド事業のコスト増が要因とみられる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">売上高</span><span class="metric-value">26.62億円</span></div>
+    <div class="metric"><span class="metric-label">経常損益</span><span class="metric-value down">▲1.46億円（前年同期+8.57億円）</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜組織運営コンサルという隣接領域の直接競合が、M&amp;Aとファンド事業への先行投資局面で本業の収益を崩した事実は、LMIが投資と収益のバランスを議論する際の他社の反面教師として使える。BU長・経営との結節の場で、競合の投資フェーズと収益悪化の因果を共有できる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">競合動向を把握しておくべきメンバーに、「黒字企業でも投資フェーズで経常赤字に転落しうる」という事実を業界インプットとして共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://finance.yahoo.co.jp/news/detail/fdcfa721ec71bc95a768f02aec0839e0bac7e25c" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      フィスコ（Yahoo!ファイナンス） — 識学、27年2月期2Q経常赤字転落 (10/15)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 4: Sansan×primeNumber -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-market">🏢 隣接 10/15</div>
+  <h3>Sansan×primeNumber、取引先データをAI活用の前提に整えるコネクターで協業</h3>
+  <p class="summary">
+    名刺・企業データ管理のSansanと、クラウドETL「TROCCO」を提供するprimeNumberが協業を開始した。Sansanの顧客マスターマネジメント「Sansan Data Intelligence」とTROCCOを連携させた「Sansan Data Intelligence コネクター by TROCCO」を<strong>2027年3月頃</strong>に提供開始する予定で、社内に散在する取引先データを統合・常時最新化し、AI活用やデータ分析の精度向上を狙う。primeNumber自身の調査では、「AI活用で明確な成果が出ている」と回答した企業は<strong>16.4%</strong>にとどまり、データ基盤の統合度が成果と相関するという課題意識を背景に挙げている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">提供開始予定</span><span class="metric-value">2027年3月頃</span></div>
+    <div class="metric"><span class="metric-label">AI活用で成果実感</span><span class="metric-value down">16.4%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR2 営業生産性</strong>｜「AI活用の成果はデータ基盤の統合度で決まる」という切り口は、営業マネジャーのアポ数・設置率向上の打ち手を検討する際に、ツール導入単体ではなくデータ接続の前提を揃える順番の論点として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">営業領域の打ち手を考えるメンバーに、「AI活用成果16.4%」という低い実感値を、施策評価の物差しを作る際の外部ベンチマークとして渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000151.000039164.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES（primeNumber） — Sansan×primeNumber協業開始 (10/15)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 5: ベイカレント決算 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-market">🏢 隣接 10/15</div>
+  <h3>ベイカレント、中間期純利益29%増 AI需要牽引で「売上1兆円」の新中計</h3>
+  <p class="summary">
+    ITコンサルティングのベイカレント・コンサルティングが2026年10月15日の取引終了後、27年2月期第2四半期累計（3〜8月）決算を発表した。売上高は<strong>929億1,300万円（前年同期比35.7%増）</strong>、純利益は<strong>222億900万円（同28.9%増）</strong>で、AI関連需要とサイバーセキュリティ・防衛関連の新規需要が牽引した。同時に、<strong>31年2月期に売上5,000億円、36年2月期に売上1兆円</strong>を掲げる新中期経営計画・成長ロードマップを開示し、株主還元方針も予想売上の40%から25%確保へ引き下げ、超過分を成長投資・自社株買いに回す方針へ変更した。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">売上高</span><span class="metric-value up">929.1億円（+35.7%）</span></div>
+    <div class="metric"><span class="metric-label">純利益</span><span class="metric-value up">222.1億円（+28.9%）</span></div>
+    <div class="metric"><span class="metric-label">31年2月期目標</span><span class="metric-value">売上5,000億円</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜コンサル大手がAI・サイバーセキュリティ需要を牽引役に挙げて大幅増収を実現し、投資配分を成長側へ厚くする方針に転換した事実は、AXLの新規事業・検証顧客の投資配分を経営に説明する際の市場動向の裏付けとして使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AXLに関わるメンバーに、「AI需要×成長投資」の組み合わせで市場評価を得ている社外事例として共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://kabutan.jp/news/marketnews/?b=n202610150967" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      株探 — ベイカレント中間期決算・新中計 (10/15)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 11: HBR -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">📚</div>
+  <div>
+    <h2>HBR — マネジメント・戦略インサイト</h2>
+    <span class="sub">dhbr.diamond.jp — 2026年10月15日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 6: ボットシッティング -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-research">📚 HBR 10/15</div>
+  <h3>「ボットシッティング」が生産性のパラドックスを生む AIの尻ぬぐいに週6.4時間</h3>
+  <p class="summary">
+    HBR（dhbr.diamond.jp、2026年10月15日公開）に掲載されたレベッカ・ハインズ氏（Green Work・AI Institute所長）とポール・レオナルディ氏（UCサンタバーバラ教授）の論考によると、米英豪のフルタイム労働者<strong>6,000人</strong>を対象にした調査で、デジタルワーカーの<strong>75%</strong>が個人の生産性向上を実感する一方、所属組織の業績が大幅に向上したのはわずか<strong>13%</strong>にとどまった。原因として、AIを実用状態に保つために人間が担う不可視の作業（文脈付与・誤り修正・出力確認）を「ボットシッティング」と名付け、その時間は週平均<strong>6.4時間</strong>（内訳：文脈付与2.3h・誤り修正2.2h・出力確認1.7h）に上ると指摘。この負担の削減をリーダーの責務と位置づけている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">調査規模</span><span class="metric-value">米英豪6,000人</span></div>
+    <div class="metric"><span class="metric-label">個人生産性向上実感</span><span class="metric-value up">75%</span></div>
+    <div class="metric"><span class="metric-label">組織業績が大幅向上</span><span class="metric-value down">13%のみ</span></div>
+    <div class="metric"><span class="metric-label">ボットシッティング</span><span class="metric-value">週6.4時間</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>育成</strong>｜「個人の生産性は上がるが組織業績に繋がらない」という生産性のパラドックスは、AI活用の効果測定を個人指標だけで判断しない根拠になる。SRE・DX推進の施策評価で、ボットシッティング（AIの尻ぬぐい）時間を測る視点を加える材料として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AIエージェント導入を進めるメンバーに、「文脈付与・誤り修正・出力確認」という不可視の負担が導入効果を相殺しうる点を、要件定義力の強化と合わせて共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://dhbr.diamond.jp/articles/-/14676" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      HBR（dhbr.diamond.jp） — AIの尻ぬぐいに追われる「ボットシッティング」を減らす方法 (10/15)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年10月16日 — For internal use
+    </p>
+  </div>
+</footer>
+</body>
+</html>
