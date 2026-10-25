@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年10月26日（月）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero Header ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+/* ── Layout ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── News Card ── */
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Key Metrics */
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+/* Impact Boxes */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+/* Card Footer */
+.card-footer {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 16px; flex-wrap: wrap;
+}
+
+/* Source Link */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Share Button */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年10月26日（月）｜ X バズ × YouTube × 中国SNS × Product Hunt × 国内企業動向 × HBR × Weekly EM/Product</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">62,693円</div>
+        </div>
+        <span class="change down">▼215円安（-0.34%、10/23終値）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">156.86円</div>
+        </div>
+        <span class="change down">円高進行（10/24時点）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">7,623.68</div>
+        </div>
+        <span class="change down">▼0.52%（10/23終値）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">BPO市場</div>
+          <div class="value">$358.6B</div>
+        </div>
+        <span class="change up">▲CAGR 9.9%（AI・クラウドが牽引）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- SECTION 1: X(Twitter)で話題 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🔥</div>
+  <div>
+    <h2>X(Twitter)で話題 — AI・テック最新バズ</h2>
+    <span class="sub">X / investing.com — 2026年10月23-25日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 1: AWSクラウド容量逼迫 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-breaking">🔥 X 10/25</div>
+  <h3>AWSジャシーCEO「クラウド容量は2027年分も大部分予約済み」——AI需要が供給を上回ると自ら認める</h3>
+  <p class="summary">
+    Amazonのアンディ・ジャシーCEOは<strong>2026年10月23日</strong>、Andreessen Horowitzのベン・ホロウィッツ氏らとのAIポッドキャストで、AWSのクラウド容量は<strong>2026年分がすべて確約済み</strong>、<strong>2027年分も大部分が予約済み</strong>、2028年分も相当量が確保済みだと発言した。この発言はX上で10月25日に邦訳紹介され拡散した。AWSはEC2・Bedrockの一部枠をオンデマンド利用者向けに確保し続けるとしているが、生成AI需要の急増に計算資源の供給が追いついていない構図を、クラウド最大手のトップ自身が認めた形になる。Amazonは<strong>2026年に約2,200億ドルの設備投資</strong>を計画しており、10月29日発表予定の第3四半期決算でAI関連投資の進捗が注目される。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">2026年容量</span><span class="metric-value">100%確約</span></div>
+    <div class="metric"><span class="metric-label">2027年容量</span><span class="metric-value">大部分予約済み</span></div>
+    <div class="metric"><span class="metric-label">2026年設備投資</span><span class="metric-value">$220B</span></div>
+    <div class="metric"><span class="metric-label">決算発表</span><span class="metric-value">10/29</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜AIエージェント活用を広げるほど必要になる計算資源が、供給元の最大手でも2027年まで逼迫しているという事実は、ツール選定やコスト計画を話すBU長・経営との会話で使える外部環境の一言になる。クラウド容量の制約は、今後の価格交渉がベンダー優位に傾く可能性を示す。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">複数エージェントを並列実行するメンバーに、計算資源そのものが有限な供給制約下にあるという前提を共有できる。コスト計画を立てる際に、値上げや利用制限のリスクを織り込む材料になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://jp.investing.com/news/company-news/article-1724233" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      investing.com — AWSクラウド容量に関するジャシーCEO発言 (10/23発言・10/24記事)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 3: YouTube AI動画 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">▶️</div>
+  <div>
+    <h2>YouTube AI動画 — 海外テック深掘り</h2>
+    <span class="sub">Ben AI (YouTube) — 2026年10月25日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 2: Claude Code 2.0解説動画 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-tech">▶️ YouTube 10/25</div>
+  <h3>Claude Codeデスクトップアプリが大型刷新——公開1日で15万回再生、全機能を実演解説</h3>
+  <p class="summary">
+    YouTubeチャンネル「Ben AI」は<strong>2026年10月25日</strong>、Anthropicが刷新したClaude Codeデスクトップアプリの解説動画を公開し、1日で再生回数<strong>154,235回</strong>に達した。動画は新しいサイドパネル・チャットセクション、プロジェクトとネストセッション、分割ビュー、Docs／Slides／Design／Dashboards／Motionといった新機能、覚えておくべき4つのスラッシュコマンド、「mods」機能を画面操作つきで紹介している。Cowork（並行開発環境）の利用者には「現状はCodeタブの方が作業場所として優れている」との見解も示されており、<strong>13分40秒</strong>の中にタスク管理・コーディングエージェントの運用方法が具体的にまとめられている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">再生回数(1日)</span><span class="metric-value up">154,235回</span></div>
+    <div class="metric"><span class="metric-label">動画長</span><span class="metric-value">13:40</span></div>
+    <div class="metric"><span class="metric-label">公開</span><span class="metric-value">10/25</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜ネストセッション・分割ビュー・modsといった新機能は、開発リードタイム短縮に使えるタスク管理・レビュー体制の選択肢を増やす。Cowork運用との使い分け（現状はCodeタブが優位という見解）は、開発環境の構成を検討する際の比較材料になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">Claude Codeを日常的に使うメンバーに、ネストセッションや分割ビューなど未活用の機能を試す入口として展開できる。4つのスラッシュコマンドは、26卒を含む新人の立ち上げ時の最初のチェックリストに使える。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.youtube.com/watch?v=J5EbL1UaqG8" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      YouTube — Ben AI「Claude 2.0 is Insane (All Updates Explained)」 (10/25)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 4: 中国SNSトレンド -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🇨🇳</div>
+  <div>
+    <h2>中国SNSトレンド — 36Kr / 虎嗅</h2>
+    <span class="sub">huxiu.com — 2026年10月25日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 3: Kimi算力不足 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-market">🇨🇳 虎嗅 10/25</div>
+  <h3>中国の生成AI企業、性能向上と算力不足の板挟みに——Kimiのトークン消費量は半年で4倍</h3>
+  <p class="summary">
+    中国メディア虎嗅は<strong>2026年10月25日</strong>、月之暗面（Moonshot AI）の最新モデル「Kimi K3.1 Pro」を題材に、中国の大規模モデル企業が直面する算力（計算資源）不足のジレンマを論じた。Kimi K3.1 Proは総パラメータ約<strong>3兆</strong>、コンテキスト長<strong>100万トークン</strong>に達し、Terminal-Bench 4.0のスコアは<strong>65.7%</strong>と世界トップ級に近づいたが、月額199〜699元の有料プラン利用者からは利用枠不足への不満が出ている。モデルの高性能化とAIエージェントによるトークン消費増大が重なり、中国国内のトークン日次消費量は2026年6月時点で<strong>約500万億（前年12月比で約4倍）</strong>に拡大した。著者は半導体サプライチェーン全体の制約から、国産AIチップの進展にもかかわらず供給不足が長期化するとの見方を示している。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">パラメータ数</span><span class="metric-value">約3兆</span></div>
+    <div class="metric"><span class="metric-label">コンテキスト長</span><span class="metric-value">100万トークン</span></div>
+    <div class="metric"><span class="metric-label">Terminal-Bench 4.0</span><span class="metric-value">65.7%</span></div>
+    <div class="metric"><span class="metric-label">トークン消費(日次)</span><span class="metric-value up">約500万億(4倍/半年)</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜中国のAI企業も性能向上と計算資源不足の板挟みにあるという事実は、生成AIの供給制約が米中双方で共通の構造問題であることを示す。本日のAWS容量逼迫（Section1）と合わせて、「AI投資計画は供給制約込みで見る必要がある」という論点でBU長・経営との会話に使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">海外のAI事情をインプットする機会が少ないメンバーに、中国の生成AI市場の規模感（トークン消費量の急拡大）を共有できる。性能と利用枠のトレードオフは、自社のAIツール選定でも起こりうる論点として参考になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.huxiu.com/article/4900212.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      虎嗅 — 「Kimiの苦悩」算力不足と大規模モデル企業のジレンマ (10/25)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 7: Product Hunt トレンド -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🚀</div>
+  <div>
+    <h2>Product Hunt トレンド — 今週使えるエージェント／自動化ツール</h2>
+    <span class="sub">producthunt.com — 2026年10月26日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 4: AgentGrid.io -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-tech">🚀 Product Hunt 本日</div>
+  <h3>AgentGrid.io、人間とAIエージェントが共同編集するワークスペースを公開——Product Huntで本日ローンチ</h3>
+  <p class="summary">
+    「AgentGrid.io」は、人間とAIエージェントが同じドキュメントを共有・編集できるワークスペースをProduct Huntで公開した（本日ローンチ、Upvote<strong>162</strong>）。人間向けにはマルチプレイヤー編集、エージェント向けにはMarkdown／Gitインターフェースを提供し、HTML／Reactアプリのドキュメント化・公開、複数エージェントと人間による協働編集、バージョン履歴とエージェント単位のアクセス制御に対応する。MCP・CLI・API経由でClaude、ChatGPT、Cursor等のエージェントと接続でき、ファイル・ウェブサイト・Figmaデザインの取り込みも可能。無料プランは<strong>エージェントシート数無制限</strong>と案内されている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">Upvote</span><span class="metric-value">162</span></div>
+    <div class="metric"><span class="metric-label">価格</span><span class="metric-value">無料枠あり(エージェント無制限)</span></div>
+    <div class="metric"><span class="metric-label">対応エージェント</span><span class="metric-value">Claude/ChatGPT/Cursor等</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR3 中継業務</strong>｜人間とエージェントが同じドキュメントを編集し、バージョン履歴とアクセス制御まで備える設計は、情報を届けるためだけに発生している中継業務（ドキュメント共有・更新連絡）を代替する際の比較対象になる。エージェント単位のアクセス制御は、権限設計を検討する場での参考事例になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">複数エージェントとドキュメントをやり取りするメンバーに、Git/Markdownベースのエージェント連携インターフェースの実装例として共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.producthunt.com/products/agentgrid-io" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Product Hunt — AgentGrid.io (本日)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 5: Openstatus -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-tech">🚀 Product Hunt 本日</div>
+  <h3>Openstatus、Slackからインシデント宣言できるOSSステータスページを拡充——28リージョン監視</h3>
+  <p class="summary">
+    オープンソースのステータスページ・アップタイム監視サービス「Openstatus」は、28リージョンからのグローバル監視とインシデント管理機能を拡充し、Product Huntで本日ローンチした（Upvote<strong>138</strong>）。Slack上でインシデントを宣言すると専用チャンネルが自動作成され、タイムライン記録とポストモーテムの下書き作成までを支援する。タイムスタンプ付きのインシデントログはSOC2対応の裏付け資料としても使え、CLI・API・Terraformでの運用、パスワード・IP・メールアドレスによるステータスページの保護にも対応する。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">Upvote</span><span class="metric-value">138</span></div>
+    <div class="metric"><span class="metric-label">監視リージョン</span><span class="metric-value">28</span></div>
+    <div class="metric"><span class="metric-label">価格</span><span class="metric-value">無料枠あり</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-マスク</strong>｜インシデント宣言からチャンネル作成、タイムライン記録、ポストモーテム下書きまでを自動化する設計は、定期運用業務（障害対応の記録・報告）の工数を削減する際の比較対象になる。SOC2対応に使えるログ形式は、運用ガバナンスを議論する場での参考になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">障害対応・運用保守を担当するメンバーに、ポストモーテム作成を半自動化する仕組みの実例として共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.producthunt.com/products/openstatus-2" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Product Hunt — Openstatus Incident Management (本日)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 10: 国内企業動向 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🏢</div>
+  <div>
+    <h2>国内企業動向 ｜ 競合・隣接・スタートアップ</h2>
+    <span class="sub">domestic_watch.py + PR TIMES — 2026年10月21日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 6: Magic Moment MCPサーバー -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-market">🏢 KR2 10/21</div>
+  <h3>Magic Moment、営業情報をClaude・ChatGPTから参照できるMCPサーバーを提供開始——複数AIアシスタントで同じ商談データを共有</h3>
+  <p class="summary">
+    AIセールスプラットフォーム「Magic Moment Playbook」を提供する株式会社Magic Momentは、<strong>2026年10月21日</strong>、蓄積した営業情報をMCP（Model Context Protocol）サーバー経由で外部のAIアシスタントから参照できる機能の提供を開始したと発表した。これにより、2026年9月対応済みのMicrosoft Copilotに加え、ClaudeやChatGPTからも同じ商談データを参照できるようになる。商談記録はSalesforceやHubSpot、または同社プラットフォーム自体に取引先・案件単位で紐付けて蓄積され、営業担当者は提案書やフォローアップ文面の下書き作成に、マネージャーは失注案件の傾向把握や案件レビューに活用できるとする。提供開始時点は<strong>参照（読み取り）のみ</strong>で、書き込み対応は今後の予定。接続認証にはOAuth 2.0を用い、閲覧範囲は利用者の権限設定に従う。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">対応AI</span><span class="metric-value">Claude/ChatGPT/Copilot</span></div>
+    <div class="metric"><span class="metric-label">機能範囲</span><span class="metric-value">読み取りのみ(書込は今後)</span></div>
+    <div class="metric"><span class="metric-label">認証方式</span><span class="metric-value">OAuth 2.0</span></div>
+    <div class="metric"><span class="metric-label">発表</span><span class="metric-value">10/21</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR2 営業生産性</strong>｜営業担当者ごとに顧客情報を用意し直す負担を、MCPサーバー経由の一元参照で減らすという発想は、営業マネジャーの商談準備・案件レビューにかかる時間を削る施策の比較対象になる。読み取り専用から始めて書き込みへ段階的に広げる進め方は、同種機能を検討する際の導入順序の参考になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">営業支援のAI活用に関心があるメンバーに、複数のAIアシスタントに同じデータを使わせる際の権限設計（OAuth 2.0・閲覧範囲の連動）の実例として共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://news.dellows.jp/836093/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Dellows News — Magic Moment「営業情報参照MCPサーバー」提供開始 (発表10/21)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 11: HBR -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">📚</div>
+  <div>
+    <h2>HBR — マネジメント・戦略インサイト</h2>
+    <span class="sub">dhbr.diamond.jp — 2026年10月24-25日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 7: ゲイリー・ハメル -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-research">📚 HBR 10/24</div>
+  <h3>HBR新連載、組織が生き残るための5つの根本課題を提示——「イノベーションを日常業務にしている企業は100社に1社未満」</h3>
+  <p class="summary">
+    HBRは<strong>2026年10月24日</strong>、ロンドン・ビジネススクール客員教授ゲイリー・ハメル氏の著書の邦訳連載を開始した。変化の速い環境で組織が生き残るための根本課題として、理念・イノベーション・適応力・情熱・イデオロギーの<strong>5つ</strong>を提示し、特にイノベーションについては「<strong>全員の日常業務に位置づけている企業は100社中1社に満たない</strong>」と指摘する。連載第1回は書籍の「はじめに」部分にあたり、以降の回で各課題への対処法が展開される見込み。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">イノベーション日常化企業</span><span class="metric-value">100社中1社未満</span></div>
+    <div class="metric"><span class="metric-label">提示課題数</span><span class="metric-value">5</span></div>
+    <div class="metric"><span class="metric-label">掲載</span><span class="metric-value">10/24</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>育成</strong>｜イノベーションを一部の担当者や会議体だけの仕事にせず日常業務へ組み込むという論点は、探索（新しい打ち手の模索）と実行（既存業務の遂行）の物差しを使い分ける議論の切り口になる。5つの根本課題という整理は、強化選手に渡す育成テーマの棚卸しに使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">日々の実行業務に追われがちなメンバーに、「イノベーションを日常業務の一部として位置づける」という視点を共有できる。要件定義力やAI以前の業界インプットを育てる際の背景理論として参照できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://dhbr.diamond.jp/articles/-/14995" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      DHBR — 「組織の命運を決定づける根本的な5つの課題」 (10/24)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 8: 児玉教仁 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">08</span>
+  <div class="card-tag tag-hr">📚 HBR 10/25</div>
+  <h3>部下に信用されないリーダーの無意識の行動——「自分のことを何％知っているか」で平均8割と答えるズレ</h3>
+  <p class="summary">
+    HBR連載「なぜあのマネジャーには人がついてくるのか」第10回（<strong>2026年10月25日</strong>掲載）で、グローバルアストロラインズ代表の児玉教仁氏は、リーダーの自己認識と部下からの見え方のズレを、メラビアンの法則とジョハリの窓を用いて解説した。研修受講生に「自分のことを何%知っているか」と尋ねると平均回答は「<strong>いつも約80%</strong>」に上るが、実際の受講態度と関心度が一致しない具体例を複数紹介し、自己評価と他者評価のギャップが信頼関係を損なう無意識の行動につながると指摘する。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">自己認識アンケート平均</span><span class="metric-value">約80%</span></div>
+    <div class="metric"><span class="metric-label">連載回</span><span class="metric-value">第10回</span></div>
+    <div class="metric"><span class="metric-label">掲載</span><span class="metric-value">10/25</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>育成</strong>｜リーダーの自己認識と部下からの評価にズレが生じやすいという指摘は、直下メンバーへのフィードバックを設計する際に、自分の見え方を定期的に確認する仕組みが要ることを示す。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">育成を担当する強化選手に、自己評価と他者評価のズレを可視化する簡易アンケート（「自分のことを何%知っているか」）を1on1などで試す材料として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://dhbr.diamond.jp/articles/-/14950" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      DHBR — 「部下から信用されないリーダーがやりがちな無意識の行動」 (10/25)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 12: Weekly EM/Product インテリジェンス（月曜のみ） -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🌐</div>
+  <div>
+    <h2>Weekly EM/Product インテリジェンス</h2>
+    <span class="sub">Pragmatic Engineer / One Useful Thing / Lenny's Newsletter — 2026年10月20-25日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 9: Pragmatic Engineer AI ROI -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">09</span>
+  <div class="card-tag tag-research">🌐 Pragmatic Engineer 10/20</div>
+  <h3>ソフトウェアエンジニアのAI支出、ROIは不透明——ある量的取引会社は1人当たり月80ドルから1,600ドルへ20倍増</h3>
+  <p class="summary">
+    The Pragmatic EngineerのGergely Orosz氏は<strong>2026年10月20日</strong>、CodeRabbitとGitarの集計データおよび27社への取材をもとに、企業のAI支出とエンジニア生産性の関係を検証した記事を公開した。AI利用者の週次プルリクエスト数は前年比約2倍（CodeRabbit調査で週次<strong>+113%</strong>、月次<strong>+127%</strong>、同一2万人開発者の追跡では+128%）に増えた一方、支出額の多寡と企業規模・成果に明確な相関はなく、多くの企業がROIを数値で示せていないと指摘する。従業員約5,000人のある量的取引会社では、月間AI支出が1月の約50万ドルから9月には約800万ドル（<strong>1人当たり80ドルから1,600ドルへ約20倍</strong>）に急増した例も紹介されている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">週次PR数</span><span class="metric-value up">前年比+113%</span></div>
+    <div class="metric"><span class="metric-label">月次PR数</span><span class="metric-value up">+127%</span></div>
+    <div class="metric"><span class="metric-label">ある企業のAI支出(1人月)</span><span class="metric-value up">$80→$1,600</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜AI支出を増やしても成果への相関が見えにくいという指摘は、開発リードタイム短縮の投資判断でROIをどう計測するかという論点に直結する。1人当たり支出が20倍に増えた事例は、タスク管理・コーディングエージェントの利用料を試算する際の上振れシナリオとして参考になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">コーディングエージェントの利用を広げたいメンバーに、「利用量の増加＝生産性向上」と単純化せず、PR数などの計測指標を併せて見る習慣を共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://newsletter.pragmaticengineer.com/p/whats-the-roi-of-software-engineers" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      The Pragmatic Engineer — What's the ROI of software engineers' spending on AI? (10/20)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 10: One Useful Thing -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">10</span>
+  <div class="card-tag tag-research">🌐 One Useful Thing 10/20</div>
+  <h3>AI進化30カ月を振り返る——長時間タスクの実行可能時間は4分から17時間へ、8回倍増</h3>
+  <p class="summary">
+    ウォートンスクール教授イーサン・モリック氏は<strong>2026年10月20日</strong>、新著『Co-Existence』刊行に合わせて前著刊行から30カ月間のAI進化をチャートで振り返る記事を公開した。METRの長時間タスクベンチマークでAIがこなせる作業時間は2024年の約4分から2026年4月時点で<strong>約17時間</strong>まで伸び、<strong>8回倍増</strong>したと分析する。GPT-4を超える性能のモデルは現在<strong>180種</strong>に達し、うち19種はスマートフォン上で動作可能という。大学院生が解けない問題を1問解くコストは<strong>30セントから0.04セント</strong>まで低下し、利用形態もチャットボットからエージェントへ移行していると論じる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">長時間タスク実行可能時間</span><span class="metric-value up">4分→17時間</span></div>
+    <div class="metric"><span class="metric-label">GPT-4超モデル数</span><span class="metric-value">180種</span></div>
+    <div class="metric"><span class="metric-label">問題解答コスト</span><span class="metric-value down">$0.30→$0.0004</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜AIが連続してこなせる作業時間が2年半で4分から17時間へ伸びたという定量データは、エージェントへ任せる業務範囲をどこまで広げられるかの議論でBU長・経営に示せる外部の物差しになる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AIの進化速度を体感しづらいメンバーに、具体的な倍増データ（作業時間・コスト）を共有し、半年〜1年単位でツール選定を見直す必要性を伝える材料にできる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.oneusefulthing.org/p/30-months-on-the-exponential-in-charts" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      One Useful Thing — 30 Months on the Exponential (in Charts) (10/20)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 11: Lenny's Newsletter -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">11</span>
+  <div class="card-tag tag-research">🌐 Lenny's Newsletter 10/25</div>
+  <h3>PMF発見に86分——50社以上をARR100万ドルまで導いたコンサルタントの「PULLフレームワーク」</h3>
+  <p class="summary">
+    Lenny RachitskyのPM向けポッドキャスト「Lenny's Newsletter」は<strong>2026年10月25日</strong>、著書『The Power of Pull』の著者Rob Snyder氏をゲストに招いた回を公開した。Snyder氏は<strong>50社以上</strong>のスタートアップをARR<strong>100万ドル</strong>到達まで支援した経験から、プロダクト・マーケット・フィット（PMF）を見つけるための「PULLフレームワーク」（Project／Unavoidable／List of options／Limitations）を解説している。本人も自身の手法を確立するまでに<strong>2年間</strong>の試行錯誤を要したと語っており、再現可能な型として体系化した点が特徴。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">支援実績</span><span class="metric-value">50社以上</span></div>
+    <div class="metric"><span class="metric-label">到達基準</span><span class="metric-value">ARR $1M</span></div>
+    <div class="metric"><span class="metric-label">手法確立までの期間</span><span class="metric-value">2年</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜複数社の支援経験から再現可能なフレームワークへ体系化したという進め方は、AXL新規事業の検証顧客選びと仮説検証の型を整理する際の比較対象になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">新規事業・検証顧客の開拓を担当するメンバーに、PULLフレームワークのような「避けられない課題」から逆算する仮説立案の型を共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.lennysnewsletter.com/p/an-86-minute-guide-to-finding-pmf" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Lenny's Newsletter — An 86-minute guide to finding PMF (10/25)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年10月26日 — For internal use
+    </p>
+  </div>
+</footer>
+</body>
+</html>
