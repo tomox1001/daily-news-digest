@@ -402,21 +402,22 @@ Topics of interest:
 - AI規制・ガイドライン改定（導入支援提案に載せるガバナンス要件）
 - 日銀・為替・内閣人事は、顧客の投資判断（研修予算・IT予算の凍結）を直撃する場合のみ1枚。その場合も「顧客予算への影響」を先頭に書く
 
-## Freshness Filtering（厳格運用）
+## Freshness Filtering（2026-10-27改訂：鮮度は優先基準、除外基準ではない）
 
-**記事の鮮度は最重要基準。古いニュースの混入は品質を著しく下げる。**
+**記事の鮮度は優先基準であって、採否を決める唯一の基準ではない。** 48時間という硬直的な締切でSection5・6・8等が繰り返し0枚化してきたため、鮮度よりも内容の質（定量データ・分析の深さ・新規性）を優先する。
 
 - **最優先**: 24時間以内に公開された記事
-- **許容**: 48時間以内の記事（24時間以内で十分な記事数が確保できない場合のみ）
-- **禁止**: 48時間を超える記事（新たな展開・続報がない限り採用不可）
+- **優先**: 1週間以内の記事（24時間以内で十分な記事数が確保できない場合に使う）
+- **使ってよい**: 1週間を超える記事も、定量データ・分析の深さ・新規性（続報、急上昇の正体解説、既報の再掲でないこと）があれば採用可。公開日を必ず明記し、何が新しく採用に値するかを概要か分析ボックスで一言添える
+- **禁止**: 既報の完全な再掲・重複（過去7日分のダイジェストと照合して除外する運用は変更なし）
 
 Strategies:
 
 1. Include the specific date in search queries (e.g., "April 9 2026") — **当日の日付を必ず含める**
 2. Look for date indicators in search result snippets — **公開日が明示されていない記事は採用しない**
-3. Cross-reference publication dates when visiting sources — **元記事の日付を必ず目視確認する**
-4. If a story is older but has a **fresh update/development within 24h**, note both dates and「続報」タグを付ける
-5. 検索結果に古い記事しか出ない場合は、そのトピックを諦めて別のトピックを探す
+3. Cross-reference publication dates when visiting sources — **元記事の日付を必ず目視確認し、古い記事を使う場合はその旨を明記する**
+4. If a story is older but has a **fresh update/development**, note both dates and「続報」タグを付ける
+5. 1週間を超えても候補が全く無い場合のみ、そのトピックを諦めて別のトピックを探す
 
 ## Quality Criteria
 
@@ -459,10 +460,10 @@ Target cards: 2–3
 **Step A: 機械取得（必須）**
 
 ```bash
-python3 scripts/domestic_watch.py fetch --hours 48 --markdown --out /tmp/domestic-watch.json
+python3 scripts/domestic_watch.py fetch --hours 168 --markdown --out /tmp/domestic-watch.json
 ```
 
-- 企業名とエイリアスを Google News RSS（`hl=ja&gl=JP`）で検索し、業界メディアのRSSと合わせて直近48時間分を一覧化する
+- 企業名とエイリアスを Google News RSS（`hl=ja&gl=JP`）で検索し、業界メディアのRSSと合わせて直近1週間分を一覧化する（2026-10-27に48h→168hへ拡張）
 - 出力はグループ別Markdown。JSONには title / link / pubDate / publisher / group / target が入る
 
 **Step B: 候補の選定**
