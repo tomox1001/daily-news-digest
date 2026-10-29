@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年10月29日（木）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero Header ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+/* ── Layout ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── News Card ── */
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Key Metrics */
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+/* Impact Boxes */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+/* Card Footer */
+.card-footer {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 16px; flex-wrap: wrap;
+}
+
+/* Source Link */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Share Button */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年10月29日（木）｜ AI BPO × 開発生産性 × 自動化ツール</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">64,621円</div>
+        </div>
+        <span class="change up">▲545円高（10/21終値・直近に確認できた値）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">158円台</div>
+        </div>
+        <span class="change down">円安進行（10/2時点・直近に確認できた値）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">$7,802</div>
+        </div>
+        <span class="change up">最高値圏（10/7終値・直近に確認できた値）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">BPO市場</div>
+          <div class="value">$358.6B</div>
+        </div>
+        <span class="change up">▲CAGR 9.9%（AI・クラウドが牽引）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- SECTION 6: AI BPO -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🏭</div>
+  <div>
+    <h2>AI BPO — 納品の自動化とアウトカム型デリバリー</h2>
+    <span class="sub">HFS Research — 2026年10月18日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 1: HFS Research BPO契約モデル -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-research">🏭 調査レポート 10/18</div>
+  <h3>HFS Research、FTE課金モデルが3年で42%→28%に縮小し、アウトカム課金が20%→39%に拡大すると予測</h3>
+  <p class="summary">
+    調査会社HFS Researchのレポート「The Future of BPO: Services-as-Software」を取り上げた10月18日付の分析記事によると、BPO業界の人員稼働時間（FTE）ベースの課金モデルへの依存度は、現在の<strong>42%から3年後には28%</strong>まで低下し、代わってアウトカム課金・レベニューシェア型の次世代モデルが<strong>20%から39%</strong>まで拡大すると予測されている。同レポートは、業界の制約はもはや技術ではなく契約の商流構造にあると指摘する一方、発注企業側の調達部門はいまだに予測しやすいFTE課金を好む傾向が強く、アウトカム課金が機能するのは「深い業務知見・プロセスの全工程保有・技術統制」の3つが揃った場合に限ると釘を刺している。移行の方向性と、それを阻む調達側の抵抗の両方を定量で示している点が特徴。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">FTE課金の比率</span><span class="metric-value down">42%→28%（3年）</span></div>
+    <div class="metric"><span class="metric-label">アウトカム課金の比率</span><span class="metric-value up">20%→39%（3年）</span></div>
+    <div class="metric"><span class="metric-label">調達側の抵抗</span><span class="metric-value">FTE課金を依然選好</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜アウトカム課金への移行が業界平均として3年がかりで緩やかに進むという予測と、発注企業の調達部門がFTE課金を好むという指摘は、納品価格をアウトカム型に切り替える提案が顧客側でどう受け止められやすいかの相場観になる。価格モデルの転換方針を議論する会議で、移行速度と抵抗要因の両方を示す根拠として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">「技術でなく契約構造が制約になっている」という整理は、打ち手をすぐツール選定に向けがちなメンバーに、価格・契約設計まで含めて提案を組み立てる視点を示す材料になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://analyticsindiamag.com/it-services/bpos-are-ripe-for-ai-disruptiontheir-contracts-arent" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Analytics India Magazine — BPOs are Ripe for AI Disruption, Their Contracts Aren't (10/18)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 7: Product Hunt トレンド -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🚀</div>
+  <div>
+    <h2>Product Hunt トレンド — 今週使えるエージェント／自動化ツール</h2>
+    <span class="sub">tanstack.com — 2026年10月23日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 2: TanStack AI 1.0 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-tech">🚀 安定版リリース 10/23</div>
+  <h3>TanStack AI、76パッケージ全てが同時に安定版(1.0)へ。23のプロバイダーアダプターでLLM選定をコードごと切替可能に</h3>
+  <p class="summary">
+    オープンソースのWeb/アプリ開発フレームワーク群TanStackは10月23日、AI機能群「TanStack AI」の<strong>76パッケージすべて</strong>を同時に安定版(1.0)としてリリースした。サブエージェント、型付きの判断用関数`decide()`、長い会話を自動圧縮する「Compaction」、画面操作（コンピュータ操作）などのエージェント機能に加え、<strong>23のプロバイダーアダプター</strong>とOpenAI互換API向けの汎用アダプターを備え、特定LLMベンダーへのロックインを避けて実装を切り替えられる設計。自社ツールをMCPサーバーとして公開する`createMCPServer`も追加された。クライアントとサーバーのバージョンを揃える必要がある点が運用上の注意点。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">安定版パッケージ数</span><span class="metric-value up">76</span></div>
+    <div class="metric"><span class="metric-label">対応プロバイダー</span><span class="metric-value">23種+互換API</span></div>
+    <div class="metric"><span class="metric-label">価格</span><span class="metric-value up">オープンソース・無料</span></div>
+    <div class="metric"><span class="metric-label">MCP対応</span><span class="metric-value">サーバー公開機能あり</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜LLMベンダーを切り替えられる設計が無料のオープンソースで安定版になった事実は、特定モデルへの依存を避けた実装を組む際の選択肢になる。開発基盤の技術選定を議論する場で、ベンダーロックイン回避の実例として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">無料で試せる安定版のため、実装に近いメンバーに触らせて、既存のLLM呼び出しコードを切り替えた場合の工数感を検証させる題材になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://tanstack.com/blog/tanstack-ai-1-0" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      TanStack Blog — TanStack AI 1.0 (10/23)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 8: AI・テクノロジー 最新ニュース -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース ｜ 自動化・開発生産性・コスト</h2>
+    <span class="sub">Atlassian・Dell — Sources</span>
+  </div>
+</div>
+
+<!-- Card 3: Atlassian AIネイティブSDLC -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-tech">🤖 新機能発表 10/29</div>
+  <h3>アトラシアン、AIネイティブな開発ライフサイクルを発表。既存コードベースでの機能開発速度が7倍以上、トークン消費は最大48%減</h3>
+  <p class="summary">
+    アトラシアンは本日10月29日、コンテキスト・計画・デザイン・開発・レビュー・保守・測定の7工程全てにAIエージェントを組み込む「AIネイティブなソフトウェア開発ライフサイクル」を発表した。複数リポジトリとJira・Confluenceを横断理解する「Teamwork Graph」、Jira作業項目を自動生成する「Planner」、Devin・Factory・Warp等の<strong>マルチコーディングエージェント対応</strong>（OpenAI Codexも近日対応）などを含む。自社調査では、エンジニアリングリーダーの<strong>94%がAIを活用</strong>する一方、組織全体で効果的に拡大・統制できている企業はわずか<strong>6%</strong>と対比を示し、自社エンジニアは既存コードベースでの機能開発速度が<strong>7倍以上向上</strong>、Teamwork Graph導入でAI回答品質が最大<strong>44%向上</strong>、トークン消費は最大<strong>48%減少</strong>したという。活用率と組織的な統制力のギャップを定量で示した点が特徴。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">AI活用率 vs 統制率</span><span class="metric-value down">94% vs 6%</span></div>
+    <div class="metric"><span class="metric-label">機能開発速度</span><span class="metric-value up">7倍以上（自社見積）</span></div>
+    <div class="metric"><span class="metric-label">AI回答品質</span><span class="metric-value up">最大+44%</span></div>
+    <div class="metric"><span class="metric-label">トークン消費</span><span class="metric-value up">最大-48%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜「94%が活用するが6%しか組織的に統制できていない」という自社調査の対比は、開発リードタイム短縮を個人のツール活用でなく組織的な仕組み（コンテキスト連携・測定）として設計すべきだという論点の裏付けになる。4Q方針（実装区間から設計・QAへ比重を移す）を補強する外部事例として、SRE・イネ合同定例で使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">「個人は使えているが組織としては統制できていない」というギャップは、各自が我流でAIツールを使っているメンバーに、チームで共有できる使い方の型を作る必要性を示す材料になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000082.000028142.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES — アトラシアン AIネイティブSDLC発表 (10/29)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 4: Dell AI Factory拡張 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-market">🤖 製品拡張 10/22</div>
+  <h3>Dell、NVIDIAとのAI Factoryをオンプレミス運用向けに拡張。採用企業が6,500社超に増加、コスト・権限管理のマネージドサービスも追加</h3>
+  <p class="summary">
+    Dell Technologiesは10月22日、NVIDIAと共同開発する「AI Factory」をエージェントAIの本番運用（オンプレミス）向けに拡張したと発表した。自社データセンターや拠点でエージェントを動かす構成を想定し、採用企業数は前四半期の5,000社超から<strong>6,500社超</strong>に増加した。新たに「Dell Managed Services for AI」として、リソース配分・ユーザーアクセスの権限統制・AI利用量とコストの監視を支援するサービスを追加し、1台から1,000台超まで対応する検証済みのデスクサイド導入テンプレートも用意した。クラウド依存を前提にせず、自社インフラでのエージェント運用のコスト管理・権限統制を製品化した点が特徴。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">採用企業数</span><span class="metric-value up">6,500社超（前期5,000社超）</span></div>
+    <div class="metric"><span class="metric-label">新サービス</span><span class="metric-value">コスト・権限管理</span></div>
+    <div class="metric"><span class="metric-label">対応規模</span><span class="metric-value">1台〜1,000台超</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜オンプレミス運用でのAI利用量・コストの可視化をマネージドサービスとして製品化した動きは、クラウドAPI従量課金に偏りがちな納品コスト構造を見直す際の比較材料になる。コスト計画の前提を議論する会議で、オンプレ選択肢のコスト管理手段の例として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">「誰が・何に・いくら使っているか」を権限と紐付けて可視化する発想は、AI利用料の予算管理を漠然と捉えがちなメンバーに、利用者単位でのコスト管理の考え方を示す材料になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://itbrief.com.au/story/dell-expands-ai-factory-with-nvidia-for-enterprise-use-debf64b6-4e5a-4aea-bba2-aa45dbf1a3ef" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      IT Brief Australia — Dell expands AI Factory with NVIDIA for enterprise use (10/22)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年10月29日 — For internal use
+    </p>
+  </div>
+</footer>
+</body>
+</html>
