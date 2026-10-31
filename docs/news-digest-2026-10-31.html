@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年10月31日（土）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero Header ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+/* ── Layout ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── News Card ── */
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Key Metrics */
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+/* Impact Boxes */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+/* Card Footer */
+.card-footer {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 16px; flex-wrap: wrap;
+}
+
+/* Source Link */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Share Button */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年10月31日（土）｜ AI ROI × AI BPO × Product Hunt × GPUコスト × 国内企業動向 × HBR</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">63,268円</div>
+        </div>
+        <span class="change up">▲1,078円高（10/27終値・直近に確認できた値）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">157円78銭</div>
+        </div>
+        <span class="change down">やや円高（10/28終値・直近に確認できた値）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">$7,580</div>
+        </div>
+        <span class="change down">▼140ポイント安・-1.82%（10/30終値）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">BPO市場</div>
+          <div class="value">$358.6B</div>
+        </div>
+        <span class="change up">▲CAGR 9.9%（AI・クラウドが牽引）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- SECTION 5: AI効率 → ビジネス価値変換 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">💡</div>
+  <div>
+    <h2>AI効率 → ビジネス価値変換 グローバル事例</h2>
+    <span class="sub">BCG — 2026年9月30日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 1: BCG Applied AI Index -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-research">💡 調査レポート 9/30</div>
+  <h3>BCG調査、「意味あるAI価値」を生む企業が1年で5%→約48.5%に急伸。統制を備えた企業はなお5%</h3>
+  <p class="summary">
+    BCGの「Applied AI Index 2026」（2026年9月30日発表、CxO・シニアリーダー<strong>1,330人</strong>対象）によると、AIで「相当な価値」を生み出している企業は<strong>2025年の5%から2026年には約48.5%</strong>（先進企業7.5%＋拡大中で成果も出ている企業41%）へと急伸した。一方、2030年までに企業の<strong>42%</strong>がAIエージェントに意思決定の実質的な自律性を与える見込みだが、現時点でそれに必要な統制をすべて備えている企業は<strong>わずか5%</strong>にとどまる。エージェンティックAIは2030年のAI価値全体の約40%を占めると予測されており、自律性の拡大と統制整備のギャップが今後の論点になる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">価値創出企業 2025→2026</span><span class="metric-value up">5%→48.5%</span></div>
+    <div class="metric"><span class="metric-label">2030年の自律性付与見込み</span><span class="metric-value">42%</span></div>
+    <div class="metric"><span class="metric-label">現時点で統制完備</span><span class="metric-value down">5%</span></div>
+    <div class="metric"><span class="metric-label">調査対象</span><span class="metric-value">1,330人</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：価値を生む企業が1年で急増した一方、統制を備えた企業はわずか5%という数字は、納品自動化で自律性を広げる際にガバナンス整備を同時並行で進める必要性の根拠になる。4Q方針（外部価値を生む活動への集中）の効果測定を議論する会議で、調査年・母数の違いに注意して使える外部データ。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">自律性の拡大と統制整備のギャップという論点は、AI活用の成果を急いで誇示したくなるメンバーに、統制面の確認を省かないよう促す材料になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.bcg.com/press/30september2026-ai-starting-to-pay-off-companies-generate-value" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      BCG — AI Starting to Pay Off: Companies Generate Value (9/30)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 6: AI BPO -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🏭</div>
+  <div>
+    <h2>AI BPO — 納品の自動化とアウトカム型デリバリー</h2>
+    <span class="sub">Concentrix・Genpact/HFS — 2026年9月29日・4月29日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 2: Concentrix -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-market">🏭 決算開示 9/29</div>
+  <h3>Concentrix、売上の50%が「AI登場後3年以内に獲得・導入した事業」由来とCEOが決算で表明</h3>
+  <p class="summary">
+    BPO大手Concentrixは2026年9月29日発表の第3四半期決算（2026年6〜8月期）で、Chris Caldwell CEOが「今四半期、転換点に達した。売上の<strong>50%</strong>は、AI登場後の過去3年以内に獲得・導入した事業から来ている」と述べた。同四半期の売上高は<strong>24億5,370万ドル</strong>で前年同期比1.2%減（為替除き0.5%減）、通期売上高ガイダンスは98億2,700万〜98億7,700万ドル（前年比0〜0.5%増）とほぼ横ばい。「AI関連収益」ではなく「AI登場後に獲得・導入した事業」という定義である点に注意が必要だが、全体売上が伸び悩む中でも契約構成の半分が入れ替わっているという開示。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">AI登場後に獲得した事業の比率</span><span class="metric-value up">50%</span></div>
+    <div class="metric"><span class="metric-label">Q3売上高</span><span class="metric-value down">$24.54億（-1.2%）</span></div>
+    <div class="metric"><span class="metric-label">通期ガイダンス</span><span class="metric-value">$98.27-98.77億</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：大手BPOが「請求時間課金の旧来事業」から「AI登場後の新しい契約」への入れ替えを売上の半分という規模で開示した事実は、納品自動化へ契約を移行するペースの参考値になる。全体売上が横ばいでも契約構成が入れ替わっている点は、価格設計を議論する会議で移行速度の目安として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">「売上が伸びていなくても契約の中身が入れ替わっている」という読み方は、表面上の成長率だけで事業の健全性を判断しがちなメンバーに、構成比の変化を見る視点を示す材料になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.sec.gov/Archives/edgar/data/0001803599/000180359926000147/exhibit991q32026.htm" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      SEC EDGAR — Concentrix Q3 FY2026 Earnings Release (9/29)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 3: Genpact/HFS trust gap -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-research">🏭 調査レポート 4/29（続報扱い）</div>
+  <h3>Genpact×HFS調査、幹部92%「エージェンティックAIが業務を一変」も、自律性付与に前向きはわずか22%</h3>
+  <p class="summary">
+    Genpactと調査会社HFS Researchが2026年4月29日に公表した調査（11業種・Fortune 2000企業を含む上級幹部<strong>545人</strong>対象）によると、<strong>92%</strong>が自律的にタスクを調整・意思決定するエージェンティックAIが業務遂行を根本から変えると回答した一方、AIエージェントに広範な自律性を与えることに前向きな組織は<strong>わずか22%</strong>にとどまった。エージェンティックAIへの支出は今後1年で<strong>38%増加</strong>する見込みだが、約<strong>80%</strong>の組織は依然として人間の最終承認を伴う監視付きモードで運用している。発表から半年が経過しているが、「期待と自律性付与の間の信頼ギャップ」を定量化した調査として、アウトカム課金型デリバリーへの転換がなぜ進みにくいかを説明する材料になる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">業務一変すると回答</span><span class="metric-value up">92%</span></div>
+    <div class="metric"><span class="metric-label">自律性付与に前向き</span><span class="metric-value down">22%</span></div>
+    <div class="metric"><span class="metric-label">支出増加見込み</span><span class="metric-value up">+38%</span></div>
+    <div class="metric"><span class="metric-label">監視付き運用</span><span class="metric-value">約80%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：「期待は高いが自律性を渡すのは2割強」という信頼ギャップのデータは、アウトカム課金型の納品自動化がなぜ一気に進まないかを説明する外部の根拠になる。価格設計の会議で、移行の阻害要因として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">自律性を渡すことへの慎重さが大多数という実態は、AI活用を進めたいメンバーに、監督体制を同時に設計する必要性を示す材料になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://media.genpact.com/2026-04-29-Genpact-and-HFS-Research-92-of-Executives-Say-Agentic-AI-Will-Fundamentally-Change-Business-Operations" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Genpact — Genpact and HFS Research: 92% of Executives Say Agentic AI Will Fundamentally Change Business Operations (4/29)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 7: Product Hunt トレンド -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🚀</div>
+  <div>
+    <h2>Product Hunt トレンド — 今週使えるエージェント／自動化ツール</h2>
+    <span class="sub">Product Hunt — 2026年10月31日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 4: Faylee -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-tech">🚀 本日ランキング10位 10/31</div>
+  <h3>バグ報告を1本のタイムラインに記録し、AIコーディングエージェントへ直結する「Faylee」。3人まで無料</h3>
+  <p class="summary">
+    Product Huntで本日（10/31）ランキング10位、Upvote<strong>97</strong>を獲得した「Faylee」は、画面録画・コンソールログ・ネットワークリクエスト・クリック操作を1本のタイムラインに自動記録し、失敗したリクエストが開いた状態の1つのリンクとして共有できるChrome拡張。付属のMCPサーバーにより、Claude Code・Codex・Cursorなどのコーディングエージェントがそのレポートを直接読み取り、修正作業にそのまま着手できる設計。直前数分を遡って保存する「Instant replay」機能や、アップロード前に機密データを隠す機能も備える。<strong>3メンバーまで無料・カード登録不要</strong>で試せる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">Upvote</span><span class="metric-value up">97</span></div>
+    <div class="metric"><span class="metric-label">価格</span><span class="metric-value up">3人まで無料・カード不要</span></div>
+    <div class="metric"><span class="metric-label">カテゴリ</span><span class="metric-value">Developer Tools・AI Coding Agents</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR3 中継業務</strong>｜バグ報告の内容を人が転記・要約してエージェントに渡す中継作業を省ける設計は、情報を届けるために発生している仕事の自動化候補になる。QA・コードレビュー工程のツール選定を議論する場で、無料で試せる選択肢として挙げられる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">バグ報告の文脈をエージェントに正確に渡せず手戻りが発生しているメンバーに、報告自体を自動記録する解決策があることを示す具体例になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.producthunt.com/posts/faylee" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Product Hunt — Faylee (10/31)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 5: Kestrix -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-tech">🚀 本日ランキング17位 10/31</div>
+  <h3>リポジトリ非依存のCIコントロールプレーン「Kestrix」。HCLでパイプラインを定義しDAGで実行、非商用は無料</h3>
+  <p class="summary">
+    Product Huntで本日（10/31）ランキング17位、Upvote<strong>74</strong>を獲得した「Kestrix」は、CI/CDパイプラインをHCL（HashiCorp Configuration Language）で定義し、実行のたびにDAG（有向非巡回グラフ）として解決する、特定のリポジトリに依存しないCIコントロールプレーン。トリガーに一致しないタスクは自動的にスキップされ、リモートランナーは送信側のHTTPS通信のみを使うため受信ポートを開く必要がない。Dockerモードでは権限を絞った実行に対応し、Terraform/OpenTofu用プロバイダーも提供する。<strong>PolyForm Noncommercial 1.0.0</strong>ライセンスで、非商用利用は無料、商用利用には有料プランが必要。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">Upvote</span><span class="metric-value up">74</span></div>
+    <div class="metric"><span class="metric-label">ライセンス</span><span class="metric-value">非商用無料（PolyForm）</span></div>
+    <div class="metric"><span class="metric-label">構成</span><span class="metric-value">HCL定義・DAG実行</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜開発リードタイム：CIパイプラインをコードとして定義し直す発想は、設計・QAへ比重を移す4Q方針における、CI/CD基盤そのものの見直し候補になる。非商用利用は無料のため、SRE・イネ合同定例で検証ツールの候補として挙げられる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">CI設定をリポジトリごとにばらばらに持っているメンバーに、パイプライン定義を一元管理する発想を示す具体例になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.producthunt.com/posts/kestrix" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Product Hunt — Kestrix (10/31)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 8: AI・テクノロジー 最新ニュース -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース ｜ 自動化・開発生産性・コスト</h2>
+    <span class="sub">Nebius — 2026年10月1日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 6: Nebius GPU値上げ -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-market">🤖 価格改定 10/1</div>
+  <h3>GPUクラウドのNebius、H100〜B300を17〜21%値上げ。半年で2回目、AWSに続きNeoCloud勢にも波及</h3>
+  <p class="summary">
+    GPUクラウド事業者Nebiusは2026年10月1日付でオンデマンドGPU時間課金を全面値上げした。現在の価格はH100が時間あたり<strong>$4.50</strong>（値上げ前$3.85から<strong>+16.9%</strong>）、H200が$5.40（$4.50から<strong>+20.0%</strong>）、B200が$8.50（$7.15から<strong>+18.9%</strong>）、B300が$9.50（$7.85から<strong>+21.0%</strong>）で、いずれも2桁の値上げ幅。同社は2026年5月にも約29%の値上げを実施しており、半年で2回目の値上げとなる。10月7日に確認したAWSのGPU予約価格一律15%値上げに続き、ハイパースケーラー以外のNeoCloud事業者にも価格上昇の波が及んでいることを示す続報。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">H100</span><span class="metric-value down">+16.9%</span></div>
+    <div class="metric"><span class="metric-label">H200</span><span class="metric-value down">+20.0%</span></div>
+    <div class="metric"><span class="metric-label">B200</span><span class="metric-value down">+18.9%</span></div>
+    <div class="metric"><span class="metric-label">B300</span><span class="metric-value down">+21.0%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：AWSに続きNeoCloud勢まで2桁の値上げに踏み切った事実は、GPU調達コストが一時的な変動でなく構造的な上昇局面にあることを示す。納品自動化のインフラコスト試算を見直す会議で、半年で2回値上げという事業者側の事例として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">クラウドAPI従量課金を固定費と思い込みがちなメンバーに、インフラコストが半年単位で大きく変動する変動要因であることを示す具体例になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://nebius.com/prices" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Nebius — GPU Cloud Pricing（現行価格ページ・10/31確認）
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 10: 国内企業動向 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🏢</div>
+  <div>
+    <h2>国内企業動向 ｜ 競合・隣接・スタートアップ</h2>
+    <span class="sub">PR TIMES — 2026年10月30日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 7: SmartHR BPaaS -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-breaking">🏢 競合 10/30</div>
+  <h3>SmartHR、情シス業務をAIと専門チームで一体提供する「AI BPaaS」の事前登録を開始。AIが定型処理、人は承認・例外のみ</h3>
+  <p class="summary">
+    SmartHRは2026年10月30日、情報システム部門の業務設計・運用・改善を一体で提供する新サービス「SmartHR 情シスAI BPaaS」（仮称）の事前登録を開始したと発表した。対象業務は入社・異動・退職に伴うアカウント・権限管理、社内ヘルプデスク、端末の調達・準備・回収など。<strong>AIエージェントが定型処理を実行し、同社グループの情シス専門チームが専門的判断や物理作業を担当、顧客企業は重要な承認・判断のみを行う</strong>体制で、実行から完了確認までを管理する。今年グループに迎えたITコンサルティングのKICK ZA ISSUEと情シスBPOのSUNITEDの専門性を組み合わせたもので、SmartHR未導入企業も利用可能。価格は非開示で、事前登録企業から順次先行導入を案内する。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">発表日</span><span class="metric-value">10/30</span></div>
+    <div class="metric"><span class="metric-label">役割分担</span><span class="metric-value">AI=定型処理／専門チーム=判断・物理作業／顧客=承認</span></div>
+    <div class="metric"><span class="metric-label">対象</span><span class="metric-value">SmartHR未導入でも可</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜直接競合のSmartHRが、グループ内にBPO事業者とITコンサルを抱え込み、AIと人の役割分担を明文化した納品モデルを打ち出した事実は、KR1 AI BPOの役割分担設計を議論する会議で、競合の具体的なアプローチとして共有できる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">「AIが定型処理、専門チームが判断・物理作業、顧客が承認」という3層の役割分担は、AI化の設計を検討するメンバーに、どこまでAIに渡しどこを人が持つかを具体的に切り分ける参考例になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000466.000015987.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES — SmartHR 情シスAI BPaaS 事前登録開始 (10/30)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 11: HBR -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">📚</div>
+  <div>
+    <h2>HBR — マネジメント・戦略インサイト</h2>
+    <span class="sub">ダイヤモンド・ハーバード・ビジネス・レビュー — 2026年10月31日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 8: HBR 小売プラットフォーム -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">08</span>
+  <div class="card-tag tag-research">📚 日本語版 10/31</div>
+  <h3>HBR「小売業の問題は店舗網の衰退ではなくビジネスモデルの機能不全」。米国で年9,900店超の閉鎖発表</h3>
+  <p class="summary">
+    ハーバード・ビジネス・レビュー日本語版（2026年10月31日公開、著者はウォートン校のZ.ジョン・チャン教授と同大元学長トーマスS.ロバートソン氏）は、AIの台頭と需要予測の難しさにより、小売業が在庫リスクを自社で抱え込む従来の「買い取り仕入れモデル」が限界に達していると指摘する。米国の店舗閉鎖数は<strong>2024年に7,325店</strong>（コアサイト・リサーチ調べ、2020年以来の高水準）、<strong>2024〜2025年初めには閉鎖発表が9,900店超</strong>（JLL調べ）に達した。筆者らは、店舗網の衰退そのものではなく不確実な需要へのリスク配分構造の機能不全が根本問題だとし、小売業を「プラットフォーム」として再定義し、仕入れ判断をできるだけ遅らせて商品を熟知するブランド側に委ねる転換を提言する。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">2024年閉鎖数</span><span class="metric-value down">7,325店</span></div>
+    <div class="metric"><span class="metric-label">2024-25年閉鎖発表</span><span class="metric-value down">9,900店超</span></div>
+    <div class="metric"><span class="metric-label">2020年閉鎖数</span><span class="metric-value">約1万店</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜「自社で在庫リスクを抱える構造自体が限界」という論点は、BU長・経営との結節の場で、AI時代の事業構造変革の論点として、小売業以外の業界にも応用して共有できる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">リスクを自社で抱え込む構造か相手に委ねる構造かという切り分け方は、要件定義で「誰が何を保証するか」を曖昧にしがちなメンバーに、役割分担を考える視点を示す材料になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://dhbr.diamond.jp/articles/-/14820" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      DHBR — 小売業の問題は店舗ではなく従来のビジネスモデルにある (10/31)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年10月31日 — For internal use
+    </p>
+  </div>
+</footer>
+</body>
+</html>
