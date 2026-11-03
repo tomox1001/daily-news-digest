@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年11月4日（水）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero Header ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+/* ── Layout ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── News Card ── */
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Key Metrics */
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+/* Impact Boxes */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+/* Card Footer */
+.card-footer {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 16px; flex-wrap: wrap;
+}
+
+/* Source Link */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Share Button */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年11月4日（水）｜ AI ROI × AI BPO × Product Hunt × AI Tech × 国内企業動向 × HBR</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">63,290円</div>
+        </div>
+        <span class="change down">▼1,369円安・-2.12%（10/30終値・直近に確認できた値）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">157円58銭</div>
+        </div>
+        <span class="change down">やや円高（10/30終値・直近に確認できた値）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">$7,580</div>
+        </div>
+        <span class="change down">▼140ポイント安・-1.82%（10/30終値・直近に確認できた値）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">BPO市場</div>
+          <div class="value">$358.6B</div>
+        </div>
+        <span class="change up">▲CAGR 9.9%（AI・クラウドが牽引）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- SECTION 5: AI効率 → ビジネス価値変換 グローバル事例 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">💡</div>
+  <div>
+    <h2>AI効率 → ビジネス価値変換 グローバル事例</h2>
+    <span class="sub">McKinsey QuantumBlack — 2026年8月発表 Sources</span>
+  </div>
+</div>
+
+<!-- Card 1: McKinsey State of AI 2026 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-research">💡 調査レポート 8月</div>
+  <h3>McKinsey調査、AI利用は9割近くに広がるも収益寄与は37%で前年から横ばい——「高パフォーマー」はなお6%</h3>
+  <p class="summary">
+    McKinseyが2026年8月に公表した調査レポート「State of AI in 2026: On the Road to ROI」は、97カ国の経営幹部<strong>1,719人</strong>を対象に実施された（調査期間は5〜6月）。回答企業の大半がすでに何らかの形でAIを業務に使っている一方、「AIが自社のEBIT（利益）に貢献している」と回答した割合は<strong>37%</strong>にとどまり、前年調査からほぼ横ばいだった。さらに、EBITの5%以上をAIに帰属できると回答した「高パフォーマー」企業は<strong>約6%</strong>のみで、こちらも前年から増えていない。利用の広がりと財務的な成果の間のギャップが、2年連続でほぼ同じ水準にとどまっている格好だ。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">調査対象</span><span class="metric-value">97カ国・1,719人</span></div>
+    <div class="metric"><span class="metric-label">EBIT貢献あり</span><span class="metric-value">37%（横ばい）</span></div>
+    <div class="metric"><span class="metric-label">高パフォーマー比率</span><span class="metric-value down">約6%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜利用が広がっても収益寄与が前年から動いていないという事実は、「導入率」だけでAI活用の進捗を語ることの危うさを示す。経営・BU長との会話で、進捗指標を利用率でなく収益・利益への帰属で問い直す根拠に使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">要件定義力を鍛えたいメンバーに、「使っている」と「成果に効いている」を分けて報告させる練習材料になる。施策の進捗報告で両者を混同していないかの確認観点として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://thenextweb.com/news/mckinsey-ai-productivity-paradox-enterprise-roi-capex" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      TheNextWeb — McKinsey's new AI report (8月)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 6: AI BPO -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🏭</div>
+  <div>
+    <h2>AI BPO — 納品の自動化とアウトカム型デリバリー</h2>
+    <span class="sub">TaskUs Q2 FY2026 — 2026年8月5日発表 Sources</span>
+  </div>
+</div>
+
+<!-- Card 2: TaskUs Q2 FY2026 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-market">🏭 決算 8/5</div>
+  <h3>BPO大手TaskUs、AI Servicesが6四半期連続で最速成長部門に——前年同期比25.8%増</h3>
+  <p class="summary">
+    TaskUsが2026年8月5日に発表した第2四半期決算によると、同社のAI Services部門の売上高は前年同期比<strong>25.8%増</strong>となり、<strong>6四半期連続</strong>で社内最速成長の事業部門となった。従来の主力であるデジタルCX（DCX）部門も前年同期比<strong>6.4%増</strong>と、2025年第2四半期からさらに成長を加速させている。一方でTrust & Safety部門はSNS関連業務の落ち込みを主因に前年同期比<strong>12.3%減</strong>と明暗が分かれた。会社側は第3四半期の売上高を3.00億〜3.02億ドル、調整後EBITDAマージンを約18.7%と見込んでおり、AI関連業務が収益構成の重心を占めつつある。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">AI Services成長率</span><span class="metric-value up">+25.8%</span></div>
+    <div class="metric"><span class="metric-label">DCX成長率</span><span class="metric-value up">+6.4%</span></div>
+    <div class="metric"><span class="metric-label">Trust&amp;Safety</span><span class="metric-value down">-12.3%</span></div>
+    <div class="metric"><span class="metric-label">Q3 EBITDAマージン見込</span><span class="metric-value">約18.7%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：AI関連業務が6四半期連続で最速成長部門になっている一方、既存業務の一部（SNS関連）が二桁減という内訳は、納品自動化の投資判断を「部門別の伸び方」で見る必要があることを示す外部の相場観になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">強化選手に、決算資料から「どの部門が伸びどの部門が縮んでいるか」を読み分ける練習素材として渡せる。全体の成長率だけでなく内訳を見る習慣づけに使える。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.marketbeat.com/instant-alerts/taskus-nasdaqtask-releases-earnings-results-beats-estimates-by-005-eps-2026-08-05/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      MarketBeat — TaskUs Q2 FY2026 Earnings (8/5)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 7: Product Hunt トレンド -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🚀</div>
+  <div>
+    <h2>Product Hunt トレンド — 今週使えるエージェント／自動化ツール</h2>
+    <span class="sub">Product Hunt — 2026年11月3日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 3: AgentKit by Scalekit -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-tech">🚀 本日1位</div>
+  <h3>AgentKit by Scalekit、本番稼働中のAIエージェント向けMCPゲートウェイをProduct Hunt本日1位で公開</h3>
+  <p class="summary">
+    Scalekitが公開した「AgentKit」は、本番環境で動くAIエージェントが各種ツール・サービスにアクセスする際の認可・認証を一元管理するMCP（Model Context Protocol）ゲートウェイで、本日のProduct Huntで<strong>307 upvote</strong>を集め1位につけている。<strong>600以上のコネクタ・3万以上のツール</strong>を単一のMCPエンドポイント経由で扱え、どのエージェントがどのツールにアクセスできるかをゲートウェイ側で制御する。ユーザーごとのトークンもゲートウェイ側で保管・更新され、アプリケーション側のコードがトークンを直接扱わない設計になっている点が特徴。有料プラン（Growthティア）は月額<strong>49ドル</strong>から、稼働率99.99%のSLA付きで本番導入を想定した価格設定になっている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">Upvote数</span><span class="metric-value up">307（本日1位）</span></div>
+    <div class="metric"><span class="metric-label">接続範囲</span><span class="metric-value">600+コネクタ/3万+ツール</span></div>
+    <div class="metric"><span class="metric-label">価格</span><span class="metric-value">$49/月〜（Growth）</span></div>
+    <div class="metric"><span class="metric-label">試用可否</span><span class="metric-value">セルフサーブで試用可</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR3 中継業務</strong>｜エージェントがどのツールにアクセスできるかをゲートウェイ側で一元制御する設計は、複数ツールを横断するエージェント導入の採否判断で、権限管理をどこに置くかの比較項目になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">開発フローの改善を任せているメンバーに、ツール連携の権限設計という観点を今週のタスク管理エージェント選定の比較軸として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.scalekit.com/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Scalekit — AgentKit MCP Gateway for Agents (Product Hunt 1位)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 4: Testifly -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-tech">🚀 トレンド入り</div>
+  <h3>Testifly、URLとログイン情報を渡すだけでE2Eテストを自動生成する自律型AI QAツールがProduct Huntでトレンド入り</h3>
+  <p class="summary">
+    「Testifly」は、対象WebアプリのURLとログイン情報を渡すだけでAIがUIの操作フローを把握し、エンドツーエンドのテストを自動生成するQAツール。プロンプトを書く必要がなく、デプロイのたびにテストを自動実行し、UIが変更された場合もテストを自己修復する設計が特徴で、本日のProduct Huntでトレンド入りしている。従来のE2Eテストが「書くのに時間がかかり、すぐ壊れる」という課題への対応を掲げており、QA工程の属人化・保守コストを下げる方向の自動化ツールとして位置づけられる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">セットアップ</span><span class="metric-value">URL+ログインのみ</span></div>
+    <div class="metric"><span class="metric-label">保守</span><span class="metric-value">UI変更時に自己修復</span></div>
+    <div class="metric"><span class="metric-label">実行タイミング</span><span class="metric-value">デプロイ毎に自動</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜開発リードタイム：QA工程の保守コストを下げる自己修復型テストという発想は、リードタイム短縮の対象区間を実装からQAへ広げる際の具体的な比較候補になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">QA領域の工数削減を検討しているメンバーに、プロンプト不要・自己修復という設計思想を既存のテスト運用と比較する材料として共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.producthunt.com/products/testifly-launch" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Product Hunt — Testifly
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 8: AI・テクノロジー 最新ニュース -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース ｜ 自動化・開発生産性・コスト</h2>
+    <span class="sub">Cresta × Anthropic — 2026年10月29日発表 Sources</span>
+  </div>
+</div>
+
+<!-- Card 5: Cresta opens AI agent platform -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-tech">🤖 製品発表 10/29</div>
+  <h3>カスタマーサポートAI企業Cresta、Claude Agent SDKベースのエージェント開発基盤を開発者向けに全面開放</h3>
+  <p class="summary">
+    コンタクトセンター向けAIを手がけるCrestaは2026年10月29日、顧客企業の開発者が自前のコードリポジトリとCI/CDパイプラインを使ってカスタマーサービス用AIエージェントを構築・テスト・デプロイ・改善できる「エンドツーエンドのセルフサービス」を開放したと発表した。中核となる開発環境「Cresta Conductor」はAnthropicと共同開発し、<strong>Claude Agent SDK</strong>を基盤にしている。リリース管理機能として、新バージョンへ会話の一部だけを振り分けるカナリアリリース、A/Bテスト、ロールバックに加え、誰が構築・レビュー・検証できるかを分ける権限制御も備える。開発者向けのトレーニング課程「Cresta Academy」も同時に新設された。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">基盤</span><span class="metric-value">Claude Agent SDK</span></div>
+    <div class="metric"><span class="metric-label">開発手段</span><span class="metric-value">自社リポジトリ/CI-CD</span></div>
+    <div class="metric"><span class="metric-label">リリース制御</span><span class="metric-value">カナリア/A-B/ロールバック</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR3 中継業務</strong>｜カスタマー対応エージェントの開発を顧客企業自身のCI/CDに乗せ、カナリアリリースやロールバックまで標準装備するという構成は、中継業務のエージェント化を「本番運用に耐える形」で提案する際の参照事例になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">SRE-LT領域を担うメンバーに、エージェントのリリース管理（カナリア・ロールバック・権限分離）という考え方を、自社のタスク管理エージェント運用に取り入れる余地があるかの検討材料として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.cmswire.com/contact-center/cresta-opens-agent-platform-to-developer-selfservice/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      CMSWire — Cresta Opens Agent Platform to Developer Self-Service (10/29)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 10: 国内企業動向 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🏢</div>
+  <div>
+    <h2>国内企業動向 ｜ 競合・隣接・スタートアップ</h2>
+    <span class="sub">ゴムマリ — 2026年11月3日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 6: Gomumari AI agent -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-breaking">🏢 新興 11/3</div>
+  <h3>設立1年半の国内スタートアップ・ゴムマリ、Excel台帳をデータベース化する業務AIエージェントを「専門業務AI-BPO」として提供開始</h3>
+  <p class="summary">
+    2025年5月設立（資本金100万円）の国内スタートアップ、ゴムマリ株式会社は2026年11月3日、部門ごとに散在する管理Excelや台帳をAIが読み取り、更新ルール付きの運用データベースへ組み直す「Excel台帳データベース化AIエージェント」の提供を開始した。価格は初期構築<strong>50万円</strong>から（期間4週間〜）、月額運用<strong>5万円</strong>からで、新しいツール契約を前提とせずNotionやkintoneなど既存基盤上に構築する設計。成果物だけを受け取る「専門業務AI-BPO」としての提供も選べる点が特徴で、AIエージェント導入とBPO委託を顧客が選べる併記型の価格体系を、小規模な新興企業がすでに打ち出している。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">初期構築</span><span class="metric-value">50万円〜/4週間〜</span></div>
+    <div class="metric"><span class="metric-label">月額運用</span><span class="metric-value">5万円〜</span></div>
+    <div class="metric"><span class="metric-label">提供形態</span><span class="metric-value">AI導入 or 専門業務AI-BPO</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：設立1年半の小規模事業者が「AIエージェント導入」と「専門業務AI-BPO」を併記した価格表をすでに公開していることは、納品自動化の価格設計を検討する際の市場の下限値の参考になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">新規事業の検証に関わるメンバーに、新しいツール契約を前提にしない「既存基盤に載せる」設計思想を、提案の選択肢の幅として共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000029.000185093.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES — ゴムマリ「Excel台帳データベース化AIエージェント」提供開始 (11/3)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 11: HBR -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">📚</div>
+  <div>
+    <h2>HBR — マネジメント・戦略インサイト</h2>
+    <span class="sub">Diamond Harvard Business Review — 2026年11月2-3日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 8: HBR Gary Hamel -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-research">📚 HBR 11/3</div>
+  <h3>ゲイリー・ハメル「あなたの組織は適応するか、躓くか」——約30年で携帯電話業界のリーダー企業が4回交代した加速の論理</h3>
+  <p class="summary">
+    経営学者ゲイリー・ハメル氏はHBRで、変化のスピードそのものが加速しており、既存企業の優位は従来よりはかなくなっていると論じた。携帯電話業界では<strong>モトローラ（1983年）→ノキア→RIM（2002年）→アップル（2007年）</strong>と約30年でリーダー企業が4回交代し、SNSでは<strong>フレンドスター→マイスペース→フェイスブック</strong>という交代が10年未満で起きた。ハメル氏は、100年前の経営思想が「危機に負けない組織」ではなく「秩序に従う組織」を志向し、ルーチン化を効率の道と見なしたことが、現在の適応力不足の根にあると指摘する。ルーチン業務をやめるインセンティブが乏しいため、変革は小さな改善の積み重ねか、危機を待った痛みの大きい改革のどちらかに偏りがちだとしている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">携帯業界の交代</span><span class="metric-value">約30年で4社</span></div>
+    <div class="metric"><span class="metric-label">SNSの交代</span><span class="metric-value">10年未満</span></div>
+    <div class="metric"><span class="metric-label">指摘の根</span><span class="metric-value">ルーチン化志向の経営思想</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜リーダー企業の交代が加速しているという歴史的事実は、AI活用の遅れがそのまま競争上の地位の交代につながりうるという危機意識を、経営・BU長との会話で具体例として裏付ける材料になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">探索と実行の物差しを使い分けさせたいメンバーに、「ルーチン化が効率の道」という前提自体を疑う視点を、既存業務の棚卸しの切り口として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://dhbr.diamond.jp/articles/-/15000" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      DHBR — あなたの組織は適応するか、躓くか (11/3)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 9: HBR Catmull Pixar -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">08</span>
+  <div class="card-tag tag-hr">📚 HBR 連載 11/2</div>
+  <h3>エド・キャットムル「スティーブ・ジョブズがピクサーで見せた『クリエイターへの深い敬意』」——数字で勝てない議論で現場の確信をどう扱うか</h3>
+  <p class="summary">
+    ピクサー共同創業者エド・キャットムル氏とエイミー・ワラス氏による連載「新・ピクサー流 創造するちから」第4回は、スティーブ・ジョブズ氏が判断の基準に「熱意」を置き、感情と理屈のバランスを重視していたと振り返る。ピクサー初期、ジョブズ氏は制作の実態を把握できず赤字にも苛立っていたが、世界初の長編コンピュータアニメーションを作るという制作者たちの決意を尊重し、やり方には口を出さなかった。象徴的な事例として、『バグズ・ライフ』のアスペクト比をめぐる議論で、プロダクションデザイナーのビル・コーン氏がワイドスクリーン方式を熱意をもって擁護したところ、ジョブズ氏はその信念を認め、以後この論点を持ち出さなくなったという。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">題材</span><span class="metric-value">ピクサー創業期の意思決定</span></div>
+    <div class="metric"><span class="metric-label">判断基準</span><span class="metric-value">熱意と理屈のバランス</span></div>
+    <div class="metric"><span class="metric-label">連載</span><span class="metric-value">新・ピクサー流 創造するちから 第4回</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>育成</strong>｜数字で測りきれない現場の確信を、経営側がどこまで信じて任せるかという論点は、AI活用の推進で現場の裁量をどこまで残すかを考える際の比較軸として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">強化選手が自分の担当領域で熱意を持って主張している論点があれば、数字での説得だけを求めず、その確信の中身を1on1で聞き取る材料にできる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://dhbr.diamond.jp/articles/-/15008" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      DHBR — スティーブ・ジョブズがピクサーで見せた「クリエイターへの深い敬意」 (11/2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年11月4日 — For internal use
+    </p>
+  </div>
+</footer>
+</body>
+</html>
