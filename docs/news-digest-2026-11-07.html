@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年11月7日（土）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero Header ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+/* ── Layout ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── News Card ── */
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Key Metrics */
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+/* Impact Boxes */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+/* Card Footer */
+.card-footer {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 16px; flex-wrap: wrap;
+}
+
+/* Source Link */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Share Button */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年11月7日（土）｜ AI BPO × AI・テクノロジー × 国内企業動向</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">63,290円</div>
+        </div>
+        <span class="change down">▼1,369円安・-2.12%（10/30終値・7日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">157円58銭</div>
+        </div>
+        <span class="change down">やや円高（10/30終値・7日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">$7,580</div>
+        </div>
+        <span class="change down">▼140ポイント安・-1.82%（10/30終値・7日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">BPO市場</div>
+          <div class="value">$358.6B</div>
+        </div>
+        <span class="change up">▲CAGR 9.9%（AI・クラウドが牽引）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- SECTION 6: AI BPO -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🏭</div>
+  <div>
+    <h2>AI BPO — 納品の自動化とアウトカム型デリバリー</h2>
+    <span class="sub">TaskUs — 2026年11月4日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 1: TaskUs Q3 2026 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-market">🏭 決算・続報 11/4</div>
+  <h3>TaskUs、AI Services部門が第3四半期も28%成長——7四半期連続で最速成長部門を維持</h3>
+  <p class="summary">
+    BPO大手TaskUsは2026年11月4日、2026年第3四半期決算を発表した。サービス売上高は<strong>3億1,474万ドル</strong>（前年同期比<strong>+5.4%</strong>）でガイダンス上限を上回り過去最高を更新した一方、AI Servicesセグメントは前年同期比<strong>27.7%</strong>（CEOコメントでは第3四半期単体で<strong>28%</strong>）成長し、直近12か月の売上高が<strong>2.5億ドル</strong>を突破した。同社は2026年8月発表の第2四半期（+25.8%）に続き、AI Servicesを7四半期連続で最速成長部門と位置付けている。通期売上高ガイダンスも12億4,900万〜12億5,100万ドルへ引き上げた。既存のSNS関連業務などレガシー領域の減収をAI関連業務の増収が上回る構図が、2四半期連続で確認できたことになる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">AI Services成長率</span><span class="metric-value up">+27.7%（TTM）</span></div>
+    <div class="metric"><span class="metric-label">AI Services売上(TTM)</span><span class="metric-value">$250M超</span></div>
+    <div class="metric"><span class="metric-label">全社売上高</span><span class="metric-value">$314.7M（+5.4%）</span></div>
+    <div class="metric"><span class="metric-label">通期ガイダンス</span><span class="metric-value up">上方修正</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：既存業務の減収をAI関連業務の増収が上回る構図が2四半期連続で確認できたことは、納品自動化への投資配分を検討する際に、既存業務の縮小を前提に置いてよいという外部の実例になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">KR1見直しに関わるメンバーに、AI関連業務の成長率を四半期ごとに追う視点を、ジュニアがPL案件を持てるようにする設計の外部ベンチマークとして渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.sec.gov/Archives/edgar/data/0001829864/000182986426000154/earningsreleaseex991q32026.htm" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      SEC EDGAR — TaskUs Q3 2026 Earnings Release (11/4)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 8: AI・テクノロジー 最新ニュース -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース ｜ 自動化・開発生産性・コスト</h2>
+    <span class="sub">DeepInfra / Google / Anthropic — 2026年10月22日〜11月3日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 2: DeepInfra GPU price hike -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-tech">🤖 価格改定 10/22</div>
+  <h3>GPUクラウドDeepInfra、カスタムLLM向けGPU時間課金を最大67%値上げ——A100・H100・H200全系列が対象</h3>
+  <p class="summary">
+    GPUクラウド事業者DeepInfraは2026年10月22日付で、カスタムLLM向けGPU時間課金を全系列で値上げした。<strong>A100 80GB</strong>は1時間<strong>0.89ドルから1.49ドルへ約67%</strong>、<strong>H100 80GB</strong>は<strong>2.20ドルから2.90ドルへ約32%</strong>、<strong>H200 141GB</strong>は<strong>2.69ドルから3.49ドルへ約30%</strong>の値上げとなった。オンデマンドのB200インスタンスも1時間3.69ドルから4.89ドルに上がっている。AWSの予約枠値上げ（10/7、全系列一律15%）、Nebiusの値上げ（10/1、17〜21%）に続く値上げで、GPUクラウド各社の価格改定が中堅プロバイダーにも及んでいることを示す。3年・5年の予約契約（DeepCluster）は今回の対象外。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">A100値上げ率</span><span class="metric-value down">+67%</span></div>
+    <div class="metric"><span class="metric-label">H100値上げ率</span><span class="metric-value down">+32%</span></div>
+    <div class="metric"><span class="metric-label">H200値上げ率</span><span class="metric-value down">+30%</span></div>
+    <div class="metric"><span class="metric-label">発効日</span><span class="metric-value">2026/10/22</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜開発リードタイム：中堅GPUクラウドにまで値上げが波及している事実は、来期のAI活用コストの前提を見直す材料になる。コスト計画を議論する会議で、値上げが特定ベンダーに限らない構造的な動きであることの裏付けに使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AI活用コストの見積もりに関わるメンバーに、GPU時間課金の値上げ幅がプロバイダーごとにばらつく実態を、調達先の比較材料として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.usagepricing.com/blueprint/activity/deepinfra-2026-10-22-gpu-hour-rate-hike" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      UsagePricing — DeepInfra GPU-Hour Rate Hike (10/22)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 3: Android Studio BYOA -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-tech">🤖 製品発表 10/28</div>
+  <h3>Google、Android Studioを40以上の外部コーディングエージェントに開放——Claude・Codex等を標準IDEに接続可能に</h3>
+  <p class="summary">
+    Googleは2026年10月28日、Android Studioの安定版チャネルで「Bring Your Own Agent」機能を正式リリースした。Agent Client Protocol（ACP）に対応する<strong>40以上</strong>の外部コーディングエージェント（Claude Agent、OpenAI Codex、Junie、Google Antigravity等）をIDE内に直接接続でき、テキスト提案にとどまらずツールを通じて実際のコーディング作業を実行できる。接続したエージェントはプロジェクト構造・ビルド診断・エミュレータ制御などIDEの情報を引き継ぐ。9月24日のCanaryプレビューを経て安定版に昇格した。標準搭載のGemini利用は引き続き無料だが、外部エージェントは各社の契約・利用上限がそのまま適用される。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">対応エージェント数</span><span class="metric-value">40以上（ACP準拠）</span></div>
+    <div class="metric"><span class="metric-label">対応例</span><span class="metric-value">Claude/Codex/Junie/Antigravity</span></div>
+    <div class="metric"><span class="metric-label">リリース形態</span><span class="metric-value">安定版（Rabbit 2）</span></div>
+    <div class="metric"><span class="metric-label">発表日</span><span class="metric-value">2026/10/28</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜開発リードタイム：標準IDEが特定ベンダーに縛られずコーディングエージェントを選べる構成を公式に用意した事実は、実装区間から設計・QAへ比重を移す4Qの方針の中で、ツール選定の自由度を確保する論点として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">SRE-LT領域のメンバーに、IDE標準機能とエージェント接続の切り分けという設計思想を、自分たちの開発環境の構成を点検する際の比較材料として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://developer.android.com/blog/posts/ai-agents-android-studio-integration" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Android Developers Blog — Bring Your Own Agent (10/28)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 4: Anthropic Message Threads -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-tech">🤖 機能公開 11/2</div>
+  <h3>Anthropic、「Message Threads」をパブリックベータ公開——長時間エージェントセッションの初回応答を中央値35%短縮</h3>
+  <p class="summary">
+    Anthropicは2026年11月2日、Claude APIの新機能「Message Threads」をパブリックベータとして公開した。従来は毎ターン会話全体を再送していたのに対し、直近の発言とClaudeの前回応答IDだけを送る方式に変え、50万〜100万トークン規模の長いやり取りで初回トークン応答時間（TTFT）の中央値を<strong>約35%短縮</strong>した。Claude Codeの多くのユーザーには既定で有効化されている。ただしClaude側は会話全体を読み直す処理自体は変わらないため、トークン課金額やレート制限には影響しない。複数ツールをまたいだ長時間の開発セッションで、応答待ちによる手待ち時間を減らす技術的選択肢。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">TTFT短縮率</span><span class="metric-value up">約35%（中央値）</span></div>
+    <div class="metric"><span class="metric-label">対象規模</span><span class="metric-value">50万〜100万トークン</span></div>
+    <div class="metric"><span class="metric-label">課金への影響</span><span class="metric-value">変化なし</span></div>
+    <div class="metric"><span class="metric-label">提供形態</span><span class="metric-value">パブリックベータ</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜開発リードタイム：長時間のコーディングエージェントセッションで応答待ち時間を減らす技術的選択肢が増えたことは、Claude Codeを使う開発フローの体感速度を改善する検討材料になる。コスト構造は変わらない点も併せて伝えられる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">SRE-LT領域のメンバーに、長時間セッションのベータ機能を試す際の着眼点（速度は変わるがコストは変わらない）を、今週の技術調査の切り口として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://claude.com/blog/message-threads" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Claude — Make long-running agents faster with message threads (11/2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 10: 国内企業動向 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🏢</div>
+  <div>
+    <h2>国内企業動向 ｜ 競合・隣接・スタートアップ</h2>
+    <span class="sub">BRIDGE — 2026年11月5日・11月6日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 5: Rogo Felix Japan -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-market">🏢 隣接・調達 11/6</div>
+  <h3>金融AI「Rogo」、MUFG・Barclays等の銀行連合から出資を受け日本進出——自律エージェント「Felix」を野村・大和に提供</h3>
+  <p class="summary">
+    金融機関向け自律エージェント「Felix」を手がける米Rogoは、2026年9月にMUFGのCVC（三菱UFJイノベーション・パートナーズ）、Barclays、BNP Paribas、Citi Ventures、Societe Generaleから出資を受けたことが2026年11月6日に報じられた。Felixはメール・メッセージング・スプレッドシート・金融データ端末に組み込まれ、複数案件・ポートフォリオ・会議にまたがってリサーチ・分析・資料作成・案件プロセス管理を非同期で実行する。利用機関は<strong>450社超</strong>・利用者<strong>6万人超</strong>で、日本では野村證券・大和証券を含む数十社が顧客という。累計調達額はシリーズCの7,500万ドル（1月）とシリーズDの1億6,000万ドル（4月）。MUIPはMUFGグループ内でのシナジーを探るとしており、金融機関の調査・資料作成業務を代替する自律エージェントが、大手銀行の出資という形で日本市場に本格参入した事例。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">出資行</span><span class="metric-value">MUFG/Barclays等5行</span></div>
+    <div class="metric"><span class="metric-label">利用機関数</span><span class="metric-value">450社超</span></div>
+    <div class="metric"><span class="metric-label">国内顧客</span><span class="metric-value">野村・大和含む数十社</span></div>
+    <div class="metric"><span class="metric-label">累計調達額</span><span class="metric-value">2.35億ドル超</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜大手銀行が自社のCVCを通じて金融特化の自律エージェントに出資し、グループ内業務への展開まで見据えている構図は、経営層との会話で「金融機関自身がAIベンダーに資本参加する動き」の具体例として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">顧客業界の動向把握に関わるメンバーに、金融機関向けAI導入が「ツール導入」から「出資を伴う戦略提携」へ進む事例を、業界インプットの材料として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://thebridge.jp/2026/11/rogo-felix-financial-ai-muip-mufg-investment-japan-market" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      BRIDGE — MUFGら世界の銀行が出資する金融AI「Rogo」(11/6)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 6: Simulacra digital twin -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-market">🏢 調達 11/5</div>
+  <h3>東大発「Simulacra」、人の思考・行動を再現するデジタルツイン基盤モデルでANRIからプレシード調達</h3>
+  <p class="summary">
+    東京大学・和泉研究室発のAIスタートアップSimulacraが2026年11月5日、ANRIのプレシードプログラムから出資を受けたと発表した（調達額非公開）。個人の価値観・暗黙知を対話で構造化する「インタビューAI」を基盤に、消費者の反応を再現する「消費者デジタルツイン」、多数のAIエージェントで制度・施策の影響を試算する「経済デジタルツイン」、3D都市モデル上で人流を検証する「都市デジタルツイン」の4領域を展開する。調達資金は基盤モデルの研究開発と、金融・マーケティング・都市・政策領域での企業・自治体との共同研究拡大に充てる。アンケートやインタビューに代わってAIエージェントで消費者・組織の反応を事前に試算する発想は、検証顧客を探す新規事業の仮説検証コストを下げる方向の技術。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">調達額</span><span class="metric-value">非公開</span></div>
+    <div class="metric"><span class="metric-label">出資元</span><span class="metric-value">ANRI（プレシード）</span></div>
+    <div class="metric"><span class="metric-label">設立</span><span class="metric-value">2025年9月</span></div>
+    <div class="metric"><span class="metric-label">展開領域</span><span class="metric-value">金融/マーケ/都市/政策</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜AIエージェントで消費者・組織の反応を事前に試算し、仮説検証にかかる人手とコストを下げる発想は、AXLの新規事業で検証顧客を探す前段の仮説検証を軽くする技術的選択肢の参考になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AXL領域のメンバーに、調査・インタビューをAIエージェントで代替する発想を、自分たちの検証プロセスを見直す際の比較事例として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://thebridge.jp/2026/11/simulacra-digital-twin-pre-seed-anri" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      BRIDGE — Simulacra、ANRIからプレシードで資金調達 (11/5)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年11月7日 — For internal use
+    </p>
+  </div>
+</footer>
+</body>
+</html>
