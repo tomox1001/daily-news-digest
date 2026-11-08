@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年11月9日（月）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero Header ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+/* ── Layout ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── News Card ── */
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Key Metrics */
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+/* Impact Boxes */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+/* Card Footer */
+.card-footer {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 16px; flex-wrap: wrap;
+}
+
+/* Source Link */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Share Button */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年11月9日（月）｜ Google Trends × AI効率→ビジネス価値変換 × AI BPO × AI・テクノロジー × 国内企業動向</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">63,290円</div>
+        </div>
+        <span class="change down">▼1,369円安・-2.12%（10/30終値・9日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">157円58銭</div>
+        </div>
+        <span class="change down">やや円高（10/30終値・9日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">$7,580</div>
+        </div>
+        <span class="change down">▼140ポイント安・-1.82%（10/30終値・9日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">BPO市場</div>
+          <div class="value">$358.6B</div>
+        </div>
+        <span class="change up">▲CAGR 9.9%（AI・クラウドが牽引）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- SECTION 2: Google Trends 急上昇 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">📈</div>
+  <div>
+    <h2>Google Trends 急上昇 — AIキーワード速報</h2>
+    <span class="sub">OpenAI — 2026年11月2日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 1: OpenAI Pando -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-tech">📈 急上昇 +24,350%</div>
+  <h3>急上昇ワード「OpenAI Pando」の正体——自社製Gitバックエンドで社内の押し込み遅延を8割削減、開発はCodexで約10週間</h3>
+  <p class="summary">
+    「openai pando」は直近7日間でGoogle Trends上の急上昇率<strong>+24,350%</strong>を記録した。正体はOpenAIが2026年11月2日に技術ブログ「Scaling Git at OpenAI」で公開した、自社の巨大モノレポ向け独自Gitバックエンド「Pando」である。1日あたり<strong>約1ペタバイト</strong>のGitデータを処理し、プッシュ（変更の反映）のレイテンシ中央値を<strong>約80%削減</strong>したと説明されている。注目点は、このPando自体を<strong>Codexを使い着想から本番投入まで約10週間</strong>で構築したと明かしている点で、社内開発基盤そのものをコーディングエージェントで作る事例として読める。外部提供される製品ではなく社内ツールだが、開発リードタイムの制約がインフラ側（Git・CI環境）にもあることを示す材料になる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">急上昇率</span><span class="metric-value up">+24,350%</span></div>
+    <div class="metric"><span class="metric-label">プッシュ遅延削減</span><span class="metric-value up">約80%</span></div>
+    <div class="metric"><span class="metric-label">処理データ量</span><span class="metric-value">約1PB/日</span></div>
+    <div class="metric"><span class="metric-label">開発期間</span><span class="metric-value">約10週間（Codex使用）</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜開発リードタイム：OpenAI自身がコーディングエージェントで社内インフラ（Git基盤）を作り変えた事例は、SRE-LTの対象をアプリ開発だけでなく開発基盤・CI環境にも広げる発想の外部参考になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">SRE-LTに関わるメンバーに、「約10週間でインフラを作り替えた」という規模感を、開発リードタイム短縮の目標設定の参考値として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://emergent.sh/news/openai-launches-pando-git-backend-ai-scale" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      OpenAI「Scaling Git at OpenAI」要約 — Pando発表 (11/2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 5: AI効率 → ビジネス価値変換 グローバル事例 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">💡</div>
+  <div>
+    <h2>AI効率 → ビジネス価値変換 グローバル事例</h2>
+    <span class="sub">SAP / Oxford Economics・HTEC — 2026年11月 Sources</span>
+  </div>
+</div>
+
+<!-- Card 2: SAP Oxford Economics Value of AI Report -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-research">💡 調査 2026年11月</div>
+  <h3>SAPとOxford Economicsの共同調査——AIの投資対効果は伸びる一方、「統制を完全に回せる」企業はわずか12%</h3>
+  <p class="summary">
+    SAPとOxford Economicsが共同で実施した「Value of AI Report 2026」は、<strong>13カ国・2,600人の経営層</strong>を対象にした調査で、企業の平均AI投資額は<strong>2,800万ドル</strong>に上り、投資対効果（ROI）は顕著に上昇したと報告している。一方で、AIが支える業務タスクの比率は全体の<strong>約30%</strong>（前年25%から上昇）まで広がったにもかかわらず、「自社のスキルまたは統制の枠組みがAIガバナンスに完全に対応できている」と答えた企業はわずか<strong>12%</strong>にとどまる。投資と成果が先行し、統制（ガバナンス）が追いついていないという構図は、AI活用を広げる際に監督・審査体制を同時に整備する必要性を裏付ける。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">調査対象</span><span class="metric-value">13カ国・2,600人</span></div>
+    <div class="metric"><span class="metric-label">平均AI投資額</span><span class="metric-value">$28M</span></div>
+    <div class="metric"><span class="metric-label">AIが支えるタスク比率</span><span class="metric-value up">約30%（前年25%）</span></div>
+    <div class="metric"><span class="metric-label">統制「完全対応」企業</span><span class="metric-value down">12%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜AI投資が進むほど統制・ガバナンス体制の整備が追いつかなくなるという定量データは、AIリスキリングや導入支援を提案する際に「活用の広さ」だけでなく「統制の設計」を併せて訴求する根拠になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AXLの提案設計に関わるメンバーに、「活用率とガバナンス対応率のギャップ」という切り口を、顧客への提案構成の参考として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://news.sap.com/?p=246014" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      SAP News — Value of AI Report 2026
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 3: HTEC AI Value Realisation Report -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-research">💡 調査 2026年11月</div>
+  <h3>HTEC調査——AI予算は前年比31%増でも、77%の経営層が「価値の壁は技術でなく人と業務プロセス」と回答</h3>
+  <p class="summary">
+    ソフトウエア開発企業HTECが米英独サウジUAEの<strong>C級幹部1,500人</strong>を対象に実施した独立調査「AI Value Realisation Report 2026」によると、過去1年でAI投資を増やした企業は<strong>79%</strong>、増加幅は平均<strong>31%</strong>に上る。一方で経営層の<strong>77%</strong>が「AIの価値を制約しているのは技術そのものより人と業務プロセスだ」と回答し、別の集計では<strong>71.5%</strong>が「AI活用の全体像を可視化できていない」と答えている。投資は増えているのに価値実感に結びつかない構図は、河野の領域（生産性×効率性）で繰り返し指摘される「効率化が収益に繋がらない」逆説の、人・業務プロセス側の内訳を示すデータとして使える。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">調査対象</span><span class="metric-value">C級幹部1,500人・5カ国</span></div>
+    <div class="metric"><span class="metric-label">AI投資増加企業</span><span class="metric-value up">79%</span></div>
+    <div class="metric"><span class="metric-label">投資増加幅</span><span class="metric-value up">平均+31%</span></div>
+    <div class="metric"><span class="metric-label">「価値の壁は人と業務」</span><span class="metric-value">77%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：「AIの価値を制約するのは技術でなく人と業務プロセス」という経営層の自己申告は、納品業務の自動化を検討する際に技術選定より先に業務プロセスの整理（棚卸し）を優先すべきという判断の外部裏付けになる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">KR1の見直しに関わるメンバーに、「投資は増えても価値実感が伴わない」企業が多数派であるという事実を、焦って技術導入だけを急がない根拠として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://technologymagazine.com/news/htec-report-ai-budgets-up-31-as-roi-challenges-grow" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Technology Magazine — HTEC AI Value Realisation Report 2026
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 6: AI BPO -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🏭</div>
+  <div>
+    <h2>AI BPO — 納品の自動化とアウトカム型デリバリー</h2>
+    <span class="sub">Agiloft — 2026年11月5日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 4: Agiloft contract AI agents -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-market">🏭 新機能 11/5</div>
+  <h3>契約管理のAgiloft、「一括更新・依頼振り分け・電子署名」を担う3つのAIエージェントを追加——いずれも実行前に人の確認を必須化</h3>
+  <p class="summary">
+    契約ライフサイクル管理（CLM）大手のAgiloftは2026年11月5日、既存のAIアシスタント「Ask AI」を契約内容の分析だけでなく複数工程の事務処理まで拡張する3種のAIエージェントを発表した。<strong>一括更新エージェント</strong>は検索結果を起点に最大3つのデータ項目を多数の契約・添付文書にまたがって更新でき、実行前に変更対象ファイルのプレビューと人による明示的な承認を必須とする。<strong>依頼振り分けエージェント</strong>は自然言語の依頼を権限に応じて適切な申請フォームへ自動で振り分け、<strong>電子署名エージェント</strong>はAdobe Acrobat Signとの連携で署名設定を自動構成し送信前にレビューを挟む。人を介さない処理と、要所での人の承認を組み合わせた設計は、BPO領域で「どこまで自動化し、どこに監督者を残すか」を線引きする際の実装例として読める。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">発表日</span><span class="metric-value">2026/11/5</span></div>
+    <div class="metric"><span class="metric-label">新規エージェント数</span><span class="metric-value">3種</span></div>
+    <div class="metric"><span class="metric-label">一括更新の上限</span><span class="metric-value">データ項目3つまで</span></div>
+    <div class="metric"><span class="metric-label">外部エージェント連携</span><span class="metric-value">ベータ提供</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：契約処理という定型的なバックオフィス業務を、人を介さず回しつつ要所（実行前プレビュー・承認）だけ人を残す設計は、納品自動化の設計で「どこを自動化し、どこに監督者を置くか」を決める際の具体的な線引きの参考になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">KR1の設計に関わるメンバーに、「実行前プレビュー＋明示的承認」という監督の挟み方の具体例を、要件定義の参考として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://briefglance.com/articles/agiloft-deploys-execution-focused-ai-agents-to-plug-procurement-value-leaks" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      BriefGlance — Agiloft Execution-Focused AI Agents (11/5)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 8: AI・テクノロジー 最新ニュース -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース ｜ 自動化・開発生産性・コスト</h2>
+    <span class="sub">CrowdStrike / Harvard・Jellyfish / Zendesk — 2026年11月 Sources</span>
+  </div>
+</div>
+
+<!-- Card 5: CrowdStrike Fiddler/Dreadnode acquisitions -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-breaking">🤖 買収 11/上旬</div>
+  <h3>CrowdStrike、AIエージェント監視のFiddler AIとDreadnodeを総額約4.95億ドルで買収——「エージェントの観測性」がセキュリティ投資の主戦場に</h3>
+  <p class="summary">
+    サイバーセキュリティ大手CrowdStrikeは、AIエージェントの挙動を可視化・説明する「Fiddler AI」（買収額約<strong>4億ドル</strong>）と、AIの構築・検証基盤を手掛ける「Dreadnode」（約<strong>0.95億ドル</strong>）を合計約<strong>4.95億ドル</strong>で買収すると発表した。買収は2027会計年度第4四半期中の完了を見込む。Fiddlerの技術は同社のFalconプラットフォームに「エージェント観測性（agent observability）」として統合され、AIエージェントが何を根拠にどう判断したかを追跡できるようにする狙いという。自律エージェントの導入が広がるほど、エージェント自体を監督対象の「ID」として扱い監査証跡を残す仕組みへの投資が加速している構図を示す。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">買収総額</span><span class="metric-value">約$495M</span></div>
+    <div class="metric"><span class="metric-label">Fiddler AI</span><span class="metric-value">約$400M</span></div>
+    <div class="metric"><span class="metric-label">Dreadnode</span><span class="metric-value">約$95M</span></div>
+    <div class="metric"><span class="metric-label">完了見込み</span><span class="metric-value">FY27 Q4</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜セキュリティ大手がAIエージェントの観測性・監査に約5億ドルを投じた事実は、自律エージェント導入の提案に「誰が何を根拠に判断したかを追跡できるか」という監査項目が今後の標準になりうることを示す、経営・BU長との会話材料になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AIエージェント導入の提案に関わるメンバーに、「エージェント観測性」という監査項目の存在を、要件定義の抜け漏れ防止の材料として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.crowdstrike.com/en-us/press-releases/crowdstrike-to-acquire-fiddler-to-deliver-agent-observability/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      CrowdStrike Press Release — Fiddler AI Acquisition
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 6: Harvard/Jellyfish coding agent study -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-tech">🤖 調査 2026年秋</div>
+  <h3>ハーバード大学×Jellyfishの調査——コーディングエージェント導入でコード量は3割増でも、完成した仕事量は増えず。ボトルネックはレビュー</h3>
+  <p class="summary">
+    ハーバード大学の研究者Fiona Chen氏・James Stratton氏が、エンジニア向け分析基盤Jellyfishのデータ（<strong>700社超・約3億件の作業イベント</strong>）を用いた作業論文によると、コーディングエージェントを導入した企業ではコード行数が<strong>約30%</strong>・コミット数が20%・プルリクエスト数が23%それぞれ増加した一方、Jira課題やエピックの解決率など企業レベルの「完成した仕事量」には統計的に有意な増加が見られなかった。原因としてレビュー側の目詰まりを指摘しており、プルリクエストのマージまでの所要時間は平均<strong>7.03日→10.48日（+49%）</strong>に伸び、修正要求を受ける割合もほぼ倍増したという。著者らは「コード生産量を増やすだけでなく、下流のレビュー体制への投資が欠かせない」と結論づけている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">対象</span><span class="metric-value">700社超・約3億作業イベント</span></div>
+    <div class="metric"><span class="metric-label">コード行数</span><span class="metric-value up">+30%</span></div>
+    <div class="metric"><span class="metric-label">PRマージまでの時間</span><span class="metric-value down">7.03日→10.48日(+49%)</span></div>
+    <div class="metric"><span class="metric-label">企業レベルの完成量</span><span class="metric-value">有意差なし</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜開発リードタイム：コーディングエージェント導入がコード生産量を増やしてもレビュー工程が目詰まりし企業全体の完成量は増えないという700社規模のデータは、SRE-LTの実装区間→設計・QA比重シフトという今期方針を裏付ける外部エビデンスになる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">SRE-LTに関わるメンバーに、「コード量を増やすだけでは完成品は増えない」という大規模データを、レビュー体制への投資を後回しにしない根拠として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://jellyfish.co/blog/harvard-jellyfish-ai-is-making-developers-faster/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Jellyfish — Harvard & Jellyfish Research on AI Coding Agents
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 7: Zendesk employee service AI agent -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-tech">🤖 新製品 11/4</div>
+  <h3>Zendesk、入社・退社手続きなどを完結まで処理する「従業員サービスAIエージェント」を発表——早期利用の5週間で600万件のワークフローを実行</h3>
+  <p class="summary">
+    Zendeskは2026年11月4日、社内のIT・人事・総務向け問い合わせをエンドツーエンドで解決する「従業員サービスAIエージェント」と「高度なアクションフロー」を発表し、前者は一般提供を開始した。単に質問に回答するだけでなく、オンボーディング・オフボーディング（入社・退社手続き）、アクセス権限の承認、PCのライフサイクル管理、入退館カードの権限設定など、複数のチーム・システムをまたぐ多段階の処理を完了まで進める設計という。同社によると、提供開始から最初の5週間で早期利用企業による<strong>600万件</strong>のワークフロー実行があった。中継業務（情報を届けるために発生する定型の事務処理）をエンドツーエンドで肩代わりする実装例として、導入規模の参考になる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">発表日</span><span class="metric-value">2026/11/4</span></div>
+    <div class="metric"><span class="metric-label">早期利用5週間の実行数</span><span class="metric-value up">600万件</span></div>
+    <div class="metric"><span class="metric-label">対象業務</span><span class="metric-value">IT・人事・総務の手続き</span></div>
+    <div class="metric"><span class="metric-label">提供状況</span><span class="metric-value">一般提供開始</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR3 中継業務</strong>｜入社・退社手続きなど複数部門をまたぐ事務処理をAIエージェントが完結まで処理し、5週間で600万件を実行したという規模感は、中継業務の代替対象をどこまで広げられるかの外部参考値になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">KR3に関わるメンバーに、「複数システムをまたぐ多段階処理をAIに『スキル』として持たせる」という設計思想を、中継業務の切り出し方の参考として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000059.000064750.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES — Zendesk 従業員サービスAIエージェント発表 (11/4)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 10: 国内企業動向 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🏢</div>
+  <div>
+    <h2>国内企業動向 ｜ 競合・隣接・スタートアップ</h2>
+    <span class="sub">UiPath — 2026年9月30日（国内報道11/8） Sources</span>
+  </div>
+</div>
+
+<!-- Card 8: UiPath x Snowflake integration reaching Japan coverage -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">08</span>
+  <div class="card-tag tag-market">🏢 隣接 続報 11/8</div>
+  <h3>UiPathとSnowflake、自動化とデータ基盤を結ぶ双方向連携を提供開始——国内IT媒体も11月に入り改めて報道</h3>
+  <p class="summary">
+    RPA大手UiPathは2026年9月30日（米国時間）、Snowflakeとの双方向連携をSnowflake Marketplaceで提供開始したと発表した。Snowflake上のデータをコピー・移動せずにUiPathの自動化に取り込める一方、UiPathの自動化処理をSnowflake側から直接起動できる仕組みで、ガバナンス対象データと業務自動化を結ぶ狙いという。発表自体は9月末だが、国内のIT専門媒体も11月8日に改めてこの連携を取り上げており、日本市場でのRPA＋生成AI連携の商談材料として関心が続いていることがうかがえる。UiPathは同時期にTest Cloudへの自律型テスト機能追加や、散在する業務知識を可視化する「Cartographer」も発表しており、RPAベンダーが生成AIエージェントとの役割分担を製品レベルで具体化しつつある流れの一部として読める。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">発表日</span><span class="metric-value">2026/9/30（国内報道11/8）</span></div>
+    <div class="metric"><span class="metric-label">連携先</span><span class="metric-value">Snowflake Marketplace</span></div>
+    <div class="metric"><span class="metric-label">データ移動</span><span class="metric-value">コピー・移動なし</span></div>
+    <div class="metric"><span class="metric-label">関連発表</span><span class="metric-value">Test Cloud・Cartographer</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：RPA大手がデータ基盤（Snowflake）と業務自動化を直結させる連携を国内市場向けにも訴求し続けている事実は、RPAと生成AIエージェントの役割分担をどう組むかというKR1の採否判断に、ベンダー側の設計思想を知る材料として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">KR1の採否判断に関わるメンバーに、RPAベンダーがデータ基盤連携と生成AIエージェント機能を同時に強化している動きを、業界インプットの材料として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.uipath.com/newsroom/uipath-and-snowflake-two-way-integration-marketplace" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      UiPath Newsroom — UiPath and Snowflake Two-Way Integration
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年11月9日 — For internal use
+    </p>
+  </div>
+</footer>
+</body>
+</html>
