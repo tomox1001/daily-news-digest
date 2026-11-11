@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年11月11日（水）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero Header ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+/* ── Layout ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── News Card ── */
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Key Metrics */
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+/* Impact Boxes */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+/* Card Footer */
+.card-footer {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 16px; flex-wrap: wrap;
+}
+
+/* Source Link */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Share Button */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年11月11日（水）｜ AI BPO × AI・テクノロジー × 国内企業動向</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">63,290円</div>
+        </div>
+        <span class="change down">▼1,369円安・-2.12%（10/30終値・10日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">157円58銭</div>
+        </div>
+        <span class="change down">やや円高（10/30終値・10日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">$7,580</div>
+        </div>
+        <span class="change down">▼140ポイント安・-1.82%（10/30終値・10日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">BPO市場</div>
+          <div class="value">$358.6B</div>
+        </div>
+        <span class="change up">▲CAGR 9.9%（AI・クラウドが牽引）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- SECTION 6: AI BPO -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🏭</div>
+  <div>
+    <h2>AI BPO — 納品の自動化とアウトカム型デリバリー</h2>
+    <span class="sub">Genpact / KODIF・Cavalry — 2026年11月5日・7日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 1: Genpact Q3 2026 earnings -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-market">🏭 決算 11/5</div>
+  <h3>Genpact、2026年第3四半期決算——AI事業「Advanced Technology Solutions」が前年比30.3%増の一方、中核のコア事業は横ばい</h3>
+  <p class="summary">
+    BPO大手Genpactは2026年11月5日、2026年第3四半期（7〜9月期）決算を発表した。純売上高は<strong>13億8,540万ドル</strong>（前年比+7.3%）。事業別では、AIを前面に出した<strong>「Advanced Technology Solutions（ATS）」事業が前年比+30.3%</strong>と伸び全体の29%を占めた一方、従来型の業務受託である<strong>「Core Business Services（CBS）」事業は9億8,030万ドルで前年同期並み（横ばい）</strong>にとどまった。会社は通期の調整後希薄化後EPS成長率見通しを13%以上へ引き上げた。AI・テクノロジー関連事業だけが二桁成長を続け、伝統的な定型受託業務は伸びが止まるという事業間の明暗は、BPO各社が収益の重心をどちらに置き直しているかを示す定量データである。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">純売上高</span><span class="metric-value up">$1,385.4M（+7.3%）</span></div>
+    <div class="metric"><span class="metric-label">ATS事業</span><span class="metric-value up">+30.3%（全体の29%）</span></div>
+    <div class="metric"><span class="metric-label">CBS事業</span><span class="metric-value">$980.3M（横ばい）</span></div>
+    <div class="metric"><span class="metric-label">通期EPS成長見通し</span><span class="metric-value up">13%以上に上方修正</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：AIを前面に出した事業だけが30%超で伸び、従来型の定型受託業務が横ばいに転じたという事業間の明暗は、納品自動化の価値を「既存業務の効率化」でなく「新しい事業区分」として切り出す方が成長を説明しやすいという裏付けになる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">KR1の見直しに関わるメンバーに、「従来型の定型受託は成長が止まる」という大手BPOの実績データを、業務区分の再編を検討する際の業界インプットとして渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.finanznachrichten.de/nachrichten-2026-11/70056009-genpact-reports-third-quarter-2026-results-008.htm" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Genpact Reports Third Quarter 2026 Results (11/5)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 2: KODIF x Cavalry agentic post-purchase platform -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-breaking">🏭 提携 11/7</div>
+  <h3>KODIFとCavalryが提携——返品・配送追跡・クレーム対応を一気通貫で処理する「エージェント型購入後プラットフォーム」を構築</h3>
+  <p class="summary">
+    EC向けAIエージェントのKODIFと、購入後業務インフラのCavalryは2026年11月7日、提携を発表した。KODIFが持つ顧客の意図理解・対話型解決のAIエージェントと、Cavalryが持つ返品・交換、配送追跡、保護、クレームなどの実行インフラを組み合わせ、購入後対応を人手を介さず一気通貫で処理する「エージェント型購入後プラットフォーム」を構築する狙いという。両社はDollar Shave Club、Harry'sなど<strong>100社以上</strong>の消費者向けブランドに導入済みで、Bling Capital・SNR・Mistral・Red Bike Capitalから新たな出資を受け、両社累計の調達額は<strong>1,900万ドル</strong>に達した。情報を届けるだけでなく実際の処理（返金・交換の実行）まで人を介さず完結させる設計は、中継業務の代替範囲をどこまで広げられるかの実装例になる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">発表日</span><span class="metric-value">2026/11/7</span></div>
+    <div class="metric"><span class="metric-label">両社累計調達額</span><span class="metric-value up">$19M</span></div>
+    <div class="metric"><span class="metric-label">導入ブランド数</span><span class="metric-value">100社超</span></div>
+    <div class="metric"><span class="metric-label">対象業務</span><span class="metric-value">返品・配送追跡・クレーム</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：対話理解のAIエージェントと実行インフラを専業同士で組み合わせ、購入後対応という定型業務を人手なしで完結させる設計は、納品自動化を「自社で全部作る」か「実行インフラを持つ専業と組む」かという選択肢の参考になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">KR1の設計に関わるメンバーに、対話AIと実行インフラを役割分担で組む提携モデルを、自社開発以外の選択肢として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.financialcontent.com/article/accwirecq-2026-11-7-kodif-and-cavalry-join-forces-to-build-the-first-agentic-post-purchase-platform" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      ACCESS Newswire — KODIF and Cavalry Join Forces (11/7)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 8: AI・テクノロジー 最新ニュース -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース ｜ 自動化・開発生産性・コスト</h2>
+    <span class="sub">UiPath / Google Cloud — 2026年9月・10月下旬 Sources</span>
+  </div>
+</div>
+
+<!-- Card 3: UiPath Cartographer -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-tech">🤖 新製品 続報</div>
+  <h3>UiPath、散在する業務知識を「生きた地図」として可視化する「Cartographer」——自動化着手前の現状把握工程を短縮</h3>
+  <p class="summary">
+    UiPathはFUSION 2026カンファレンスで、企業内に散らばる業務プロセスの知識（文書・手順・ルール・例外処理）を統合し、実行可能な「Map of Work」として保守し続けるツール「Cartographer」を発表した。業務アナリストがインタビューや手書き文書に頼っていた現状把握の工程を、ガイド付きの対話に置き換えることで、自動化着手前に数週間かかることもある初期工程を短縮する狙いという。生成された業務地図はオーケストレーション基盤「UiPath Maestro」に引き渡して自動化を設計でき、実行時の判断を記録する「Decision Ledger」で地図を更新し続ける仕組みも備える。国内でも11月に入りこの文脈の報道が続いており、RPAベンダーが生成AIエージェントとの役割分担を製品レベルで具体化する流れの一部として読める。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">発表の場</span><span class="metric-value">FUSION 2026</span></div>
+    <div class="metric"><span class="metric-label">短縮対象</span><span class="metric-value">自動化着手前の現状把握工程</span></div>
+    <div class="metric"><span class="metric-label">連携先</span><span class="metric-value">UiPath Maestro</span></div>
+    <div class="metric"><span class="metric-label">効果の検証</span><span class="metric-value">第三者未検証（ベンダー発表）</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：自動化の初期工程（現状把握・業務の棚卸し）こそ時間がかかるというベンダー側の課題認識は、納品自動化の検討で最初にボトルネックになりやすい工程がどこかを見立てる参考になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">KR1の要件定義に関わるメンバーに、「業務の現状把握をどう効率化するか」というベンダー側の着眼点を、要件定義力を鍛える題材として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://itbrief.com.au/story/uipath-launches-cartographer-to-map-enterprise-work" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      IT Brief Australia — UiPath Launches Cartographer
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 4: Google Agent Substrate / llm-d -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-tech">🤖 OSS 10/20</div>
+  <h3>Google、Kubernetes上でAIエージェントのセッションを束ねるOSS基盤「Agent Substrate」と推論ルーティング層「llm-d 1.0」を公開</h3>
+  <p class="summary">
+    Googleは2026年10月20日に分散推論スタック「llm-d」のバージョン1.0を公開し、複数のモデルサーバーを束ねて優先度・公平性を考慮したルーティングやセッション単位の処理を行える仕組みを整えた。合わせて、待機中のAIエージェントを一時停止しメモリとローカルファイルのスナップショットを保存する「Agent Substrate」をKubernetes Engine（GKE）向けに公開し、他のKubernetes環境でもOSSとして使えるようにした。第三者の検証によると、同基盤は<strong>約250のステートフルなエージェントセッションを物理的にはわずか8つのPodに集約</strong>できたという。常時起動していないエージェントのインフラコストを圧縮する仕組みとして、AIエージェントを大量に運用する際のコスト設計の参考になる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">llm-d公開日</span><span class="metric-value">2026/10/20</span></div>
+    <div class="metric"><span class="metric-label">セッション集約（第三者検証）</span><span class="metric-value up">約250セッション/8Pod</span></div>
+    <div class="metric"><span class="metric-label">対象基盤</span><span class="metric-value">GKE・Kubernetes OSS</span></div>
+    <div class="metric"><span class="metric-label">機能</span><span class="metric-value">アイドル時の一時停止・復元</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜開発リードタイム：大量のAIエージェントを常時起動せず必要な時だけ復元する仕組みは、タスク管理・コーディングエージェントを増やした際のインフラコストが開発リードタイム短縮の制約にならないかを見立てる材料になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">SRE-LTに関わるメンバーに、「エージェントのアイドル時コストをどう圧縮するか」という設計思想を、今後の技術選定の視野を広げる材料として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.solo.io/topics/ai-infrastructure/how-google-agent-substrate-works" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Solo.io — How Google Agent Substrate Works
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 10: 国内企業動向 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🏢</div>
+  <div>
+    <h2>国内企業動向 ｜ 競合・隣接・スタートアップ</h2>
+    <span class="sub">ラフール / newmo / Booost — 2026年11月5〜9日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 5: Rafool unauthorized access -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-breaking">🏢 競合 11/5</div>
+  <h3>組織サーベイのOEM提供元ラフールに不正アクセス——「あしたのサーベイ」利用企業3社・209名の情報が取得される</h3>
+  <p class="summary">
+    ウェルネス・コミュニケーションズは2026年11月5日、子会社が販売する組織サーベイ「あしたのサーベイ」のOEM提供元である株式会社ラフールのシステムに不正アクセスがあったと適時開示した。ラフールは<strong>2026年10月27日</strong>に不審なアクセスを検知し、不正に使われた認証情報の停止や通信遮断を実施。<strong>10月30日</strong>の調査で個人情報の取得が確認され、顧客企業<strong>3社・209名</strong>について、氏名・所属部署・従業員番号・サーベイ回答・ストレスチェック結果などが対象に含まれるという。エンゲージメント・組織サーベイ領域の競合が、OEM提供元のシステム側で情報漏えいインシデントを起こした事例であり、ストレスチェック・医師面談記録を扱う商材のセキュリティ体制が顧客の選定基準に直結することを示す。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">開示日</span><span class="metric-value">2026/11/5</span></div>
+    <div class="metric"><span class="metric-label">検知日</span><span class="metric-value">2026/10/27</span></div>
+    <div class="metric"><span class="metric-label">対象企業・人数</span><span class="metric-value down">3社・209名</span></div>
+    <div class="metric"><span class="metric-label">対象情報</span><span class="metric-value">氏名・部署・ストレスチェック結果等</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜組織サーベイ領域の競合でOEM提供元起因の情報漏えいが起きた事実は、同種のサーベイ・エンゲージメント商材を扱う際のセキュリティ体制の説明責任が顧客選定に直結することを示す、経営・BU長との会話材料になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">サーベイ系商材の提案に関わるメンバーに、OEM委託先のセキュリティ管理まで含めて説明責任を負う必要があるという事例を、提案資料のリスク説明の材料として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://smartscope.blog/blog/ashita-no-survey-unauthorized-access-oem-provider-lafool-2026/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      SmartScope — あしたのサーベイ 不正アクセス報告 (11/5)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 6: newmo Series B -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-market">🏢 調達 11/9</div>
+  <h3>自動運転タクシーのnewmo、KDDIをリードにシリーズBで208億円調達——累計407億円、自前のAIモデルで日本の道路事情に対応</h3>
+  <p class="summary">
+    タクシー・ハイヤー事業と自動運転タクシーの開発を手がけるnewmoは2026年11月9日、KDDIをリード投資家とするシリーズBで<strong>208億円</strong>を調達したと発表した。累計調達額は<strong>407億円</strong>に達する。同社は日本の道路事情に合わせた自動運転AIモデルを自社開発しており、経済産業省の生成AI人材育成プログラム「GENIAC」にも採択されている。KDDIとは11月6日に資本業務提携を発表済みで、通信・AI計算基盤・高精度測位などの提供を受ける。調達資金は全国でのタクシー事業拡大と自動運転タクシーの投入に充てられ、堺市での商用化を2028年に目標として約1,000台規模への拡大を目指すという。大手通信キャリアが自動運転AIスタートアップに計算基盤ごと出資する構図は、AI領域での大企業とスタートアップの連携パターンの一例になる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">調達額</span><span class="metric-value up">208億円</span></div>
+    <div class="metric"><span class="metric-label">累計調達額</span><span class="metric-value">407億円</span></div>
+    <div class="metric"><span class="metric-label">リード投資家</span><span class="metric-value">KDDI</span></div>
+    <div class="metric"><span class="metric-label">商用化目標</span><span class="metric-value">堺市2028年・約1,000台</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜通信キャリアが計算基盤・測位インフラごとAIスタートアップに出資するという連携モデルは、経営層が話題にしやすい大型調達案件として、他社のAI投資パターンを把握する材料になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AI業界の資金調達動向を追うメンバーに、インフラ企業とAIスタートアップが資本と計算基盤をセットで組む事例を、業界インプットの材料として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://thebridge.jp/2026/11/newmo-raises-20-8-billion-yen-series-b-kddi" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      BRIDGE — newmo シリーズB208億円調達 (11/9)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 7: Booost Series C -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-market">🏢 調達 11/9</div>
+  <h3>財務・非財務データをAIでつなぐBooost、シリーズCで17.5億円を追加調達——累計52億円で4つのAIエージェントを強化</h3>
+  <p class="summary">
+    企業価値経営OS「booost」を開発するBooostは、2026年10月28日付でシリーズCをファイナルクローズし、スパークス・アセット・マネジメントとAGキャピタルから<strong>17.5億円</strong>を追加調達したと発表した。2026年3月のファーストクローズ（7億円）と合わせ、シリーズCの累計調達額は52億円に達する。同社の主力はESGデータの収集・開示を支援するサステナビリティERP「booost Sustainability」で、サプライヤーESG評価、SSBJ/CSRD対応レポート作成、監査証跡管理、CO2排出量算定をそれぞれ担う<strong>4つのAIエージェント</strong>を用意しており、調達資金もAI基盤の強化に充てる方針という。財務・非財務データの統合と開示業務をAIエージェントに役割分担で担わせる設計は、専門業務領域でのAI実装の切り分け方の一例になる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">今回調達額</span><span class="metric-value up">17.5億円</span></div>
+    <div class="metric"><span class="metric-label">シリーズC累計</span><span class="metric-value">52億円</span></div>
+    <div class="metric"><span class="metric-label">AIエージェント数</span><span class="metric-value">4種</span></div>
+    <div class="metric"><span class="metric-label">主力事業</span><span class="metric-value">サステナビリティERP</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜専門業務（ESG開示・監査証跡）を複数のAIエージェントへ役割分担で切り出す設計は、AIリスキリング提案で「業務をどう単位分解してAIエージェントに割り当てるか」を説明する際の具体例になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AXLの提案設計に関わるメンバーに、専門業務を工程単位でAIエージェントに分解する切り分け方の実例を、提案構成の参考として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://thebridge.jp/2026/11/booost-series-c-final-close-1-75-billion-yen" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      BRIDGE — Booost シリーズC追加調達 (11/9)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年11月11日 — For internal use
+    </p>
+  </div>
+</footer>
+</body>
+</html>
