@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年11月12日（木）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero Header ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+/* ── Layout ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── News Card ── */
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Key Metrics */
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+/* Impact Boxes */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+/* Card Footer */
+.card-footer {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 16px; flex-wrap: wrap;
+}
+
+/* Source Link */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Share Button */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年11月12日（木）｜ AI ROI × AI BPO × AI・テクノロジー × 国内企業動向 × HBR</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">63,290円</div>
+        </div>
+        <span class="change down">▼1,369円安・-2.12%（10/30終値・11日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">157円58銭</div>
+        </div>
+        <span class="change down">やや円高（10/30終値・11日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">$7,580</div>
+        </div>
+        <span class="change down">▼140ポイント安・-1.82%（10/30終値・11日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">BPO市場</div>
+          <div class="value">$358.6B</div>
+        </div>
+        <span class="change up">▲CAGR 9.9%（AI・クラウドが牽引）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- SECTION 5: AI効率 → ビジネス価値変換 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">💡</div>
+  <div>
+    <h2>AI効率 → ビジネス価値変換 グローバル事例</h2>
+    <span class="sub">PwC Japan — 2026年7月30日掲載 Source</span>
+  </div>
+</div>
+
+<!-- Card 1: PwC Japan AI ROI survey -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-research">💡 調査 7/30</div>
+  <h3>生成AI活用の財務的成果への転換、日本企業は40%どまり——米英は7割超、PwC Japan調査</h3>
+  <p class="summary">
+    PwC Japanグループが公表した「生成AIに関する実態調査2026 春 6カ国比較」によると、生成AI活用で得た効果を<strong>財務的な還元に転換できたと回答した日本企業は40%</strong>にとどまり、米国・英国企業の<strong>7割超</strong>を大きく下回った。別途引用されている企業横断のAIパフォーマンス調査（1,217社・25業界対象）では、AIが生み出す成果の<strong>74%を上位20%の企業が独占</strong>しているという結果も示されており、活用の広がりと財務成果の実現が比例しない構造、かつ成果が一部の企業に集中している実態を裏付ける。記事掲載は2026年7月30日で速報性はないが、「導入しているか」ではなく「成果を転換できているか」を測る定量データとして採用した。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">財務還元(日本)</span><span class="metric-value down">40%</span></div>
+    <div class="metric"><span class="metric-label">財務還元(米英)</span><span class="metric-value up">7割超</span></div>
+    <div class="metric"><span class="metric-label">成果の集中度</span><span class="metric-value">上位20%が74%占有</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text">参考｜生成AIの活用度と財務成果への転換率には明確な差があり、KR1・KR2いずれも「導入しているか」ではなく「成果を指標化・転換できているか」で評価すべきという示唆になる。四半期の成果レビューで、活動量でなく転換率を見る外部ベンチマークとして使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AI活用の「量」を成果として報告しがちなメンバーへの牽制材料になる。目標設計時に、活用量ではなく財務・業務指標への転換を定義させる参考にする。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.pwc.com/jp/ja/knowledge/thoughtleadership/ai-roi.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PwC Japan — 生成AIに関する実態調査 (7/30)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 6: AI BPO -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🏭</div>
+  <div>
+    <h2>AI BPO — 納品の自動化とアウトカム型デリバリー</h2>
+    <span class="sub">Anyreach / Salesforce — 2026年6月19日・11月2日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 2: Anyreach BPO margin shift analysis -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-research">🏭 分析 6/19</div>
+  <h3>BPO収益の50%が技術マージンへ移行、2028年までにAnyreachが予測</h3>
+  <p class="summary">
+    AI活用企業分析を手がけるAnyreachは、<strong>2028年までに世界のBPO収益の50%が人件費の請求ではなく技術マージンから生まれる</strong>と予測した。現状は業界収益（年間約2,800億ドル）の<strong>約95%</strong>が約20年続く労働コスト差益モデルに依存しており、人件費マージンは5年前の約25%から現在<strong>18〜20%</strong>へ低下、汎用業務では5年以内に12〜15%まで下がるとみる。一方、AIを組み込んだ技術サービスの粗利は<strong>60〜80%</strong>と人件費の4〜5倍に達し、AIエージェントの運用コストは1分あたり0.06〜0.15ドルに対し顧客への請求は0.30〜0.60ドル（または成果連動）という。公開は2026年6月19日で速報性はないが、BPO各社の価格転換が進む中での業界予測として、納品の価格設計を議論する際の外部ベンチマークになる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">技術マージン移行</span><span class="metric-value up">50%(2028予測)</span></div>
+    <div class="metric"><span class="metric-label">人件費マージン</span><span class="metric-value down">18〜20%(現在)</span></div>
+    <div class="metric"><span class="metric-label">技術サービス粗利</span><span class="metric-value up">60〜80%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：請求構造を「人件費マージン」から「技術マージン」へ移す動きが業界規模で進んでおり、納品の価格設計を成果連動・ライセンス型に寄せる根拠として使える数値。価格改定の議論で外部ベンチマークとして引用する。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">納品の見積りロジックに関わるメンバーに、BPO業界の価格構造転換の全体像を共有し、時間単価から成果単価へ切り替える発想の土台にする。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.365outsource.com/?p=28241" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      365Outsource — Anyreach Analysis (6/19)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 3: Salesforce acquires Cresta -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-breaking">🏭 M&amp;A 11/2</div>
+  <h3>Salesforce、コンタクトセンター向け音声AIエージェントのCrestaを約27億ドルで買収</h3>
+  <p class="summary">
+    Salesforceは2026年11月2日、コンタクトセンター向け音声AIエージェントを手がける<strong>Cresta</strong>の買収で正式契約したと発表した。買収額は非公表だが、報道では<strong>約27億ドル</strong>とされる。Crestaの音声エージェントは通話応対を一気通貫で担うほか、人間のオペレーターをリアルタイムでコーチングする機能も持ち、Service CloudとAgentforceへの統合を見込む。Marriott、Comcast、Alaska Airlinesなどが既存顧客として名前が挙がる。完了は2028会計年度第1四半期の見込み。SalesforceはBraze（約57億ドル、10/20発表）・Fin/旧Intercom（約36億ドル）など、2026年に入りCX領域のM&amp;Aを連続させている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">買収額</span><span class="metric-value up">約$2.7B</span></div>
+    <div class="metric"><span class="metric-label">完了予定</span><span class="metric-value">2028年度Q1</span></div>
+    <div class="metric"><span class="metric-label">直近のCX関連M&amp;A</span><span class="metric-value">3件</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜コンタクトセンター向け音声AIエージェントの買収が相次いでおり、BPO・コンタクトセンター業界の標準装備になりつつある。BU長との会話で「他社がどこまで音声AIに賭けているか」の定点として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">KR1領域を担当するメンバーに、音声AIエージェントの実装レベル（通話の一気通貫処理＋人間へのリアルタイムコーチング）を事例として共有し、提案の解像度を上げる材料にする。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://thenextweb.com/news/salesforce-cresta-2-7bn-voice-ai-agents" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      TheNextWeb — Salesforce to buy Cresta (11/2)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 8: AI・テクノロジー 最新ニュース -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース ｜ 自動化・開発生産性・コスト</h2>
+    <span class="sub">Anthropic — 2026年11月9日 Source</span>
+  </div>
+</div>
+
+<!-- Card 4: Claude Fable 5.2 / Mythos 5.2 release -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-tech">🤖 新発表 11/9</div>
+  <h3>Anthropic「Claude Fable 5.2」公開、コーディング性能49.1%・実質コストは値下げ</h3>
+  <p class="summary">
+    Anthropicは2026年11月9日、「Claude Fable 5.2」と組織限定の「Mythos 5.2」を公開した。コーディングエージェント向けベンチマーク<strong>FrontierCode 2.0で49.1%</strong>を記録し、Opus 5.5（Max effort、45.5%）を上回る。出力速度はFable 5.1比で<strong>最大30%向上</strong>し、同じ作業をより少ないトークンで完了できるため実質コストが下がったとされる（前世代の具体的な価格は非公表）。価格は入力<strong>$8／出力$40</strong>（100万トークンあたり）、高速モードは入力$16／出力$80。安全分類器によるブロックもサイバー領域で約60%、生物学領域で約40%減少した。High effortでは45.3%とOpus 5.5のMax effortとほぼ同等の性能を、約半分のコストで出せる点が実務上の判断材料になる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">FrontierCode 2.0</span><span class="metric-value up">49.1%(Fable5.2)</span></div>
+    <div class="metric"><span class="metric-label">Opus 5.5(Max)</span><span class="metric-value">45.5%</span></div>
+    <div class="metric"><span class="metric-label">出力速度</span><span class="metric-value up">+30%</span></div>
+    <div class="metric"><span class="metric-label">価格(百万トークン)</span><span class="metric-value">$8 / $40</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜開発リードタイム：Opus比で約半分のコストで同等以上の性能が出せる点は、コーディングエージェントのモデル選定・コスト試算を見直す材料になる。SREイネのリードタイム目標の前提コストを再計算する際の根拠値として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">コーディングエージェントを使うメンバーに、モデル更新の実質的な差分（速度・トークン効率・安全性）を共有し、既定モデル切替の判断材料として渡す。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.anthropic.com/news/claude-fable-and-mythos-5-2" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Anthropic — Claude Fable and Mythos 5.2 (11/9)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 10: 国内企業動向 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🏢</div>
+  <div>
+    <h2>国内企業動向 ｜ 競合・隣接・スタートアップ</h2>
+    <span class="sub">エクサウィザーズ / SmartHR — 2026年8月12日・6月18日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 5: Exa Frontier Edge x Moact Living Spec -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-market">🏢 事例 8/12</div>
+  <h3>エクサウィザーズ子会社、ソースコードからの仕様書逆生成を3週間で実証</h3>
+  <p class="summary">
+    エクサウィザーズの子会社Exa Frontier Edge（2026年4月設立のAIネイティブ企業）は、関西電力グループのモアクトと「Living Spec生成サービス」を用いた仕様駆動開発の高速化プロジェクトを実施したと2026年8月12日に公表した。既存システムのバックエンドソースコードを解析して仕様書を逆生成する工程を<strong>3日</strong>で終え、記述の確定を含む<strong>8領域の仕様書完成までを約3週間</strong>で終えたという。人手なら数カ月かかるとされる仕様書の棚卸し・再設計を、コーディングエージェントを中核に据えた開発プロセスで圧縮した事例であり、レガシーシステムの刷新を検討する際の工数の目安になる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">仕様書逆生成</span><span class="metric-value up">3日</span></div>
+    <div class="metric"><span class="metric-label">8領域の仕様確定</span><span class="metric-value up">約3週間</span></div>
+    <div class="metric"><span class="metric-label">Exa Frontier Edge設立</span><span class="metric-value">2026年4月</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜検証顧客：レガシーシステムの仕様書化という地味だが時間のかかる業務をAIで圧縮した事例は、AXLの新規事業・検証顧客選定の切り口（仕様書作成代行、レガシー刷新支援）として参考になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">SREイネで要件定義力の強化を課題とするメンバーに、仕様書逆生成という具体的な手法を共有し、自分たちの設計工程に転用できないか検証させる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://exawizards.com/archives/32531/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      エクサウィザーズ — Exa Frontier Edge × モアクト (8/12)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 6: SmartHR survey -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-market">🏢 競合 6/18</div>
+  <h3>SmartHR調査、人事データが「経営判断の決め手」89%も活用障壁はデータの点在</h3>
+  <p class="summary">
+    SmartHRが2026年6月18日に公表した「人的資本開示とデータ活用に関する実態調査」（従業員51名以上の企業の人事担当者310名対象）によると、人事データが経営判断の決め手に「常に」「時々」なったと答えた企業は合わせて<strong>89%</strong>に上った。一方、データ収集の目的は外部開示対応（14%）よりも<strong>採用力強化（32%）</strong>・エンゲージメント向上（24%）にシフトしており、活用の障壁としては「データが複数システムやExcelに点在」が<strong>24%</strong>で最多だった。直接競合であるSmartHRが、人事データの価値を「外部開示対応」から「経営判断への寄与」へ再定義する調査結果を自ら発信している点が、ポジショニング上の動きとして注目に値する。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">経営判断の決め手</span><span class="metric-value up">89%</span></div>
+    <div class="metric"><span class="metric-label">採用力強化目的</span><span class="metric-value">32%</span></div>
+    <div class="metric"><span class="metric-label">データ点在が障壁</span><span class="metric-value down">24%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜人事データの価値を「経営判断への寄与度」で語る競合の発信は、DX推進の商談でも同じ軸を使えるかの参考になる。BU長との会話で、競合のポジショニング変化として共有する。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">提案資料を作るメンバーに、競合が使う「データ活用の障壁＝システムの点在」という切り口を共有し、提案時の課題設定に活かす。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000439.000015987.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      SmartHR — 人的資本開示とデータ活用に関する実態調査 (6/18)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 11: HBR -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">📚</div>
+  <div>
+    <h2>HBR — マネジメント・戦略インサイト</h2>
+    <span class="sub">Harvard Business Review — 2026年11月9日・11日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 7: HBR Hidden Costs of Delegating to AI -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-research">📚 HBR 11/11</div>
+  <h3>HBR「AIへの委任の隠れたコスト」、会計事務所の事例で組織成果への自動的な接続を否定</h3>
+  <p class="summary">
+    Harvard Business Reviewは2026年11月11日、Nitin Nohria氏とHélène Hannecart氏による「The Hidden Costs of Delegating to AI」を掲載した。会計事務所の事例を基に、<strong>個々の業務実行がAIで速くなっても、組織全体の成果が自動的に向上するとは限らない理由</strong>を論じている。業務単位の効率化が積み上がれば組織の成果も伸びるという前提そのものを問い直す内容であり、有料記事のため具体的な数値までは確認できていないが、タイトルと要旨自体が「生産性と効率性の両立」という河野のミッションに直接関わる論点を提示している。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">掲載日</span><span class="metric-value">2026/11/11</span></div>
+    <div class="metric"><span class="metric-label">著者</span><span class="metric-value">Nohria, Hannecart</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text">参考｜個別業務の自動化が組織全体の成果に自動的には直結しないという指摘は、KR1・KR2いずれも「個票の効率化」だけでなく「組織としての成果接続」を評価軸に入れるべきという示唆になる。方針レビューでの引用候補にする。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">探索と実行の物差しを使い分ける文脈で、「個々の業務が速くなること」と「チームの成果が上がること」は別の問いだと直下メンバーに伝える材料にする。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://hbr.org/2026/11/the-hidden-costs-of-delegating-to-ai" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      HBR — The Hidden Costs of Delegating to AI (11/11)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 8: HBR AI Oversight -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">08</span>
+  <div class="card-tag tag-hr">📚 HBR 11/9</div>
+  <h3>HBR、AI統制の強化が逆効果になる悪循環をDeloitte幹部4名が指摘</h3>
+  <p class="summary">
+    Harvard Business Reviewは2026年11月9日、Deloitte Consultingのプリンシパル陣（Ashley Reichheld氏ほか3名）による「Why Leaders Need to Rethink Their Approach to AI Oversight」を掲載した。社員のAI活用が遅いと管理職が<strong>監視強化・義務化・ルール追加</strong>に傾きがちだが、ミスを恐れる社員が承認ツールや方針を回避するようになり、管理職がその回避行動を「さらなる統制が必要な証拠」と解釈して<strong>悪循環</strong>に陥ると指摘する。統制強化がむしろAI利用の隠蔽を招くという論点であり、信頼構築・スキル育成・裁量付与を重視すべきだと主張する。有料記事のため、調査データや個別企業事例は本文未確認。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">掲載日</span><span class="metric-value">2026/11/9</span></div>
+    <div class="metric"><span class="metric-label">著者</span><span class="metric-value">Deloitte Consulting 4名</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>育成</strong>｜チームのAIツール利用ルールを設計・運用する際、統制を強めるほど形骸化・隠蔽が進むという指摘は、直下15名向けのAI活用ガイドラインの運用方針を見直す材料になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">26卒2名を含むメンバーのAIツール活用について、禁止・義務化ではなく裁量と信頼構築を軸にした関わり方を検討する際の参考にする。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://hbr.org/2026/11/why-leaders-need-to-rethink-their-approach-to-ai-oversight" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      HBR — Why Leaders Need to Rethink Their Approach to AI Oversight (11/9)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年11月12日 — For internal use
+    </p>
+  </div>
+</footer>
+</body>
+</html>
