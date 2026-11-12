@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年11月13日（金）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero Header ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+/* ── Layout ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── News Card ── */
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Key Metrics */
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+/* Impact Boxes */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+/* Card Footer */
+.card-footer {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 16px; flex-wrap: wrap;
+}
+
+/* Source Link */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Share Button */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年11月13日（金）｜ AI ROI × AI BPO × AI・テクノロジー × 国内企業動向 × HBR</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">63,290円</div>
+        </div>
+        <span class="change down">▼1,369円安・-2.12%（10/30終値・12日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">157円58銭</div>
+        </div>
+        <span class="change down">やや円高（10/30終値・12日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">$7,580</div>
+        </div>
+        <span class="change down">▼140ポイント安・-1.82%（10/30終値・12日連続で直近に確認できた値を据え置き）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">BPO市場</div>
+          <div class="value">$358.6B</div>
+        </div>
+        <span class="change up">▲CAGR 9.9%（AI・クラウドが牽引）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- SECTION 5: AI効率 → ビジネス価値変換 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">💡</div>
+  <div>
+    <h2>AI効率 → ビジネス価値変換 グローバル事例</h2>
+    <span class="sub">Deloitte / Accenture — 2026年10月・8月 Sources</span>
+  </div>
+</div>
+
+<!-- Card 1: Deloitte State of AI in the Enterprise -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-research">💡 調査 2026/10</div>
+  <h3>Deloitte調査、AIで収益成長を実感した企業28%——1月の20%から上昇も職務再設計は15%どまり</h3>
+  <p class="summary">
+    Deloitteが公表した「State of AI in the Enterprise」調査（世界の上級リーダー3,500人対象）によると、AI活用で<strong>収益成長を実感したと回答した企業は28%</strong>で、2026年1月調査時点の<strong>20%</strong>から上昇した。一方、職務をAI前提で広範囲・完全に再設計したと答えた企業はわずか<strong>15%</strong>（少なくとも中程度の再設計をした60%のうち）にとどまり、AIが人の承認なしに意思決定・行動を実行することを容認する企業は40%、悪い結果の責任の所在が不明確と答えた企業も<strong>23%</strong>に上った。収益認識の改善とガバナンス・職務再設計の遅れが併存する実態を示すデータとして採用した。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">収益成長を実感</span><span class="metric-value up">28%(1月20%)</span></div>
+    <div class="metric"><span class="metric-label">職務の広範囲再設計</span><span class="metric-value down">15%</span></div>
+    <div class="metric"><span class="metric-label">責任所在不明確</span><span class="metric-value down">23%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text">参考｜収益成長の「実感」が上昇している一方、職務再設計や責任所在の整備は追いついていないという構図は、KR1・KR2いずれも「個別の効率化」だけでなく「体制の再設計」まで見るべきという参考材料になる。四半期の成果レビューで、活用度と体制整備の両軸を確認する外部ベンチマークとして使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AI活用の効果を主張するメンバーに、効果だけでなく「誰が責任を持つか」までセットで設計する必要があることを共有する。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Deloitte — State of AI in the Enterprise (2026/10)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 2: Accenture Pulse of Change Japan -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-research">💡 調査 2026/8</div>
+  <h3>アクセンチュア調査、日本企業「AI投資増やす」78%も全社的な成果実現は13%——世界平均23%を下回る</h3>
+  <p class="summary">
+    アクセンチュアが公表した「Pulse of Change」調査によると、日本企業の経営層の<strong>78%</strong>が今後12カ月でAI投資を拡大する意向を示した一方、AIで全社的かつ持続的なビジネス成果を実現したと答えたのは<strong>13%</strong>にとどまり、世界平均の<strong>23%</strong>を下回った。従業員側でAIにより生産性が向上したと感じる割合も<strong>57%</strong>（世界平均81%）と差がある。公表から3カ月が経過しているが、同じPwC Japanの財務還元率40%（2026年11月12日掲載分）と並べて使える、日本固有のAI成果ギャップを示すデータとして採用した。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">AI投資拡大意向</span><span class="metric-value up">78%</span></div>
+    <div class="metric"><span class="metric-label">全社的成果実現</span><span class="metric-value down">13%(世界23%)</span></div>
+    <div class="metric"><span class="metric-label">生産性実感</span><span class="metric-value down">57%(世界81%)</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text">参考｜投資意欲と成果実現の差は日本企業に共通する構造的な課題であり、KR1・KR2の成果報告でも「投資額」でなく「全社的な成果への転換率」を基準に置くべきという外部裏付けになる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AI活用の自己評価が高いメンバーに、個人の生産性実感と組織全体の成果は別物だと伝える際の外部データとして使う。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://atmarkit.itmedia.co.jp/ait/articles/2608/24/news047.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      ITmedia — アクセンチュア Pulse of Change (2026/8)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 6: AI BPO -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🏭</div>
+  <div>
+    <h2>AI BPO — 納品の自動化とアウトカム型デリバリー</h2>
+    <span class="sub">Concentrix — 2026年9月29日 Source</span>
+  </div>
+</div>
+
+<!-- Card 3: Concentrix Q3 2026 impairment -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-market">🏭 決算 9/29</div>
+  <h3>Concentrix、2026年度Q3は減収に10.5億ドルののれん減損——AI由来売上5割の看板と市場評価がかみ合わず</h3>
+  <p class="summary">
+    Concentrixは2026年度第3四半期（8月31日締め）決算で、売上高<strong>24.537億ドル</strong>（前年同期比1.2%減）、GAAPベースで<strong>9.103億ドルの営業損失</strong>（売上比▲37.1%）を計上したと発表した。主因は株価水準・時価総額の低下を理由とする<strong>10.5億ドルの非現金のれん減損</strong>。一方、非GAAP希薄化後EPSは2.92ドル（前年2.78ドル）と増加し、調整後フリーキャッシュフローは2.183億ドル。同社は売上高の約50%がAI登場後3年間に獲得・導入した事業由来だと説明しているが、その看板と、売上減・株価低迷・大型減損が同時に起きている財務実態は必ずしも一致しない。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">売上高</span><span class="metric-value down">$2.45B(前年比-1.2%)</span></div>
+    <div class="metric"><span class="metric-label">のれん減損</span><span class="metric-value down">$1.05B</span></div>
+    <div class="metric"><span class="metric-label">非GAAP EPS</span><span class="metric-value up">$2.92(前年$2.78)</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：AI由来事業比率を前面に出す決算開示でも、売上減・株価低迷・大型減損が同時に起きている事実は、「AI移行を語るだけでは市場評価は上がらない」という反証材料になる。価格設計・提案の議論で、業界の看板と財務実態を分けて見る根拠として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">提案資料でBPO各社のAI移行を引用するメンバーに、各社の自己申告（AI由来比率）と財務実態（売上・株価・減損）は別に確認する習慣を持たせる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.sec.gov/Archives/edgar/data/0001803599/000180359926000147/exhibit991q32026.htm" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      SEC 8-K — Concentrix Q3 2026 Results (9/29)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 8: AI・テクノロジー 最新ニュース -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース ｜ 自動化・開発生産性・コスト</h2>
+    <span class="sub">Palo Alto Networks / Google DeepMind — 2026年11月上旬 Sources</span>
+  </div>
+</div>
+
+<!-- Card 4: Palo Alto Networks x Clutch -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-breaking">🤖 M&amp;A報道 11/8</div>
+  <h3>Palo Alto Networks、AIエージェントのID管理を手がけるClutchを約5億ドルで買収交渉</h3>
+  <p class="summary">
+    The Informationの報道によると、Palo Alto Networksは<strong>AIエージェントが使うパスワードや認証情報を管理する「非ヒトID（NHI）セキュリティ」</strong>のスタートアップClutch Securityを、現金<strong>約5億ドル</strong>プラス業績連動の追加支払いで買収する交渉を進めている。Clutchは2025年1月のシリーズA（2,000万ドル調達）時点で評価額<strong>8,500万ドル</strong>、年間経常収益（ARR）は1,000万ドル弱に近づいているとされ、報じられた買収額はARRの約50倍に相当する。両社とも公式コメントはしていない。CyeraによるOasis Security買収（約10億ドル）、CiscoによるAstrix買収（約4億ドル）に続く、AIエージェントの非ヒトID管理領域でのM&amp;Aとなる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">買収額(報道)</span><span class="metric-value up">約$500M</span></div>
+    <div class="metric"><span class="metric-label">Clutch評価額(25/1)</span><span class="metric-value">$85M</span></div>
+    <div class="metric"><span class="metric-label">ARR倍率</span><span class="metric-value">約50倍</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜AIエージェントが使う認証情報の管理（非ヒトID）領域で大型買収が連続しており、エージェント導入提案に「ID・権限管理」をセットで含める必要性が市場の側から裏付けられている。BU長との会話で、セキュリティベンダーの投資先として定点的に使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">AIエージェント導入を検討するメンバーに、認証情報の管理が投資家からも重視される論点であることを共有し、提案の抜け漏れ防止に使う。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.techzine.eu/news/security/145637/palo-alto-networks-wants-to-acquire-clutch-security/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Techzine — Palo Alto Networks wants to acquire Clutch (11/8)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 5: DeepMind AlphaProof Code -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-tech">🤖 研究発表 11/10</div>
+  <h3>DeepMind「AlphaProof Code」、Signalのセキュリティ特性をAIエージェントが4週間で形式検証</h3>
+  <p class="summary">
+    Google DeepMindは2026年11月10日、コンパイル済みの実行コードを対象に形式証明を書くAIエージェント「AlphaProof Code」を発表し、暗号化メッセージングSignalのライブラリ「libsignal」のAArch64バイナリに対して、前方秘匿性・認証・漏洩後安全性・ハンドシェイク秘匿性の<strong>4つのセキュリティ特性</strong>を証明したと公表した。人間の専門家がセキュリティ要件を形式仕様に変換して検証した後、エージェントが証明を記述し、証明系Leanが機械的に正しさを検証する構成で、作業期間は約<strong>4週間</strong>（600万行超のLean証明を生成）。妥当性確認として、既知の脆弱性を含む旧バージョンのSignalに適用したところ、当該バージョンが証明不能であることを正しく検出した。研究公開のみで商用APIはなく、計算コストも大きいため、一般ソフトウェアへの商用展開の可否は未確定としている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">証明期間</span><span class="metric-value up">約4週間</span></div>
+    <div class="metric"><span class="metric-label">生成したLean証明</span><span class="metric-value">600万行超</span></div>
+    <div class="metric"><span class="metric-label">証明対象</span><span class="metric-value">4特性</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜開発リードタイム：AIエージェントが実行コードレベルの形式検証を人間よりはるかに速く行える事例は、将来QA・セキュリティ検証工程をエージェントに委ねる際の技術的な到達点として参考になる。商用化はまだ先だが、SREイネの設計・QA重視へのシフト方針を補強する外部事例として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">要件定義力の強化を課題とするメンバーに、仕様を厳密な形式に落とし込む工程（人間が担うべき部分）と証明作業（エージェントが担える部分）の分担例として共有する。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://deepmind.google/blog/formal-verification-signal-protocol" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Google DeepMind — Formal verification of the Signal protocol (11/10)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 10: 国内企業動向 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🏢</div>
+  <div>
+    <h2>国内企業動向 ｜ 競合・隣接・スタートアップ</h2>
+    <span class="sub">immedio / ベルシステム24 — 2026年11月11日・12日 Sources</span>
+  </div>
+</div>
+
+<!-- Card 6: immedio Cuei AI -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-market">🏢 新サービス 11/12</div>
+  <h3>immedio、インサイドセールス向けAIアシスタント「Cuei AI」を提供開始——社内利用は5週間で約1,100回</h3>
+  <p class="summary">
+    AIインサイドセールス「immedio」を手がける株式会社immedioは2026年11月12日、インサイドセールス・フィールドセールス・カスタマーサクセスのマネージャー層を含めて使えるAIパーソナル営業アシスタント「Cuei AI」の提供を開始したと発表した。朝の連絡優先順位提示、商談前の調べもの、問い合わせ回答の下書き、商談後の要点整理と次の打ち手の提案、「返信がない」「商談が止まっている」といった“起きていないこと”の検知までを担う。Salesforce、HubSpot、Slack、GmailなどとMCP経由で連携し、CRM更新や外部ツールへの書き込みは実行前に本人確認を挟む設計。同社自身の社内利用では2026年4〜5月の5週間で<strong>約1,100回</strong>使われ、うち約半分が営業オペレーション、約3〜4割が顧客問い合わせへの回答案作成だった。価格・外部導入実績は未公表。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">社内利用(5週間)</span><span class="metric-value up">約1,100回</span></div>
+    <div class="metric"><span class="metric-label">営業オペ用途</span><span class="metric-value">約5割</span></div>
+    <div class="metric"><span class="metric-label">問い合わせ回答用途</span><span class="metric-value">約3〜4割</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR2 営業生産性</strong>｜営業MGRアポ数：商談前後の事務作業（調べもの・議事要約・次の一手提案）をAIに渡す設計は、営業マネジャーのアポ時間確保の打ち手の具体例になる。KR2の施策検討で、どこまでをAIに任せられるかの切り分け例として参照する。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">営業支援ツールの提案資料を作るメンバーに、「起きていないこと」の検知（返信なし・商談停滞の自動検知）という切り口を共有し、提案の差別化ポイントに使わせる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000327.000106428.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES — immedio「Cuei AI」提供開始 (11/12)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 7: Bell System24 x Cresta -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-breaking">🏢 提携 11/11</div>
+  <h3>ベルシステム24、Crestaと協業——日本のBPO事業者として初めて会話分析AIを共同検証</h3>
+  <p class="summary">
+    ベルシステム24は2026年11月11日、顧客体験（CX）AIプラットフォームを提供するCresta AI合同会社との協業を発表した。Crestaにとって<strong>日本で初めて組むBPO事業者</strong>となる。Crestaの会話分析機能「Cresta Insights」で問い合わせ理由・課題解決状況・顧客満足度を分析し、ベルシステム24が持つナレッジ自動生成の仕組み「Hybrid Operation Loop」との親和性を検証する座組み。伊藤忠商事とも連携して事業開発体制を強化し、今後は検証結果をもとに日本市場向けの提案・導入支援へ進める計画。発表の<strong>9日前</strong>（11月2日）には米SalesforceがCrestaを約27億ドルで買収すると発表したばかりで、買収元の動きと国内BPO事業者の提携がほぼ同じタイミングで重なった。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">発表日</span><span class="metric-value">11/11</span></div>
+    <div class="metric"><span class="metric-label">Cresta日本提携</span><span class="metric-value up">初のBPO事業者</span></div>
+    <div class="metric"><span class="metric-label">Salesforce買収発表から</span><span class="metric-value">9日後</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜SalesforceによるCresta買収発表（約27億ドル、11/2）からわずか9日で国内最大手BPOが同社と組んだ事実は、音声・会話AIがBPO業界で標準装備になりつつある速度を示す。BU長との会話で、業界再編のスピード感を伝える定点として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">KR1領域を担当するメンバーに、買収と提携がほぼ同時に連鎖する業界動向を共有し、提案時の「今、何が起きているか」の解像度を上げる材料にする。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.bell24.co.jp/ja/news/bell24/20261111-2/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      ベルシステム24 — Crestaとの協業 (11/11)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- SECTION 11: HBR -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">📚</div>
+  <div>
+    <h2>HBR — マネジメント・戦略インサイト</h2>
+    <span class="sub">Harvard Business Review — 2026年11月 Source</span>
+  </div>
+</div>
+
+<!-- Card 8: HBR Why Even Your Best Employees Override AI -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">08</span>
+  <div class="card-tag tag-research">📚 HBR 11月号</div>
+  <h3>HBR、優秀な社員がAIの判断を覆す理由——信頼しないのは技術でなく組織</h3>
+  <p class="summary">
+    Harvard Business School教授のDas Narayandas氏はHarvard Business Reviewで、企業がAIシステムの導入をガバナンス設計よりも速いペースで進めた結果、多くのAIシステムが実質的な意思決定者ではなく「助言するだけの存在」にとどまっていると指摘する。冒頭の事例では、2022年後半にある世界的な銀行が定型的な与信判断を自動化するAIシステムを承認し、パイロット段階では人間より速く処理しエラーも減らしたという。本文は、優秀な社員ほどAIの判断を覆す行動に出るのは、技術そのものを信用していないのではなく、AI導入を取り巻く組織の体制（責任の所在、例外処理のルール）を信用していないからだと論じる。有料記事のため、後半の分析・結論の詳細までは本文未確認。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">掲載</span><span class="metric-value">2026年11月号</span></div>
+    <div class="metric"><span class="metric-label">著者</span><span class="metric-value">Das Narayandas(HBS教授)</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>育成</strong>｜AI活用ツールの導入時、ツールの性能だけでなく「誰が責任を持つか」「例外時にどう扱うか」というガバナンス設計まで提示しないと、優秀なメンバーほど使わなくなるという指摘。チームへのAIツール導入ガイドラインを作る際の参考にする。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">直下メンバーの中でAIツールの利用にばらつきがある場合、技術への不信ではなく運用ルールへの不信が原因である可能性を疑い、1on1でルール面の不安を聞き出す材料にする。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://hbr.org/2026/11/why-even-your-best-employees-override-ai-systems-that-work" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      HBR — Why Even Your Best Employees Override AI Systems That Work (11月号)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年11月13日 — For internal use
+    </p>
+  </div>
+</footer>
+</body>
+</html>
