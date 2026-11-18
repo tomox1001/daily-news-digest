@@ -394,7 +394,7 @@ body {
       DAILY INTELLIGENCE BRIEF
     </div>
     <h1>News Digest</h1>
-    <p class="date">2026年11月18日（水）｜ AI Tech × 国内企業動向 × HBR</p>
+    <p class="date">2026年11月18日（水）｜ AI Tech × AIセキュリティ × 国内企業動向 × AX支援 × HBR</p>
 
     <div class="market-strip">
       <div class="market-item">
@@ -474,6 +474,83 @@ body {
   </div>
 </article>
 
+<!-- SECTION 13: AIセキュリティ -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🛡️</div>
+  <div>
+    <h2>AIセキュリティ — 新しい攻撃手法と防御手法</h2>
+    <span class="sub">VS Code MCP Advisories × MCPhantom — 2026年11月上旬公開 Sources</span>
+  </div>
+</div>
+
+<!-- Card 2: VS Code MCP脆弱性 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-breaking">🛡️ 脆弱性 11/10修正</div>
+  <h3>VS CodeのMCP機能に任意コマンド実行の脆弱性が複数、悪意あるサーバーの通知やインストールリンクが起点——1.145.3で修正</h3>
+  <p class="summary">
+    Microsoftは2026年11月10日、VS Code 1.145.3でMCP（AIエージェントが外部ツールを呼ぶ仕組み）に関わる脆弱性を修正した。<strong>CVE-2026-120779</strong>は、接続先のMCPサーバーが送る確認通知の文面がVS Codeのコマンドリンクとして解釈され、利用者がクリックするとコマンドが実行されるもので、GitHubのアドバイザリは<strong>CVSS 8.3</strong>と評価している。<strong>CVE-2026-114171</strong>（同7.7）は、細工した <code>vscode:mcp/install</code> リンクを開いて導入を承認すると、利用者の権限でコマンドが動く。どちらも<strong>1.145.2以前のすべての版が対象</strong>で、利用者の操作が必要になる。修正版では通知を平文で表示し、インストールリンクの入力を検証する。更新までの回避策として、アドバイザリは信頼できるMCPサーバーだけに接続し、導入時に表示される設定内容を確認するよう求めている。VS Codeを土台にした他のエディタが同じ問題を持つかは、各提供元の発表を確認する必要がある。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">CVE-2026-120779</span><span class="metric-value down">CVSS 8.3</span></div>
+    <div class="metric"><span class="metric-label">CVE-2026-114171</span><span class="metric-value down">CVSS 7.7</span></div>
+    <div class="metric"><span class="metric-label">影響する版</span><span class="metric-value">1.145.2以前</span></div>
+    <div class="metric"><span class="metric-label">修正版</span><span class="metric-value">1.145.3（11/10）</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>セキュリティ</strong>｜開発端末のVS Codeの版と、各端末が接続しているMCPサーバーの一覧が、今回の確認対象になる。自動更新を止めている端末は修正が届かないため、更新設定の確認と、許可するMCPサーバーを組織で決める設定の要否が論点になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">コーディングエージェントを使う開発メンバーには、MCPサーバーを足すことが外部のコードに端末の操作を許すことと同じ重さを持つ、という実例になる。導入リンクを開く前に、表示される設定内容を読む習慣があるかを確かめる材料になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://github.com/microsoft/vscode/security/advisories/GHSA-66hq-jw93-462h" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      GitHub Security Advisory — Remote Code Execution via MCP Elicitation Notifications (2026/11/10)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 3: MCPhantom 廃止済みMCPサーバー -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-breaking">🛡️ 攻撃面 11月上旬公開</div>
+  <h3>コーディングエージェントが、修正されない廃止済みMCPサーバーを学習データの記憶から導入——Glow Labsが「MCPhantom」と命名</h3>
+  <p class="summary">
+    セキュリティ企業Glowの研究チームは2026年11月上旬、AIコーディングエージェントが保守の終わったMCPサーバーを自ら選んで導入している実態を公表した（Help Net Securityが11月3日に報道）。廃止済みサーバーが導入または提案されたセッションを調べたところ、<strong>98%はエージェントが学習データに残っていたパッケージ名を選んだ</strong>もので、利用者が名指ししたのは2%だった。対象はClaude Code、Cursor、Codex CLIなど複数のエージェントに及ぶ。廃止済みの参照実装サーバー群は2025年7月以降にnpmから<strong>約1,735万回</strong>ダウンロードされ、そこに<strong>深刻度の高い欠陥が4件</strong>見つかった。最も重いのはブラウザ操作用サーバーの欠陥で、プロンプトインジェクションを通じて任意のプロセスを起動させられる。保守側は修正しない方針で、<strong>CVEが採番されていないため通常の脆弱性スキャンでは見つからない</strong>。悪用は確認されていない。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">学習データ由来の導入</span><span class="metric-value">98%</span></div>
+    <div class="metric"><span class="metric-label">廃止済みサーバーのDL数</span><span class="metric-value">約1,735万回</span></div>
+    <div class="metric"><span class="metric-label">深刻度の高い欠陥</span><span class="metric-value down">4件</span></div>
+    <div class="metric"><span class="metric-label">CVE採番</span><span class="metric-value down">なし</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>セキュリティ</strong>｜CVEを起点にした脆弱性管理では拾えない種類のリスクで、開発端末のMCP設定ファイルを直接調べる手順が要る。研究チームは、廃止済みの <code>@modelcontextprotocol</code> 系サーバーを参照する設定を洗い出し、サービス提供元の公式サーバーへ置き換えること、承認条件にnpmの廃止状態を加えることを勧めている。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">エージェントが提案したパッケージをそのまま入れると、古い知識に基づく選択が混ざる。開発メンバーには、エージェントが導入しようとするツールの保守状況を自分で確かめる一手間を、レビューの観点として伝えられる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.glow.io/blogs/mcphantom-ai-coding-agents-are-installing-vulnerable-deprecated-mcp-servers-from-training-data" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Glow — MCPhantom: AI coding agents are installing vulnerable deprecated MCP servers (2026年11月)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
 <!-- SECTION 10: 国内企業動向 -->
 <div class="section-header">
   <div class="section-icon" style="background: var(--gradient-1);">🏢</div>
@@ -483,10 +560,10 @@ body {
   </div>
 </div>
 
-<!-- Card 2: Schoo 3Q決算 -->
+<!-- Card 4: Schoo 3Q決算 -->
 <article class="news-card">
   <div class="card-accent" style="background: var(--gradient-3);"></div>
-  <span class="number">02</span>
+  <span class="number">04</span>
   <div class="card-tag tag-market">🏢 決算 11/16</div>
   <h3>研修サービスのSchoo、3Q累計営業利益が前年同期比94.2%減——大企業集中の先行投資で通期進捗率は6.0%にとどまる</h3>
   <p class="summary">
@@ -517,10 +594,10 @@ body {
   </div>
 </article>
 
-<!-- Card 3: PKSHA Technology決算 -->
+<!-- Card 5: PKSHA Technology決算 -->
 <article class="news-card">
   <div class="card-accent" style="background: var(--gradient-1);"></div>
-  <span class="number">03</span>
+  <span class="number">05</span>
   <div class="card-tag tag-market">🏢 決算 11/12</div>
   <h3>AI・DX支援のPKSHA Technology、2026年9月期は売上収益が前年比77.7%増——税引前利益も12.6%増と増収増益を維持</h3>
   <p class="summary">
@@ -551,6 +628,83 @@ body {
   </div>
 </article>
 
+<!-- SECTION 14: AXコンサル・支援 -->
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">🧭</div>
+  <div>
+    <h2>AXコンサル・支援 — 他社の商材と提供モデル</h2>
+    <span class="sub">NTTデータ × FLUX／ディーノ — 2026年11月5日・9日発表 Sources</span>
+  </div>
+</div>
+
+<!-- Card 6: NTTデータ×FLUX 経営管理AIエージェント支援 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-market">🧭 新商材 11/5</div>
+  <h3>NTTデータとFLUX、経営管理業務向けのAIエージェント支援を提供開始——設計から定着まで共同で担い、3年で累計約100億円を計画</h3>
+  <p class="summary">
+    NTTデータは2026年11月5日、AIコンサルティングのFLUXと共同で、AIエージェントを使った経営管理業務の高度化支援サービスを始めた。両社は同年5月28日に資本業務提携を結んでいる。経営層や経営企画部門の質問に対し、AIエージェントが社内データを参照して、業績変動の要因分析や見通しの把握を支援する。<strong>企業固有の用語、データの関係、判断ルールを整理して持たせ、回答の根拠データをたどれるようにする</strong>点を特徴に挙げる。既存のERPや経営管理システムは置き換えず、設計、導入、運用、継続的な改善までを支援する。主な対象は大企業の経営企画部門と事業部門の企画担当で、<strong>3年間で累計約100億円規模の事業創出</strong>を計画する。価格と契約形態は公表していない。効果の検証は架空のデータ（52ファイル、44,039行）で行ったもので、実環境での成果を示す数字はまだない。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">提供開始</span><span class="metric-value">2026/11/5</span></div>
+    <div class="metric"><span class="metric-label">事業計画</span><span class="metric-value up">3年で累計約100億円</span></div>
+    <div class="metric"><span class="metric-label">対象</span><span class="metric-value">大企業の経営企画部門</span></div>
+    <div class="metric"><span class="metric-label">価格</span><span class="metric-value">非公表</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜大手SIが業務領域を1つに絞り、コンサル企業と組んで設計から定着までを一体で売る型の実例になる。対象部門を絞った商品ラインにするか、部門横断の支援にするかを比べる材料として使える。価格が非公表のため、提供モデルの比較は体制と範囲までにとどまる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">顧客固有の用語や判断ルールを整理してAIに持たせる工程は、支援を届ける側の要件定義力がそのまま品質を決める。顧客の業務を聞き取って構造に落とす力が、AX支援でも中心になることを示す例として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.nttdata.com/global/ja/news/topics/2026/110500/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      NTTデータ — AIエージェントを活用した経営管理業務の高度化支援サービスを提供開始 (2026/11/5)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<!-- Card 7: ディーノ 営業AIエージェント開発・導入支援 -->
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-market">🧭 新商材 11/9</div>
+  <h3>営業支援のディーノ、営業AIエージェントの受託開発と導入支援を開始——棚卸し、本番導入、運用改善の3工程で内製運用まで</h3>
+  <p class="summary">
+    大手企業の新規開拓支援を手がける株式会社ディーノは2026年11月9日、「営業AIエージェント開発・導入支援」を始めた。リサーチ、アプローチ、商談、提案、導入後の顧客支援までの各工程で使うAIエージェントを、顧客の営業の流れに合わせて一から開発する。工程は<strong>業務の棚卸しと試作、SFAやCRM、チャットツールと連携した本番導入、運用と改善の3段階</strong>で、最終的に顧客のチームだけで運用できる状態を目指す。営業組織の立ち上げを担ってきた代表と、AIとデータのエンジニアが直接担当する。同社は<strong>営業AIエージェントの開発と導入を10社以上で支援した</strong>としており、導入先の1社では月のアポ獲得数が支援前の1.5倍規模になったという（同社の発表による）。開始を記念して<strong>先着5社に業務の棚卸しを無償で実施</strong>する。価格と契約形態は公表していない。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">工程</span><span class="metric-value">棚卸し・導入・運用改善の3段階</span></div>
+    <div class="metric"><span class="metric-label">支援実績</span><span class="metric-value">10社以上</span></div>
+    <div class="metric"><span class="metric-label">導入先のアポ獲得数</span><span class="metric-value up">約1.5倍（自社発表）</span></div>
+    <div class="metric"><span class="metric-label">無償の棚卸し</span><span class="metric-value">先着5社</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜営業部門に絞ったAX支援で、入口の棚卸しを無償にして受託開発へつなぐ売り方の例になる。営業の現場経験を持つ人とエンジニアが組む体制は、提供モデルを比べる観点になる。アポ獲得数の成果は自社発表で計測方法が示されていないため、参考値として扱う。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">営業向けのエージェントを作るメンバーにとって、開発より前の「業務の棚卸し」が独立した工程として売られている点が参考になる。営業の流れを工程に分けて聞き取る力が、支援の最初の価値になっている。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000013.000161432.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES — ディーノが「営業AIエージェント開発・導入支援」を開始 (2026/11/9)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
 <!-- SECTION 11: HBR -->
 <div class="section-header">
   <div class="section-icon" style="background: var(--gradient-3);">📚</div>
@@ -560,10 +714,10 @@ body {
   </div>
 </div>
 
-<!-- Card 4: HBR AI支援の取締役会 -->
+<!-- Card 8: HBR AI支援の取締役会 -->
 <article class="news-card">
   <div class="card-accent" style="background: var(--gradient-3);"></div>
-  <span class="number">04</span>
+  <span class="number">08</span>
   <div class="card-tag tag-research">📚 HBR 11/6</div>
   <h3>HBR「AIが支援する取締役会の可能性と危うさ」——ハーバード・ビジネス・スクール教授が経営陣との情報の橋渡し役としてのAIを論じる</h3>
   <p class="summary">
