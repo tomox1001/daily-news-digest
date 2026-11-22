@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年11月23日（月）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero Header ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+/* ── Layout ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── News Card ── */
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Key Metrics */
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+/* Impact Boxes */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+/* Card Footer */
+.card-footer {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 16px; flex-wrap: wrap;
+}
+
+/* Source Link */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Share Button */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年11月23日（月）｜ AI ROI × AI BPO × AI Tech × AIセキュリティ × 国内企業動向 × AX支援 × HBR × EM Weekly</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">56,437円</div>
+        </div>
+        <span class="change down">▼3,008円安・-5.06%（11/20終値、本日11/23は祝日休場）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">158円51銭</div>
+        </div>
+        <span class="change up">▲やや円高（11/21週末時点）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">$6,910.39</div>
+        </div>
+        <span class="change down">▼265pt・-3.70%（11/20終値、週末休場）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">BPO市場</div>
+          <div class="value">$358.6B</div>
+        </div>
+        <span class="change up">▲CAGR 9.9%（AI・クラウドが牽引）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">💡</div>
+  <div>
+    <h2>AI効率 → ビジネス価値変換 グローバル事例</h2>
+    <span class="sub">IDC — 2026年11月17日 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-research">💡 調査 11/17</div>
+  <h3>AIのROIが50%以上の企業ほど人を増やす——IDC調査、「Leaders」の68%が18か月でエントリー層を増員見込み、未回収企業は40%</h3>
+  <p class="summary">
+    IDCは11月17日、2026年5月の「Worldwide Future of Work Survey」をもとに、AIの成果と人員計画の関係を分析した。AIのROIが<strong>50%以上</strong>の企業を「Leaders」、まだ黒字化していない企業を「Laggards」として比べると、今後18か月でエントリー層の役割が増えると見込むのはLeadersの<strong>68%</strong>、Laggardsの40%だった。中間管理職では<strong>63%対39%</strong>、上級管理職では59%対36%で、人員減を見込むLeadersはどの階層でも<strong>12%以下</strong>、中間・上級管理職では3%にとどまる。Leadersの63%は全社で稼働するAI推進組織（CoE）を持ち、Laggardsでは15%だった。エージェントをガードレールの範囲で完全に自律運用している割合も33%対20%と差がある。調査の回答数と対象国は記事に書かれていない。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">エントリー層増員</span><span class="metric-value up">68% vs 40%</span></div>
+    <div class="metric"><span class="metric-label">中間管理職増員</span><span class="metric-value up">63% vs 39%</span></div>
+    <div class="metric"><span class="metric-label">全社CoE稼働</span><span class="metric-value up">63% vs 15%</span></div>
+    <div class="metric"><span class="metric-label">人員減見込み</span><span class="metric-value down">12%以下</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜効率化の成果を人員削減で回収する企業より、役割を組み替えて人を増やす企業のほうがROIが高いという比較で、AX支援の提案を「削減の道具」ではなく「再配置と育成の設計」として組み立てる根拠になる。全社のAI推進組織の有無で差が大きい点は、支援商材に推進体制づくりを含める論拠にも使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">成果を出している企業ほど中間管理職を増やす見込みという結果は、AI活用が進むほどマネジメントの役割が重くなることを示す。サブマネジャー層の育成や、エージェントの運用を監督する役割を誰に担わせるかを考える材料になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.idc.com/resource-center/blog/beyond-layoffs-the-most-ai-savvy-companies-are-adding-people/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      IDC — Beyond Layoffs: The Most AI-Savvy Companies Are Adding People (2026/11/17)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🏭</div>
+  <div>
+    <h2>AI BPO — 納品の自動化とアウトカム型デリバリー</h2>
+    <span class="sub">Fortune — 2026年11月16日 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-market">🏭 経営者発言 11/16</div>
+  <h3>Verizon CEO「フィリピンなどに委託している顧客対応の多くは自動化する」——最も難しい通話は米国に戻す見込み、AIは顧客1人につき約300項目を参照</h3>
+  <p class="summary">
+    FortuneはVerizonのCEO、Dan Schulmanへのインタビュー全文を11月16日に公開した。Schulmanは「顧客対応の大半はフィリピンなどに外部委託しており、その多くは自動化される」と述べ、最も複雑な通話を扱う仕事は自動化が難しいため<strong>米国内に戻す</strong>可能性が高いとした。AIは顧客1人につき約<strong>300項目</strong>のデータを呼び出して対応する。同社は過去最大の<strong>1万3,000人</strong>の人員削減を行い、Schulmanは<strong>50億ドル</strong>の営業費用の削減が必要だったと説明した。顧客獲得コストは<strong>41%</strong>下がり、マーケティング施策の準備は4〜6週間から<strong>2日</strong>に、関与する人数は30人から主に1〜2人になる見込みだという。地域の職業訓練には7,000万ドルを投じる。委託先の数や通話件数、自動化率は明らかにしていない。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">人員削減</span><span class="metric-value down">1万3,000人</span></div>
+    <div class="metric"><span class="metric-label">営業費用削減</span><span class="metric-value up">$5B</span></div>
+    <div class="metric"><span class="metric-label">顧客獲得コスト</span><span class="metric-value up">-41%</span></div>
+    <div class="metric"><span class="metric-label">施策準備期間</span><span class="metric-value up">4〜6週→2日</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：大口の委託元が「定型対応は自動化、難しい案件は社内に戻す」と明言したことで、外部に残る仕事が高難度の少量業務に偏る構図が見える。納品業務の自動化を進める側は、自動化できる部分の価格が下がる一方で、残る難案件をどう値付けするかが粗利率を左右する。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">自動化の後に人へ残るのは「最も複雑な案件」だという見通しは、定型業務を担うメンバーの役割を、例外処理や判断の難しい案件を引き受ける側へ移していく育成の方向性と重なる。施策準備の人数が30人から1〜2人になるという例は、少人数で回す体制を考える具体像として使える。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://fortune.com/2026/11/16/verizon-ceo-dan-schulman-interview-transcript/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Fortune — Verizon CEO Dan Schulman interview transcript (2026/11/16)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース ｜ 自動化・開発生産性・コスト</h2>
+    <span class="sub">OpenAI / Databricks — 2026年11月16〜17日 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-tech">🤖 料金改定 11/17</div>
+  <h3>OpenAI「GPT-6.2 Astra／Sol」公開、Astraは入出力20%・キャッシュ入力60%値下げ——ある評価でClaude Fable 5.2を5.5ポイント上回り費用は5%</h3>
+  <p class="summary">
+    OpenAIは11月17日、GPT-6.2 AstraとGPT-6.2 Solを公開した（日付は開発者コミュニティの告知で確認）。APIでのAstraの料金は100万トークンあたり入力<strong>8ドル</strong>、キャッシュ入力0.40ドル、出力<strong>40ドル</strong>で、GPT-6 Astraより入出力が<strong>20%</strong>、キャッシュ入力が<strong>60%</strong>安い。Solは入力2ドル、出力10ドルで据え置いた。OpenAIによると、Astraはターミナル操作の評価でGPT-6 Astraを9ポイント上回り費用は3分の1未満、別の評価ではClaude Fable 5.2を<strong>5.5ポイント</strong>上回り費用は<strong>5%</strong>だった。ChatGPTの業務向けプランとCodexでも利用できる。性能と費用の比較はいずれもOpenAI自身の発表値である。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">Astra入力</span><span class="metric-value up">$8/1M（-20%）</span></div>
+    <div class="metric"><span class="metric-label">キャッシュ入力</span><span class="metric-value up">$0.40/1M（-60%）</span></div>
+    <div class="metric"><span class="metric-label">Astra出力</span><span class="metric-value ">$40/1M</span></div>
+    <div class="metric"><span class="metric-label">Sol</span><span class="metric-value ">$2/$10 据え置き</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜コーディングエージェントの費用見積もりは、キャッシュ入力の比率が高い長時間タスクほど今回の値下げの効果が大きい。Claude CodeとCodexを併用する前提で、同じタスクの費用と成功率を自社の課題で測り直す材料になる（発表値はベンダー自身の評価なので、そのまま比較に使わない）。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">ツール選定を担うメンバーには、トークン単価ではなく「1タスクを終えるまでの総費用」で比べる見方を渡せる。下のDatabricksの指数と合わせて読むと、単価が安くても往復回数が多ければ高くつく理由を具体的に説明できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://openai.com/index/introducing-gpt-6-2-astra-sol/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      OpenAI — Introducing GPT-6.2 Astra and Sol (2026/11/17)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-research">🤖 調査 11/16</div>
+  <h3>Databricks AI Index：同じ成功率89.1%でもタスク単価は0.05ドル対1.62ドルで約32倍の差——単一モデル依存の企業は7月の64%から28%へ</h3>
+  <p class="summary">
+    Databricksは11月16日、1万社超の利用データ（2026年7月20日〜11月7日）と、Claude CodeとCodexで計測した独自のコーディング評価をまとめた「Databricks AI Index」を公開した。評価ではGPT-6 LunaとClaude Opus 5.5がともに成功率<strong>89.1%</strong>だったが、1タスクあたりの費用は<strong>0.05ドル</strong>と<strong>1.62ドル</strong>で約<strong>32倍</strong>の差があった。最も成功率が高いClaude Fable 5.1は96.0%で1タスク7.47ドル、94.9%の別モデルは1.53ドルで、1.1ポイントの差に約5倍の費用がかかる。費用はトークン単価だけでなく、答えに至るまでの往復回数で決まるとしている。利用面では、1社の提供元だけに頼る企業が7月の約<strong>64%</strong>から11月2日時点で<strong>28%</strong>に減り、オープンウェイトモデルのトークン比率は7.3%から30.9%に増えた。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">成功率</span><span class="metric-value ">両モデル89.1%</span></div>
+    <div class="metric"><span class="metric-label">タスク単価差</span><span class="metric-value down">約32倍</span></div>
+    <div class="metric"><span class="metric-label">単一提供元依存</span><span class="metric-value up">64%→28%</span></div>
+    <div class="metric"><span class="metric-label">オープンウェイト比率</span><span class="metric-value up">7.3%→30.9%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜開発リードタイム短縮でコーディングエージェントを選ぶとき、成功率が同じなら費用は数十倍変わりうるという実測で、モデルを用途ごとに使い分ける運用の根拠になる。複数の提供元を併用する企業が急増しているデータは、特定モデルへの固定を避ける方針を説明する外部の材料として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">エージェントの費用管理を担うメンバーに、「最高性能のモデルを常に使う」のではなく、タスクの難しさに応じてモデルを切り替える判断基準を考えさせる題材になる。成功率1.1ポイントに5倍の費用を払うかどうかは、品質と費用の物差しを議論する具体例として使える。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://databricks.com/blog/introducing-databricks-ai-index-state-enterprise-ai-tokenomics" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Databricks — Introducing the Databricks AI Index: State of Enterprise AI Tokenomics (2026/11/16)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🛡️</div>
+  <div>
+    <h2>AIセキュリティ — 新しい攻撃手法と防御手法</h2>
+    <span class="sub">FBI・The Record / GitHub Advisory Database — 2026年11月13〜20日公開 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-breaking">🛡️ 攻撃手法 11/19</div>
+  <h3>欧州委員会がAIを使ったサイバー攻撃を認め人事系システムが10日超停止——FBIはAI攻撃基盤「ARTEX」で「標的選定から特権取得まで3時間未満」の侵入を警告、検知項目を公開</h3>
+  <p class="summary">
+    欧州委員会は11月19日、10月22日に最初の兆候を検知したサイバー攻撃を認め、報道官は「AI-generated cyber campaign」と表現した。The Recordによると、給与、休暇申請、医療費精算、翻訳の各サービスが<strong>10日超</strong>止まり、POLITICOはCERT-EUがオープンソースのAI攻撃基盤<strong>ARTEX</strong>の使用を特定したと報じた（委員会自身は製品名を公表していない）。FBIは11月13日付のFLASHで、ARTEXが外部のLLMをつないで偵察から侵入、永続化、横展開までを自動で進め、一部の侵入は標的選定から特権取得まで<strong>3時間未満</strong>だったと警告した。被害例として韓国の金融機関からの約<strong>6万7,000人</strong>分の個人情報流出、バックアップサービス経由での<strong>2,250超</strong>の下流テナントへのサインイン試行を挙げ、11月初旬時点で外部公開されたARTEXの管理画面は<strong>1,600超</strong>あった。FBIは検知項目として、想定外のLLM API（api.deepseek.com など）への通信、1秒未満の間隔でのテスト用データ書き込みと削除、少しずつ値を変えた失敗の連続、ポータルでの連番照会を挙げ、管理系インターフェースを信頼できるネットワークに限定することを勧めている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">特権取得まで</span><span class="metric-value down">3時間未満</span></div>
+    <div class="metric"><span class="metric-label">欧州委の停止期間</span><span class="metric-value down">10日超</span></div>
+    <div class="metric"><span class="metric-label">個人情報流出</span><span class="metric-value down">約6万7,000人</span></div>
+    <div class="metric"><span class="metric-label">公開された管理画面</span><span class="metric-value down">1,600超</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>セキュリティ</strong>｜FBIの検知項目は、プロキシやクラウド監査ログに当てはめられる具体的なルールの形で書かれている。業務で使っていないLLM APIへの通信、機械的な速度での権限確認、連番での大量照会を検知対象に加えられるか、また人事・給与のような内部システムが止まった場合の対応手順があるかを、CSIRTで点検する材料になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">攻撃側も人の手を介さずに数時間で特権まで到達する前提に立つと、検証環境や管理画面を「しばらくの間だけ」外部公開する運用の危うさを、メンバーに具体例で伝えられる。CI/CDや設定ファイルに埋め込んだ秘密情報が侵入口になった例も挙がっており、開発側の点検項目として渡せる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://therecord.media/european-commission-confirms-cyberattack-using-ai" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      The Record — European Commission confirms cyberattack, says hackers used AI tool (2026/11/19)／FBI FLASH-20261113-001
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-breaking">🛡️ 脆弱性 11/19-20</div>
+  <h3>手元で動くHTTP型MCPサーバー、閲覧中のWebサイトから操作される欠陥が2日で4件——公式Python SDKにも接続先サーバーへclient_secretを渡してしまう脆弱性</h3>
+  <p class="summary">
+    GitHub Advisory Databaseで11月19〜20日、MCPサーバーの重大な脆弱性が相次いで公開された。jupyter-mcp-server（CVE-2026-77359、critical、1.0.2以下）と@doist/todoist-mcp（CVE-2026-76807、critical、CVSS <strong>9.3</strong>、10.3.2以下）は、HTTP型で動かしたときにHost/Originヘッダーの検査が欠けており、<strong>DNSリバインディング</strong>によって利用者が閲覧しただけの悪性サイトからJupyterの接続先を差し替えたり、Todoistのデータを書き換えたりできる。obsidian-sync-mcp（0.5.6以下）は認証トークン未設定のモードで保管庫全体を読み書きでき、k8s-mcp-server（1.1.0未満）は既定で認証なしのまま待ち受け、到達できれば誰でもKubernetesの作成・削除系ツールを実行できる。さらにMCP公式Python SDK（CVE-2026-115563、high、CVSS <strong>7.5</strong>）は、接続先のMCPサーバーが指定した認可サーバーを検証せず、client_secretや認可コードを攻撃者側へ送ってしまう可能性があり、<strong>1.30.0</strong>または<strong>2.2.0</strong>で修正された。stdio型で使うクライアントやサーバーはいずれも影響を受けない。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">2日間の公開件数</span><span class="metric-value down">MCP関連5件</span></div>
+    <div class="metric"><span class="metric-label">最大CVSS</span><span class="metric-value down">9.3（critical）</span></div>
+    <div class="metric"><span class="metric-label">SDK修正版</span><span class="metric-value up">1.30.0 / 2.2.0</span></div>
+    <div class="metric"><span class="metric-label">stdio型</span><span class="metric-value up">影響なし</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>セキュリティ</strong>｜開発端末で動くMCPサーバーが「ローカルだから安全」ではないことを、同じ型の欠陥がまとまって示した。開発端末でHTTP/SSE型のMCPサーバーを動かしているかの棚卸し、認証トークンの設定、0.0.0.0で待ち受けない設定、使わないならstdio型への切り替えを、開発環境の防御策として手順に入れられる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">MCPを試しているメンバーには、更新だけでなく「HTTP型で起動していないか」「認証を外していないか」を自分で確かめる観点を渡せる。SDKの件は更新後も保存済みの登録情報を消して再登録する必要があり、手順を最後までやり切る習慣づけの題材になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://github.com/advisories/GHSA-qx49-fqc8-xw99" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      GitHub Advisory — GHSA-qx49-fqc8-xw99 ほか（MCP Python SDK、jupyter-mcp-server、todoist-mcp、obsidian-sync-mcp、k8s-mcp-server）(2026/11/19-20)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🏢</div>
+  <div>
+    <h2>国内企業動向 ｜ 競合・隣接・スタートアップ</h2>
+    <span class="sub">PR TIMES / 三菱UFJフィナンシャル・グループ — 2026年11月17日 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-market">🏢 導入事例 11/17</div>
+  <h3>まいばすけっと、月2万件を受ける社内サポートデスクの新人教育をAIロールプレイに——指導時間を月約170時間から約48時間へ、月122時間の削減を見込む</h3>
+  <p class="summary">
+    プラスアルファ・コンサルティングは11月17日、首都圏で小型食品スーパーを展開するまいばすけっとが、AIロールプレイの「AIプラストーク」を社内コールセンターの新人教育に導入したと発表した。対象は店舗従業員からの問い合わせを早朝から深夜まで受けるサポートデスクで、問い合わせは月約<strong>2万件</strong>にのぼる。研修担当者が限られ、オペレーターの早期戦力化と応対品質の標準化が課題だった。AIロールプレイで受講者が実践形式で自習できるようにしたことで、新人教育の指導時間を月約<strong>170時間</strong>から約<strong>48時間</strong>に短縮し、月約<strong>122時間</strong>の工数削減を見込む（実測ではなく見込みの値）。既存オペレーターの保留時間や応対時間の短縮にもつながったとしているが、その数値は示していない。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">問い合わせ件数</span><span class="metric-value ">月約2万件</span></div>
+    <div class="metric"><span class="metric-label">指導時間</span><span class="metric-value up">月170h→48h</span></div>
+    <div class="metric"><span class="metric-label">削減見込み</span><span class="metric-value up">月約122時間</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜粗利率：応対そのものの自動化ではなく、担当者を立ち上げる教育工程をAIに置き換えた事例で、納品業務の自動化を考えるときに「教育・引き継ぎの工数」も削減対象に入ることを示す。削減額は見込みの値なので、実測を取る前提で外部の参考値として扱うのがよい。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">新しく業務に入るメンバーの立ち上げを、先輩の付き添いではなくAI相手の反復練習で前倒しする発想は、26卒2名の立ち上げや問い合わせ対応の引き継ぎに当てはめられる。評価をAIが行うことで「気を遣わずに指摘を受けられる」という現場の声も、フィードバックの受け止め方を考える材料になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000352.000023180.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES — まいばすけっと、「AIプラストーク」で社内コールセンターの新人教育時間を月間122時間削減 (2026/11/17)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">08</span>
+  <div class="card-tag tag-market">🏢 提携 11/17</div>
+  <h3>MUFG、松尾研究所・Third Intelligenceと包括的パートナーシップ——金融特化AIの共同開発に加え、松尾研究所がMUFGにAI人材育成プログラムを提供</h3>
+  <p class="summary">
+    三菱UFJフィナンシャル・グループと三菱UFJ銀行は11月17日、松尾研究所およびThird Intelligenceと<strong>3社</strong>の包括的パートナーシップ契約を結んだと発表した。三菱UFJ銀行は<strong>2025年</strong>にThird Intelligenceと出資契約と協業の覚書を結んでおり、今回そこに松尾研究所を加えた。Third Intelligenceが開発する「遍在型AGI」はTransformerとは異なるアルゴリズムで長期記憶や継続学習に強みがあるとされ、金融に特化したAIモデルを共同開発し、相続領域でのPoCもすでに始めている。松尾研究所はMUFGに<strong>AI人材育成プログラム</strong>を提供し、人材と知見の相互連携を進める。MUFGは松尾研発スタートアップに口座開設、資金調達、成長と出口の支援を行い、取引先企業との連携も後押しする。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">提携の当事者</span><span class="metric-value ">3社</span></div>
+    <div class="metric"><span class="metric-label">出資・覚書</span><span class="metric-value ">2025年</span></div>
+    <div class="metric"><span class="metric-label">PoC領域</span><span class="metric-value up">相続</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜メガバンクが、AI人材育成を研究機関由来の組織から調達し、技術開発や出資と一体で契約する形をとった。AX支援とリスキリングの商材を考える上では、大企業の育成需要が「研修単体」ではなく研究開発や事業連携と束ねて発注される競合環境を示す事例になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">大企業がAI人材育成を外部の研究機関に頼む流れは、社内のAI活用を担うメンバーにとって、自分たちの育成の進め方を外部の水準と比べる観点になる。研修だけでなく、実案件のPoCと結びつけて学ぶ構成である点を、強化選手の育成計画と比べられる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.mufg.jp/dam/pressrelease/2026/pdf/news-20261117-001_ja.pdf" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      MUFG — MUFG、松尾研究所、Third Intelligence による包括的パートナーシップの締結について (2026/11/17)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">🧭</div>
+  <div>
+    <h2>AXコンサル・支援 — 他社の商材と提供モデル</h2>
+    <span class="sub">PR TIMES（ゴムマリ / イマクリエ） — 2026年11月16日〜20日 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">09</span>
+  <div class="card-tag tag-research">🧭 調査 11/16</div>
+  <h3>「FDE」を名乗りAI導入支援を売る国内40社の公式サイトを比較——料金を載せるのは12社で最低プランは月20万〜60万円、常駐か週1日以上現場に入ると書くのは10社</h3>
+  <p class="summary">
+    ゴムマリは11月16日、FDE（Forward Deployed Engineer）を名乗ってAI導入支援を販売する国内企業の公式サイトを比べた自社調査を公表した。候補<strong>79社</strong>から公式サイトでFDEの語を使う43社を確かめ（自社を除く）、説明を読めた<strong>40社</strong>・77ページを集計した。判定はAIで2回行い、一致度（カッパ係数）は0.813〜1.000だった。料金を公式サイトに載せるのは40社中<strong>12社</strong>で、月額で読めた8社の最も低いプランは月<strong>20万〜60万円</strong>（各社の示す下限で、取引の相場ではない）。現場に入ると書く37社のうち、常駐か週1日以上と書くのは<strong>10社</strong>にとどまり、27社は月に数回か頻度を書いていない。サービスページを読めた33社中13社は担い手をエンジニアと呼ばないか、主なプランに開発を書いていない。成果物の権利や渡し方を書くのは5社、契約期間の縛りや区切りを書くのは14社だった。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">対象</span><span class="metric-value ">40社・77ページ</span></div>
+    <div class="metric"><span class="metric-label">料金掲載</span><span class="metric-value ">12社</span></div>
+    <div class="metric"><span class="metric-label">最低プラン月額</span><span class="metric-value ">20万〜60万円</span></div>
+    <div class="metric"><span class="metric-label">常駐・週1日以上</span><span class="metric-value down">37社中10社</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜伴走型のAX支援が「FDE」という呼び名で売られるとき、料金の下限、現場への関与頻度、開発の有無、成果物の権利の書き方が各社でどれほど違うかを横断で示した一次データである。自社のAX支援商材の提供モデルと価格の置き方を整理するとき、外部の開示水準との比較表としてそのまま使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">「FDE」を名乗りながら担い手をエンジニアと呼ばない会社が少なくない点は、業務を聞く役と作る役を同じ人が担うのか分けるのかという、DX推進メンバーの役割設計を考える材料になる。顧客の現場にどの頻度で入るかを明文化する重要性も、伴走支援を担うメンバーと共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000060.000185093.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES — ゴムマリ、FDEを名乗る国内40社の公式サイト比較調査 (2026/11/16)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">10</span>
+  <div class="card-tag tag-hr">🧭 研修事例 11/20</div>
+  <h3>イマクリエ、長崎県大村市で管理職34名・一般職69名に生成AI研修——管理職は議会答弁の素案作成を演習、研修後に97.9%が活用に前向き、20名が個別相談</h3>
+  <p class="summary">
+    イマクリエは11月20日、2026年10月に長崎県大村市の職員向けに実施した生成AI研修の結果を公表した。研修は管理職向け（<strong>34名</strong>）と一般職向け（<strong>69名</strong>）に分け、管理職は議会答弁の素案作成を演習の題材にした。研修後のアンケートでは回答者の<strong>97.9%</strong>が今後の活用に前向きな意向を示し、活用したい業務は管理職で議会答弁の素案作成が<strong>90.3%</strong>、一般職で案内文やメールの作成が70.3%、議事録の作成・要約と関数・マクロの作成補助が57.8%だった。研修後には<strong>20名</strong>の職員が個別の業務相談を希望した。同社はこれまでに<strong>140以上</strong>の自治体を支援し、運用管理、利用者サポート、職員研修、RAG構築支援まで導入後の定着を伴走している。料金と研修時間は公表されていない。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">受講者</span><span class="metric-value ">管理職34名・一般職69名</span></div>
+    <div class="metric"><span class="metric-label">活用に前向き</span><span class="metric-value up">97.9%</span></div>
+    <div class="metric"><span class="metric-label">個別相談希望</span><span class="metric-value up">20名</span></div>
+    <div class="metric"><span class="metric-label">支援自治体</span><span class="metric-value up">140以上</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜管理職と一般職で研修の題材を分け、管理職には固有の重い業務（議会答弁）を演習させる設計と、研修後の個別相談を次の伴走につなげる流れが読める。AIリスキリング商材で、階層別の題材設計と研修後の定着支援をどう組み合わせるかを考える際の他社の型として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">受講者の「使いたい業務」が研修で具体化し、そこから個別相談が生まれるという流れは、社内のAI活用支援でも、研修を単発で終わらせず次の相談の入口にする設計として応用できる。演習の題材を受講者の実務から選ぶ重要性を、研修を企画するメンバーと共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000206.000047071.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES — 長崎県大村市、管理職・一般職向けに生成AI研修を実施（イマクリエ） (2026/11/20)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">📚</div>
+  <div>
+    <h2>HBR — マネジメント・戦略インサイト</h2>
+    <span class="sub">Harvard Business Review IdeaCast — 2026年11月19日 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">11</span>
+  <div class="card-tag tag-hr">📚 HBR 11/19</div>
+  <h3>Block のJack Dorsey、管理職を「coach」に置き換え、IC・DRI・coachの3役で組織を組み直す——書いた記録をAIが照会できれば階層を重ねた伝達は要らない</h3>
+  <p class="summary">
+    HBRは11月19日、Innovation Summit 2026 でのBlock共同創業者Jack Dorseyとの対談を公開した。Blockは事業部ごとに独立した会社のように運営していたが、「緩く結びついた事業の<strong>コングロマリット</strong>」になることを避けるため職能別組織へ戻した。役割は<strong>3つ</strong>で、作って運用するIC、戦略とロードマップに責任を持つDRI、そして従来のmanagerにあたる<strong>coach</strong>である。coachはICやDRIが技能を磨くのを助ける役で、Dorseyは指揮命令の構造ではなく指導の割り当てだと説明する。リモート前提で、やり取りがすべて書いた記録として残るため、AIがそれを照会でき、階層を重ねて情報を中継する必要が薄れるという。自社のOSSエージェントgooseは公開から<strong>1か月</strong>でStripeなどがforkしたとし、Dorsey自身は毎朝<strong>3時間</strong>を研究論文の読み込みに充てている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">役割の数</span><span class="metric-value up">3（IC・DRI・coach）</span></div>
+    <div class="metric"><span class="metric-label">goose</span><span class="metric-value up">1か月で他社がfork</span></div>
+    <div class="metric"><span class="metric-label">論文の読み込み</span><span class="metric-value up">毎朝3時間</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜「情報を届けるための階層」をAIで薄くするという経営者の構想で、中継業務のエージェント代替（KR3）を組織設計の側から語った事例として、BU長との会話で他社の動きとして使える。管理職を減らす話ではなく、育成責任を専任の役割に切り出す設計である点が要点になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">マネジャーの役割を「指示」ではなく「技能の上達を助ける」ことに寄せる考え方は、直下15名の1on1や強化選手の育成の位置づけを見直す材料になる。書いた記録が残るほどAIで参照しやすくなるという点は、会議時間を減らして非同期の記録に寄せたいメンバーへの説明にも使える。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://hbr.org/podcast/2026/11/innovation-summit-2026-blocks-jack-dorsey-on-building-a-company-around-intelligence" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      HBR IdeaCast — Innovation Summit 2026: Block’s Jack Dorsey on Building a Company Around Intelligence (2026/11/19)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-4);">🌐</div>
+  <div>
+    <h2>Weekly EM/Product インテリジェンス</h2>
+    <span class="sub">The Pragmatic Engineer — 2026年11月18日 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-4);"></div>
+  <span class="number">12</span>
+  <div class="card-tag tag-tech">🌐 Pragmatic Engineer 11/18</div>
+  <h3>CodeRabbit CEO、1か月で5,000件超のPRを出しAI費用は月25万ドル——「人によるコードレビューは死んだ」、人はPRではなくリリースと計画を見る</h3>
+  <p class="summary">
+    Gergely Oroszは11月18日、AIコードレビューのCodeRabbit創業者兼CEO、Harjot Gillへのインタビューを公開した。Gillは1か月に<strong>5,000件超</strong>のPRを出し、個人のAI支出は月<strong>25万〜27.5万ドル</strong>、PR1件あたり約<strong>150ドル</strong>と見積もる。CI製品で年<strong>1,300万ドル</strong>の見積もりを受け、エージェントで自前のCIを約1週間で作ったという。エージェントが自分の作業を確かめる層として、TLA+などの形式モデル（コードレビューで見逃した競合状態を発見）、本番ではフィーチャーフラグと段階的展開を置き、展開中の性能とログはエージェントに監視させる。人は個々のPRではなくリリースを見て、障害の原因PRを出した開発者には「strike」が付き、一定数たまると同僚レビューに戻る。自社でファインチューニングしたレビューモデルの保守は、フロンティアモデルの進歩が速いためやめた。Orosz自身は同社を外れ値とし、一般的なAI支出は開発者1人あたり月<strong>200〜2,000ドル</strong>だとしている。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">月間PR数</span><span class="metric-value up">5,000件超</span></div>
+    <div class="metric"><span class="metric-label">AI支出</span><span class="metric-value down">月$250K〜$275K</span></div>
+    <div class="metric"><span class="metric-label">PR単価</span><span class="metric-value ">約$150</span></div>
+    <div class="metric"><span class="metric-label">一般的な支出</span><span class="metric-value ">月$200〜$2,000/人</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜コード生成が速くなるほどボトルネックがレビューと検証に移るという実例で、開発リードタイム削減の比重を実装から設計・QAへ移す方針の外部根拠になる。PR単位のレビューを減らす代わりに、形式検証、段階的展開、障害時の責任追跡で品質を担保する設計は、レビュー工程の短縮案を検討する際の比較対象になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">レビュー担当になりがちな中堅メンバーには、PRを1件ずつ見る役割から、検証の仕組みとリリース判断を設計する役割へ移る将来像を示せる。費用は外れ値なので、1人あたり月200〜2,000ドルという相場とあわせて伝え、数字だけを持ち帰らせないようにする。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://newsletter.pragmaticengineer.com/p/software-factories-and-code-reviews" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      The Pragmatic Engineer — Software factories and code reviews with Harjot Gill (2026/11/18)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年11月23日 — For internal use
+    </p>
+  </div>
+</footer>
+</body>
+</html>
