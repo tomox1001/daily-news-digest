@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily News Digest — 2026年11月27日（金）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f6;
+  --border: #e2e5ed;
+  --text: #1a1d2e;
+  --text-muted: #5f6680;
+  --accent-blue: #3b6de0;
+  --accent-purple: #7c5cdb;
+  --accent-orange: #e8842a;
+  --accent-red: #e04848;
+  --accent-green: #1aab55;
+  --accent-cyan: #0ea5a5;
+  --gradient-1: linear-gradient(135deg, #3b6de0 0%, #7c5cdb 100%);
+  --gradient-2: linear-gradient(135deg, #e8842a 0%, #e04848 100%);
+  --gradient-3: linear-gradient(135deg, #1aab55 0%, #0ea5a5 100%);
+  --gradient-4: linear-gradient(135deg, #7c5cdb 0%, #e04848 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero Header ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px 50px;
+  background: linear-gradient(160deg, #1e2a4a 0%, #253565 40%, #1e3a5f 70%, #1e2a4a 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(79,140,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(160,124,255,0.12) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+}
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #b8d0ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .date {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.hero .market-strip {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.market-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.market-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: #fff;
+}
+.market-item .change {
+  font-size: 13px;
+  font-weight: 600;
+}
+.up { color: var(--accent-green); }
+.down { color: var(--accent-red); }
+.hero .up { color: #5ee89d; }
+.hero .down { color: #ff8a8a; }
+
+/* ── Layout ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.section-header .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── News Card ── */
+.news-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59,109,224,0.35);
+  box-shadow: 0 8px 32px rgba(30,42,74,0.08);
+}
+.news-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.news-card .number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.06;
+  line-height: 1;
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.tag-breaking { background: rgba(224,72,72,0.08); color: var(--accent-red); }
+.tag-market { background: rgba(59,109,224,0.08); color: var(--accent-blue); }
+.tag-policy { background: rgba(124,92,219,0.08); color: var(--accent-purple); }
+.tag-tech { background: rgba(14,165,165,0.08); color: var(--accent-cyan); }
+.tag-hr { background: rgba(26,171,85,0.08); color: var(--accent-green); }
+.tag-research { background: rgba(232,132,42,0.08); color: var(--accent-orange); }
+
+.news-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.news-card .summary {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.news-card .summary strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Key Metrics */
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.metric .metric-label {
+  color: var(--text-muted);
+}
+.metric .metric-value {
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+}
+
+/* Impact Boxes */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.impact-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f7f8fb;
+  border: 1px solid var(--border);
+}
+.impact-box .impact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.impact-box .impact-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.impact-box .impact-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.lm-impact .impact-label { color: var(--accent-blue); }
+.hr-impact .impact-label { color: var(--accent-green); }
+
+/* Card Footer */
+.card-footer {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 16px; flex-wrap: wrap;
+}
+
+/* Source Link */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 1; }
+.source-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Share Button */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.18s ease; font-family: inherit; margin-left: auto;
+  appearance: none; -webkit-appearance: none;
+}
+.share-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.share-btn:hover {
+  background: rgba(59,109,224,0.07);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59,109,224,0.12);
+}
+.share-btn.copied {
+  background: rgba(26,171,85,0.08);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: none; box-shadow: none;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.footer .disclaimer {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+  .news-card { padding: 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .market-strip { gap: 12px; }
+  .market-item { padding: 10px 14px; }
+  .market-item .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      DAILY INTELLIGENCE BRIEF
+    </div>
+    <h1>News Digest</h1>
+    <p class="date">2026年11月27日（金）｜ AI ROI × AI BPO × AI Tech × AIセキュリティ × 国内企業動向 × AX支援</p>
+
+    <div class="market-strip">
+      <div class="market-item">
+        <div>
+          <div class="label">日経平均</div>
+          <div class="value">57,499円</div>
+        </div>
+        <span class="change up">▲488円・+0.86%（11/26終値）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">USD/JPY</div>
+          <div class="value">159円27銭</div>
+        </div>
+        <span class="change down">▼円安水準が続く（11/26）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">S&amp;P 500</div>
+          <div class="value">$7,182.78</div>
+        </div>
+        <span class="change down">▼18pt・-0.25%（11/25終値、11/26は感謝祭で休場）</span>
+      </div>
+      <div class="market-item">
+        <div>
+          <div class="label">BPO市場</div>
+          <div class="value">$358.6B</div>
+        </div>
+        <span class="change up">▲CAGR 9.9%（AI・クラウドが牽引）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">💡</div>
+  <div>
+    <h2>AI効率→ビジネス価値変換 グローバル事例</h2>
+    <span class="sub">HFS Research / The Next Web — 2026年11月25〜26日 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">01</span>
+  <div class="card-tag tag-research">💡 調査 11/26</div>
+  <h3>AI導入で仕事の中身を変えずに載せた企業ほど価値が出ない——HFSとInfosys Consultingの101社調査、「変革に予算なし」は51%で、予算がない企業はAI施策の中止が約3倍</h3>
+  <p class="summary">
+    HFS ResearchとInfosys Consultingは11月25日、米英の売上10億ドル超の企業の経営層<strong>101人</strong>への調査をもとに、AIが仕事を変える速さに組織の適応が追いつかない「change lag」を報告した。<strong>74%</strong>が「AIの野心が人の準備より先に進んでいる」と答え、<strong>77%</strong>は定着しない原因を社員の抵抗より仕事の設計にあるとみる。それでも、その層の<strong>63%</strong>はほぼ変えていない職務にAIを入れていた。業務フローまで作り直した企業では<strong>50%</strong>が社員の高付加価値業務への移行を報告し、タスク単位の変更にとどまる企業の<strong>15%</strong>を大きく上回る。人と組織の変革に専用予算がない企業は<strong>51%</strong>で、予算がない企業はAI施策の中止が<strong>25%</strong>（予算ありは9%）、費用がビジネスケースを超えた割合が<strong>39%</strong>（同19%）だった。AIの効果を行動や成果の変化で測っている企業は<strong>27%</strong>にとどまる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">変革予算なし</span><span class="metric-value down">51%</span></div>
+    <div class="metric"><span class="metric-label">AI施策の中止（予算なし／あり）</span><span class="metric-value down">25%／9%</span></div>
+    <div class="metric"><span class="metric-label">フロー再設計で高付加価値化</span><span class="metric-value up">50%（タスク単位は15%）</span></div>
+    <div class="metric"><span class="metric-label">成果・行動で効果を測定</span><span class="metric-value down">27%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜エージェントを既存の納品手順にそのまま差し込むだけでは粗利率への効果が出にくく、業務フローごと組み替えた場合に差が開くという比較データで、納品業務の自動化をタスク単位で進めるか工程単位で作り直すかの判断材料になる。導入費用に「人の側の変更コスト」を最初から積むかどうかで中止率と予算超過率が倍以上違う点は、AI BPOの案件ごとの費用見積もりの前提を見直す根拠として使える。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">調査で能力の不足として最も多かったのは「仕事の再設計とチームのコーチング」（46%）と「人とエージェントの仕事の分け方の定義」（40%）で、技術スキル（38%）より上だった。要件定義力を鍛えている層には、ツールの使い方より「どの工程を誰に渡すか」を書き切る練習のほうが効くという裏付けになる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.hfsresearch.com/research/build-workforce-speed-ai/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      HFS Research — Build workforce change that moves at the speed of AI (2026/11/26)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">02</span>
+  <div class="card-tag tag-market">💡 人員再編 11/26</div>
+  <h3>SAP、AI前提の再編で少なくとも1万人の削減を検討とBloomberg報道——従業員11万人超の約9%、製品・エンジニアリング・営業が中心</h3>
+  <p class="summary">
+    Bloombergは11月26日、独SAPがAIを軸にした再編で少なくとも<strong>1万人</strong>の削減を検討していると関係者の話として報じた。The Next Webによると、これは従業員<strong>11万人超</strong>の少なくとも<strong>9%</strong>にあたる。全部門に削減候補の洗い出しが求められ、製品、エンジニアリング、営業が主な対象とされる。最終的な人数は決まっておらず、労働側との協議で変わりうる。SAPは計画を認めず、「戦略と顧客ニーズに合わせて組織を継続的に見直している」との声明にとどめた。同社は7月に採用と出張を凍結し、CFOは「今年は人員がやや増えた」として流れが反転しなければ驚くと述べていた。2024年にも約1万人分のポジションを約30億ユーロかけて削減したが、自主退職と再教育が中心で、新しい職種を採用したため総人員はほぼ横ばいだった。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">検討中の削減</span><span class="metric-value down">1万人以上</span></div>
+    <div class="metric"><span class="metric-label">従業員に占める比率</span><span class="metric-value down">約9%以上</span></div>
+    <div class="metric"><span class="metric-label">2024年の再編費用</span><span class="metric-value neutral">約30億ユーロ</span></div>
+    <div class="metric"><span class="metric-label">採用・出張の凍結</span><span class="metric-value down">2026年7月〜</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜大手ソフトウェア企業が、AIで生まれた余力を「職種の入れ替え」ではなく人数そのものの削減に振り向けようとしている事例で、2024年の再編で総人員が横ばいだった結果との違いが比較点になる。AIの効果を人件費の削減で回収するのか、受注増や新商材で回収するのかという、経営と粗利率の議論の前提を整理する材料として使える。報道は関係者情報で、SAPは確認していない点を添えて扱う。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">削減の主対象にエンジニアリングと営業が並んだことは、コーディングエージェントや営業支援AIの普及で「同じ成果を少ない人数で出す」圧力が開発職にも及ぶことを示す。開発メンバーの育成目標を、書くコードの量から要件の切り出しとレビューの質へ寄せる理由として共有できる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://thenextweb.com/news/sap-job-cuts-10000-ai-restructuring-bloomberg" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      The Next Web — SAP weighs at least 10,000 job cuts in AI restructuring (2026/11/26)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🏭</div>
+  <div>
+    <h2>AI BPO — 納品の自動化とアウトカム型デリバリー</h2>
+    <span class="sub">FCCテクノ / PR TIMES — 2026年11月26日 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">03</span>
+  <div class="card-tag tag-market">🏭 サービス開始 11/26</div>
+  <h3>経理BPOをClaudeのエージェント7本で回す——FCCテクノ、自社で月次決算を20日前後から7日、経理の正職員4名分を月0.3人分に縮めた構成を中小企業向けに12月提供</h3>
+  <p class="summary">
+    税理士が代表を務めるFCCテクノは11月26日、九州・中国・四国の中堅・中小企業向けに、AIエージェントが経理と総務の定型業務を担う「バックオフィスBPOサービス」を<strong>12月1日</strong>に始めると発表した。構成はfreee会計でデータを集め、Claudeが点検と処理を実行し、Microsoft Teamsで報告と問い合わせを受ける形で、例外はFCCテクノの担当者が確認し、承認と経営判断は顧客に残す。対象は経費精算、支払依頼、入出金の消込、売上請求、仕訳の点検、月次決算、社内問い合わせ対応。導入前に業務の棚卸しと証憑の電子化を行い、構築後は人の作業を止めずに<strong>3回</strong>の月次決算を並行実施し、差異を手順書に反映してから切り替える。同社の自社経理では<strong>7本</strong>のエージェントが毎日動き、月次決算は<strong>20日前後から7日</strong>に、経理人員は正職員<strong>4名</strong>から<strong>月0.3人分</strong>（2026年9月の工数換算）になった。料金は構築期と運用期の2段階の月額制で、金額は公表していない。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">月次決算の日数</span><span class="metric-value up">20日前後→7日</span></div>
+    <div class="metric"><span class="metric-label">経理人員（自社）</span><span class="metric-value up">正職員4名→月0.3人分</span></div>
+    <div class="metric"><span class="metric-label">稼働エージェント</span><span class="metric-value neutral">7本</span></div>
+    <div class="metric"><span class="metric-label">切替前の並行決算</span><span class="metric-value neutral">3回</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜「AIが処理し、例外だけ人が見る、承認は顧客に残す」という責任分界と、3回の並行稼働で差異を潰してから切り替える移行手順が具体的に書かれており、社員なしで回す納品の設計を比べる型として使える。人員を月0.3人分まで落とした数値は自社業務での結果で、顧客案件での実績ではない点は割り引いて読む。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">8名のチームで案件ごとに3名前後が担当する体制は、少人数でAI BPOを回すときの監督者の配置の目安になる。業務の棚卸しと権限範囲の合意を導入前に置く手順は、要件定義を担うメンバーにそのまま渡せる工程表になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000013.000084739.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES — FCCテクノ、AIエージェントが経理・総務の定型業務を担う「バックオフィスBPOサービス」を開始 (2026/11/26)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🤖</div>
+  <div>
+    <h2>AI・テクノロジー 最新ニュース ｜ 自動化・開発生産性・コスト</h2>
+    <span class="sub">LeadDev / VentureBeat — 2026年11月24日 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">04</span>
+  <div class="card-tag tag-research">🤖 開発生産性 11/24</div>
+  <h3>承認したAI生成コードを「完全には理解していない」エンジニアは70%、配信の最大のボトルネックはコードレビューが45%——LeadDevの377人調査</h3>
+  <p class="summary">
+    LeadDev Researchは米国と欧州のエンジニアとエンジニアリングリーダー<strong>377人</strong>（完答<strong>325人</strong>）に9月29日〜10月17日に調査し、結果を「AI Code Review Report 2026」として公開した。VentureBeatが11月24日に報じている。AIコーディングツールの導入後に開発者1人あたりのPRが<strong>25%以上</strong>増えたとする回答は半数、PRが大きくなったとする回答は<strong>67%</strong>だった。レビューの周期が遅くなったは<strong>38%</strong>で、速くなった（25%）を上回る。ソフトウェア配信の最大のボトルネックにコードレビューの処理能力を挙げたのは<strong>45%</strong>で、要件の不明確さ（19%）を大きく上回った。AI生成の変更を人が書いたコードと同じくらい理解している自信があるのは<strong>26%</strong>で、<strong>47%</strong>はコードを書いたエージェント自身にレビューもさせている。AI生成コードのレビュー基準が明確で一貫して運用されている組織は<strong>14%</strong>にとどまる。調査はAIレビューツールのCodeRabbitがスポンサーで、利害がある点に注意がいる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">最大ボトルネック＝レビュー</span><span class="metric-value down">45%</span></div>
+    <div class="metric"><span class="metric-label">レビュー周期が遅くなった</span><span class="metric-value down">38%（速くなった25%）</span></div>
+    <div class="metric"><span class="metric-label">書いたエージェントがレビューも担当</span><span class="metric-value down">47%</span></div>
+    <div class="metric"><span class="metric-label">レビュー基準が明確で一貫</span><span class="metric-value down">14%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>SRE-LT</strong>｜コーディングエージェントで書く工程が縮んでも、レビュー待ちが伸びればリードタイムは縮まないことを、ボトルネックの順位で示したデータで、リードタイム計測でレビュー待ち時間を独立した指標として切り出す根拠になる。レビュー指標を何も追っていない組織が24%、取りこぼした不具合を追う組織が22%という数字は、自分たちの計測項目の不足を点検する比較対象になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">「承認したが理解していない」が7割という結果は、レビュー担当に回るメンバーの負荷と判断の質の問題として読める。どの変更を深く見るかを決める仕分けと、承認の意味を定義する作業を、レビューの経験が浅いメンバーの練習課題にできる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://venturebeat.com/technology/nearly-half-of-surveyed-engineers-and-leaders-say-the-ai-agents-that-write-their-code-also-review-it" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      VentureBeat — Nearly half of surveyed engineers say the AI agents that write their code also review it (2026/11/24)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-2);">🛡️</div>
+  <div>
+    <h2>AIセキュリティ — 新しい攻撃手法と防御手法</h2>
+    <span class="sub">Microsoft Threat Intelligence / OX Security — 2026年11月23〜25日公開 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">05</span>
+  <div class="card-tag tag-tech">🛡️ 検知手法 11/25</div>
+  <h3>AI攻撃基盤「ARTEX」を使う集団は中国のSalt Typhoonを含む6つに——Microsoftが検知名、User-Agent「artex-enrich/」、閾値付きのKQLクエリ6本を公開</h3>
+  <p class="summary">
+    Microsoft Threat Intelligenceは11月25日、7月に公開された自律型ペネトレーションテスト基盤ARTEXについて、防御側向けの分析を公開した。悪用を確認した集団として、通信大手への侵入で知られるSalt Typhoon、Crystal Typhoon、北朝鮮系のOnyx SleetとPearl Sleet、Storm-0940、金融業界を狙うStorm-3358の<strong>6つ</strong>を挙げる。Storm-0940のあるキャンペーンでは失敗サインインが<strong>15万1,000件超</strong>、ピーク時は毎分<strong>2,900件</strong>に達し、GitHubでクライアントシークレットを探してからAzure Key Vaultのデータを取るまで<strong>5分</strong>の例もあった。ARTEXは新しい攻撃技術を使わず既存の診断ツールを束ねるため、IPやUser-Agentより「機械的な速度のバースト」が最も信頼できる指標だとする。そのうえで<code>artex-enrich/*</code>と<code>norma/*</code>のUser-Agent、Webサーバープロセスからのシェル連続起動、/etc/shadowや.env、クラウド認証情報ファイルの連続読み取りを検知対象に挙げ、閾値付きのKQLを示した。緩和策はWAFの防止モードへの切り替え、レート制限、ワークロードIDへの条件付きアクセス、アプリのシークレットのローテーションとマネージドIDへの移行が中心である。オリジナルのソースは10月に削除されたがフォークは残り、11月には中国のThreatBookが商用版を出している。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">悪用を確認した集団</span><span class="metric-value down">6</span></div>
+    <div class="metric"><span class="metric-label">失敗サインイン（1キャンペーン）</span><span class="metric-value down">15万1,000件超</span></div>
+    <div class="metric"><span class="metric-label">シークレット探索からKey Vault取得まで</span><span class="metric-value down">5分</span></div>
+    <div class="metric"><span class="metric-label">公開されたKQL</span><span class="metric-value up">6本</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>セキュリティ</strong>｜11月23日のFBI FLASH、26日のWizのIntent IDに続く続報で、今回は国家支援集団への広がりと、SentinelやDefenderでそのまま回せる閾値（1分で100超の異なるパスと50超のクライアントエラー、5分で10超の異なるコマンド、10分で3種類以上の認証情報ファイル参照、1時間で3つ以上のアプリへのサービスプリンシパルのサインイン）が新しい。クエリの結果が空でも、Entraのサービスプリンシパルのサインインログ、IISやApp Service、WAFのログを集めていなければ「来ていない」とは言えないという注記は、ログ収集設定を点検する判断材料になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">Azureやクラウドの管理画面を触るメンバーには、GitHubに置いたシークレット1つから5分でKey Vaultまで届いた例が、シークレットスキャンとプッシュ保護を有効にする理由として伝わりやすい。ログを読むメンバーには、User-Agentのような変えやすい痕跡より「速度と多様さ」で見る考え方を練習する題材になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.microsoft.com/en-us/security/blog/2026/11/25/what-defenders-need-to-know-artex-agentic-ai-framework-threat-actors-abuse/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Microsoft Threat Intelligence — What defenders need to know about ARTEX (2026/11/25)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-2);"></div>
+  <span class="number">06</span>
+  <div class="card-tag tag-breaking">🛡️ 攻撃手法 11/23</div>
+  <h3>不審と判定されたMCPサーバーの22%はコードでなく「指示」で攻撃し、Agent Skillsは44%がデータの外部送信を指示——OX Securityが54万件を調べ、MCPサーバーの67%は実行コードを検証できないと報告</h3>
+  <p class="summary">
+    OX Securityは11月23日、2026年7〜10月にnpm、PyPI、MCPサーバー、Agent Skillsの<strong>54万2,207件</strong>を走査した結果を「Plug and Pray」として公開した。不審と判定したMCPサーバー<strong>834件</strong>のうち<strong>22%</strong>はプロンプトインジェクションやツールポイズニング、つまりツールの説明文に指示を仕込み、エージェントが既に持つ権限で顧客データへのアクセスや送信をさせる型だった。インストール時やインポート時にコードを実行する従来型は<strong>16%</strong>で、npmでは逆に実行型が約6倍多い。Agent Skillsは不審判定<strong>179件</strong>のうちインストール時にコードを実行したものは0件で、<strong>44%</strong>がエージェントにデータの外部送信を指示していた（OXはサンプルが小さいと断っている）。MCPサーバーの<strong>67%</strong>は公開者が管理するサーバー上で動き中身を確かめられず、<strong>16%</strong>は宣言と違うファイルを配っていた。悪性と確認したコンポーネントの<strong>82%</strong>は最初に観測した版から悪性で、2つの公開者アカウントが不審なMCPサーバーの44%を出し、うち1つは17日間で2,364件を公開していた。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">走査したコンポーネント</span><span class="metric-value neutral">54万2,207件</span></div>
+    <div class="metric"><span class="metric-label">MCP: 指示で攻撃する型</span><span class="metric-value down">22%</span></div>
+    <div class="metric"><span class="metric-label">Skills: 外部送信を指示</span><span class="metric-value down">44%（179件中）</span></div>
+    <div class="metric"><span class="metric-label">初版から悪性</span><span class="metric-value down">82%</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>セキュリティ</strong>｜MCPやSkillsでは悪性の中心が「実行されるコード」から「エージェントに読ませる文章」に移っており、パッケージのマルウェア検査やバージョン更新の監視だけでは止められないことが数字で示された。初版から悪性が8割なので、導入時にツールの説明文とSkillの指示文を読んで外部送信や権限行使の指示がないかを確かめる手順、リモートで動くMCPサーバーは公開者を確認できるものに限る許可リストを、エージェント導入の審査項目に足す判断材料になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">MCPサーバーやSkillsを試すメンバーには、ツールの説明文も「信頼できるドキュメント」ではなく攻撃面だという見方を共有できる。自作のSkillやMCPサーバーを社内に配る側に回ったときに、何を書けば利用者が中身を確かめられるかを考える材料にもなる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://www.ox.security/blog/plug-and-pray-your-ai-agents-are-taking-orders-from-strangers/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      OX Security — Plug and Pray: Your AI Agents Are Taking Orders From Strangers (2026/11/23)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-1);">🏢</div>
+  <div>
+    <h2>国内企業動向 ｜ 競合・隣接・スタートアップ</h2>
+    <span class="sub">カオナビ / PR TIMES — 2026年11月25〜26日公開 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">07</span>
+  <div class="card-tag tag-hr">🏢 直接競合 11/26</div>
+  <h3>カオナビ、人口約52万人の中核市・姫路市が職員4,000名以上の人材データ管理に採用——評価・研修履歴・異動希望の紙運用を一元化し、浮いた時間を1on1へ回す</h3>
+  <p class="summary">
+    カオナビは11月26日、兵庫県姫路市がタレントマネジメントシステム「カオナビ」の導入を決めたと発表した。対象は職員<strong>4,000名以上</strong>で、人口約<strong>52万人</strong>の中核市への導入になる。市では人事評価、研修履歴、異動希望が紙や個別のファイルで管理され、組織を横断した人材把握や、データに基づく配置に大きな事務負担がかかっていた。導入後は職務履歴、勤怠、資格を一元化して部署ごとのスキルバランスを把握し、異動やプロジェクト登用に使う。人事評価と調書もオンライン化し、回収・集計の手間を減らして、生まれた時間を職員との1on1に充てる計画だ。発表は「自治体版・人的資本経営」を掲げるが、稼働時期や費用は書かれていない。カオナビの利用企業数は<strong>4,500社超</strong>（2025年9月末時点）で、11月12日の日本ハムに続く大口の導入発表になる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">対象職員</span><span class="metric-value neutral">4,000名以上</span></div>
+    <div class="metric"><span class="metric-label">市の人口</span><span class="metric-value neutral">約52万人</span></div>
+    <div class="metric"><span class="metric-label">カオナビ利用企業数</span><span class="metric-value up">4,500社超（2025年9月末）</span></div>
+    <div class="metric"><span class="metric-label">稼働時期・費用</span><span class="metric-value neutral">非開示</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>結節</strong>｜タレントマネジメント各社が民間大手に加えて自治体の大口案件を取りにいく動きで、組織診断やサーベイを入口にする商材とは、人材データの置き場所を先に押さえられる点で競合する。人材データの一元化を「1on1の時間を作る」ための投資として説明する語り方は、BU長や経営との会話で他社が公共領域をどう攻めているかを示す材料になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">紙と個別ファイルに散った評価・研修・異動データを一元化する話は、要件定義の練習題としてそのまま使える。誰がどのデータを持ち、どの判断に使うのかを書き出す作業は、DX推進メンバーが顧客業務を観察するときの型と同じである。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://corp.kaonavi.jp/news/pr_20261126/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      カオナビ — 兵庫県姫路市が、職員4,000名以上の適材適所を図るため「カオナビ」を導入 (2026/11/26)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-1);"></div>
+  <span class="number">08</span>
+  <div class="card-tag tag-market">🏢 新商品 11/25</div>
+  <h3>ベルシステム24、電話代行「e秘書」にAIが24時間365日受け付ける「AI秘書コース」を月額9,000円から追加——設計・設定・調整は人の専門担当が担い、2027年度末に1,000社を目標</h3>
+  <p class="summary">
+    ベルシステム24は11月25日、1985年から有人で続けてきた電話代行サービス「e秘書」に、AI受付エージェントが応対する「AI秘書コース」を加えた。料金は月額<strong>9,000円</strong>（税抜）からで、初期費用は<strong>18,000円</strong>（税抜）。月額は応対件数や利用内容で変わる。夜間や土日祝を含む<strong>24時間365日</strong>、企業ごとに決めた確認事項に沿ってAIが用件を聞き取り、会話が逸れても確認事項に戻す。受付業務の設計、AIの設定、テスト、運用開始後の調整は同社の専門担当者が受け持ち、申し込みから最短<strong>4営業日</strong>で使い始められる。想定顧客は飲食店、美容院、士業事務所などの小規模事業者と、大企業の支店や総合受付で、既存の有人2コースと合わせて3コースから選ぶ形になる。目標は2027年度末までに<strong>1,000社</strong>導入。同社は同じ11月25日に公共BPOの富士ソフトサービスビューロ買収の基本合意も発表しており（11月26日既報）、今回は商品側の動きにあたる。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">月額</span><span class="metric-value neutral">9,000円〜（税抜）</span></div>
+    <div class="metric"><span class="metric-label">初期費用</span><span class="metric-value neutral">18,000円（税抜）</span></div>
+    <div class="metric"><span class="metric-label">利用開始まで</span><span class="metric-value up">最短4営業日</span></div>
+    <div class="metric"><span class="metric-label">導入目標</span><span class="metric-value up">1,000社（2027年度末）</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>KR1 AI BPO</strong>｜有人BPOの老舗が、AIに応対させて人は設計と運用調整に回る形を、月額9,000円という小口価格で商品化した例で、納品業務のうち「人が残る工程」をどこに置けば粗利率が出るかの比較材料になる。AI化した後も設計・テスト・調整を人の付加価値として明示して売る点は、エージェント導入後の役割分担を決めるときの参照になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">業務設計、AI設定、テスト、運用調整という4工程の分け方は、エージェントを納品に組み込むときの工程表として直下メンバーがそのまま使える。「確認事項から逸れたら戻す」という仕様の書き方は、要件定義で例外処理をどこまで決めるかの教材にもなる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000254.000109272.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES — ベルシステム24、電話代行サービス「e秘書」に24時間365日対応の「AI秘書コース」を提供開始 (2026/11/25)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<div class="section-header">
+  <div class="section-icon" style="background: var(--gradient-3);">🧭</div>
+  <div>
+    <h2>AXコンサル・支援 — 他社の商材と提供モデル</h2>
+    <span class="sub">PR TIMES — 2026年11月25〜26日公開 Sources</span>
+  </div>
+</div>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">09</span>
+  <div class="card-tag tag-hr">🧭 新商材 11/26</div>
+  <h3>ギブリー、FDE（顧客先で課題発見から実装・定着まで担うエンジニア）の要件を140タスク・223スキルで定義した「FDEスキル標準 2026」を公開——育成支援と認定試験の設計をセットで売る</h3>
+  <p class="summary">
+    ギブリーは11月26日、顧客の現場で課題発見から実装、定着までを担うFDE人材の要件をまとめた「FDEスキル標準 2026」を公開した。構成は<strong>4カテゴリー</strong>、<strong>8ケイパビリティ</strong>、<strong>16職務領域</strong>で、タスク<strong>140件</strong>とスキル延べ<strong>223項目</strong>を責任範囲のレベル別に書き分けている。たとえば「AI機能の実装・評価」では、LV3はプロンプト作成とテストケースでの出力のばらつき修正、LV5は評価設計とガードレールの方針を組織標準にすることと定義する。標準を土台に、叩き台の設定、実践型研修、見極めと要件の明確化、OJTと継続評価の4段階で進める育成支援と、コーディング試験とAIインタビューを組み合わせた認定試験の設計・実施支援を提供する。想定顧客はFDE組織を立ち上げるSIer・SES、IT・SaaSベンダー、PoCで終わらせたくない事業会社のDX部門。価格や期間は書かれておらず、標準は資料請求フォームで配布する形だ。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">タスク定義</span><span class="metric-value neutral">140件</span></div>
+    <div class="metric"><span class="metric-label">スキル項目</span><span class="metric-value neutral">延べ223</span></div>
+    <div class="metric"><span class="metric-label">職務領域</span><span class="metric-value neutral">16</span></div>
+    <div class="metric"><span class="metric-label">価格</span><span class="metric-value neutral">非開示</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜スキル標準を無償に近い入口として配り、育成支援と認定試験の設計で収益を取る構成で、AX支援商材の「診断・定義→研修→見極め→OJT伴走」という提供モデルの並べ方と直接比べられる。売り先をSIer・SESの中期計画（人数依存から一人当たり付加価値への転換）に置いている点は、研修事業の顧客層をどこに広げるかの判断材料になる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">顧客業務の観察と暗黙知の形式化、デモ・PoCの企画、顧客への引き継ぎまでを1人の職務として定義した点は、DX推進メンバーに求める要件定義力の物差しとして使える。LV3とLV5の差を「自分で作る」から「組織標準を決める」で書き分ける方法は、強化選手の育成目標を言語化するときの参考になる。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000427.000002454.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES — ギブリー、FDE人材の要件を定義する「FDEスキル標準 2026」を公開 (2026/11/26)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+<article class="news-card">
+  <div class="card-accent" style="background: var(--gradient-3);"></div>
+  <span class="number">10</span>
+  <div class="card-tag tag-research">🧭 提供モデル 11/25</div>
+  <h3>エクサウィザーズの「生成AI活用テスト」受検者が累計1万人——6,650名の分析ではリスク管理力と成果創出力が30代で最も高く、管理職より一般社員が低い。テストをAX支援の「現在地診断」と位置づける</h3>
+  <p class="summary">
+    エクサウィザーズは11月25日、生成AIを実務で安全かつ効果的に使う力を測る「生成AI活用テスト」の受検者が累計<strong>1万人</strong>を超えたと発表した。テストは「リスク管理力」「成果創出力」「考え方・姿勢」の<strong>3観点</strong>で評価する。2026年7月9日から10月14日に受検した<strong>6,650名</strong>を分析すると、リスク管理力と成果創出力は<strong>30代</strong>が最も高く、40代以降は年代が上がるほど下がった。利用経験率は若いほど高いという公的統計と違い、20代より30代が高い。役職別では一般社員層が上位管理職層より低かった。同社はこのテストを、組織の課題と推進キーパーソンを洗い出す「現在地診断」と位置づけ、その結果に応じてリテラシー教育、実践研修、AIエージェント構築、プロジェクト立ち上げ支援を出し分ける。平均点そのものや価格、導入企業数は本文に書かれていない。
+  </p>
+  <div class="metrics">
+    <div class="metric"><span class="metric-label">累計受検者</span><span class="metric-value up">1万人超</span></div>
+    <div class="metric"><span class="metric-label">分析対象</span><span class="metric-value neutral">6,650名</span></div>
+    <div class="metric"><span class="metric-label">評価観点</span><span class="metric-value neutral">3</span></div>
+    <div class="metric"><span class="metric-label">スコア最上位の年代</span><span class="metric-value neutral">30代</span></div>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-box lm-impact">
+      <div class="impact-label">📊 KRへの接続</div>
+      <p class="impact-text"><strong>AXL</strong>｜アセスメントを入口に置いて研修、エージェント構築、立ち上げ支援へ段階的に売り上げる構成で、リスキリング事業の商品ラインを「診断→研修→実装支援」でつなぐ設計と比べられる。受検データを年代・役職別に集計して公表する発信の仕方も、診断商材の価値を示す方法として参照できる。</p>
+    </div>
+    <div class="impact-box hr-impact">
+      <div class="impact-label">👥 チーム／育成への示唆</div>
+      <p class="impact-text">20代より30代の点が高いという結果は、ツールに触れた量より業務経験の厚さが成果創出に効くことを示唆しており、26卒の立ち上げでAI操作より業務理解を先に積ませる根拠の一つになる。測る観点にリスク管理力が入っている点は、メンバーのAI活用を評価するときの物差しとしても使える。</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="source-link" href="https://prtimes.jp/main/html/rd/p/000000526.000030192.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      PR TIMES — 生成AI活用テスト、受検者数が累計1万人を突破 (2026/11/25)
+    </a>
+    <button class="share-btn" onclick="var s=this.querySelector('span');var c=this.closest('.news-card');navigator.clipboard.writeText(c.querySelector('h3').textContent.trim()+'\n'+c.querySelector('.source-link').href).then(function(){s.textContent='✓ 完了';this.classList.add('copied');setTimeout(function(){s.textContent='コピー';this.classList.remove('copied');}.bind(this),2000);}.bind(this));"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span>コピー</span></button>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="disclaimer">
+    <p style="margin-bottom: 12px; color: var(--text); font-weight: 600; font-size: 14px;">
+      Daily Intelligence Brief
+    </p>
+    <p>本レポートは公開情報源に基づくAI生成サマリーであり、
+    投資助言や法的助言を構成するものではありません。
+    正確性については各出典をご確認ください。</p>
+    <p style="margin-top: 12px; opacity: 0.5;">
+      Generated by Claude — 2026年11月27日 — For internal use
+    </p>
+  </div>
+</footer>
+</body>
+</html>
